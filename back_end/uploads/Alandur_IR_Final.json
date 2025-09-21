@@ -1,0 +1,641 @@
+{
+  "metadata": {
+    "document_name": "Alandur_IR_Final",
+    "document_heading": "OFFICE OF THE PRL.ACCOUNTANT GENERAL (Audit –I) TAMILNADU",
+    "Period_of_audit": {
+      "Period_From": null,
+      "Period_To": null
+    },
+    "Date_of_audit": {
+      "Period_From": "12/09/2023",
+      "Period_To": "13/09/2023"
+    },
+    "departments": null,
+    "state": "Tamil Nadu",
+    "is_state": true,
+    "district": null,
+    "division_name": null,
+    "audit_objective": [
+      {
+        "type": "paragraph",
+        "text": "Central Goods and Services Tax Act and Rules, 2017;"
+      },
+      {
+        "type": "paragraph",
+        "text": "State Goods and Services Tax Act and Rules, 2017;"
+      },
+      {
+        "type": "paragraph",
+        "text": "Integrated Goods and Services Tax Act and Rules, 2017;"
+      },
+      {
+        "type": "paragraph",
+        "text": "Notifications, Orders,  Circulars etc. issued by the CBIC-GOI/Commissioner of Commercial Taxes, Government of Tamil Nadu."
+      },
+      {
+        "type": "paragraph",
+        "text": "for Senior Deputy Accountant General / AMG-II"
+      }
+    ],
+    "audit_criteria": null,
+    "audite_unit": null,
+    "expenditure": null,
+    "revenue": null,
+    "budget/allocation": null,
+    "Audit_Officer_Details": [
+      {
+        "Audit_Officer_Name": "Balasubramanian V",
+        "Audit_Officer_Designation": "Senior Audit Officer",
+        "Member_From": "12/09/2023",
+        "Member_Until": "13/09/2023"
+      },
+      {
+        "Audit_Officer_Name": "Bharath Gorantla",
+        "Audit_Officer_Designation": "Assistant Audit Officer",
+        "Member_From": "12/09/2023",
+        "Member_Until": "13/09/2023"
+      },
+      {
+        "Audit_Officer_Name": "Rangarajan R",
+        "Audit_Officer_Designation": "AAO (Field) - AMG II",
+        "Member_From": "12/09/2023",
+        "Member_Until": "13/09/2023"
+      },
+      {
+        "Audit_Officer_Name": "Amarjeet Kumar",
+        "Audit_Officer_Designation": "AAO (Field) - AMG II",
+        "Member_From": "12/09/2023",
+        "Member_Until": "13/09/2023"
+      },
+      {
+        "Audit_Officer_Name": "Balasubramanian V",
+        "Audit_Officer_Designation": "Senior Audit Officer",
+        "Member_From": "12/09/2023",
+        "Member_Until": "13/09/2023"
+      }
+    ],
+    "Auditee_Office_Details": [
+      {
+        "Auditee_Officer_Name": null,
+        "Audit_Officer_Designation": null,
+        "Worked_From": null,
+        "Worked_Until": null
+      }
+    ],
+    "signed_by": null
+  },
+  "parts": [
+    {
+      "part_title": "General",
+      "sections": [
+        {
+          "section_title": "General",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "LEKHA PARIKSHA BHAVAN, 361, ANNASALAI, TEYNAMPET, CHENNAI- 600 018."
+            },
+            {
+              "type": "paragraph",
+              "text": "No. PAG (Audit-I)/AMG-II/GST P.III/SSCA-WCS/23-24/___                     Dated:"
+            },
+            {
+              "type": "paragraph",
+              "text": "To"
+            },
+            {
+              "type": "paragraph",
+              "text": "The Joint Commissioner (ST),"
+            },
+            {
+              "type": "paragraph",
+              "text": "Chennai South Division,"
+            },
+            {
+              "type": "paragraph",
+              "text": "Commercial Taxes Department,"
+            },
+            {
+              "type": "paragraph",
+              "text": "Chennai."
+            },
+            {
+              "type": "paragraph",
+              "text": "(By E-mail jcct.chnsouth@ctd.tn.gov.in and jcctchnsouth.ctd@tn.gov.in)"
+            },
+            {
+              "type": "paragraph",
+              "text": "Sir/Madam,"
+            },
+            {
+              "type": "paragraph",
+              "text": "Subject Specific Compliance Audit (SSCA) on “Works Contract Services under GST” was taken up for inclusion in the Comptroller and Auditor General’s Audit Report."
+            },
+            {
+              "type": "paragraph",
+              "text": "In this connection, I am to forward herewith the Inspection report relating to audit findings of Alandur Assessment Circle conducted by this office as part of the above SSCA.  The audit slips in respect of the observations included in this Inspection Report have already been issued to the concerned assessment circles.  It is requested that the replies of the Assessing Officers may be arranged to be furnished to this office not later than four weeks from the date of receipt of this report by E mail to email id: amg2.tmn1.au@cag.gov.in along with all supporting documents / annexures."
+            },
+            {
+              "type": "paragraph",
+              "text": "A copy of this Inspection Report is also forwarded to the Jurisdictional Deputy Commissioner (ST) and concerned Proper Officer through E mail."
+            },
+            {
+              "type": "paragraph",
+              "text": "The receipt of the report may kindly be acknowledged."
+            },
+            {
+              "type": "paragraph",
+              "text": "Yours faithfully,"
+            },
+            {
+              "type": "paragraph",
+              "text": "Encl: Inspection Report\t\t\t    for Sr. Deputy Accountant General /AMG-II"
+            },
+            {
+              "type": "paragraph",
+              "text": "No. PAG (Audit-I)/AMG-II/GST P.III/SSCA-WCS/23-24/___                     Dated:"
+            },
+            {
+              "type": "paragraph",
+              "text": "Copy forwarded to the Deputy Commissioner (ST), Chennai South-III Zone, Commercial Taxes Department, Chennai for information and necessary action."
+            },
+            {
+              "type": "paragraph",
+              "text": "(By E-Mail- dcct.chnsouth3@ctd.tn.gov.in, dcctchnsouth3.ctd@tn.gov.in)"
+            },
+            {
+              "type": "paragraph",
+              "text": "Encl: Inspection Report"
+            },
+            {
+              "type": "paragraph",
+              "text": "for Sr. Deputy Accountant General /AMG-II"
+            },
+            {
+              "type": "paragraph",
+              "text": "No. PAG (Audit-I)/AMG-II/GST P.III/SSCA-WCS/23-24/___                     Dated:"
+            },
+            {
+              "type": "paragraph",
+              "text": "Copy forwarded to the Assistant Commissioner (ST), Alandur Assessment Circle, Commercial Taxes Department, Chennai for information and necessary action."
+            },
+            {
+              "type": "paragraph",
+              "text": "(By E-Mail- ac.alandur@ctd.tn.gov.in, acalandur.ctd@tn.gov.in)"
+            },
+            {
+              "type": "paragraph",
+              "text": "Encl: Inspection Report"
+            },
+            {
+              "type": "paragraph",
+              "text": "for Sr. Deputy Accountant General /AMG-II"
+            }
+          ],
+          "sub_sections": []
+        },
+        {
+          "section_title": "(Subject Specific Compliance Audit on “Works Contract Services under GST”)",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Period 2018-19 to 2020-21"
+            }
+          ],
+          "sub_sections": []
+        }
+      ]
+    },
+    {
+      "part_title": "PART-I- (Introduction)",
+      "sections": [
+        {
+          "section_title": "General",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "The audit of office of the Assistant Commissioner (ST), Alandur was conducted from 12/09/2023 to 13/09/2023 by the following members of field audit party of office of the Principal Accountant General (Audit-I), Tamil Nadu."
+            },
+            {
+              "type": "table",
+              "table": "<table>  <tr>    <th>Name</th>    <th>Designation</th>    <th>Member from</th>    <th>Member till</th>  </tr>  <tr>    <td>Balasubramanian V</td>    <td>Senior Audit Officer</td>    <td>12/09/2023</td>    <td>13/09/2023</td>  </tr>  <tr>    <td>Bharath Gorantla</td>    <td>Assistant Audit Officer</td>    <td>12/09/2023</td>    <td>13/09/2023</td>  </tr>  <tr>    <td>Rangarajan R</td>    <td>AAO (Field) - AMG II</td>    <td>12/09/2023</td>    <td>13/09/2023</td>  </tr>  <tr>    <td>Amarjeet Kumar</td>    <td>AAO (Field) - AMG II</td>    <td>12/09/2023</td>    <td>13/09/2023</td>  </tr></table>"
+            },
+            {
+              "type": "paragraph",
+              "text": "The audit was supervised by the following officer."
+            },
+            {
+              "type": "table",
+              "table": "<table>  <tr>    <th>Name</th>    <th>Designation</th>    <th>Effective from</th>    <th>Effective to</th>  </tr>  <tr>    <td>Balasubramanian V</td>    <td>Senior Audit Officer</td>    <td>12/09/2023</td>    <td>13/09/2023</td>  </tr></table>"
+            },
+            {
+              "type": "paragraph",
+              "text": "Subject Specific Compliance Audit (SSCA) on “Works Contract Services under GST” as a sub-theme of SSCA on “Department’s Oversight on GST Payments and Return Filing – Phase-II” was taken up for inclusion in the Report of Comptroller and Auditor General of India."
+            }
+          ],
+          "sub_sections": []
+        },
+        {
+          "section_title": "General",
+          "content": [],
+          "sub_sections": [
+            {
+              "sub_section_title": "Audit objectives",
+              "content": []
+            },
+            {
+              "sub_section_title": "This audit is oriented towards providing assurance on the adequacy and effectiveness of systems and procedures of the Department. The audit pursued the following broad audit objective:",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "“Whether the rules and procedures are designed to secure an effective check on tax compliance and are being duly observed by taxpayers dealing with “Works Contract Services”;"
+                }
+              ]
+            },
+            {
+              "sub_section_title": "Audit Criteria",
+              "content": []
+            },
+            {
+              "sub_section_title": "The source of criteria against which the audit objectives were verified comprises the provisions contained in the",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "Central Goods and Services Tax Act and Rules, 2017;"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "State Goods and Services Tax Act and Rules, 2017;"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Integrated Goods and Services Tax Act and Rules, 2017;"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Notifications, Orders,  Circulars etc. issued by the CBIC-GOI/Commissioner of Commercial Taxes, Government of Tamil Nadu."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "1.4 Audit methodology and scope"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The SSCA comprises of examination of taxpayer compliance, scrutiny process, and subsequent follow-up carried out by the Department on the returns filed by the registered taxpayers.  A risk based approach was adopted for selection of taxpayers. The taxpayers were selected based on four risk parameters i.e. ITC mismatch, ITC availed without payment of tax, ITC availed to tax paid ratio and tax liability mismatch,."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The audit methodology involved data analysis and verification of records available with the jurisdictional offices. It also involved accessing relevant assessment information/records of the taxpayers for identified risks.  If the requisite documents pertaining to the cases internally audited by the Department were readily available with the departmental formations, the same was requisitioned for verification.  In other cases, the documents with the exclusive custody of taxpayers were accessed through the departmental formations. Substantive audit of taxpayer records was carried out through the back office portal of the department.  The Audit also included an examination of documents and transactions of previous years wherever considered relevant."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The audit covered the period from April 2018 to March 2021. This Inspection Report covers detailed audit conducted in respect of the following taxpayer assessed under the jurisdiction of Office of the Assistant Commissioner (ST), Alandur Assessment Circle."
+                },
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th>S.No.</th>    <th>GSTIN</th>    <th>Name of the dealer</th>  </tr>  <tr>    <td>1.</td>    <td><table>  <tr>    <th>33AADCA0473F1Z7</th>  </tr></table></td>    <td><table>  <tr>    <th>ANNAIE INFORMATIONS PVT LTD</th>  </tr></table></td>  </tr></table>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "part_title": "PART-II",
+      "sections": [
+        {
+          "section_title": "(Audit Findings)",
+          "content": [],
+          "sub_sections": []
+        }
+      ]
+    },
+    {
+      "part_title": "PART-II",
+      "sections": [
+        {
+          "section_title": "General",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Summary of Audit Observations included in report"
+            },
+            {
+              "type": "table",
+              "table": "<table>  <tr>    <th>S.No.</th>    <th>Observation No.</th>    <th>Gist of the observation</th>    <th>Money Value (in Rs.)</th>  </tr>  <tr>    <td>1.</td>    <td>OBS-1191413</td>    <td>Mis-classification of Other installation service as Works contract resulted in short discharge of...</td>    <td>28,058,595</td>  </tr>  <tr>    <td>2.</td>    <td>OBS-965804</td>    <td>Excess availing of ITC</td>    <td>7,486,424</td>  </tr>  <tr>    <td>3.</td>    <td>OBS-965893</td>    <td>Undischarged tax liability</td>    <td>832,035</td>  </tr>  <tr>    <td>4.</td>    <td>OBS-1230957</td>    <td>List of records/documents not produced to audit</td>    <td>0</td>  </tr>  <tr>    <td>5.</td>    <td>OBS-1228459</td>    <td>Non Payment of Interest- voluntary Payments - Annaie</td>    <td>209,263</td>  </tr>  <tr>    <td>6.</td>    <td>OBS-1199880</td>    <td>Non-Payment of tax under RCM for GTA services availed</td>    <td>69,756</td>  </tr></table>"
+            }
+          ],
+          "sub_sections": []
+        }
+      ]
+    },
+    {
+      "part_title": "PART-II-(A)",
+      "sections": [
+        {
+          "section_title": "(Significant Audit Findings)",
+          "content": [],
+          "sub_sections": []
+        },
+        {
+          "section_title": "Reference Number: OBS-1191413",
+          "content": [],
+          "sub_sections": [
+            {
+              "sub_section_title": "Subject: Mis-classification of Other installation service as Works contract resulted in short discharge of tax.",
+              "content": [
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th>GSTIN</th>    <th>33AADCA0473F1Z7</th>  </tr>  <tr>    <td>Name of the tax payer</td>    <td>ANNAIE INFORMATIONS PRIVATE LIMITED</td>  </tr></table>"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "As per Section 61 of the CGST and TNGST Act, various returns filed by the taxpayers has to be scrutinised by the State Tax Officer to verify the correctness of the returns, and suitable action has to be taken on any discrepancies or inconsistencies reflected in the returns."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "As per Section 2(119) of CGST/TNGST Act 2017 “works contract” means a contract for building, construction, fabrication, completion, erection, installation, fitting out, improvement, modification, repair, maintenance, renovation, alteration or commissioning of any immovable property wherein transfer of property in goods (whether as goods or in some other form) is involved in the execution of such contract.”"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "As per Sl.No 3 of Notification 11/2017 of CGST Act 2017 as amended from time to time - Composite supply of works contract as defined in clause (119) of section 2 of the Central Goods and Services Tax Act, 2017, supplied by way of construction, erection, commissioning, or installation of original works pertaining to,- (a) railways shall be charged at 6 percent."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "On a scrutiny of records produced to audit, it was noticed that the taxpayer is involved in supply and installation of electrical items like display boards, clocks, speakers etc. for railways and classified them as supply of works contract and applied concessional rate of tax at 12 percent (6 cgst, 6 sgst). As these items are not immovable property, they shall be classified as electrical installation services in other construction activities and not as “works contract” as per section 2(119) and concessional rate of tax is not applicable in this case. This resulted in short discharge of tax as shown below."
+                },
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th>Month</th>    <th>Purchaser GSTIN</th>    <th>Invoice no</th>    <th>Invoice date</th>    <th>tax rate applied</th>    <th>Taxable value</th>    <th>tax paid</th>    <th>tax to be piad at 18 %</th>    <th>Short Payment</th>    <th>Interest Due date</th>    <th>Delay in days as on 01-01-2024</th>    <th>Interest at 18%</th>    <th>Total</th>  </tr>  <tr>    <td>Jul-18</td>    <td>20AAAGM0289C1ZX</td>    <td>WC-GST01</td>    <td>15-07-2018</td>    <td>12</td>    <td>357009</td>    <td>42841.08</td>    <td>64261.62</td>    <td>21420.54</td>    <td>24-08-2018</td>    <td>1956</td>    <td>20662.31</td>    <td>42082.85</td>  </tr>  <tr>    <td>Aug-18</td>    <td>21AAAGM0289C1ZV</td>    <td>WC-GST-03</td>    <td>04-08-2018</td>    <td>12</td>    <td>284821</td>    <td>34178.52</td>    <td>51267.78</td>    <td>17089.26</td>    <td>20-09-2018</td>    <td>1930</td>    <td>16265.23</td>    <td>33354.49</td>  </tr>  <tr>    <td>Sep-18</td>    <td>21AAAGM0289C1ZV</td>    <td>WC-GST-09</td>    <td>15-09-2018</td>    <td>12</td>    <td>8117869</td>    <td>974144</td>    <td>1461216.4</td>    <td>487072.42</td>    <td>25-10-2018</td>    <td>1896</td>    <td>455419.4</td>    <td>942491.8</td>  </tr>  <tr>    <td>Oct-18</td>    <td>20AAAGM0289C1ZX</td>    <td>WC-GST-10</td>    <td>03-10-2018</td>    <td>12</td>    <td>336337</td>    <td>40360</td>    <td>60540.66</td>    <td>20180.66</td>    <td>20-11-2018</td>    <td>1871</td>    <td>18620.39</td>    <td>38801.05</td>  </tr>  <tr>    <td>Nov-18</td>    <td>29AAAGM0289C1ZF</td>    <td>WC-GST-14</td>    <td>13-11-2018</td>    <td>12</td>    <td>5100384</td>    <td>612046.1</td>    <td>918069.12</td>    <td>306023.04</td>    <td>20-12-2018</td>    <td>1842</td>    <td>277986.3</td>    <td>584009.3</td>  </tr>  <tr>    <td>Nov-18</td>    <td>37AAAGM0289C1ZI</td>    <td>AMC-GST-12</td>    <td>13-11-2018</td>    <td>12</td>    <td>2481257</td>    <td>297750.8</td>    <td>446626.26</td>    <td>148875.42</td>    <td>20-12-2018</td>    <td>1843</td>    <td>135309.4</td>    <td>284184.8</td>  </tr>  <tr>    <td>Dec-18</td>    <td>29AAAGM0289C1ZF</td>    <td>WC-GST-17</td>    <td>01-12-2018</td>    <td>12</td>    <td>1352220</td>    <td>162266</td>    <td>243399.6</td>    <td>81133.6</td>    <td>20-01-2019</td>    <td>1813</td>    <td>72540.11</td>    <td>153673.7</td>  </tr>  <tr>    <td>Dec-18</td>    <td>29AAAGM0289C1ZF</td>    <td>WC-GST-16</td>    <td>01-12-2018</td>    <td>12</td>    <td>2550401</td>    <td>306048</td>    <td>459072.18</td>    <td>153024.18</td>    <td>20-01-2019</td>    <td>1814</td>    <td>136891.7</td>    <td>289915.8</td>  </tr>  <tr>    <td>Jan-19</td>    <td>37AAAGM0289C1ZI</td>    <td>WC-GST-19</td>    <td>08-01-2019</td>    <td>12</td>    <td>1478105</td>    <td>177373</td>    <td>266058.9</td>    <td>88685.9</td>    <td>22-02-2019</td>    <td>1782</td>    <td>77936.68</td>    <td>166622.6</td>  </tr>  <tr>    <td>Feb-19</td>    <td>29AAAGM0289C1ZF</td>    <td>WC-GST-21</td>    <td>07-02-2019</td>    <td>12</td>    <td>3840009</td>    <td>460801</td>    <td>691201.62</td>    <td>230400.62</td>    <td>20-03-2019</td>    <td>1757</td>    <td>199634.2</td>    <td>430034.9</td>  </tr>  <tr>    <td>Mar-19</td>    <td>21AAAGM0289C1ZV</td>    <td>WC-GST26</td>    <td>28-03-2019</td>    <td>12</td>    <td>5149512</td>    <td>617941</td>    <td>926912.16</td>    <td>308971.16</td>    <td>23-04-2019</td>    <td>1724</td>    <td>262684.7</td>    <td>571655.9</td>  </tr>  <tr>    <td>Mar-19</td>    <td>21AAAGM0289C1ZV</td>    <td>WCT-GST29</td>    <td>28-03-2019</td>    <td>12</td>    <td>8254812</td>    <td>990577</td>    <td>1485866.2</td>    <td>495289.16</td>    <td>23-04-2019</td>    <td>1725</td>    <td>421335</td>    <td>916624.2</td>  </tr>  <tr>    <td>Mar-19</td>    <td>21AAAGM0289C1ZV</td>    <td>WCT-GST28</td>    <td>28-03-2019</td>    <td>12</td>    <td>5463263</td>    <td>655592</td>    <td>983387.34</td>    <td>327795.34</td>    <td>23-04-2019</td>    <td>1726</td>    <td>279012.2</td>    <td>606807.5</td>  </tr>  <tr>    <td>Mar-19</td>    <td>21AAAGM0289C1ZV</td>    <td>WC-GST34</td>    <td>31-03-2019</td>    <td>12</td>    <td>284000</td>    <td>34080</td>    <td>51120</td>    <td>17040</td>    <td>23-04-2019</td>    <td>1727</td>    <td>14512.48</td>    <td>31552.48</td>  </tr>  <tr>    <td>Mar-19</td>    <td>21AAAGM0289C1ZV</td>    <td>WC-GST22</td>    <td>18-03-2019</td>    <td>12</td>    <td>1204795</td>    <td>144575</td>    <td>216863.1</td>    <td>72288.1</td>    <td>23-04-2019</td>    <td>1728</td>    <td>61601.34</td>    <td>133889.4</td>  </tr>  <tr>    <td>Mar-19</td>    <td>21AAAGM0289C1ZV</td>    <td>WC-GST25</td>    <td>28-03-2019</td>    <td>12</td>    <td>10237054</td>    <td>1228446</td>    <td>1842669.7</td>    <td>614223.72</td>    <td>23-04-2019</td>    <td>1729</td>    <td>523722.5</td>    <td>1137946</td>  </tr>  <tr>    <td>Mar-19</td>    <td>36AAAGM0289C1DT</td>    <td>WC-GST35</td>    <td>31-03-2019</td>    <td>12</td>    <td>2963054</td>    <td>355566</td>    <td>533349.72</td>    <td>177783.72</td>    <td>23-04-2019</td>    <td>1730</td>    <td>151676.3</td>    <td>329460</td>  </tr>  <tr>    <td>Mar-19</td>    <td>37AAAGM0289C1DR</td>    <td>WC-GST30</td>    <td>28-03-2019</td>    <td>12</td>    <td>3360221</td>    <td>403227</td>    <td>604839.78</td>    <td>201612.78</td>    <td>23-04-2019</td>    <td>1731</td>    <td>172105.5</td>    <td>373718.3</td>  </tr>  <tr>    <td>Mar-19</td>    <td>37AAAGM0289C1ZI</td>    <td>WC-GST23</td>    <td>26-03-2019</td>    <td>12</td>    <td>4564207</td>    <td>547705</td>    <td>821557.26</td>    <td>273852.26</td>    <td>23-04-2019</td>    <td>1732</td>    <td>233907.3</td>    <td>507759.6</td>  </tr>  <tr>    <td>Jun-19</td>    <td>21AAAGM0289C1ZV</td>    <td>WC-GST-01</td>    <td>01-06-2019</td>    <td>12</td>    <td>6210171</td>    <td>745221</td>    <td>1117830.8</td>    <td>372609.78</td>    <td>20-07-2019</td>    <td>1645</td>    <td>302273.3</td>    <td>674883.1</td>  </tr>  <tr>    <td>Jun-19</td>    <td>37AAAGM0289C1ZI</td>    <td>WC-GST-02</td>    <td>07-06-2019</td>    <td>12</td>    <td>15201218</td>    <td>1824146</td>    <td>2736219.2</td>    <td>912073.24</td>    <td>20-07-2019</td>    <td>1646</td>    <td>740353.6</td>    <td>1652427</td>  </tr>  <tr>    <td>Sep-19</td>    <td>21AAAGM0289C1ZV</td>    <td>WC-GST-05</td>    <td>03-09-2019</td>    <td>12</td>    <td>14195343</td>    <td>1703441</td>    <td>2555161.7</td>    <td>851720.74</td>    <td>20-10-2019</td>    <td>1555</td>    <td>653141.5</td>    <td>1504862</td>  </tr>  <tr>    <td>Sep-19</td>    <td>21AAAGM0289C1ZV</td>    <td>WC-GST-07</td>    <td>04-09-2019</td>    <td>12</td>    <td>6102699</td>    <td>732324</td>    <td>1098485.8</td>    <td>366161.82</td>    <td>20-10-2019</td>    <td>1556</td>    <td>280971.5</td>    <td>647133.3</td>  </tr>  <tr>    <td>Oct-19</td>    <td>21AAAGM0289C1ZV</td>    <td>WC-GST-11</td>    <td>01-10-2019</td>    <td>12</td>    <td>12290769</td>    <td>1474892</td>    <td>2212338.4</td>    <td>737446.42</td>    <td>20-11-2019</td>    <td>1526</td>    <td>554963.8</td>    <td>1292410</td>  </tr>  <tr>    <td>Oct-19</td>    <td>21AAAGM0289C1ZV</td>    <td>WC-GST-10</td>    <td>01-10-2019</td>    <td>12</td>    <td>7860177</td>    <td>943221</td>    <td>1414831.9</td>    <td>471610.86</td>    <td>20-11-2019</td>    <td>1527</td>    <td>355142.4</td>    <td>826753.2</td>  </tr>  <tr>    <td>Oct-19</td>    <td>33AAAGM0289C1ZQ</td>    <td>WC-GST-09</td>    <td>01-10-2019</td>    <td>12</td>    <td>2363759</td>    <td>283652</td>    <td>425476.62</td>    <td>141824.62</td>    <td>20-11-2019</td>    <td>1528</td>    <td>106869.7</td>    <td>248694.3</td>  </tr>  <tr>    <td>Oct-19</td>    <td>37AAAGM0289C1ZI</td>    <td>WC-GST-15</td>    <td>22-10-2019</td>    <td>12</td>    <td>19419583</td>    <td>2330350</td>    <td>3495524.9</td>    <td>1165174.9</td>    <td>20-11-2019</td>    <td>1529</td>    <td>878573.8</td>    <td>2043749</td>  </tr>  <tr>    <td>Mar-20</td>    <td>33AAAGM0289C1ZQ</td>    <td>WC-GST-20</td>    <td>10-03-2020</td>    <td>12</td>    <td>7579578</td>    <td>909550</td>    <td>1364324</td>    <td>454774.04</td>    <td>20-04-2020</td>    <td>1378</td>    <td>309047</td>    <td>763821</td>  </tr>  <tr>    <td>Apr-20</td>    <td>21AAAGM0289C1ZV</td>    <td>WC-GST-03</td>    <td>08-04-2020</td>    <td>12</td>    <td>6933626</td>    <td>832035</td>    <td>1248052.7</td>    <td>416017.68</td>    <td>04-06-2020</td>    <td>1334</td>    <td>273682.6</td>    <td>689700.3</td>  </tr>  <tr>    <td>Apr-20</td>    <td>36AAAGM0289C1ZK</td>    <td>WC-GST-02</td>    <td>08-04-2020</td>    <td>12</td>    <td>2379480</td>    <td>285538</td>    <td>428306.4</td>    <td>142768.4</td>    <td>04-06-2020</td>    <td>1335</td>    <td>93992.46</td>    <td>236760.9</td>  </tr>  <tr>    <td>Apr-20</td>    <td>37AAAGM0289C1ZI</td>    <td>WC-GST-01</td>    <td>08-04-2020</td>    <td>12</td>    <td>4552537</td>    <td>546304</td>    <td>819456.66</td>    <td>273152.66</td>    <td>04-06-2020</td>    <td>1336</td>    <td>179966.4</td>    <td>453119.1</td>  </tr>  <tr>    <td>May-20</td>    <td>21AAAGM0289C1ZV</td>    <td>WC-GST-08</td>    <td>15-05-2020</td>    <td>12</td>    <td>2737976</td>    <td>328557</td>    <td>492835.68</td>    <td>164278.68</td>    <td>27-06-2020</td>    <td>1314</td>    <td>106452.6</td>    <td>270731.3</td>  </tr>  <tr>    <td>May-20</td>    <td>29AAAGM0289C1ZF</td>    <td>WC-GST-05</td>    <td>12-05-2020</td>    <td>12</td>    <td>7587521</td>    <td>910503</td>    <td>1365753.8</td>    <td>455250.78</td>    <td>27-06-2020</td>    <td>1315</td>    <td>295227</td>    <td>750477.8</td>  </tr>  <tr>    <td>Aug-20</td>    <td>33AAAGM0289C1ZQ</td>    <td>WC-GST-10</td>    <td>27-08-2020</td>    <td>12</td>    <td>4985265</td>    <td>598232</td>    <td>897347.7</td>    <td>299115.7</td>    <td>20-09-2020</td>    <td>1231</td>    <td>181583.7</td>    <td>480699.4</td>  </tr>  <tr>    <td>Oct-20</td>    <td>21AAAGM0289C1ZV</td>    <td>WC-GST-12</td>    <td>12-10-2020</td>    <td>12</td>    <td>2729839</td>    <td>327581</td>    <td>491371.02</td>    <td>163790.02</td>    <td>20-11-2020</td>    <td>1171</td>    <td>94585.37</td>    <td>258375.4</td>  </tr>  <tr>    <td>Oct-20</td>    <td>21AAAGM0289C1ZV</td>    <td>WC-GST-11</td>    <td>03-10-2020</td>    <td>12</td>    <td>1725525</td>    <td>207063</td>    <td>310594.5</td>    <td>103531.5</td>    <td>20-11-2020</td>    <td>1172</td>    <td>59838.37</td>    <td>163369.9</td>  </tr>  <tr>    <td>Jan-21</td>    <td>33AAAGM0289C1ZQ</td>    <td>WC-GST-13</td>    <td>19-01-2020</td>    <td>12</td>    <td>2818670</td>    <td>338240</td>    <td>507360.6</td>    <td>169120.6</td>    <td>20-02-2021</td>    <td>1081</td>    <td>90157.5</td>    <td>259278.1</td>  </tr>  <tr>    <td>Jan-21</td>    <td>37AAAGM0289C1ZI</td>    <td>WC-GST-14</td>    <td>19-01-2021</td>    <td>12</td>    <td>2201828</td>    <td>264219</td>    <td>396329.04</td>    <td>132110.04</td>    <td>20-02-2021</td>    <td>1082</td>    <td>70492.47</td>    <td>202602.5</td>  </tr>  <tr>    <td>Feb-21</td>    <td>33AAAGM0289C1ZQ</td>    <td>WC-GST-16</td>    <td>05-02-2021</td>    <td>12</td>    <td>7649062</td>    <td>917888</td>    <td>1376831.2</td>    <td>458943.16</td>    <td>20-03-2021</td>    <td>1055</td>    <td>238776.2</td>    <td>697719.3</td>  </tr>  <tr>    <td>Feb-21</td>    <td>36AAACI0681C1Z0</td>    <td>WC-GST-18</td>    <td>08-02-2021</td>    <td>12</td>    <td>4424103</td>    <td>530892</td>    <td>796338.54</td>    <td>265446.54</td>    <td>20-03-2021</td>    <td>1056</td>    <td>138235.8</td>    <td>403682.4</td>  </tr>  <tr>    <td>Feb-21</td>    <td>37AAACI0681C1ZY</td>    <td>WC-GST-17</td>    <td>05-02-2021</td>    <td>12</td>    <td>19381413</td>    <td>2325770</td>    <td>3488654.3</td>    <td>1162884.3</td>    <td>20-03-2021</td>    <td>1057</td>    <td>606165.4</td>    <td>1769050</td>  </tr>  <tr>    <td>Feb-21</td>    <td>37AAACI0681C1ZY</td>    <td>WC-GST-19</td>    <td>23-02-2021</td>    <td>12</td>    <td>2678571</td>    <td>321428.5</td>    <td>482142.78</td>    <td>160714.26</td>    <td>20-03-2021</td>    <td>1058</td>    <td>83853.22</td>    <td>244567.5</td>  </tr>  <tr>    <td>Mar-21</td>    <td>21AAAGM0289C1ZV</td>    <td>WC-GST-23</td>    <td>22-03-2021</td>    <td>12</td>    <td>7734157</td>    <td>928098.8</td>    <td>1392148.3</td>    <td>464049.42</td>    <td>20-04-2021</td>    <td>1028</td>    <td>235254</td>    <td>699303.4</td>  </tr>  <tr>    <td>Mar-21</td>    <td>29AAAGM0289C1ZF</td>    <td>WC-GST-22</td>    <td>20-03-2021</td>    <td>12</td>    <td>1949902</td>    <td>233988.2</td>    <td>350982.36</td>    <td>116994.12</td>    <td>20-04-2021</td>    <td>1029</td>    <td>59368.91</td>    <td>176363</td>  </tr>  <tr>    <td>Mar-21</td>    <td>33AAAGM0289C1ZQ</td>    <td>WC-GST-24</td>    <td>22-03-2021</td>    <td>12</td>    <td>7663405</td>    <td>919608.6</td>    <td>1379412.9</td>    <td>459804.3</td>    <td>20-04-2021</td>    <td>1030</td>    <td>233555.4</td>    <td>693359.7</td>  </tr>  <tr>    <td>Mar-21</td>    <td>33AAAGM0289C1ZQ</td>    <td>WC-GST-26</td>    <td>29-03-2021</td>    <td>12</td>    <td>4560714</td>    <td>547285.7</td>    <td>820928.52</td>    <td>273642.84</td>    <td>20-04-2021</td>    <td>1031</td>    <td>139130.5</td>    <td>412773.4</td>  </tr>  <tr>    <td>Mar-21</td>    <td>36AAACI0681C1Z0</td>    <td>WCGST21</td>    <td>20-03-2021</td>    <td>12</td>    <td>8546319</td>    <td>1025558</td>    <td>1538337.4</td>    <td>512779.14</td>    <td>20-04-2021</td>    <td>1032</td>    <td>260969.5</td>    <td>773748.6</td>  </tr>  <tr>    <td>Mar-21</td>    <td>37AAACI0681C1ZY</td>    <td>WC-GST-20</td>    <td>20-03-2021</td>    <td>12</td>    <td>713797</td>    <td>85655.64</td>    <td>128483.46</td>    <td>42827.82</td>    <td>20-04-2021</td>    <td>1033</td>    <td>21817.55</td>    <td>64645.37</td>  </tr>  <tr>    <td>Mar-21</td>    <td>37AAACI0681C1ZY</td>    <td>WC-GST-25</td>    <td>22-03-2021</td>    <td>12</td>    <td>12461495</td>    <td>1495379</td>    <td>2243069.1</td>    <td>747689.7</td>    <td>20-04-2021</td>    <td>1034</td>    <td>381260.3</td>    <td>1128950</td>  </tr>  <tr>    <td></td>    <td></td>    <td></td>    <td></td>    <td></td>    <td></td>    <td></td>    <td></td>    <td></td>    <td>Grand Total</td>    <td colspan=\"3\">28058595</td>  </tr></table>"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The short payment of tax along with accrued interest of Rs. 2,80,58,595/- and applicable penalty may be collected under intimation to audit."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "First reply awaited from the Department."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_title": "Reference Number: OBS-965804",
+          "content": [],
+          "sub_sections": [
+            {
+              "sub_section_title": "Subject: Excess availing of ITC",
+              "content": [
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th>GSTIN</th>    <th>33AADCA0473F1Z7</th>  </tr>  <tr>    <td>Name of the tax payer</td>    <td>ANNAIE INFORMATIONS PRIVATE LIMITED</td>  </tr></table>"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "As per Section 61 of the CGST and TNGST Act, various returns filed by the taxpayers has to be scrutinised by the State Tax Officer to verify the correctness of the returns, and suitable action has to be taken on any discrepancies or inconsistencies reflected in the returns."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "As per Rule 36(4) of CGST and TNGST Rules, the Input Tax Credit (ITC) had to be availed by the registered person only in respect of the invoices or debit notes the details of which had been uploaded by the suppliers filing the relevant return under Section 37(1) of the Acts.   The details of supplies auto drafted is available in Form GSTR 2A of the registered person. Further, the registered person had to be furnish Form 3B and discharge the tax liability by debiting the electronic cash or credit ledger (as stipulated in Rule 61(1) of the Act) . As per Section 20 of IGST Act, above provisions are applicable for levy of IGST also."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "In order to analyse the veracity of ITC utilisation, relevant data were extracted from GSTR 3B, GSTR 2A and GSTR2B for the year 2018-19 to 2020-21.  It was noticed that the taxpayer had claimed excess ITC as detailed below:"
+                },
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th>A</th>    <th>Year</th>    <th>2018-19</th>    <th>2019-20</th>    <th>2020-21</th>  </tr>  <tr>    <td>B</td>    <td>ITC Availed in GSTR 3B Table 4A(5)</td>    <td>8180729</td>    <td>9655663</td>    <td>12066580</td>  </tr>  <tr>    <td>C</td>    <td>ITC Availed in next financial year-GSTR 9 Table 8C</td>    <td>0</td>    <td>0</td>    <td>268986.5</td>  </tr>  <tr>    <td>D=(B+C)</td>    <td>Total ITC Availed</td>    <td>8180729</td>    <td>9655663</td>    <td>12335567</td>  </tr>  <tr>    <td>E</td>    <td>ITC Available as per GSTR 2A *</td>    <td>7327554.5</td>    <td>8727222</td>    <td>6630758</td>  </tr>  <tr>    <td>F</td>    <td>ITC Available as per GSTR 2B *</td>    <td>0</td>    <td>0</td>    <td>5589146</td>  </tr>  <tr>    <td>G</td>    <td>Net ITC Available = Max of ITC 2A,2B</td>    <td>7327554.5</td>    <td>8727222</td>    <td>6630758</td>  </tr>  <tr>    <td>H=(D-G)</td>    <td>Excess ITC</td>    <td>853174.5</td>    <td>928441</td>    <td>5704809</td>  </tr>  <tr>    <td></td>    <td>Total Excess ITC</td>    <td colspan=\"3\">7486424.5</td>  </tr></table>"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "*While calculating ITC availed in 2A and 2B, the amendments, credit/debit notes were also considered."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The excess claim of ITC of Rs. 7486424.5 along with applicable interest and penalty   may please be collected under intimation to audit."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "First reply awaited from the Department."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_title": "Reference Number: OBS-965893",
+          "content": [],
+          "sub_sections": [
+            {
+              "sub_section_title": "Subject: Undischarged tax liability",
+              "content": [
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th>GSTIN</th>    <th>33AADCA0473F1Z7 / 2020-2021</th>  </tr>  <tr>    <td>Name of the tax payer</td>    <td>ANNAIE INFORMATIONS PRIVATE LIMITED</td>  </tr></table>"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "As per Section 61 of the CGST and SGST Act, various returns filed by the taxpayers has to be scrutinised by the Proper Officer to verify the correctness of the returns, and suitable action has to be taken on any discrepancies or inconsistencies reflected in the returns.   As per Section 20 of IGST Act, above provisions are applicable for levy of IGST also. The Proper officer designated for this purpose is Assistant Commissioner (ST), State Tax office and Deputy State Tax Officer."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "As per Section 37 and 39 of the GST Act, read with the Rules 59(1) and 61(5) of the GST Rules, the registered person as prescribed under the said provisions of the Act, had to file the details of outward supply in Form GSTR 1 along with a return in Form 3B mentioning the details of inward and outward supplies of goods or services or both, input tax credit availed, tax payable, tax paid and such other particulars on the prescribed date.  Further as per Section 44 of the GST Act read with Rule 80 of the GST rules the registered persons as prescribed has to file an annual return if the turnover for a year has exceeded the prescribed limit."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Audit had scrutinized various columns in GSTR 1/GSTR3 B and GSTR 9 pertaining to tax payable and tax paid for the period 2018-19 to 2020-21 and it was noticed that the above registered person had short discharged the tax liability for the year 2020-21."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Details of undischarged tax is as follows:"
+                },
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th>Sl.no.</th>    <th>Year</th>    <th>2020-2021</th>  </tr>  <tr>    <td>1</td>    <td>GSTR 1 tax liability</td>    <td>14364176.00</td>  </tr>  <tr>    <td>2</td>    <td>GSTR 9 tax liability  (Table 4N – 4G + Table 10 - Table 11)</td>    <td>14702416.00</td>  </tr>  <tr>    <td>3</td>    <td>Greater tax liability  (1) or (2)</td>    <td>14702416.00</td>  </tr>  <tr>    <td>4</td>    <td>GSTR 9 payments other than RCM payments  (Table 9 + Table 14 – Table 4G)</td>    <td>13870381.00</td>  </tr>  <tr>    <td>5</td>    <td>GSTR 3B Payments excluding RCM</td>    <td>13870381.00</td>  </tr>  <tr>    <td>6</td>    <td>Undischarged tax liability(3-4 or 3-5)</td>    <td>832035.00</td>  </tr></table>"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The undischarged tax liability of Rs. 832035/- along with applicable penalty and    interest may please be collected under intimation to audit."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "First reply awaited from the Department."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_title": "Reference Number: OBS-1230957",
+          "content": [],
+          "sub_sections": [
+            {
+              "sub_section_title": "Subject: List of records/documents not produced to audit",
+              "content": [
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th>Name of the Dealer</th>    <th>ANNAIE INFORMATIONS PRIVATE LIMITED</th>  </tr>  <tr>    <td>GSTIN</td>    <td>33AADCA0473F1Z7</td>  </tr>  <tr>    <td>Period</td>    <td>01.04.2018 to 31.3.2021 (2018-19 to 2020-21)</td>  </tr></table>"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The above taxpayer had not produced the records/documents etc. as detailed below :"
+                },
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th>S.No.</th>    <th>Details of Records/documents</th>  </tr>  <tr>    <td>1.</td>    <td>Copy of the Contract / Agreement</td>  </tr>  <tr>    <td>2.</td>    <td>Financial Year-wise Books of Account exclusively maintained for each Works Contract services showing the following details:</td>  </tr>  <tr>    <td>3.</td>    <td>Project-wise and financial year-wise Books of Account of inward supplies made from registered and unregistered suppliers for each financial year during the above audit period;</td>  </tr>  <tr>    <td>4.</td>    <td>Common Credit details along with workings;</td>  </tr>  <tr>    <td>5.</td>    <td>Sale/Purchase  invoices;</td>  </tr>  <tr>    <td>6.</td>    <td>Details of credit/debit notes issued;</td>  </tr>  <tr>    <td>7.</td>    <td>Details of ITC availed under RCM ;</td>  </tr>  <tr>    <td>8.</td>    <td>Financial statements and reports – Profit & Loss account, and Balance sheet along with notes and schedules, Tax Audit Report, Cost Audit Report, Trial Balance of Taxpayer pertaining to Tamil Nadu;</td>  </tr>  <tr>    <td>9..</td>    <td>Sales register, Purchase Register and ITC Register;</td>  </tr>  <tr>    <td>10.</td>    <td>Fixed Asset Register;</td>  </tr>  <tr>    <td>11.</td>    <td>Details of Sale of assets;</td>  </tr>  <tr>    <td>12.</td>    <td>Supplier ledger account;</td>  </tr>  <tr>    <td>13.</td>    <td>Sundry Creditor/Debtor/Trade payables (Age wise analysis/Date wise Details);</td>  </tr>  <tr>    <td>14.</td>    <td>Details of ITC reversal made during the year along with workings;</td>  </tr>  <tr>    <td>15.</td>    <td>Details of advances received from customers;</td>  </tr>  <tr>    <td>16.</td>    <td>Details of unadjusted Advances at the beginning of the Financial Year;</td>  </tr>  <tr>    <td>17.</td>    <td>Registration certificate with details of places of business and supplies. (Application and amendment with the additional premises, if any);</td>  </tr>  <tr>    <td>18.</td>    <td>Details of commodities dealt with along with HSN codes;</td>  </tr>  <tr>    <td>19.</td>    <td>Working for turnover as per GSTR 9C Table 5 (S.No. A)  Turnover as per audited financial statements for the State, Table 5 (S.No. D) Deemed supply and Table 5 (S.No. O)  Adjustments in turnover due to reasons not listed above.</td>  </tr></table>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "part_title": "PART-II-(B)",
+      "sections": [
+        {
+          "section_title": "(Other incidental Audit Findings)",
+          "content": [],
+          "sub_sections": []
+        },
+        {
+          "section_title": "Reference Number: OBS-1228459",
+          "content": [],
+          "sub_sections": [
+            {
+              "sub_section_title": "Subject: Non Payment of Interest- voluntary Payments - Annaie",
+              "content": [
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th>GSTIN</th>    <th>33AADCA0473F1Z7</th>  </tr>  <tr>    <td>Name of the tax payer</td>    <td>ANNAIE INFORMATIONS PRIVATE LIMITED</td>  </tr></table>"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "As per Section 50 of the Act, every person who is liable to pay tax under the provisions of the Act or the rules made thereunder, but fails to pay tax or any part thereof to the Government within the period prescribed shall for the period for which the tax or any part thereof remains unpaid, pay on his own, interest at such rate, not exceeding eighteen per cent as may be notified by the Government on the recommendations of the council.  The interest shall be calculated in such manner as may be prescribed from the day succeeding the day on which such tax was due to be paid."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "On scrutiny of payments (Form DRC-03) made by the above tax payer for the period 2020-21"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The taxpayer had not paid interest on cash payments as detailed below."
+                },
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th>Debit Entry No</th>    <th>Ledger Used</th>    <th>Date of Debit</th>    <th>IGST</th>    <th>Tax Period</th>    <th>Interest Due Date</th>    <th>Delay in Days</th>    <th>Interest Worked out</th>  </tr>  <tr>    <td>DC3310210065644</td>    <td>Cash</td>    <td>12-10-2021</td>    <td>8,32,035.00</td>    <td>Apr-20</td>    <td>20-May-20</td>    <td>510</td>    <td>209263</td>  </tr></table>"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The non-payment of interest is brought to the notice of department for further action."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "First reply awaited from the Department."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_title": "Reference Number: OBS-1199880",
+          "content": [],
+          "sub_sections": [
+            {
+              "sub_section_title": "Subject: Non-Payment of tax under RCM for GTA services availed",
+              "content": [
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th>Name of the Dealer</th>    <th>ANNAIE INFORMATIONS PRIVATE LIMITED</th>  </tr>  <tr>    <td>GSTIN</td>    <td>33AADCA0473F1Z7</td>  </tr></table>"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "As per the provisions of Reverse Charge Mechanism (RCM) under GST the liability to pay tax is fixed on the recipient of supply of goods or services instead of the supplier or provider in respect of certain categories of goods or services or both under Section 9(3) or Section 9(4) of the CGST Act, 2017 and under sub-section (3) or sub-section (4) of Section 5 of the IGST Act, 2017."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Notification No. 13/2017-Central Tax (Rate), issued by the Government of India’s Ministry of Finance, introduces provisions related to the Central Goods and Services Tax Act, 2017. This notification outlines categories of services subject to reverse charge and specifies the suppliers and recipients involved."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Supply of Services by a goods transport agency (GTA) in respect of transportation of goods by road to any person registered under the Central Goods and Services Tax Act or the Integrated Goods and Services Tax Act or the State Goods and Services Tax Act or the Union Territory Goods and Services Tax Act; As per explanation provided in notification 12/2017- “goods transport agency” means any person who provides service in relation to transport of goods by road and issues consignment note, by whatever name called."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "As per Section 2(84) of cgst act 2017 , Person includes individual , unregistered person also."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "As per CBIC Schedule of GST Rates,   the rates in respect of goods transport services by GTA under Heading 9965 Services of goods transport agency (GTA) in relation to transportation of goods (including used household goods for personal use) is 6 for each CGST and SGST provided that credit of input tax charged on goods and services used in supplying the service has not been taken."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "On scrutiny of Profit and Loss Account of the above taxpayer for the period from 2018-19 to 2020-21, it was noticed that the taxpayer had incurred expenses as detailed below towards freight charges. However, the above taxpayer had not paid any tax under the provisions of RCM as the same was verified with GSTR 3B for the above period. Further it was noticed that the taxpayer has not discharged any tax under RCM."
+                },
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th>Sl.No.</th>    <th>Year</th>    <th>Expenses incurred for freight charges</th>    <th>Tax due @ 12%</th>  </tr>  <tr>    <td>1</td>    <td>2018-19</td>    <td>147164</td>    <td>17659.7</td>  </tr>  <tr>    <td>2</td>    <td>2019-20</td>    <td>150189</td>    <td>18022.7</td>  </tr>  <tr>    <td>3</td>    <td>2020-21</td>    <td>283945</td>    <td>34073.4</td>  </tr>  <tr>    <td colspan=\"2\">Total</td>    <td>581298</td>    <td>69755.8</td>  </tr></table>"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Hence, if the above is considered, the proper officer may levy and collect the tax amount of Rs. 69,756/- along with applicable interest and penalty, if any, under intimation to audit."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "First reply awaited from the Department."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "part_title": "PART-III",
+      "sections": [
+        {
+          "section_title": "(Follow up on findings outstanding of previous Inspection Reports)",
+          "content": [],
+          "sub_sections": []
+        }
+      ]
+    },
+    {
+      "part_title": "PART-IV (Best Practice)",
+      "sections": [
+        {
+          "section_title": "General",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Nil"
+            }
+          ],
+          "sub_sections": []
+        }
+      ]
+    },
+    {
+      "part_title": "PART-V (Acknowledgement)",
+      "sections": [
+        {
+          "section_title": "General",
+          "content": [],
+          "sub_sections": [
+            {
+              "sub_section_title": "An Entry meeting for this SSCA was held on 13.06.2023 with Commercial Taxes Department during which Audit objectives, scope and other connected records required for the audit was briefly explained.  Department assured to extend full cooperation in respect of furnishing records to audit.",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "for Senior Deputy Accountant General / AMG-II"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

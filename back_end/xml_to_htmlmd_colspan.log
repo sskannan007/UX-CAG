@@ -1,0 +1,1300 @@
+2025-09-20 13:23:04,311 - INFO - Converting XML to Markdown: C:\Users\sures\AppData\Local\Temp\pipeline_xml_mw1uev65\20-18_2024-25_SR_THIRUPUVANAM.xml -> C:\Users\sures\AppData\Local\Temp\pipeline_md_pp97ue8y\20-18_2024-25_SR_THIRUPUVANAM.md
+2025-09-20 13:23:04,362 - INFO - Processing element: bold
+2025-09-20 13:23:04,365 - INFO - First heading detected as title: INSPECTION REPORT ON THE ACCOU...
+2025-09-20 13:23:04,368 - INFO - Added heading: INSPECTION REPORT ON THE ACCOU... as level 1
+2025-09-20 13:23:04,369 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,369 - INFO - Processing element: bold
+2025-09-20 13:23:04,370 - INFO - Added heading: Part I: Introduction... as level 2
+2025-09-20 13:23:04,371 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,371 - INFO - Added paragraph: Sub Registry, Thirupuvanam is ...
+2025-09-20 13:23:04,372 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,372 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,372 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,372 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,373 - INFO - Added paragraph: The following activities were ...
+2025-09-20 13:23:04,373 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,373 - INFO - Added paragraph: Registration of documents (Con...
+2025-09-20 13:23:04,373 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,373 - INFO - Added paragraph: Registration of marriage (Hind...
+2025-09-20 13:23:04,374 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,374 - INFO - Added paragraph: Issue of Encumbrance certifica...
+2025-09-20 13:23:04,374 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,374 - INFO - Added paragraph: Issue of copies of documents a...
+2025-09-20 13:23:04,374 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,375 - INFO - Added paragraph: Fixation of value of land in s...
+2025-09-20 13:23:04,375 - INFO - Processing element: bold
+2025-09-20 13:23:04,377 - INFO - Added heading: The financial performance of t... as level 0
+2025-09-20 13:23:04,378 - INFO - Processing element: table
+2025-09-20 13:23:04,378 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 13:23:04,378 - INFO - Added table element as HTML.
+2025-09-20 13:23:04,379 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,379 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,379 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,379 - INFO - Processing element: bold
+2025-09-20 13:23:04,379 - INFO - Added heading: Audit Objectives... as level 3
+2025-09-20 13:23:04,380 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,380 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,380 - INFO - Added paragraph: The objectives of this audit w...
+2025-09-20 13:23:04,380 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,380 - INFO - Added paragraph: Stamp duty and various fees we...
+2025-09-20 13:23:04,380 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,381 - INFO - Added paragraph: The amount collected were prop...
+2025-09-20 13:23:04,381 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,381 - INFO - Added paragraph: Internal control system and In...
+2025-09-20 13:23:04,382 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,382 - INFO - Processing element: bold
+2025-09-20 13:23:04,382 - INFO - Added heading: Audit Criteria... as level 0
+2025-09-20 13:23:04,383 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,383 - INFO - Processing element: bold
+2025-09-20 13:23:04,384 - INFO - Added heading: Audit criteria were adopted fr... as level 0
+2025-09-20 13:23:04,384 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,384 - INFO - Added paragraph: Registration Act, 1908...
+2025-09-20 13:23:04,384 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,385 - INFO - Added paragraph: Prescribed Monitoring Mechanis...
+2025-09-20 13:23:04,385 - INFO - Processing element: bold
+2025-09-20 13:23:04,386 - INFO - Added heading: Scope and Methodology of Audit... as level 3
+2025-09-20 13:23:04,386 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,387 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,387 - INFO - Added paragraph: The audit of Sub Registry, Thi...
+2025-09-20 13:23:04,387 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,387 - INFO - Processing element: table
+2025-09-20 13:23:04,388 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 13:23:04,389 - INFO - Added table element as HTML.
+2025-09-20 13:23:04,390 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,391 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,391 - INFO - Added paragraph: The details of documents regis...
+2025-09-20 13:23:04,392 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,393 - INFO - Processing element: table
+2025-09-20 13:23:04,393 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 13:23:04,394 - INFO - Added table element as HTML.
+2025-09-20 13:23:04,395 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,395 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,395 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,395 - INFO - Added paragraph: Under Book I, 600 documents we...
+2025-09-20 13:23:04,396 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,396 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,396 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,397 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,397 - INFO - Processing element: bold
+2025-09-20 13:23:04,397 - INFO - Added heading: Part II – Audit findings... as level 2
+2025-09-20 13:23:04,398 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,398 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,399 - INFO - Added paragraph: The following is the summary o...
+2025-09-20 13:23:04,399 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,399 - INFO - Processing element: table
+2025-09-20 13:23:04,399 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 13:23:04,400 - INFO - Added table element as HTML.
+2025-09-20 13:23:04,400 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,401 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,401 - INFO - Processing element: bold
+2025-09-20 13:23:04,401 - INFO - Added heading: Part III – Follow up on findin... as level 2
+2025-09-20 13:23:04,402 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,402 - INFO - Added paragraph: There was 1 paras pending from...
+2025-09-20 13:23:04,403 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,404 - INFO - Processing element: table
+2025-09-20 13:23:04,404 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 13:23:04,404 - INFO - Added table element as HTML.
+2025-09-20 13:23:04,405 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,405 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,406 - INFO - Processing element: bold
+2025-09-20 13:23:04,407 - INFO - Added heading: PART-IV (Best Practice)... as level 2
+2025-09-20 13:23:04,407 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,409 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,410 - INFO - Added paragraph: The department is cooperative ...
+2025-09-20 13:23:04,411 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,411 - INFO - Processing element: heading
+2025-09-20 13:23:04,411 - INFO - Added heading: PART-V (Acknowledgement)... as level 2
+2025-09-20 13:23:04,412 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,412 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,413 - INFO - Added paragraph: The audit acknowledges the co-...
+2025-09-20 13:23:04,413 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,413 - INFO - Processing element: table
+2025-09-20 13:23:04,414 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 13:23:04,415 - INFO - Added table element as HTML.
+2025-09-20 13:23:04,415 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,416 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,416 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,417 - INFO - Processing element: heading
+2025-09-20 13:23:04,417 - INFO - Added heading: OBS No-1350387... as level 0
+2025-09-20 13:23:04,417 - INFO - Processing element: bold
+2025-09-20 13:23:04,418 - INFO - Added heading: Para 1/IIB... as level 4
+2025-09-20 13:23:04,418 - INFO - Processing element: bold
+2025-09-20 13:23:04,418 - INFO - Added heading: Misclassification of instrumen... as level 0
+2025-09-20 13:23:04,419 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,419 - INFO - Added paragraph: As per Article 17 of Schedule-...
+2025-09-20 13:23:04,420 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,420 - INFO - Added paragraph: During local audit of Sub Regi...
+2025-09-20 13:23:04,421 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,421 - INFO - Added paragraph: Since the vendors had re-acqui...
+2025-09-20 13:23:04,422 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,423 - INFO - Added paragraph: On this being pointed out, the...
+2025-09-20 13:23:04,424 - INFO - Processing element: table
+2025-09-20 13:23:04,425 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 13:23:04,426 - INFO - Added table element as HTML.
+2025-09-20 13:23:04,426 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,427 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,427 - INFO - Added paragraph: Department’s reply:...
+2025-09-20 13:23:04,427 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,428 - INFO - Added paragraph: On this being pointed out the ...
+2025-09-20 13:23:04,428 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,428 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,429 - INFO - Added paragraph: Conclusion:...
+2025-09-20 13:23:04,429 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,430 - INFO - Added paragraph: Misclassification of re-convey...
+2025-09-20 13:23:04,430 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,430 - INFO - Added paragraph: Recommendation:...
+2025-09-20 13:23:04,430 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,431 - INFO - Added paragraph: Registering authority should c...
+2025-09-20 13:23:04,432 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,432 - INFO - Processing element: heading
+2025-09-20 13:23:04,433 - INFO - Added heading: OBS No-1348768... as level 0
+2025-09-20 13:23:04,433 - INFO - Processing element: heading
+2025-09-20 13:23:04,433 - INFO - Added heading: Para 2/IIB... as level 4
+2025-09-20 13:23:04,434 - INFO - Processing element: bold
+2025-09-20 13:23:04,434 - INFO - Added heading: Incorrect adoption of gravel v... as level 0
+2025-09-20 13:23:04,434 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,435 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,435 - INFO - Added paragraph: Through the lease deeds as per...
+2025-09-20 13:23:04,436 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,436 - INFO - Added paragraph: On a detailed scrutiny of the ...
+2025-09-20 13:23:04,437 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,438 - INFO - Added paragraph: Further, the Government vide G...
+2025-09-20 13:23:04,438 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,439 - INFO - Added paragraph: Accordingly, the SD at 1 % nee...
+2025-09-20 13:23:04,439 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,439 - INFO - Added paragraph: The short collection of SD of ...
+2025-09-20 13:23:04,440 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,442 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,442 - INFO - Added paragraph: Annexure...
+2025-09-20 13:23:04,443 - INFO - Processing element: table
+2025-09-20 13:23:04,444 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 13:23:04,445 - INFO - Added table element as HTML.
+2025-09-20 13:23:04,445 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,446 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,446 - INFO - Added paragraph: This is brought to the notice ...
+2025-09-20 13:23:04,446 - INFO - Processing element: bold
+2025-09-20 13:23:04,447 - INFO - Added heading: Reply of the Department:... as level 0
+2025-09-20 13:23:04,447 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,448 - INFO - Added paragraph: On this being pointed out, the...
+2025-09-20 13:23:04,448 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,448 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,449 - INFO - Added paragraph: Conclusion:...
+2025-09-20 13:23:04,449 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,450 - INFO - Added paragraph: Non-inclusion of correct value...
+2025-09-20 13:23:04,450 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,450 - INFO - Added paragraph: Recommendations:...
+2025-09-20 13:23:04,451 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,451 - INFO - Added paragraph: Registering authority should v...
+2025-09-20 13:23:04,451 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,452 - INFO - Processing element: heading
+2025-09-20 13:23:04,452 - INFO - Added heading: OBS No-1348685... as level 0
+2025-09-20 13:23:04,452 - INFO - Processing element: heading
+2025-09-20 13:23:04,453 - INFO - Added heading: Para 3/IIB... as level 4
+2025-09-20 13:23:04,455 - INFO - Processing element: bold
+2025-09-20 13:23:04,455 - INFO - Added heading: Non reference to the AEE for t... as level 0
+2025-09-20 13:23:04,457 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,458 - INFO - Processing element: table
+2025-09-20 13:23:04,458 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 13:23:04,459 - INFO - Added table element as HTML.
+2025-09-20 13:23:04,459 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,460 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,460 - INFO - Added paragraph: Through the above documents la...
+2025-09-20 13:23:04,461 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,461 - INFO - Added paragraph: In this connection audit has o...
+2025-09-20 13:23:04,461 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,462 - INFO - Added paragraph: Scrutiny of document number 16...
+2025-09-20 13:23:04,462 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,462 - INFO - Added paragraph: Further scrutiny of the Previo...
+2025-09-20 13:23:04,463 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,463 - INFO - Processing element: table
+2025-09-20 13:23:04,463 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 13:23:04,463 - INFO - Added table element as HTML.
+2025-09-20 13:23:04,464 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,464 - INFO - Added paragraph: This is brought to the notice ...
+2025-09-20 13:23:04,464 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,466 - INFO - Processing element: bold
+2025-09-20 13:23:04,467 - INFO - Added heading: Department’s Reply:... as level 0
+2025-09-20 13:23:04,467 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,468 - INFO - Added paragraph: On this being pointed out the ...
+2025-09-20 13:23:04,468 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,468 - INFO - Added paragraph: Conclusion:...
+2025-09-20 13:23:04,468 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,469 - INFO - Added paragraph: Non referring of the document ...
+2025-09-20 13:23:04,469 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,469 - INFO - Added paragraph: Recommendation:...
+2025-09-20 13:23:04,470 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,471 - INFO - Added paragraph: The registering authority shou...
+2025-09-20 13:23:04,471 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,471 - INFO - Processing element: heading
+2025-09-20 13:23:04,472 - INFO - Added heading: OBS No-1348765... as level 0
+2025-09-20 13:23:04,472 - INFO - Processing element: heading
+2025-09-20 13:23:04,473 - INFO - Added heading: Para 4/IIB... as level 4
+2025-09-20 13:23:04,474 - INFO - Processing element: bold
+2025-09-20 13:23:04,475 - INFO - Added heading: Non-Adherence of the Provision... as level 0
+2025-09-20 13:23:04,475 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,476 - INFO - Processing element: table
+2025-09-20 13:23:04,477 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 13:23:04,477 - INFO - Added table element as HTML.
+2025-09-20 13:23:04,478 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,478 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,479 - INFO - Added paragraph: As per New Section 269ST of Fi...
+2025-09-20 13:23:04,479 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,479 - INFO - Added paragraph: Provided that the provisions o...
+2025-09-20 13:23:04,480 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,480 - INFO - Added paragraph: (i) any receipt by (a) Governm...
+2025-09-20 13:23:04,480 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,481 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,481 - INFO - Added paragraph: (c) The Government introduced ...
+2025-09-20 13:23:04,481 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,482 - INFO - Added paragraph: During the scrutiny of the fol...
+2025-09-20 13:23:04,482 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,482 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,483 - INFO - Added paragraph: (i) Sale Deed number 1300/2019...
+2025-09-20 13:23:04,483 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,483 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,484 - INFO - Added paragraph: (ii). Sale Deed number 29/2024...
+2025-09-20 13:23:04,484 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,484 - INFO - Added paragraph: Reply of the Department:...
+2025-09-20 13:23:04,485 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,485 - INFO - Added paragraph: On this being pointed out, the...
+2025-09-20 13:23:04,485 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,486 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,486 - INFO - Added paragraph: Conclusion:...
+2025-09-20 13:23:04,487 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,487 - INFO - Added paragraph: Non-compliance with the Financ...
+2025-09-20 13:23:04,487 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,488 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,489 - INFO - Added paragraph: Recommendations:...
+2025-09-20 13:23:04,489 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,490 - INFO - Added paragraph: The Sub Registrar need to revi...
+2025-09-20 13:23:04,491 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,492 - INFO - Processing element: heading
+2025-09-20 13:23:04,493 - INFO - Added heading: OBS No-1350944... as level 0
+2025-09-20 13:23:04,493 - INFO - Processing element: bold
+2025-09-20 13:23:04,493 - INFO - Added heading: Para 5/IIB... as level 4
+2025-09-20 13:23:04,494 - INFO - Processing element: bold
+2025-09-20 13:23:04,494 - INFO - Added heading: The time limit for finalisatio... as level 0
+2025-09-20 13:23:04,494 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,495 - INFO - Added paragraph: As per provision u/s 47A(3) of...
+2025-09-20 13:23:04,495 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,495 - INFO - Added paragraph: It is seen from the pending do...
+2025-09-20 13:23:04,496 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,496 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,496 - INFO - Added paragraph: Annexure...
+2025-09-20 13:23:04,497 - INFO - Processing element: table
+2025-09-20 13:23:04,497 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 13:23:04,497 - INFO - Added table element as HTML.
+2025-09-20 13:23:04,498 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,498 - INFO - Processing element: bold
+2025-09-20 13:23:04,498 - INFO - Added heading: Department’s Reply:... as level 0
+2025-09-20 13:23:04,499 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,499 - INFO - Added paragraph: On this being pointed out, the...
+2025-09-20 13:23:04,499 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,499 - INFO - Added paragraph: Conclusion:...
+2025-09-20 13:23:04,500 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,500 - INFO - Added paragraph: Suitable followup action could...
+2025-09-20 13:23:04,500 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,501 - INFO - Added paragraph: Recommendations:...
+2025-09-20 13:23:04,501 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,501 - INFO - Added paragraph: Follow up action may be taken ...
+2025-09-20 13:23:04,502 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,502 - INFO - Processing element: bold
+2025-09-20 13:23:04,503 - INFO - Added heading: Senior Audit Officer/AMS25... as level 0
+2025-09-20 13:23:04,503 - INFO - Processing element: bold
+2025-09-20 13:23:04,503 - INFO - Added heading: Part II – Audit findings... as level 2
+2025-09-20 13:23:04,504 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,504 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,504 - INFO - Added paragraph: The following is the summary o...
+2025-09-20 13:23:04,504 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,505 - INFO - Processing element: table
+2025-09-20 13:23:04,506 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 13:23:04,507 - INFO - Added table element as HTML.
+2025-09-20 13:23:04,507 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,508 - INFO - Processing element: paragraph
+2025-09-20 13:23:04,528 - INFO - Successfully converted C:\Users\sures\AppData\Local\Temp\pipeline_xml_mw1uev65\20-18_2024-25_SR_THIRUPUVANAM.xml to C:\Users\sures\AppData\Local\Temp\pipeline_md_pp97ue8y\20-18_2024-25_SR_THIRUPUVANAM.md
+2025-09-20 17:37:41,087 - INFO - Converting XML to Markdown: C:\Users\sures\AppData\Local\Temp\pipeline_xml_jymika5j\20-18_2024-25_SR_THIRUPUVANAM.xml -> C:\Users\sures\AppData\Local\Temp\pipeline_md_jyy7uelu\20-18_2024-25_SR_THIRUPUVANAM.md
+2025-09-20 17:37:41,125 - INFO - Processing element: bold
+2025-09-20 17:37:41,126 - INFO - First heading detected as title: INSPECTION REPORT ON THE ACCOU...
+2025-09-20 17:37:41,127 - INFO - Added heading: INSPECTION REPORT ON THE ACCOU... as level 1
+2025-09-20 17:37:41,127 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,127 - INFO - Processing element: bold
+2025-09-20 17:37:41,128 - INFO - Added heading: Part I: Introduction... as level 2
+2025-09-20 17:37:41,128 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,128 - INFO - Added paragraph: Sub Registry, Thirupuvanam is ...
+2025-09-20 17:37:41,129 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,129 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,129 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,130 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,130 - INFO - Added paragraph: The following activities were ...
+2025-09-20 17:37:41,131 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,131 - INFO - Added paragraph: Registration of documents (Con...
+2025-09-20 17:37:41,132 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,134 - INFO - Added paragraph: Registration of marriage (Hind...
+2025-09-20 17:37:41,135 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,136 - INFO - Added paragraph: Issue of Encumbrance certifica...
+2025-09-20 17:37:41,136 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,137 - INFO - Added paragraph: Issue of copies of documents a...
+2025-09-20 17:37:41,137 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,138 - INFO - Added paragraph: Fixation of value of land in s...
+2025-09-20 17:37:41,138 - INFO - Processing element: bold
+2025-09-20 17:37:41,138 - INFO - Added heading: The financial performance of t... as level 0
+2025-09-20 17:37:41,139 - INFO - Processing element: table
+2025-09-20 17:37:41,139 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 17:37:41,139 - INFO - Added table element as HTML.
+2025-09-20 17:37:41,140 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,140 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,140 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,140 - INFO - Processing element: bold
+2025-09-20 17:37:41,140 - INFO - Added heading: Audit Objectives... as level 3
+2025-09-20 17:37:41,141 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,141 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,141 - INFO - Added paragraph: The objectives of this audit w...
+2025-09-20 17:37:41,141 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,142 - INFO - Added paragraph: Stamp duty and various fees we...
+2025-09-20 17:37:41,144 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,145 - INFO - Added paragraph: The amount collected were prop...
+2025-09-20 17:37:41,146 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,146 - INFO - Added paragraph: Internal control system and In...
+2025-09-20 17:37:41,148 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,151 - INFO - Processing element: bold
+2025-09-20 17:37:41,152 - INFO - Added heading: Audit Criteria... as level 0
+2025-09-20 17:37:41,153 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,153 - INFO - Processing element: bold
+2025-09-20 17:37:41,154 - INFO - Added heading: Audit criteria were adopted fr... as level 0
+2025-09-20 17:37:41,154 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,154 - INFO - Added paragraph: Registration Act, 1908...
+2025-09-20 17:37:41,154 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,154 - INFO - Added paragraph: Prescribed Monitoring Mechanis...
+2025-09-20 17:37:41,155 - INFO - Processing element: bold
+2025-09-20 17:37:41,155 - INFO - Added heading: Scope and Methodology of Audit... as level 3
+2025-09-20 17:37:41,155 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,156 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,156 - INFO - Added paragraph: The audit of Sub Registry, Thi...
+2025-09-20 17:37:41,156 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,156 - INFO - Processing element: table
+2025-09-20 17:37:41,157 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 17:37:41,157 - INFO - Added table element as HTML.
+2025-09-20 17:37:41,157 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,158 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,158 - INFO - Added paragraph: The details of documents regis...
+2025-09-20 17:37:41,158 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,159 - INFO - Processing element: table
+2025-09-20 17:37:41,161 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 17:37:41,162 - INFO - Added table element as HTML.
+2025-09-20 17:37:41,164 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,165 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,166 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,167 - INFO - Added paragraph: Under Book I, 600 documents we...
+2025-09-20 17:37:41,168 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,168 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,169 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,169 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,169 - INFO - Processing element: bold
+2025-09-20 17:37:41,169 - INFO - Added heading: Part II – Audit findings... as level 2
+2025-09-20 17:37:41,170 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,170 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,170 - INFO - Added paragraph: The following is the summary o...
+2025-09-20 17:37:41,171 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,171 - INFO - Processing element: table
+2025-09-20 17:37:41,172 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 17:37:41,172 - INFO - Added table element as HTML.
+2025-09-20 17:37:41,173 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,173 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,173 - INFO - Processing element: bold
+2025-09-20 17:37:41,174 - INFO - Added heading: Part III – Follow up on findin... as level 2
+2025-09-20 17:37:41,174 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,174 - INFO - Added paragraph: There was 1 paras pending from...
+2025-09-20 17:37:41,174 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,175 - INFO - Processing element: table
+2025-09-20 17:37:41,176 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 17:37:41,177 - INFO - Added table element as HTML.
+2025-09-20 17:37:41,178 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,178 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,181 - INFO - Processing element: bold
+2025-09-20 17:37:41,182 - INFO - Added heading: PART-IV (Best Practice)... as level 2
+2025-09-20 17:37:41,184 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,185 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,190 - INFO - Added paragraph: The department is cooperative ...
+2025-09-20 17:37:41,190 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,191 - INFO - Processing element: heading
+2025-09-20 17:37:41,191 - INFO - Added heading: PART-V (Acknowledgement)... as level 2
+2025-09-20 17:37:41,191 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,193 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,194 - INFO - Added paragraph: The audit acknowledges the co-...
+2025-09-20 17:37:41,195 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,196 - INFO - Processing element: table
+2025-09-20 17:37:41,198 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 17:37:41,202 - INFO - Added table element as HTML.
+2025-09-20 17:37:41,203 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,213 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,216 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,217 - INFO - Processing element: heading
+2025-09-20 17:37:41,217 - INFO - Added heading: OBS No-1350387... as level 0
+2025-09-20 17:37:41,218 - INFO - Processing element: bold
+2025-09-20 17:37:41,218 - INFO - Added heading: Para 1/IIB... as level 4
+2025-09-20 17:37:41,218 - INFO - Processing element: bold
+2025-09-20 17:37:41,219 - INFO - Added heading: Misclassification of instrumen... as level 0
+2025-09-20 17:37:41,219 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,219 - INFO - Added paragraph: As per Article 17 of Schedule-...
+2025-09-20 17:37:41,219 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,219 - INFO - Added paragraph: During local audit of Sub Regi...
+2025-09-20 17:37:41,220 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,220 - INFO - Added paragraph: Since the vendors had re-acqui...
+2025-09-20 17:37:41,220 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,220 - INFO - Added paragraph: On this being pointed out, the...
+2025-09-20 17:37:41,221 - INFO - Processing element: table
+2025-09-20 17:37:41,221 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 17:37:41,222 - INFO - Added table element as HTML.
+2025-09-20 17:37:41,222 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,223 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,223 - INFO - Added paragraph: Department’s reply:...
+2025-09-20 17:37:41,223 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,223 - INFO - Added paragraph: On this being pointed out the ...
+2025-09-20 17:37:41,224 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,224 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,224 - INFO - Added paragraph: Conclusion:...
+2025-09-20 17:37:41,224 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,225 - INFO - Added paragraph: Misclassification of re-convey...
+2025-09-20 17:37:41,225 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,227 - INFO - Added paragraph: Recommendation:...
+2025-09-20 17:37:41,228 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,228 - INFO - Added paragraph: Registering authority should c...
+2025-09-20 17:37:41,230 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,231 - INFO - Processing element: heading
+2025-09-20 17:37:41,232 - INFO - Added heading: OBS No-1348768... as level 0
+2025-09-20 17:37:41,233 - INFO - Processing element: heading
+2025-09-20 17:37:41,235 - INFO - Added heading: Para 2/IIB... as level 4
+2025-09-20 17:37:41,235 - INFO - Processing element: bold
+2025-09-20 17:37:41,236 - INFO - Added heading: Incorrect adoption of gravel v... as level 0
+2025-09-20 17:37:41,236 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,236 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,236 - INFO - Added paragraph: Through the lease deeds as per...
+2025-09-20 17:37:41,236 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,237 - INFO - Added paragraph: On a detailed scrutiny of the ...
+2025-09-20 17:37:41,237 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,237 - INFO - Added paragraph: Further, the Government vide G...
+2025-09-20 17:37:41,237 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,238 - INFO - Added paragraph: Accordingly, the SD at 1 % nee...
+2025-09-20 17:37:41,238 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,238 - INFO - Added paragraph: The short collection of SD of ...
+2025-09-20 17:37:41,239 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,239 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,239 - INFO - Added paragraph: Annexure...
+2025-09-20 17:37:41,240 - INFO - Processing element: table
+2025-09-20 17:37:41,240 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 17:37:41,241 - INFO - Added table element as HTML.
+2025-09-20 17:37:41,241 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,241 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,241 - INFO - Added paragraph: This is brought to the notice ...
+2025-09-20 17:37:41,242 - INFO - Processing element: bold
+2025-09-20 17:37:41,242 - INFO - Added heading: Reply of the Department:... as level 0
+2025-09-20 17:37:41,245 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,247 - INFO - Added paragraph: On this being pointed out, the...
+2025-09-20 17:37:41,249 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,251 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,252 - INFO - Added paragraph: Conclusion:...
+2025-09-20 17:37:41,253 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,253 - INFO - Added paragraph: Non-inclusion of correct value...
+2025-09-20 17:37:41,253 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,253 - INFO - Added paragraph: Recommendations:...
+2025-09-20 17:37:41,254 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,254 - INFO - Added paragraph: Registering authority should v...
+2025-09-20 17:37:41,254 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,254 - INFO - Processing element: heading
+2025-09-20 17:37:41,255 - INFO - Added heading: OBS No-1348685... as level 0
+2025-09-20 17:37:41,255 - INFO - Processing element: heading
+2025-09-20 17:37:41,256 - INFO - Added heading: Para 3/IIB... as level 4
+2025-09-20 17:37:41,256 - INFO - Processing element: bold
+2025-09-20 17:37:41,257 - INFO - Added heading: Non reference to the AEE for t... as level 0
+2025-09-20 17:37:41,257 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,257 - INFO - Processing element: table
+2025-09-20 17:37:41,258 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 17:37:41,258 - INFO - Added table element as HTML.
+2025-09-20 17:37:41,259 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,261 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,261 - INFO - Added paragraph: Through the above documents la...
+2025-09-20 17:37:41,263 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,264 - INFO - Added paragraph: In this connection audit has o...
+2025-09-20 17:37:41,265 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,266 - INFO - Added paragraph: Scrutiny of document number 16...
+2025-09-20 17:37:41,267 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,268 - INFO - Added paragraph: Further scrutiny of the Previo...
+2025-09-20 17:37:41,268 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,269 - INFO - Processing element: table
+2025-09-20 17:37:41,269 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 17:37:41,270 - INFO - Added table element as HTML.
+2025-09-20 17:37:41,270 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,270 - INFO - Added paragraph: This is brought to the notice ...
+2025-09-20 17:37:41,270 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,271 - INFO - Processing element: bold
+2025-09-20 17:37:41,271 - INFO - Added heading: Department’s Reply:... as level 0
+2025-09-20 17:37:41,271 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,272 - INFO - Added paragraph: On this being pointed out the ...
+2025-09-20 17:37:41,272 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,272 - INFO - Added paragraph: Conclusion:...
+2025-09-20 17:37:41,273 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,273 - INFO - Added paragraph: Non referring of the document ...
+2025-09-20 17:37:41,274 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,274 - INFO - Added paragraph: Recommendation:...
+2025-09-20 17:37:41,274 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,275 - INFO - Added paragraph: The registering authority shou...
+2025-09-20 17:37:41,278 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,278 - INFO - Processing element: heading
+2025-09-20 17:37:41,282 - INFO - Added heading: OBS No-1348765... as level 0
+2025-09-20 17:37:41,284 - INFO - Processing element: heading
+2025-09-20 17:37:41,285 - INFO - Added heading: Para 4/IIB... as level 4
+2025-09-20 17:37:41,285 - INFO - Processing element: bold
+2025-09-20 17:37:41,285 - INFO - Added heading: Non-Adherence of the Provision... as level 0
+2025-09-20 17:37:41,286 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,286 - INFO - Processing element: table
+2025-09-20 17:37:41,286 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 17:37:41,286 - INFO - Added table element as HTML.
+2025-09-20 17:37:41,287 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,287 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,287 - INFO - Added paragraph: As per New Section 269ST of Fi...
+2025-09-20 17:37:41,288 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,288 - INFO - Added paragraph: Provided that the provisions o...
+2025-09-20 17:37:41,288 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,289 - INFO - Added paragraph: (i) any receipt by (a) Governm...
+2025-09-20 17:37:41,290 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,290 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,290 - INFO - Added paragraph: (c) The Government introduced ...
+2025-09-20 17:37:41,291 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,291 - INFO - Added paragraph: During the scrutiny of the fol...
+2025-09-20 17:37:41,291 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,294 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,295 - INFO - Added paragraph: (i) Sale Deed number 1300/2019...
+2025-09-20 17:37:41,295 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,297 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,298 - INFO - Added paragraph: (ii). Sale Deed number 29/2024...
+2025-09-20 17:37:41,299 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,300 - INFO - Added paragraph: Reply of the Department:...
+2025-09-20 17:37:41,301 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,301 - INFO - Added paragraph: On this being pointed out, the...
+2025-09-20 17:37:41,302 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,302 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,302 - INFO - Added paragraph: Conclusion:...
+2025-09-20 17:37:41,303 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,303 - INFO - Added paragraph: Non-compliance with the Financ...
+2025-09-20 17:37:41,303 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,304 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,304 - INFO - Added paragraph: Recommendations:...
+2025-09-20 17:37:41,304 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,306 - INFO - Added paragraph: The Sub Registrar need to revi...
+2025-09-20 17:37:41,306 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,306 - INFO - Processing element: heading
+2025-09-20 17:37:41,307 - INFO - Added heading: OBS No-1350944... as level 0
+2025-09-20 17:37:41,307 - INFO - Processing element: bold
+2025-09-20 17:37:41,307 - INFO - Added heading: Para 5/IIB... as level 4
+2025-09-20 17:37:41,308 - INFO - Processing element: bold
+2025-09-20 17:37:41,308 - INFO - Added heading: The time limit for finalisatio... as level 0
+2025-09-20 17:37:41,309 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,309 - INFO - Added paragraph: As per provision u/s 47A(3) of...
+2025-09-20 17:37:41,311 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,311 - INFO - Added paragraph: It is seen from the pending do...
+2025-09-20 17:37:41,314 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,317 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,318 - INFO - Added paragraph: Annexure...
+2025-09-20 17:37:41,318 - INFO - Processing element: table
+2025-09-20 17:37:41,319 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 17:37:41,319 - INFO - Added table element as HTML.
+2025-09-20 17:37:41,319 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,320 - INFO - Processing element: bold
+2025-09-20 17:37:41,320 - INFO - Added heading: Department’s Reply:... as level 0
+2025-09-20 17:37:41,321 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,321 - INFO - Added paragraph: On this being pointed out, the...
+2025-09-20 17:37:41,321 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,321 - INFO - Added paragraph: Conclusion:...
+2025-09-20 17:37:41,322 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,322 - INFO - Added paragraph: Suitable followup action could...
+2025-09-20 17:37:41,322 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,323 - INFO - Added paragraph: Recommendations:...
+2025-09-20 17:37:41,323 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,323 - INFO - Added paragraph: Follow up action may be taken ...
+2025-09-20 17:37:41,324 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,324 - INFO - Processing element: bold
+2025-09-20 17:37:41,324 - INFO - Added heading: Senior Audit Officer/AMS25... as level 0
+2025-09-20 17:37:41,324 - INFO - Processing element: bold
+2025-09-20 17:37:41,325 - INFO - Added heading: Part II – Audit findings... as level 2
+2025-09-20 17:37:41,325 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,325 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,326 - INFO - Added paragraph: The following is the summary o...
+2025-09-20 17:37:41,327 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,328 - INFO - Processing element: table
+2025-09-20 17:37:41,328 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 17:37:41,329 - INFO - Added table element as HTML.
+2025-09-20 17:37:41,331 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,332 - INFO - Processing element: paragraph
+2025-09-20 17:37:41,358 - INFO - Successfully converted C:\Users\sures\AppData\Local\Temp\pipeline_xml_jymika5j\20-18_2024-25_SR_THIRUPUVANAM.xml to C:\Users\sures\AppData\Local\Temp\pipeline_md_jyy7uelu\20-18_2024-25_SR_THIRUPUVANAM.md
+2025-09-20 18:34:34,573 - INFO - Converting XML to Markdown: C:\Users\sures\AppData\Local\Temp\pipeline_xml__m3vsj_9\20-18_2024-25_SR_THIRUPUVANAM.xml -> C:\Users\sures\AppData\Local\Temp\pipeline_md_loic_4ab\20-18_2024-25_SR_THIRUPUVANAM.md
+2025-09-20 18:34:34,639 - INFO - Processing element: bold
+2025-09-20 18:34:34,641 - INFO - First heading detected as title: INSPECTION REPORT ON THE ACCOU...
+2025-09-20 18:34:34,641 - INFO - Added heading: INSPECTION REPORT ON THE ACCOU... as level 1
+2025-09-20 18:34:34,642 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,642 - INFO - Processing element: bold
+2025-09-20 18:34:34,643 - INFO - Added heading: Part I: Introduction... as level 2
+2025-09-20 18:34:34,643 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,644 - INFO - Added paragraph: Sub Registry, Thirupuvanam is ...
+2025-09-20 18:34:34,644 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,644 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,644 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,645 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,645 - INFO - Added paragraph: The following activities were ...
+2025-09-20 18:34:34,645 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,646 - INFO - Added paragraph: Registration of documents (Con...
+2025-09-20 18:34:34,646 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,647 - INFO - Added paragraph: Registration of marriage (Hind...
+2025-09-20 18:34:34,648 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,649 - INFO - Added paragraph: Issue of Encumbrance certifica...
+2025-09-20 18:34:34,651 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,653 - INFO - Added paragraph: Issue of copies of documents a...
+2025-09-20 18:34:34,656 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,657 - INFO - Added paragraph: Fixation of value of land in s...
+2025-09-20 18:34:34,658 - INFO - Processing element: bold
+2025-09-20 18:34:34,663 - INFO - Added heading: The financial performance of t... as level 0
+2025-09-20 18:34:34,666 - INFO - Processing element: table
+2025-09-20 18:34:34,673 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 18:34:34,674 - INFO - Added table element as HTML.
+2025-09-20 18:34:34,674 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,675 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,675 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,675 - INFO - Processing element: bold
+2025-09-20 18:34:34,676 - INFO - Added heading: Audit Objectives... as level 3
+2025-09-20 18:34:34,676 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,677 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,677 - INFO - Added paragraph: The objectives of this audit w...
+2025-09-20 18:34:34,677 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,677 - INFO - Added paragraph: Stamp duty and various fees we...
+2025-09-20 18:34:34,678 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,678 - INFO - Added paragraph: The amount collected were prop...
+2025-09-20 18:34:34,678 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,678 - INFO - Added paragraph: Internal control system and In...
+2025-09-20 18:34:34,679 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,679 - INFO - Processing element: bold
+2025-09-20 18:34:34,680 - INFO - Added heading: Audit Criteria... as level 0
+2025-09-20 18:34:34,680 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,683 - INFO - Processing element: bold
+2025-09-20 18:34:34,685 - INFO - Added heading: Audit criteria were adopted fr... as level 0
+2025-09-20 18:34:34,688 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,691 - INFO - Added paragraph: Registration Act, 1908...
+2025-09-20 18:34:34,691 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,692 - INFO - Added paragraph: Prescribed Monitoring Mechanis...
+2025-09-20 18:34:34,692 - INFO - Processing element: bold
+2025-09-20 18:34:34,693 - INFO - Added heading: Scope and Methodology of Audit... as level 3
+2025-09-20 18:34:34,693 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,693 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,694 - INFO - Added paragraph: The audit of Sub Registry, Thi...
+2025-09-20 18:34:34,694 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,694 - INFO - Processing element: table
+2025-09-20 18:34:34,695 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 18:34:34,695 - INFO - Added table element as HTML.
+2025-09-20 18:34:34,695 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,695 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,696 - INFO - Added paragraph: The details of documents regis...
+2025-09-20 18:34:34,696 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,696 - INFO - Processing element: table
+2025-09-20 18:34:34,697 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 18:34:34,697 - INFO - Added table element as HTML.
+2025-09-20 18:34:34,700 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,704 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,706 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,706 - INFO - Added paragraph: Under Book I, 600 documents we...
+2025-09-20 18:34:34,707 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,707 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,708 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,708 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,708 - INFO - Processing element: bold
+2025-09-20 18:34:34,708 - INFO - Added heading: Part II – Audit findings... as level 2
+2025-09-20 18:34:34,709 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,709 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,709 - INFO - Added paragraph: The following is the summary o...
+2025-09-20 18:34:34,709 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,710 - INFO - Processing element: table
+2025-09-20 18:34:34,710 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 18:34:34,711 - INFO - Added table element as HTML.
+2025-09-20 18:34:34,711 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,711 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,712 - INFO - Processing element: bold
+2025-09-20 18:34:34,712 - INFO - Added heading: Part III – Follow up on findin... as level 2
+2025-09-20 18:34:34,712 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,712 - INFO - Added paragraph: There was 1 paras pending from...
+2025-09-20 18:34:34,713 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,713 - INFO - Processing element: table
+2025-09-20 18:34:34,713 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 18:34:34,713 - INFO - Added table element as HTML.
+2025-09-20 18:34:34,714 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,714 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,716 - INFO - Processing element: bold
+2025-09-20 18:34:34,717 - INFO - Added heading: PART-IV (Best Practice)... as level 2
+2025-09-20 18:34:34,717 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,719 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,721 - INFO - Added paragraph: The department is cooperative ...
+2025-09-20 18:34:34,722 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,724 - INFO - Processing element: heading
+2025-09-20 18:34:34,725 - INFO - Added heading: PART-V (Acknowledgement)... as level 2
+2025-09-20 18:34:34,725 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,726 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,726 - INFO - Added paragraph: The audit acknowledges the co-...
+2025-09-20 18:34:34,726 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,726 - INFO - Processing element: table
+2025-09-20 18:34:34,727 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 18:34:34,728 - INFO - Added table element as HTML.
+2025-09-20 18:34:34,728 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,728 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,729 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,729 - INFO - Processing element: heading
+2025-09-20 18:34:34,729 - INFO - Added heading: OBS No-1350387... as level 0
+2025-09-20 18:34:34,730 - INFO - Processing element: bold
+2025-09-20 18:34:34,730 - INFO - Added heading: Para 1/IIB... as level 4
+2025-09-20 18:34:34,730 - INFO - Processing element: bold
+2025-09-20 18:34:34,733 - INFO - Added heading: Misclassification of instrumen... as level 0
+2025-09-20 18:34:34,734 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,736 - INFO - Added paragraph: As per Article 17 of Schedule-...
+2025-09-20 18:34:34,739 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,740 - INFO - Added paragraph: During local audit of Sub Regi...
+2025-09-20 18:34:34,740 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,741 - INFO - Added paragraph: Since the vendors had re-acqui...
+2025-09-20 18:34:34,742 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,742 - INFO - Added paragraph: On this being pointed out, the...
+2025-09-20 18:34:34,743 - INFO - Processing element: table
+2025-09-20 18:34:34,743 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 18:34:34,744 - INFO - Added table element as HTML.
+2025-09-20 18:34:34,744 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,744 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,744 - INFO - Added paragraph: Department’s reply:...
+2025-09-20 18:34:34,745 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,745 - INFO - Added paragraph: On this being pointed out the ...
+2025-09-20 18:34:34,746 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,746 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,746 - INFO - Added paragraph: Conclusion:...
+2025-09-20 18:34:34,747 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,747 - INFO - Added paragraph: Misclassification of re-convey...
+2025-09-20 18:34:34,753 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,755 - INFO - Added paragraph: Recommendation:...
+2025-09-20 18:34:34,756 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,757 - INFO - Added paragraph: Registering authority should c...
+2025-09-20 18:34:34,757 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,758 - INFO - Processing element: heading
+2025-09-20 18:34:34,758 - INFO - Added heading: OBS No-1348768... as level 0
+2025-09-20 18:34:34,758 - INFO - Processing element: heading
+2025-09-20 18:34:34,759 - INFO - Added heading: Para 2/IIB... as level 4
+2025-09-20 18:34:34,759 - INFO - Processing element: bold
+2025-09-20 18:34:34,759 - INFO - Added heading: Incorrect adoption of gravel v... as level 0
+2025-09-20 18:34:34,759 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,760 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,761 - INFO - Added paragraph: Through the lease deeds as per...
+2025-09-20 18:34:34,761 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,762 - INFO - Added paragraph: On a detailed scrutiny of the ...
+2025-09-20 18:34:34,762 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,762 - INFO - Added paragraph: Further, the Government vide G...
+2025-09-20 18:34:34,762 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,763 - INFO - Added paragraph: Accordingly, the SD at 1 % nee...
+2025-09-20 18:34:34,763 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,763 - INFO - Added paragraph: The short collection of SD of ...
+2025-09-20 18:34:34,763 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,764 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,767 - INFO - Added paragraph: Annexure...
+2025-09-20 18:34:34,774 - INFO - Processing element: table
+2025-09-20 18:34:34,776 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 18:34:34,777 - INFO - Added table element as HTML.
+2025-09-20 18:34:34,778 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,780 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,784 - INFO - Added paragraph: This is brought to the notice ...
+2025-09-20 18:34:34,788 - INFO - Processing element: bold
+2025-09-20 18:34:34,790 - INFO - Added heading: Reply of the Department:... as level 0
+2025-09-20 18:34:34,791 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,791 - INFO - Added paragraph: On this being pointed out, the...
+2025-09-20 18:34:34,792 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,792 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,792 - INFO - Added paragraph: Conclusion:...
+2025-09-20 18:34:34,792 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,793 - INFO - Added paragraph: Non-inclusion of correct value...
+2025-09-20 18:34:34,793 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,793 - INFO - Added paragraph: Recommendations:...
+2025-09-20 18:34:34,793 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,794 - INFO - Added paragraph: Registering authority should v...
+2025-09-20 18:34:34,794 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,794 - INFO - Processing element: heading
+2025-09-20 18:34:34,794 - INFO - Added heading: OBS No-1348685... as level 0
+2025-09-20 18:34:34,795 - INFO - Processing element: heading
+2025-09-20 18:34:34,795 - INFO - Added heading: Para 3/IIB... as level 4
+2025-09-20 18:34:34,795 - INFO - Processing element: bold
+2025-09-20 18:34:34,795 - INFO - Added heading: Non reference to the AEE for t... as level 0
+2025-09-20 18:34:34,795 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,796 - INFO - Processing element: table
+2025-09-20 18:34:34,796 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 18:34:34,797 - INFO - Added table element as HTML.
+2025-09-20 18:34:34,800 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,800 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,801 - INFO - Added paragraph: Through the above documents la...
+2025-09-20 18:34:34,802 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,804 - INFO - Added paragraph: In this connection audit has o...
+2025-09-20 18:34:34,805 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,806 - INFO - Added paragraph: Scrutiny of document number 16...
+2025-09-20 18:34:34,807 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,808 - INFO - Added paragraph: Further scrutiny of the Previo...
+2025-09-20 18:34:34,808 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,809 - INFO - Processing element: table
+2025-09-20 18:34:34,809 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 18:34:34,809 - INFO - Added table element as HTML.
+2025-09-20 18:34:34,810 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,810 - INFO - Added paragraph: This is brought to the notice ...
+2025-09-20 18:34:34,810 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,810 - INFO - Processing element: bold
+2025-09-20 18:34:34,811 - INFO - Added heading: Department’s Reply:... as level 0
+2025-09-20 18:34:34,811 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,812 - INFO - Added paragraph: On this being pointed out the ...
+2025-09-20 18:34:34,812 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,813 - INFO - Added paragraph: Conclusion:...
+2025-09-20 18:34:34,813 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,813 - INFO - Added paragraph: Non referring of the document ...
+2025-09-20 18:34:34,814 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,817 - INFO - Added paragraph: Recommendation:...
+2025-09-20 18:34:34,817 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,819 - INFO - Added paragraph: The registering authority shou...
+2025-09-20 18:34:34,821 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,822 - INFO - Processing element: heading
+2025-09-20 18:34:34,824 - INFO - Added heading: OBS No-1348765... as level 0
+2025-09-20 18:34:34,826 - INFO - Processing element: heading
+2025-09-20 18:34:34,827 - INFO - Added heading: Para 4/IIB... as level 4
+2025-09-20 18:34:34,827 - INFO - Processing element: bold
+2025-09-20 18:34:34,827 - INFO - Added heading: Non-Adherence of the Provision... as level 0
+2025-09-20 18:34:34,828 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,828 - INFO - Processing element: table
+2025-09-20 18:34:34,828 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 18:34:34,829 - INFO - Added table element as HTML.
+2025-09-20 18:34:34,829 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,829 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,830 - INFO - Added paragraph: As per New Section 269ST of Fi...
+2025-09-20 18:34:34,830 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,830 - INFO - Added paragraph: Provided that the provisions o...
+2025-09-20 18:34:34,833 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,834 - INFO - Added paragraph: (i) any receipt by (a) Governm...
+2025-09-20 18:34:34,834 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,836 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,838 - INFO - Added paragraph: (c) The Government introduced ...
+2025-09-20 18:34:34,838 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,840 - INFO - Added paragraph: During the scrutiny of the fol...
+2025-09-20 18:34:34,841 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,842 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,842 - INFO - Added paragraph: (i) Sale Deed number 1300/2019...
+2025-09-20 18:34:34,843 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,843 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,843 - INFO - Added paragraph: (ii). Sale Deed number 29/2024...
+2025-09-20 18:34:34,843 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,844 - INFO - Added paragraph: Reply of the Department:...
+2025-09-20 18:34:34,844 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,844 - INFO - Added paragraph: On this being pointed out, the...
+2025-09-20 18:34:34,844 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,844 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,845 - INFO - Added paragraph: Conclusion:...
+2025-09-20 18:34:34,845 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,846 - INFO - Added paragraph: Non-compliance with the Financ...
+2025-09-20 18:34:34,846 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,846 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,846 - INFO - Added paragraph: Recommendations:...
+2025-09-20 18:34:34,847 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,847 - INFO - Added paragraph: The Sub Registrar need to revi...
+2025-09-20 18:34:34,847 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,848 - INFO - Processing element: heading
+2025-09-20 18:34:34,849 - INFO - Added heading: OBS No-1350944... as level 0
+2025-09-20 18:34:34,850 - INFO - Processing element: bold
+2025-09-20 18:34:34,850 - INFO - Added heading: Para 5/IIB... as level 4
+2025-09-20 18:34:34,850 - INFO - Processing element: bold
+2025-09-20 18:34:34,850 - INFO - Added heading: The time limit for finalisatio... as level 0
+2025-09-20 18:34:34,851 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,853 - INFO - Added paragraph: As per provision u/s 47A(3) of...
+2025-09-20 18:34:34,854 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,855 - INFO - Added paragraph: It is seen from the pending do...
+2025-09-20 18:34:34,855 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,856 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,856 - INFO - Added paragraph: Annexure...
+2025-09-20 18:34:34,857 - INFO - Processing element: table
+2025-09-20 18:34:34,858 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 18:34:34,858 - INFO - Added table element as HTML.
+2025-09-20 18:34:34,858 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,859 - INFO - Processing element: bold
+2025-09-20 18:34:34,859 - INFO - Added heading: Department’s Reply:... as level 0
+2025-09-20 18:34:34,859 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,860 - INFO - Added paragraph: On this being pointed out, the...
+2025-09-20 18:34:34,860 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,860 - INFO - Added paragraph: Conclusion:...
+2025-09-20 18:34:34,861 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,861 - INFO - Added paragraph: Suitable followup action could...
+2025-09-20 18:34:34,861 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,861 - INFO - Added paragraph: Recommendations:...
+2025-09-20 18:34:34,862 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,862 - INFO - Added paragraph: Follow up action may be taken ...
+2025-09-20 18:34:34,862 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,863 - INFO - Processing element: bold
+2025-09-20 18:34:34,863 - INFO - Added heading: Senior Audit Officer/AMS25... as level 0
+2025-09-20 18:34:34,863 - INFO - Processing element: bold
+2025-09-20 18:34:34,863 - INFO - Added heading: Part II – Audit findings... as level 2
+2025-09-20 18:34:34,864 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,865 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,867 - INFO - Added paragraph: The following is the summary o...
+2025-09-20 18:34:34,868 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,870 - INFO - Processing element: table
+2025-09-20 18:34:34,871 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 18:34:34,872 - INFO - Added table element as HTML.
+2025-09-20 18:34:34,873 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,873 - INFO - Processing element: paragraph
+2025-09-20 18:34:34,904 - INFO - Successfully converted C:\Users\sures\AppData\Local\Temp\pipeline_xml__m3vsj_9\20-18_2024-25_SR_THIRUPUVANAM.xml to C:\Users\sures\AppData\Local\Temp\pipeline_md_loic_4ab\20-18_2024-25_SR_THIRUPUVANAM.md
+2025-09-20 19:26:33,900 - INFO - Converting XML to Markdown: C:\Users\sures\AppData\Local\Temp\pipeline_xml_6msf2cwv\Alandur_IR_Final.xml -> C:\Users\sures\AppData\Local\Temp\pipeline_md_d6hhwa5s\Alandur_IR_Final.md
+2025-09-20 19:26:33,949 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,950 - INFO - Processing element: bold
+2025-09-20 19:26:33,951 - INFO - First heading detected as title: OFFICE OF THE PRL.ACCOUNTANT G...
+2025-09-20 19:26:33,953 - INFO - Added heading: OFFICE OF THE PRL.ACCOUNTANT G... as level 1
+2025-09-20 19:26:33,955 - INFO - Processing element: bold
+2025-09-20 19:26:33,961 - INFO - Added heading: LEKHA PARIKSHA BHAVAN, 361, AN... as level 0
+2025-09-20 19:26:33,962 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,962 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,962 - INFO - Processing element: bold
+2025-09-20 19:26:33,963 - INFO - Added heading: No. PAG (Audit-I)/AMG-II/GST P... as level 0
+2025-09-20 19:26:33,963 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,964 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,964 - INFO - Added paragraph: To...
+2025-09-20 19:26:33,965 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,965 - INFO - Added paragraph: The Joint Commissioner (ST),...
+2025-09-20 19:26:33,966 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,966 - INFO - Added paragraph: Chennai South Division,...
+2025-09-20 19:26:33,967 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,968 - INFO - Added paragraph: Commercial Taxes Department,...
+2025-09-20 19:26:33,970 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,972 - INFO - Added paragraph: Chennai....
+2025-09-20 19:26:33,973 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,974 - INFO - Added paragraph: (By E-mail jcct.chnsouth@ctd.t...
+2025-09-20 19:26:33,975 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,976 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,976 - INFO - Added paragraph: Sir/Madam,...
+2025-09-20 19:26:33,977 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,977 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,977 - INFO - Added paragraph: Subject Specific Compliance Au...
+2025-09-20 19:26:33,978 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,978 - INFO - Added paragraph: In this connection, I am to fo...
+2025-09-20 19:26:33,978 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,978 - INFO - Added paragraph: A copy of this Inspection Repo...
+2025-09-20 19:26:33,979 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,979 - INFO - Added paragraph: The receipt of the report may ...
+2025-09-20 19:26:33,979 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,980 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,981 - INFO - Added paragraph: Yours faithfully,...
+2025-09-20 19:26:33,982 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,982 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,983 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,983 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,984 - INFO - Added paragraph: Encl: Inspection Report			    ...
+2025-09-20 19:26:33,986 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,987 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,987 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,988 - INFO - Processing element: bold
+2025-09-20 19:26:33,988 - INFO - Added heading: No. PAG (Audit-I)/AMG-II/GST P... as level 0
+2025-09-20 19:26:33,989 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,989 - INFO - Processing element: bold
+2025-09-20 19:26:33,989 - INFO - Added heading: Copy forwarded to the Deputy C... as level 0
+2025-09-20 19:26:33,990 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,990 - INFO - Added paragraph: (By E-Mail- dcct.chnsouth3@ctd...
+2025-09-20 19:26:33,991 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,991 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,991 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,992 - INFO - Added paragraph: Encl: Inspection Report...
+2025-09-20 19:26:33,992 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,993 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,993 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,994 - INFO - Added paragraph: for Sr. Deputy Accountant Gene...
+2025-09-20 19:26:33,995 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,995 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,996 - INFO - Processing element: paragraph
+2025-09-20 19:26:33,996 - INFO - Processing element: bold
+2025-09-20 19:26:33,998 - INFO - Added heading: No. PAG (Audit-I)/AMG-II/GST P... as level 0
+2025-09-20 19:26:34,000 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,001 - INFO - Processing element: bold
+2025-09-20 19:26:34,003 - INFO - Added heading: Copy forwarded to the Assistan... as level 0
+2025-09-20 19:26:34,004 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,004 - INFO - Added paragraph: (By E-Mail- ac.alandur@ctd.tn....
+2025-09-20 19:26:34,004 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,005 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,006 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,006 - INFO - Added paragraph: Encl: Inspection Report...
+2025-09-20 19:26:34,006 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,007 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,007 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,007 - INFO - Added paragraph: for Sr. Deputy Accountant Gene...
+2025-09-20 19:26:34,007 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,007 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,008 - INFO - Processing element: bold
+2025-09-20 19:26:34,008 - INFO - Added heading: Inspection Report on the audit... as level 1
+2025-09-20 19:26:34,008 - INFO - Processing element: bold
+2025-09-20 19:26:34,009 - INFO - Added heading: (Subject Specific Compliance A... as level 3
+2025-09-20 19:26:34,009 - INFO - Processing element: bold
+2025-09-20 19:26:34,010 - INFO - Added heading: Period 2018-19 to 2020-21... as level 0
+2025-09-20 19:26:34,010 - INFO - Processing element: bold
+2025-09-20 19:26:34,010 - INFO - Added heading: PART-I- (Introduction)... as level 2
+2025-09-20 19:26:34,010 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,010 - INFO - Added paragraph: The audit of office of the Ass...
+2025-09-20 19:26:34,011 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,011 - INFO - Processing element: table
+2025-09-20 19:26:34,011 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,012 - INFO - Added table element as HTML.
+2025-09-20 19:26:34,012 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,012 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,012 - INFO - Added paragraph: The audit was supervised by th...
+2025-09-20 19:26:34,013 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,013 - INFO - Processing element: table
+2025-09-20 19:26:34,013 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,013 - INFO - Added table element as HTML.
+2025-09-20 19:26:34,014 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,014 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,015 - INFO - Added paragraph: Subject Specific Compliance Au...
+2025-09-20 19:26:34,015 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,016 - INFO - Processing element: bold
+2025-09-20 19:26:34,017 - INFO - Added heading: 1.2 Audit objectives... as level 0
+2025-09-20 19:26:34,018 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,020 - INFO - Processing element: bold
+2025-09-20 19:26:34,021 - INFO - Added heading: This audit is oriented towards... as level 0
+2025-09-20 19:26:34,022 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,022 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,022 - INFO - Added paragraph: “Whether the rules and procedu...
+2025-09-20 19:26:34,022 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,023 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,023 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,024 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,024 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,024 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,025 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,025 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,025 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,025 - INFO - Processing element: bold
+2025-09-20 19:26:34,027 - INFO - Added heading: 1.3 Audit Criteria... as level 0
+2025-09-20 19:26:34,027 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,027 - INFO - Processing element: bold
+2025-09-20 19:26:34,028 - INFO - Added heading: The source of criteria against... as level 0
+2025-09-20 19:26:34,028 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,028 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,028 - INFO - Added paragraph: Central Goods and Services Tax...
+2025-09-20 19:26:34,029 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,029 - INFO - Added paragraph: State Goods and Services Tax A...
+2025-09-20 19:26:34,029 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,029 - INFO - Added paragraph: Integrated Goods and Services ...
+2025-09-20 19:26:34,030 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,030 - INFO - Added paragraph: Notifications, Orders,  Circul...
+2025-09-20 19:26:34,030 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,031 - INFO - Processing element: bold
+2025-09-20 19:26:34,033 - INFO - Added heading: 1.4 Audit methodology and scop... as level 0
+2025-09-20 19:26:34,033 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,034 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,035 - INFO - Added paragraph: The SSCA comprises of examinat...
+2025-09-20 19:26:34,035 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,037 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,038 - INFO - Added paragraph: The audit methodology involved...
+2025-09-20 19:26:34,039 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,039 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,039 - INFO - Added paragraph: The audit covered the period f...
+2025-09-20 19:26:34,039 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,040 - INFO - Processing element: table
+2025-09-20 19:26:34,040 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,041 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,041 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,041 - INFO - Added table element as HTML.
+2025-09-20 19:26:34,041 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,042 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,042 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,042 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,042 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,043 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,043 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,043 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,044 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,044 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,044 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,044 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,045 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,045 - INFO - Processing element: bold
+2025-09-20 19:26:34,046 - INFO - Added heading: PART-II... as level 2
+2025-09-20 19:26:34,046 - INFO - Processing element: bold
+2025-09-20 19:26:34,046 - INFO - Added heading: (Audit Findings)... as level 3
+2025-09-20 19:26:34,047 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,047 - INFO - Processing element: bold
+2025-09-20 19:26:34,047 - INFO - Added heading: PART-II... as level 2
+2025-09-20 19:26:34,048 - INFO - Processing element: bold
+2025-09-20 19:26:34,049 - INFO - Added heading: Summary of Audit Observations ... as level 0
+2025-09-20 19:26:34,050 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,050 - INFO - Processing element: table
+2025-09-20 19:26:34,050 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,051 - INFO - Added table element as HTML.
+2025-09-20 19:26:34,051 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,052 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,052 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,053 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,053 - INFO - Processing element: bold
+2025-09-20 19:26:34,053 - INFO - Added heading: PART-II-(A)... as level 2
+2025-09-20 19:26:34,054 - INFO - Processing element: bold
+2025-09-20 19:26:34,054 - INFO - Added heading: (Significant Audit Findings)... as level 3
+2025-09-20 19:26:34,054 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,054 - INFO - Processing element: bold
+2025-09-20 19:26:34,055 - INFO - Added heading: Reference Number: OBS-1191413... as level 3
+2025-09-20 19:26:34,055 - INFO - Processing element: bold
+2025-09-20 19:26:34,055 - INFO - Added heading: Subject: Mis-classification of... as level 4
+2025-09-20 19:26:34,055 - INFO - Processing element: table
+2025-09-20 19:26:34,056 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,056 - INFO - Added table element as HTML.
+2025-09-20 19:26:34,056 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,056 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,057 - INFO - Added paragraph: As per Section 61 of the CGST ...
+2025-09-20 19:26:34,057 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,057 - INFO - Added paragraph: As per Section 2(119) of CGST/...
+2025-09-20 19:26:34,057 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,058 - INFO - Added paragraph: As per Sl.No 3 of Notification...
+2025-09-20 19:26:34,058 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,059 - INFO - Added paragraph: On a scrutiny of records produ...
+2025-09-20 19:26:34,059 - INFO - Processing element: table
+2025-09-20 19:26:34,059 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,061 - INFO - Added table element as HTML.
+2025-09-20 19:26:34,062 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,062 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,062 - INFO - Added paragraph: The short payment of tax along...
+2025-09-20 19:26:34,063 - INFO - Processing element: bold
+2025-09-20 19:26:34,064 - INFO - Added heading: First reply awaited from the D... as level 0
+2025-09-20 19:26:34,064 - INFO - Processing element: bold
+2025-09-20 19:26:34,065 - INFO - Added heading: Reference Number: OBS-965804... as level 3
+2025-09-20 19:26:34,065 - INFO - Processing element: bold
+2025-09-20 19:26:34,065 - INFO - Added heading: Subject: Excess availing of IT... as level 4
+2025-09-20 19:26:34,066 - INFO - Processing element: table
+2025-09-20 19:26:34,066 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,066 - INFO - Added table element as HTML.
+2025-09-20 19:26:34,066 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,066 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,066 - INFO - Added paragraph: As per Section 61 of the CGST ...
+2025-09-20 19:26:34,067 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,067 - INFO - Added paragraph: As per Rule 36(4) of CGST and ...
+2025-09-20 19:26:34,067 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,068 - INFO - Added paragraph: In order to analyse the veraci...
+2025-09-20 19:26:34,069 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,070 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,070 - INFO - Processing element: table
+2025-09-20 19:26:34,070 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,071 - INFO - Added table element as HTML.
+2025-09-20 19:26:34,071 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,071 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,071 - INFO - Added paragraph: *While calculating ITC availed...
+2025-09-20 19:26:34,071 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,072 - INFO - Added paragraph: The excess claim of ITC of Rs....
+2025-09-20 19:26:34,072 - INFO - Processing element: bold
+2025-09-20 19:26:34,072 - INFO - Added heading: First reply awaited from the D... as level 0
+2025-09-20 19:26:34,072 - INFO - Processing element: bold
+2025-09-20 19:26:34,073 - INFO - Added heading: Reference Number: OBS-965893... as level 3
+2025-09-20 19:26:34,073 - INFO - Processing element: bold
+2025-09-20 19:26:34,073 - INFO - Added heading: Subject: Undischarged tax liab... as level 4
+2025-09-20 19:26:34,073 - INFO - Processing element: table
+2025-09-20 19:26:34,074 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,074 - INFO - Added table element as HTML.
+2025-09-20 19:26:34,074 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,075 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,075 - INFO - Added paragraph: As per Section 61 of the CGST ...
+2025-09-20 19:26:34,075 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,076 - INFO - Added paragraph: As per Section 37 and 39 of th...
+2025-09-20 19:26:34,076 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,076 - INFO - Added paragraph: Audit had scrutinized various ...
+2025-09-20 19:26:34,076 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,077 - INFO - Added paragraph: Details of undischarged tax is...
+2025-09-20 19:26:34,077 - INFO - Processing element: table
+2025-09-20 19:26:34,077 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,078 - INFO - Added table element as HTML.
+2025-09-20 19:26:34,078 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,078 - INFO - Added paragraph: The undischarged tax liability...
+2025-09-20 19:26:34,079 - INFO - Processing element: bold
+2025-09-20 19:26:34,080 - INFO - Added heading: First reply awaited from the D... as level 0
+2025-09-20 19:26:34,080 - INFO - Processing element: bold
+2025-09-20 19:26:34,081 - INFO - Added heading: Reference Number: OBS-1230957... as level 3
+2025-09-20 19:26:34,081 - INFO - Processing element: bold
+2025-09-20 19:26:34,081 - INFO - Added heading: Subject: List of records/docum... as level 4
+2025-09-20 19:26:34,082 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,082 - INFO - Processing element: table
+2025-09-20 19:26:34,082 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,082 - INFO - Added table element as HTML.
+2025-09-20 19:26:34,082 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,083 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,083 - INFO - Added paragraph: The above taxpayer had not pro...
+2025-09-20 19:26:34,083 - INFO - Processing element: table
+2025-09-20 19:26:34,084 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,087 - INFO - Added table element as HTML.
+2025-09-20 19:26:34,088 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,088 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,089 - INFO - Processing element: bold
+2025-09-20 19:26:34,089 - INFO - Added heading: PART-II-(B)... as level 2
+2025-09-20 19:26:34,089 - INFO - Processing element: bold
+2025-09-20 19:26:34,090 - INFO - Added heading: (Other incidental Audit Findin... as level 3
+2025-09-20 19:26:34,091 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,091 - INFO - Processing element: bold
+2025-09-20 19:26:34,091 - INFO - Added heading: Reference Number: OBS-1228459... as level 3
+2025-09-20 19:26:34,091 - INFO - Processing element: bold
+2025-09-20 19:26:34,092 - INFO - Added heading: Subject: Non Payment of Intere... as level 4
+2025-09-20 19:26:34,092 - INFO - Processing element: table
+2025-09-20 19:26:34,092 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,092 - INFO - Added table element as HTML.
+2025-09-20 19:26:34,092 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,093 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,093 - INFO - Added paragraph: As per Section 50 of the Act, ...
+2025-09-20 19:26:34,093 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,093 - INFO - Added paragraph: On scrutiny of payments (Form ...
+2025-09-20 19:26:34,094 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,094 - INFO - Added paragraph: The taxpayer had not paid inte...
+2025-09-20 19:26:34,094 - INFO - Processing element: table
+2025-09-20 19:26:34,095 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,095 - INFO - Added table element as HTML.
+2025-09-20 19:26:34,095 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,096 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,096 - INFO - Added paragraph: The non-payment of interest is...
+2025-09-20 19:26:34,097 - INFO - Processing element: bold
+2025-09-20 19:26:34,097 - INFO - Added heading: First reply awaited from the D... as level 0
+2025-09-20 19:26:34,097 - INFO - Processing element: bold
+2025-09-20 19:26:34,098 - INFO - Added heading: Reference Number: OBS-1199880... as level 3
+2025-09-20 19:26:34,098 - INFO - Processing element: bold
+2025-09-20 19:26:34,098 - INFO - Added heading: Subject: Non-Payment of tax un... as level 4
+2025-09-20 19:26:34,098 - INFO - Processing element: table
+2025-09-20 19:26:34,099 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,099 - INFO - Added table element as HTML.
+2025-09-20 19:26:34,099 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,100 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,101 - INFO - Added paragraph: As per the provisions of Rever...
+2025-09-20 19:26:34,102 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,103 - INFO - Added paragraph: Notification No. 13/2017-Centr...
+2025-09-20 19:26:34,103 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,104 - INFO - Added paragraph: Supply of Services by a goods ...
+2025-09-20 19:26:34,104 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,104 - INFO - Added paragraph: As per Section 2(84) of cgst a...
+2025-09-20 19:26:34,104 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,105 - INFO - Added paragraph: As per CBIC Schedule of GST Ra...
+2025-09-20 19:26:34,105 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,105 - INFO - Added paragraph: On scrutiny of Profit and Loss...
+2025-09-20 19:26:34,105 - INFO - Processing element: table
+2025-09-20 19:26:34,106 - INFO - Converting table element to HTML. Tag: table
+2025-09-20 19:26:34,106 - INFO - Added table element as HTML.
+2025-09-20 19:26:34,106 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,106 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,107 - INFO - Added paragraph: Hence, if the above is conside...
+2025-09-20 19:26:34,107 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,107 - INFO - Processing element: bold
+2025-09-20 19:26:34,107 - INFO - Added heading: First reply awaited from the D... as level 0
+2025-09-20 19:26:34,108 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,108 - INFO - Processing element: bold
+2025-09-20 19:26:34,108 - INFO - Added heading: PART-III... as level 2
+2025-09-20 19:26:34,108 - INFO - Processing element: bold
+2025-09-20 19:26:34,108 - INFO - Added heading: (Follow up on findings outstan... as level 3
+2025-09-20 19:26:34,109 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,109 - INFO - Processing element: bold
+2025-09-20 19:26:34,109 - INFO - Added heading: PART-IV (Best Practice)... as level 2
+2025-09-20 19:26:34,109 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,109 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,110 - INFO - Added paragraph: Nil...
+2025-09-20 19:26:34,110 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,111 - INFO - Processing element: bold
+2025-09-20 19:26:34,111 - INFO - Added heading: PART-V (Acknowledgement)... as level 2
+2025-09-20 19:26:34,111 - INFO - Processing element: bold
+2025-09-20 19:26:34,111 - INFO - Added heading: An Entry meeting for this SSCA... as level 0
+2025-09-20 19:26:34,112 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,112 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,112 - INFO - Processing element: paragraph
+2025-09-20 19:26:34,112 - INFO - Processing element: bold
+2025-09-20 19:26:34,113 - INFO - Added heading: for Senior Deputy Accountant G... as level 0
+2025-09-20 19:26:34,152 - INFO - Successfully converted C:\Users\sures\AppData\Local\Temp\pipeline_xml_6msf2cwv\Alandur_IR_Final.xml to C:\Users\sures\AppData\Local\Temp\pipeline_md_d6hhwa5s\Alandur_IR_Final.md

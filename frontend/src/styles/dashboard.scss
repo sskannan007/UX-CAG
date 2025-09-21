@@ -1,0 +1,462 @@
+// Dashboard Heading Styles
+.dashboard-heading {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 28px;
+  line-height: 100%;
+  letter-spacing: 0.3px;
+  color: #1E1E16;
+  margin: 12px 0 24px 0;
+}
+
+// Dashboard Statistics Cards Styles
+.dashboard-stats {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .stat-card {
+    width: 190px;
+    height: 94px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .stat-icon {
+      width: 47px;
+      height: 47px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+
+      // Icon background colors
+      &.assigned {
+        background-color: #dbeafe; // Light blue
+        color: #1d4ed8;
+      }
+
+      &.unassigned {
+        background-color: #fef3c7; // Light yellow
+        color: #d97706;
+      }
+
+      &.pending {
+        background-color: #fce7f3; // Light pink
+        color: #be185d;
+      }
+
+      &.overdue {
+        background-color: #fee2e2; // Light red
+        color: #dc2626;
+      }
+
+      &.completed {
+        background-color: #d1fae5; // Light green
+        color: #059669;
+      }
+
+      i {
+        font-size: 20px;
+      }
+    }
+
+    .stat-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      .stat-label {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 14px;
+        line-height: 20px;
+        color: #6b7280;
+        margin: 0;
+      }
+
+      .stat-count {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 32px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        color: #111827;
+        margin: 0;
+        vertical-align: baseline;
+      }
+    }
+  }
+
+  // Dashboard Action Buttons
+  .dashboard-buttons {
+    display: flex;
+    gap: 12px;
+    margin-left: auto;
+    flex-shrink: 0;
+
+    .btn-add-document {
+      width: 172px;
+      height: 62px;
+      border-radius: 6px;
+      border: 1px solid #053096;
+      background-color: #ffffff;
+      color: #0D61AE;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 14px;
+      line-height: 100%;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease-in-out;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #f8f9fa;
+        border-color: #053096;
+        color: #0D61AE;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(5, 48, 150, 0.15);
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(5, 48, 150, 0.1);
+      }
+
+      i {
+        color: #0D61AE;
+        font-size: 14px;
+      }
+    }
+
+    .btn-assign-document {
+      width: 183px;
+      height: 62px;
+      border-radius: 6px;
+      background-color: #0D61AE;
+      border: 1px solid #0D61AE;
+      color: #ffffff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 14px;
+      line-height: 100%;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease-in-out;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #0a4d8a;
+        border-color: #0a4d8a;
+        color: #ffffff;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(13, 97, 174, 0.3);
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(13, 97, 174, 0.2);
+      }
+
+      i {
+        color: #ffffff;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// Reusable Typography Classes
+.text-inter {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.text-inter-regular {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.text-inter-medium {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.text-inter-semibold {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.text-inter-bold {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+// Reusable Card Styles
+.card-custom {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+}
+
+// Icon Background Utility Classes
+.icon-bg {
+  width: 47px;
+  height: 47px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  i {
+    font-size: 20px;
+  }
+
+  &.bg-assigned {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+  }
+
+  &.bg-unassigned {
+    background-color: #fef3c7;
+    color: #d97706;
+  }
+
+  &.bg-pending {
+    background-color: #fce7f3;
+    color: #be185d;
+  }
+
+  &.bg-overdue {
+    background-color: #fee2e2;
+    color: #dc2626;
+  }
+
+  &.bg-completed {
+    background-color: #d1fae5;
+    color: #059669;
+  }
+}
+
+.table-heading {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+// Filter and Search Components
+.filter-btn {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    color: #6b7280;
+    border: 1px solid #d1d5db;
+    background-color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+    
+    &:hover {
+        background-color: #f9fafb;
+        border-color: #9ca3af;
+        color: #374151;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        border-color: #3b82f6;
+    }
+    
+    i {
+        font-size: 14px;
+    }
+}
+
+.search-input-group {
+    .form-control {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 14px;
+        line-height: 20px;
+        color: #111827;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        padding: 8px 12px;
+        
+        &:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        &::placeholder {
+            color: #9ca3af;
+        }
+    }
+    
+    .input-group-text {
+        background-color: #f9fafb;
+        border: 1px solid #d1d5db;
+        border-left: none;
+        color: #6b7280;
+        
+        i {
+            font-size: 14px;
+        }
+    }
+}
+
+// Filter Dropdown Styles
+.dropdown-menu {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    
+    .form-label {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        color: #374151;
+        margin-bottom: 8px;
+    }
+    
+    .form-control, .form-select {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 14px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        
+        &:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+    }
+    
+    .btn {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        border-radius: 6px;
+    }
+}
+.card-header {
+    padding: 16px !important;
+}
+.table-light tr th {
+    padding: 12px !important;
+}
+.table-light tr th.table-checkbox, .table-checkbox {
+    padding-left: 24px !important;
+}
+
+
+// Responsive design
+@media (max-width: 1200px) {
+  .dashboard-stats {
+    .dashboard-buttons {
+      margin-left: 0;
+      margin-top: 16px;
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+  
+  .search-input-group {
+    width: 250px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-input-group {
+    width: 200px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-stats {
+    flex-direction: column;
+    align-items: stretch;
+    
+    .stat-card {
+      width: 100%;
+      max-width: 190px;
+    }
+
+    .dashboard-buttons {
+      margin-left: 0;
+      margin-top: 16px;
+      width: 100%;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+
+      .btn-add-document,
+      .btn-assign-document {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-stats {
+    .dashboard-buttons {
+      .btn-add-document,
+      .btn-assign-document {
+        width: 100%;
+        max-width: none;
+      }
+    }
+  }
+}
