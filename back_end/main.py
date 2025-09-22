@@ -12,7 +12,7 @@ import traceback
 from werkzeug.utils import secure_filename
 from sqlalchemy.orm import Session
 from database import get_db
-from models import UploadedFile
+from models import UploadedFile, User
 
 # Try to import the full pipeline, fallback to simple processor
 try:
@@ -37,6 +37,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Import and include authentication router after app is defined
+from auth import router as auth_router
+from dependencies import get_current_user, get_current_active_user
+app.include_router(auth_router)
 
 # Configuration
 UPLOAD_FOLDER = 'uploads'
@@ -90,6 +95,25 @@ async def root():
 @app.get("/api/health")
 async def health_check():
     return {"status": "healthy", "message": "API is running"}
+
+@app.get("/api/user/me")
+async def read_users_me(current_user: User = Depends(get_current_active_user)):
+    """Get current authenticated user info"""
+    user_data = {
+        "id": current_user.id,
+        "firstname": current_user.firstname,
+        "lastname": current_user.lastname,
+        "email": current_user.email,
+        "dob": current_user.dob,
+        "contactno": current_user.contactno,
+        "place": current_user.place,
+        "city": current_user.city,
+        "state": current_user.state,
+        "pincode": current_user.pincode,
+        "gender": current_user.gender,
+        "role_status": current_user.role_status,
+    }
+    return user_data
 
 @app.get("/api/users", response_model=List[User])
 async def get_users():

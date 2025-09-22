@@ -7,6 +7,8 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import BulkUploadViewer from './pages/BulkUploadViewer';
+import Login from './pages/Login';
+import Registration from './pages/Registration';
 import './App.css';
 
 function AppContent() {
@@ -85,136 +87,14 @@ function AppContent() {
     );
   };
 
-  // Simple login page component
-  const SimpleLogin = () => {
-    const [email, setEmail] = useState('demo@example.com');
-    const [password, setPassword] = useState('password');
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState('');
-
-    const handleLogin = async (e) => {
-      e.preventDefault();
-      setIsLoading(true);
-      setError('');
-
-      try {
-        // Simulate API call delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Simple validation
-        if (!email || !password) {
-          setError('Please enter both email and password');
-          return;
-        }
-
-        // For demo purposes, accept any email/password combination
-        // In production, you would make an API call to validate credentials
-        localStorage.setItem('token', 'demo-token');
-        
-        // Update user config
-        setUserConfig({
-          bulkUpload: true,
-          home: true,
-          dataValidation: true,
-          assignedDocuments: true,
-          admin: true
-        });
-        
-        // Navigate to home page
-        window.location.href = '/home';
-        
-      } catch (err) {
-        setError('Login failed. Please try again.');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    return (
-      <div className="container mt-5">
-        <div className="row justify-content-center">
-          <div className="col-md-6">
-            <div className="card shadow">
-              <div className="card-header bg-primary text-white">
-                <h3 className="text-center mb-0">
-                  <i className="fas fa-lock me-2"></i>
-                  Login to PROOF BOX
-                </h3>
-              </div>
-              <div className="card-body p-4">
-                {error && (
-                  <div className="alert alert-danger" role="alert">
-                    <i className="fas fa-exclamation-triangle me-2"></i>
-                    {error}
-                  </div>
-                )}
-                
-                <form onSubmit={handleLogin}>
-                  <div className="mb-3">
-                    <label className="form-label">
-                      <i className="fas fa-envelope me-2"></i>
-                      Email Address
-                    </label>
-                    <input 
-                      type="email" 
-                      className="form-control" 
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email"
-                      required
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <label className="form-label">
-                      <i className="fas fa-key me-2"></i>
-                      Password
-                    </label>
-                    <input 
-                      type="password" 
-                      className="form-control" 
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Enter your password"
-                      required
-                    />
-                  </div>
-                  <button 
-                    type="submit" 
-                    className="btn btn-primary w-100"
-                    disabled={isLoading}
-                  >
-                    {isLoading ? (
-                      <>
-                        <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                        Logging in...
-                      </>
-                    ) : (
-                      <>
-                        <i className="fas fa-sign-in-alt me-2"></i>
-                        Login
-                      </>
-                    )}
-                  </button>
-                </form>
-                
-                <div className="mt-3 text-center">
-                  <small className="text-muted">
-                    Demo credentials: demo@example.com / password
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
+  // Simple login page component has been moved to ./pages/Login.jsx
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<SimpleLogin />} />
-        <Route path="/login" element={<SimpleLogin />} />
+        <Route path="/" element={<Login setUserConfig={setUserConfig} />} />
+        <Route path="/login" element={<Login setUserConfig={setUserConfig} />} />
+        <Route path="/registration" element={<Registration />} />
         <Route path="/home" element={
           <ProtectedRoute requiredRole="home">
             <LayoutWithSidebar>

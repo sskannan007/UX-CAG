@@ -1,0 +1,994 @@
+{
+  "metadata": {
+    "document_name": "1655_Draft_Compliance_Audit_IR_WON_Basin_2020-22",
+    "document_heading": "Overview of the Unit",
+    "Period_of_audit": {
+      "Period_From": "2020",
+      "Period_To": "2021"
+    },
+    "Date_of_audit": {
+      "Period_From": null,
+      "Period_To": null
+    },
+    "departments": null,
+    "state": null,
+    "is_state": false,
+    "district": null,
+    "division_name": null,
+    "audit_objective": null,
+    "audit_criteria": null,
+    "audite_unit": null,
+    "expenditure": null,
+    "revenue": null,
+    "budget/allocation": null,
+    "Audit_Officer_Details": [
+      {
+        "Audit_Officer_Name": null,
+        "Audit_Officer_Designation": null,
+        "Member_From": null,
+        "Member_Until": null
+      }
+    ],
+    "Auditee_Office_Details": [
+      {
+        "Auditee_Officer_Name": null,
+        "Audit_Officer_Designation": null,
+        "Worked_From": null,
+        "Worked_Until": null
+      }
+    ],
+    "signed_by": null
+  },
+  "parts": [
+    {
+      "part_title": "General",
+      "sections": [
+        {
+          "section_title": "General",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Cambay Basin is one of the prolific hydrocarbon producing sedimentary basins of India covering an area of about 53500 Sq. Km. including the area within the Gulf of Cambay. Out of this large area, the prospective area works out to be about 35000 Sq. Km with 2585 MMT of hydrocarbon resources. Exploratory activities in Cambay Basin were initiated in the year 1958. As on date 2841 exploratory wells have been drilled, out of which 122 discoveries have been found to be oil/gas bearing. As on 01.04.2022, 301 structures/prospects have been drilled, out of which 113 structures were oil/gas bearing fields. Out of these fields, 92 are with ONGC and balance 21 oil/gas fields have been awarded to private companies by GOI for development and contracts have been signed by ONGC with various consortiums. The prognosticated resources are to the tune of 2585MMtOE (incl. Gulf of Cambay). The established in-place hydrocarbons (O+OEG) amount to 1802 MMt, (as per DGH annual report 2019-20). Initially in-place volume accreted so far is about 1705.28 MMt (O+OEG) from ONGC operated fields, the ultimate reserve 538.70 MMt and the cumulative production so far is 359.52 MMt from the producing Assets at Ahmedabad, Mehsana, Ankleshwar and Cambay."
+            },
+            {
+              "type": "paragraph",
+              "text": "Functional/Geographical Jurisdiction"
+            },
+            {
+              "type": "paragraph",
+              "text": "Cambay Basin is situated in the western margin platform of the Indian carton in the northwestern part of the Indian Peninsula in the state of Gujarat. It is a linear, sigmoidal, NNW-SSE trending rift basin and covers an area between latitudes 21°00’ and 25°00’ N and longitudes 71°30’ and 73°15’ E. The length of the basin is about 425 km and width varies from 40 km in north to about 100 km in south inferring northward diminishing of rift propagation. The area of the basin is 53,500 square km extending from Sanchor in the north to Surat in the south. It is bounded by Luni River in the north and Tapti River in the South, Saurashtra Arch in the west and Aravalli-Delhi ranges and Deccan Carton in the east. The basin opens up into the Gulf of Cambay (Khambhat)/ Daman offshore in the south and southwest. Southern part of the basin lies offshore of Gulf of Cambay and passes to SSW into the Bombay Offshore Basin in the Arabian Sea. To the north of Sanchor, the basin is separated from Rajasthan Basin by a basement swell. Extensional faulting created tilted fault-blocks and horst-and graben structures parallel to the basin margin."
+            },
+            {
+              "type": "paragraph",
+              "text": "Budget"
+            },
+            {
+              "type": "paragraph",
+              "text": "Budgeted expenditure (Plan and Non-plan) vis-à-vis the actual expenditure for last 3 years has been tabulated below:"
+            }
+          ],
+          "sub_sections": []
+        },
+        {
+          "section_title": "(Rs. in crore)",
+          "content": [
+            {
+              "type": "table",
+              "table": "<table>  <tr>    <th>PLAN</th>    <th></th>    <th colspan=\"2\">2019-20</th>    <th colspan=\"3\">2020-21</th>    <th colspan=\"3\">2021-22</th>  </tr>  <tr>    <td>PLAN</td>    <td>Budget</td>    <td>Actual</td>    <td>%</td>    <td>Budget</td>    <td>Actual</td>    <td>%</td>    <td>Budget</td>    <td>Actual</td>    <td>%</td>  </tr>  <tr>    <td>Capital/stores & spares and contractual</td>    <td>326.33</td>    <td>140.18</td>    <td>42.96%</td>    <td>362.81</td>    <td>83.70</td>    <td>23.07%</td>    <td>239.19</td>    <td>79.76</td>    <td>33.36%</td>  </tr>  <tr>    <td>Manpower</td>    <td>296.09</td>    <td>325.99</td>    <td>110.10%</td>    <td>354.76</td>    <td>284.65</td>    <td>80.24%</td>    <td>290.03</td>    <td>309.73</td>    <td>106.79%</td>  </tr>  <tr>    <td>Other charges</td>    <td>38.22</td>    <td>57.72</td>    <td>151.02%</td>    <td>38.75</td>    <td>52.40</td>    <td>135.23%</td>    <td>47.48</td>    <td>26.50</td>    <td>55.81%</td>  </tr>  <tr>    <td>Total</td>    <td>660.64</td>    <td>523.89</td>    <td>79.30%</td>    <td>756.32</td>    <td>420.75</td>    <td>55.63%</td>    <td>576.7</td>    <td>415.99</td>    <td>72.13%</td>  </tr></table>"
+            }
+          ],
+          "sub_sections": [
+            {
+              "sub_section_title": "Financial Performance",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "The working results of the Auditee during last three years are tabulated as under:"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_title": "(Rs. in crore)",
+          "content": [
+            {
+              "type": "table",
+              "table": "<table>  <tr>    <th>Financial Year</th>    <th>2019-20</th>    <th>2020-21</th>    <th>2021-22</th>  </tr>  <tr>    <td>Income</td>    <td>30.74</td>    <td>68.45</td>    <td>8.21</td>  </tr>  <tr>    <td>Expenditure</td>    <td>485.14</td>    <td>364.02</td>    <td>415.13</td>  </tr>  <tr>    <td>Profit</td>    <td>(454.40)</td>    <td>(295.57)</td>    <td>(406.92)</td>  </tr></table>"
+            },
+            {
+              "type": "paragraph",
+              "text": "Operational/Production Performance of the Auditee for the last three preceding years"
+            },
+            {
+              "type": "paragraph",
+              "text": "Reserve accretion:"
+            },
+            {
+              "type": "paragraph",
+              "text": "The details of reserve accretion during last 3 years is tabulated below:"
+            },
+            {
+              "type": "table",
+              "table": "<table>  <tr>    <th colspan=\"2\">In place Reserves (MMT)</th>    <th>2019-20</th>    <th>2020-21</th>    <th>2021-22</th>  </tr>  <tr>    <td>Plan</td>    <td>-</td>    <td>20.00</td>    <td>20.00</td>    <td>21.00</td>  </tr>  <tr>    <td>Actual</td>    <td>New find +New Pool</td>    <td>0.00</td>    <td>0.00</td>    <td>0.00</td>  </tr>  <tr>    <td>Actual</td>    <td>Delineation</td>    <td>4.56</td>    <td>5.34</td>    <td>5.95</td>  </tr>  <tr>    <td>Actual</td>    <td>Reinterpretation</td>    <td>9.24</td>    <td>6.19</td>    <td>15.93</td>  </tr>  <tr>    <td>Actual</td>    <td>Total</td>    <td>13.80</td>    <td>11.53</td>    <td>21.88</td>  </tr></table>"
+            },
+            {
+              "type": "table",
+              "table": "<table>  <tr>    <th colspan=\"2\">Ultimate Reserves (MMT)</th>    <th>2019-20</th>    <th>2020-21</th>    <th>2021-22</th>  </tr>  <tr>    <td>Plan</td>    <td>-</td>    <td>5.00</td>    <td>5.00</td>    <td>5.50</td>  </tr>  <tr>    <td>Actual</td>    <td>New find +New Pool</td>    <td>0.00</td>    <td>0.00</td>    <td>0.00</td>  </tr>  <tr>    <td>Actual</td>    <td>Delineation</td>    <td>0.85</td>    <td>-</td>    <td>-</td>  </tr>  <tr>    <td>Actual</td>    <td>Reinterpretation</td>    <td>1.36</td>    <td>-</td>    <td>-</td>  </tr>  <tr>    <td>Actual</td>    <td>Total</td>    <td>2.21</td>    <td>0.54</td>    <td>4.74</td>  </tr></table>"
+            },
+            {
+              "type": "paragraph",
+              "text": "Performance of exploratory wells:"
+            },
+            {
+              "type": "paragraph",
+              "text": "The seismic data acquired and processed by Geophysical Services are interpreted by Blocks with detailed project study for identifying the hydrocarbon prospects and thereby exploratory locations are generated.  These prospective exploratory locations generated by the Blocks are further analyzed and discussed in the meeting of Basin Exploratory Board (BEXB) held annually. Thereafter exploratory locations are released for drilling by the Director (Exploration) based on the recommendations of the Exploration Portfolio Management Board (EPMB).  The released locations are drilled by the respective Assets in Western Onshore.  The table below summarizes number of locations generated vis-à-vis released in last 3 years:"
+            },
+            {
+              "type": "table",
+              "table": "<table>  <tr>    <th>Block</th>    <th colspan=\"2\">2019-20</th>    <th colspan=\"2\">2020-21</th>    <th colspan=\"2\">2021-22</th>  </tr>  <tr>    <td></td>    <td>Generated</td>    <td>Released</td>    <td>Generated</td>    <td>Released</td>    <td>Generated</td>    <td>Released</td>  </tr>  <tr>    <td>I</td>    <td>15</td>    <td>2</td>    <td>8</td>    <td>2</td>    <td>14</td>    <td>7</td>  </tr>  <tr>    <td>II</td>    <td>52</td>    <td>11</td>    <td>14</td>    <td>9</td>    <td>31</td>    <td>8</td>  </tr>  <tr>    <td>III</td>    <td>28</td>    <td>7</td>    <td>10</td>    <td>4</td>    <td>21</td>    <td>7</td>  </tr>  <tr>    <td>Total</td>    <td>95</td>    <td>21</td>    <td>45</td>    <td>15</td>    <td>66</td>    <td>22</td>  </tr></table>"
+            },
+            {
+              "type": "paragraph",
+              "text": "Exploratory Drilling: The number of exploratory wells drilled vis-à-vis plan during last 3 years is tabulated below:"
+            },
+            {
+              "type": "table",
+              "table": "<table>  <tr>    <th></th>    <th>2019-20</th>    <th>2020-21</th>    <th>2021-22</th>  </tr>  <tr>    <td>No. of wells planned</td>    <td>23</td>    <td>24</td>    <td>28</td>  </tr>  <tr>    <td>No. of wells drilled</td>    <td>26</td>    <td>24</td>    <td>28</td>  </tr>  <tr>    <td>-  Oil/gas bearing wells-  Dry wells</td>    <td>91</td>    <td>97</td>    <td>88</td>  </tr>  <tr>    <td>Success Ratio</td>    <td>1: 1.289</td>    <td>1: 2.67</td>    <td>1: 1.73</td>  </tr>  <tr>    <td>No. of untested wells /require testing</td>    <td>16</td>    <td>8</td>    <td>12</td>  </tr></table>"
+            },
+            {
+              "type": "paragraph",
+              "text": "Performance of Geophysical Parties:"
+            },
+            {
+              "type": "paragraph",
+              "text": "Basin operates 5 Geophysical parties for seismic data acquisition. The targets vis-à-vis achievement during last 3 years was as under:"
+            },
+            {
+              "type": "table",
+              "table": "<table>  <tr>    <th>Year</th>    <th colspan=\"3\">Targets</th>    <th colspan=\"2\">Achievement</th>    <th></th>    <th colspan=\"3\">% Achievement</th>  </tr>  <tr>    <td>Year</td>    <td>3DSurvey(Sq.km)</td>    <td>3D3CSurvey(Sq. km)</td>    <td>2DSurvey  (GLK)</td>    <td>3D Survey (Sq. km)</td>    <td>3D3CSurvey(Sq. km)</td>    <td>2DSurvey(GLK)</td>    <td>3DSurvey(Sq. km)</td>    <td>3D3CSurvey(Sq. km)</td>    <td>2DSurvey (GLK)</td>  </tr>  <tr>    <td>2019-20</td>    <td>131</td>    <td>6</td>    <td>-</td>    <td>99</td>    <td>6</td>    <td>-</td>    <td>76</td>    <td>100</td>    <td>-</td>  </tr>  <tr>    <td>2020-21</td>    <td>300</td>    <td>-</td>    <td>200</td>    <td>494</td>    <td>-</td>    <td>-</td>    <td>165</td>    <td>-</td>    <td>-</td>  </tr>  <tr>    <td>2021-22</td>    <td>499</td>    <td>-</td>    <td>325</td>    <td>234</td>    <td>-</td>    <td>18</td>    <td>47</td>    <td>6</td>    <td>-</td>  </tr></table>"
+            },
+            {
+              "type": "paragraph",
+              "text": "Manpower position of the Auditee for the last three preceding years"
+            },
+            {
+              "type": "paragraph",
+              "text": "Manpower position of Basin as on 01 April for last three years is tabulated below:"
+            },
+            {
+              "type": "table",
+              "table": "<table>  <tr>    <th colspan=\"2\">Manpower as on ►</th>    <th colspan=\"3\">WON Basin</th>  </tr>  <tr>    <td colspan=\"2\">Manpower as on ►</td>    <td>01.04.2022</td>    <td>01.04.2021</td>    <td>01.04.2020</td>  </tr>  <tr>    <td>Officials</td>    <td>Executive</td>    <td>384</td>    <td>397</td>    <td>421</td>  </tr>  <tr>    <td>Officials</td>    <td>Staff</td>    <td>189</td>    <td>185</td>    <td>188</td>  </tr>  <tr>    <td colspan=\"2\">Total</td>    <td>573</td>    <td>582</td>    <td>609</td>  </tr></table>"
+            },
+            {
+              "type": "paragraph",
+              "text": "Organogram of Auditee/ Organization chart of Auditee"
+            }
+          ],
+          "sub_sections": [
+            {
+              "sub_section_title": "Audit Objective:",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "The objective of audit was to verify the compliance to applicable rules and regulations governed by and propriety of income and expenditure of Western Onshore Basin Baroda for the year 2020-21 and 2021-22."
+                }
+              ]
+            },
+            {
+              "sub_section_title": "Scope of Audit",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "The transactions of the WON Basin, Baroda for the year 2020-21 and 2021-22 were test-checked and reviewed in August-November 2022 & March 2023 by the audit party and certain important observations noticed in audit have been included in succeeding paragraphs. The audit has been conducted in accordance with the applicable Auditing Standards of Comptroller & Auditor General of India."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Sampling Procedure"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Sampling has been done by using MS Excel (as IDEA software is not available) on the basis of simple random sampling without repetition approved by Group Officer for the purchase orders and contracts executed during the year 2020-21 and 2021-22"
+                }
+              ]
+            },
+            {
+              "sub_section_title": "Audit Criteria",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "The criteria for the audit was drawn from:"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "(i) The Oilfields (Development & Regulation) Act, 1948."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "(ii) Petroleum & Natural Gas Rules (PNG Rules), 1959."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "(iii)Internal Standard Operating Procedures/circulars/guidelines/Manual followed by the Asset"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "(iv) Books of delegation of powers 2015 of ONGC"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "(v) Micro Small and Medium Enterprises Development Act 2006"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "(vi) Petroleum Planning and Analysis Cell Circulars and notifications."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Internal Audit"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The internal audit of the Asset is being conducted regularly and compliance to Internal Audit observations by the Basin management has been regular. Latest Internal Audit of WON Basin, Baroda was conducted for the period covering 2020-21."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Disclaimer"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The Inspection Report has been prepared on the basis of the information furnished and made available by Western Onshore Basin, Baroda. The office of the Director General of Commercial Audit, Mumbai disclaims any responsibility for any misinformation and/or non-information on the part of the auditee."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "part_title": "PART-II AUDIT FINDINGS",
+      "sections": []
+    },
+    {
+      "part_title": "PART IIA",
+      "sections": [
+        {
+          "section_title": "General",
+          "content": [],
+          "sub_sections": [
+            {
+              "sub_section_title": "Para 1: Avoidable loss of Rs.15.80 crore towards non-receipt of cash call due to delay in initiating the Arbitration process against M/s Heramec in the NELP Blocks CB-ONN-2004/1 & CB-ONN-2004/4 by ONGC, Vadodara",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "Government of India (GOI) invited bids (2006) from interested parties for exploration of Oil and Natural Gas in the Block CB-ONN-2004/1 and CB-ONN-2004/4 under the New Exploration & Licensing Policy, Sixth Round (NELP VI).   Consortium of Oil and Natural Gas Corporation (ONGC), Gujarat State Petroleum Corporation (GSPC) and M/s Heramec Ltd. was awarded (February 2007) the Contract for exploration with Participating Interest (PI) of 50%, 40% and 10% respectively."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The broader scope of Joint Operation Agreement (JOA) signed between ONGC, GSPC and M/s Heramec Ltd  (January 2008) was to establish the rights and obligations of the parties amongst themselves in regard to the Petroleum Operations under the contract and  Joint Operations included prospecting, exploring and drilling for Petroleum. Article 4.1 of JOA stated that, “all joint operations shall be conducted by the Operator in accordance with the policies, work programmes and budgets approved in accordance with the provisions of this agreement” and that “all costs and expenses incurred by the operator on behalf of the Parties in carrying out joint operations under this agreement shall be borne and paid by the parties in proportion to their Participating Interest and raised by operator in the form of Cash Calls to the parties” (Article 7.1 of JOA)."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "During scrutiny of documents furnished by Management, audit observed that"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "As per provisions of JOA, cash calls were raised by ONGC on M/s Heramec Ltd. between March 2008 and November 2011 for Rs 7.17 crore and Rs. 4.71 crore with respect to CB-ONN-2004/1 and CB-ONN-2004/4 respectively."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "ONGC incurred an actual expenditure of Rs. 88.29 Crores to complete Minimum Work Programme (MWP) of phase-I (April 2013) in CB-ONN-2004/04, the share of M/s Heramec was Rs. 8.83 Crores (10% PI)."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "M/s Heramec paid only Rs. 75.43 lakh and Rs. 20 lakhs against the claims of ONGC for actual expenditure incurred which was raised as cash calls for CB-ONN-2004/1 and CB-ONN-2004/4 respectively. The payments were made between July 2008 and October 2009."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Due to non-payment of cash calls by M/s Heramec Ltd, ONGC served Notice of Default (February- March 2010) for both the blocks, following which notice for invoking forfeiture of PI of M/s Heramec Ltd was issued in June –July 2010."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Based on the decision of Operating Committee (OC) Meeting (May 2011) on forfeiture of 10% PI of M/s Heramec Ltd, ONGC, in its 242nd meeting of Board of Directors (April 2013), approved the assumption of 10% PI of M/s Heramec Ltd, which took the PI of ONGC to 60%."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Legal Notice was issued (2004/01 dated 18.02.2016 & 2004/04 dated 23.02.2016) by ONGC to the M/s Heramec invoking Arbitration Clause (Clause 19) of the JOA for default in making cash call payments and non-submission of Bank Guarantee."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "M/s Heramec Ltd filed its reply in 21.3.2016. Arbitral Tribunal was constituted on 26.07.2016 as per JOA and the matter was listed for first preliminary hearing on 31.07.2016"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "In the claim document, ONGC stated that M/s Heramec had to pay principal sum of Rs.7.17 crores towards cash calls including the interest liability on the principal of about Rs. 17.52 crores for Block CB-ONN-2004/01 and Rs. 8.63 crore with interest liability on the principal of about Rs. 21.69 crores in lieu of continuous default in making cash call payments share of expenditure of completion of MWP of Phase-I as per PSC for the Block CBONN- 2004/04."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Arbitral Tribunal after several rounds of hearing gave its final award on 11.09.2018, wherein it rejected all the claims raised by the ONGC, on the ground of it being barred by limitation as well as on merits."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "As could be seen from the above series of events, it’s a fact that M/s Heramec Ltd had defaulted in payment of cash calls and ONGC did resort to serve notice of default and observe the 10% PI with itself as per ONGC Board Approval. However, it failed to serve legal notice to recover the loss of actual expenditure in a time bound manner which resulted in an avoidable loss of Rs.15.80 crore."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Following which, it was observed that executive committee of ONGC had taken steps to accord approval for acceptance of arbitration award and had constituted a multi-disciplinary team to fix responsibility, which is as follows:"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Executive Committee (EC) of ONGC in its meeting held on 19.03.2020 accorded approval for acceptance of Arbitration awards in ONGC Vs Heramec Ltd. dated 11.09.2018 and waived off the ONGC claim in respect of NELP blocks CB-ONN-2004/1 (Rs. 7.17 crore including applicable interest) and CB-ONN-2004/4 (Rs. 8.63 crore including applicable interest)."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "EC had directed to constitute a multi-disciplinary committee to inquire into reasons for delay in initiating legal proceedings. The committee in its findings stated that the officers dealing with JV blocks are not very thorough with the related contracts i.e. Production Sharing Contract (PSC), Joint Operating Agreement (JOA) etc. and the legal and commercial aspects in this regard. Thus, as the officers were not well versed in contracts viz. PSC, JOA etc. and due to ignorance and delaying in making decisions by EXCOM and Basin resulted in loss to the Company of Rs. 15.80 plus interest."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "EC while taking note of the recommendation of inquiry committee expressed its displeasure as the report did not bring out the names of the person(s) responsible for the delay in initiating the legal proceedings. Hence, EC directed Basin Manager to issue advisory to the OC members of both the Blocks who were handling these blocks during the period when action for arbitration was to be initiated."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "From the EC recommendation, it is explicit that an MDT was formed to inquire and fix person responsible for delay, upon which ONGC had to bear a loss of Rs. 15.80 Crores. But from the correspondences made available to audit, it could be seen that EC had directed Basin Manager to issue advisory to OC members of both the Blocks, but no such advisory was available with both the blocks."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Thus, negligence on the part of officers dealing with JV blocks had resulted in considerable delay in invoking Arbitration clause and filing of the matter of non-payment of cash calls for the Block CB-ONN-2004/01 and CB-ONN-2004/04 which ultimately resulted in loss of Rs. 15.80 crore plus applicable interest to the Company and no action was initiated by Management either to find the erring officials or to issue advisory to create awareness among members of block."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Reply of Management is awaited."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "part_title": "PART IIB",
+      "sections": [
+        {
+          "section_title": "General",
+          "content": [],
+          "sub_sections": [
+            {
+              "sub_section_title": "Para 1: Non-completion of Minimum Work Programme and non-payment of liquidated damages within stipulated time attracted interest on LD – Rs. 16 lakhs.",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "The NELP Block CB-ONN-2009/4-Charada-Mansa with an area of 58 SKM was awarded in the 8th round of NELP in the year 2009 to ONGC and GSPC on 50-50% partnership basis. The Profit Sharing Contract for NELP Block CB-ON-2009/4 was signed on 30.06.2010. The effective date of award of PEL was from 06.09.2011. As per MWP, 5 wells were to be drilled in Phase-I from 06.09.2011 to 05.09.2015. First six-month extension was availed from 06.09.2015 to 05.03.2016 without Liquidated Damage. During 2014-15, 02 wells namely CRNL-1 and CRNL-2 were drilled, however both were abandoned. During 2015-16, Well CRNL-3 was drilled and abandoned and Well CRNL-4 was drilled in 2016-17 and abandoned. One more location CRAH could not be drilled due to LAQ problem and it was decided to surrender the block. Request for waiver of Cost of unfinished work programme (CoUWP) against 1 MWP well was made to DGH dated 26.07.2017 along with final application for relinquishment, however DGH vide letter dated 18.01.2018, conveyed its decision, that proposal for waiver of 1 MWP well could not be agreed and it raised a demand for payment of USD 0.5 Million. Accordingly, due to non-completion of MWP, LD of $0.5 million was paid (12.02.2018) by ONGC to DGH as per the provision of Article 5.6 of Profit Sharing Contract signed between Contractor and Government. DGH subsequently raised demand for interest on account of delayed payment of CoUWP’ for USD 20,747 in the month of February 2019 and due to non-payment by ONGC it issued reminders on a regular basis and last such reminder was in November 2021 as seen from the communications made available to audit."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "During scrutiny it was noticed by audit that WON Basin had not paid interest on LD till date (September 2022). The decision not to pay was taken by WON Basin after consultation with EXCOM, BMG, Finance and Corporate legal and DGH was informed, vide letter date 09.08.2019, that no interest was liable to be paid as LD was paid within stipulated time. However, DGH had rejected the views of ONGC and had raised matter of interest on LD once again vide letter dated 17.09.2019. Relinquishment letter had been sent to Principal Secretary, E&P, GOG on 10.08.2017, however, MC resolution for relinquishment is pending with DGH since then."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "In view of the above audit observed that:"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "ONGC hadn’t paid LD of $0.5 million within the stipulated time i.e. 60 days from expiry of Exploration phase as Article 5.6 of PSC which stated “In the event that the Contractor fails to fulfill the said Mandatory Work Programme or Minimum Work Programme or both by the end of the relevant Exploration Phase or early termination of the Contract by the Government for any reason whatsoever, each Company constituting the Contractor shall pay to the Government, within sixty (60) days following the end of the relevant Exploration Phase or early termination of the Contract, as may be the case, its Participating Interest share for an amount which, when evaluated in terms of the Mandatory Work Programme or Minimum Work Programme specified for the relevant Phase, is equal to the amount which would be required to complete the said Mandatory Work Programme or Minimum Work Programme or both”. From the above clause of PSC it is clear that the Contractor has to pay LD, if it fails to fulfil the MWP by the end of the relevant Exploration Phase for any reason whatsoever."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Payment of LD by ONGC towards unfinished MWP without payment of interest amount had accrued due to delayed payment, which has been raised in accordance with clause 1.7.3 of Accounting Procedure of PSC which states “All sums due by one Party to the other under the Contract during any Month shall, for each day such sums are overdue during such Month, bear interest compounded daily at the applicable LIBOR plus two (2) percentage points” for an of amount to 16 lakh (approx.)."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "It is also pertinent to mention that interest amount of USD 20,747 is interest accrued till the date of payment of LD towards unfinished MWP by ONGC i.e. till 12.02.2018, however, ONGC is required to pay the interest amount which is going to be accrued till the actual date of deposit of interest amount calculated in terms of clause 1.7.3 of Accounting Procedure of PSC."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management in its reply (10.10.2022) stated that DGH informed ONGC (December 2021) proposing the dispute to Committee of Eminent Experts (CEEE) notified by MoPNG and ONGC also conveyed their consent to DGH (December 2021) for the same. The dispute was presented to CEEE (March 2022), however, consideration/outcome of CEEE is awaited."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "As on March 2022, the fact remains that ONGC had to pay interest on LD of Rs. 16 lakhs due to non-completion of Minimum Work Programme and non-payment of liquidated damages within stipulated time and final outcome of CEEE will bring clarity to the dispute of ONGC. Management is required to update audit on the outcome, as and when received from CEEE."
+                }
+              ]
+            },
+            {
+              "sub_section_title": "Para 2:  Review of Inventory of Exploratory locations pending for drilling",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "The Western Onshore Basin, Baroda (WOB) is engaged in exploration and exploitation of hydrocarbons in Cambay Basin. The main objective of WOB is to explore the new pool of hydrocarbon and reserve accretion in ultimate reserve and implementation of Corporate Exploration Programme in Nominated, NELP and OALP Blocks of Cambay Basin. WOB proposes/recommends the exploratory locations to meet its objectives before competent authority i.e. EPMB (Exploratory Portfolio Management Board). Based on discussion and recommendation by the WOB, competent authority releases the exploratory locations for drilling the locations to meet the ultimate objective of WOB."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Audit reviewed the exploratory locations available with the WOB as on September 2022, the details are as tabulated below:"
+                },
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th>Field</th>    <th>Exploratory locations available in WOB as on 01.04.2020*</th>    <th>Location release date</th>    <th>Reasons provided by Management for drilling activity pending to be carried out</th>  </tr>  <tr>    <td colspan=\"4\">BLOCK II</td>  </tr>  <tr>    <td>Ahmedabad Sector</td>    <td>SAAX-1400</td>    <td>16.06.2012</td>    <td>Cancellation is pending</td>  </tr>  <tr>    <td>Ahmedabad Sector</td>    <td>MOAU-1950</td>    <td>17.12.2014</td>    <td>Cancellation is pending</td>  </tr>  <tr>    <td>Ahmedabad Sector</td>    <td>KLXI-1750</td>    <td>30.12.2015</td>    <td>Cancellation is pending</td>  </tr>  <tr>    <td>Ahmedabad Sector</td>    <td>KLXJ-1750</td>    <td>12.07.2016</td>    <td>Not planned for drilling during 2019-20. Falling in Urbanized area.</td>  </tr>  <tr>    <td>Ahmedabad Sector</td>    <td>SAAV-3300</td>    <td>04.01.2011</td>    <td>Not planned for drilling during 2019-20 Falling in Thol lake. Hence cannot be taken up for drilling.</td>  </tr>  <tr>    <td>Ahmedabad Sector</td>    <td>SAAZ-1600</td>    <td>05.08.2014</td>    <td>Not planned for drilling during 2019-20 Falling in Thol lake. Hence cannot be taken up for drilling.</td>  </tr>  <tr>    <td>Ahmedabad Sector</td>    <td>LMXA-1700</td>    <td>25.05.2015</td>    <td>The land falls in urbanized and hence farmers not willing to give the land to ONGC</td>  </tr>  <tr>    <td>Ahmedabad Sector</td>    <td>WLAH-1600</td>    <td>08.04.2016</td>    <td>The land falls in industrial zone area and hence farmers not willing to give the land to ONGC</td>  </tr>  <tr>    <td>Ahmedabad Sector</td>    <td>JRAL-1500</td>    <td>12.07.2016</td>    <td>Negotiation with concerned land owners for acquiring land in nearby area is in progress</td>  </tr>  <tr>    <td>Ahmedabad Sector</td>    <td>WJAO-1650</td>    <td>27.08.2019</td>    <td>There is no approach road available as the area is covered by irrigation canal and on one side is freight Corridor.</td>  </tr>  <tr>    <td>Ahmedabad Sector</td>    <td>HAAV-1700</td>    <td>27.08.2019</td>    <td>Negotiation with concerned land owners for acquiring land in nearby area is in progress</td>  </tr>  <tr>    <td>Cambay Sector</td>    <td>CKAH</td>    <td>29.04.2009</td>    <td>Constraint location.(The location CKAH falls outside the ML grant area and Pursue for grant of additional ML area is in progress)</td>  </tr>  <tr>    <td colspan=\"4\">BLOCK III</td>  </tr>  <tr>    <td></td>    <td>SBCI</td>    <td>07.04.2015</td>    <td>To be drilled in FY 2021-22</td>  </tr>  <tr>    <td></td>    <td>LNCL</td>    <td>14.02.2020</td>    <td>To be reviewed for technical reason</td>  </tr></table>"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "*Considered as exploration review and status report of WON Basin for the year 2021-22 was not furnished to audit"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "From the above, it could be seen that all three blocks have locations which were released much earlier but haven’t been drilled so far (March 2022) due to various reasons stated by Management which have been placed alongside the locations above."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "From further scrutiny of files and relevant documents, audit observed the following:"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "1. \tExploratory locations SAAX, MOAU and KLXI: Though these three locations were recommended for cancellation in 13th Basin Exploration Board Meeting (BExB) held on 13th & 14th July 2021 due to falling in urbanized area. Management in its reply (March 2023) stated that on recommendation of 13th BExB Part-B, proposal for cancellation of these locations were uploaded on WebEx platform for discussion in 28th EPMB. however, proposal was not included in the agenda of 28th EPMB. Thus, approval for cancellation is yet to be received by WON Basin."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "2. \tExploratory locations LMXA, WLAH, JRAL, WJAO and HAAV: These locations were released between March 2015 and August 2019. Location LXXA were released more than 07 years back and WLAH & JRAL were released 06 years back. It was informed to audit that all these locations including WJAO & HAAV are under LAQ."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management replied (March 2023) that Negotiation with concerned land owners for acquiring land in nearby area is in progress for location JRAL & HAAV. For WJAO, LMXA & WLAH, it was stated that an exercise was carried out to shift the subsurface position of the location close to a place where land is available."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "However, fact remains that even after so many years, Management has not taken any decisions either to drill these locations or seek permission for cancellation of location from Competent Authority. Audit is of the view that inaction of Management after location release has defeated the objective of addition to reserve accretion and subsequently delayed monetization of reserves to a larger extent."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "3. Exploratory location CKAH:  Government of Gujarat had declined to grant permission citing that the location fell outside the present ML grant area (March 2021) but WON Basin had not proposed for cancellation of location so far (Oct 2022)."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "In this regard, Management in its reply stated that proposal for cancellation of CKAH in the 11th BEXB in August 2020 was initiated, however, it was suggested in meeting not to liquidate the location. Afterwards, several attempts were made with GOG for re-grant of PML of remaining area, however, GOG declined to award PML and suggested to bid for the same area under OALP. DGH had written letter to GOG (May 2021) to consider the grant of the area."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management had not furnished the status of locations KLXJ-1750, SAAV-3300, SAAZ-1600, SBCI and LNCL and for other locations specified above, clarity on either to start drilling or to liquidate is awaited as on March 2023 from Competent Authority."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management is required to update the status of exploratory locations as and when received."
+                }
+              ]
+            },
+            {
+              "sub_section_title": "Para 3: Avoidable payment of LD of Rs. 22 lakh and avoidable liability of Rs. 30 lakh plus interest towards LD on account of cost of unfinished work program in Block CB-ONN-2001/1",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "The NELP Block CB-ONN-2001/1 with an area of 215 Sq. km. was awarded in the 3rd round of NELP in the Nadiad ML Block with a Participating Interest of 100 % with ONGC from 19.08.2003 to 15.03.2005 and 70% with ONGC, 30% with CAIRN from 16.03.2005 to 18.08.2006. Presently ONGC holding 100% PI. The Profit Sharing Contract for NELP Block CB-ONN-2001/1 was signed on 04.02.2003. The effective date of award of PEL was from 19.08.2003. The initial exploration phase was from 19.08.2003 to 18.08.2006. First six-month extension was availed from 19.08.2006 to 18.02.2007. 2nd extension was given due to delay in environment clearance from 19.02.2007 to 01.03.2007 for 11 days without set off. 2nd Phase was initiated from 02.03.2007 upto 29.05.2009 including 273 days due to environment clearance. Appraisal period was from 24.07.2009 to 23.01.2012, however, Govt. of Gujarat approved appraisal period from 07.09.2009 to 06.03.2012."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Status of work completed under Minimum Work Program upto 01.07.2007 was as follows:"
+                },
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th>Work Programme</th>    <th>MWP</th>    <th>Actual upto 01.03.2007</th>  </tr>  <tr>    <td>Reprocessing of 2D seismic data and its interpretation</td>    <td>330 GLK</td>    <td>Completed</td>  </tr>  <tr>    <td>3D seismic data</td>    <td>120 sq. km.</td>    <td>API of 172 sq. km. seismic data completed</td>  </tr>  <tr>    <td>Geochemical Survey</td>    <td>100 sq. km.</td>    <td>105 sq. km. completed</td>  </tr></table>"
+                },
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th colspan=\"4\">Exploratory Drilling</th>  </tr>  <tr>    <td>Work Programme</td>    <td>MWP</td>    <td colspan=\"2\">Actual upto 01.03.2007</td>  </tr>  <tr>    <td>Work Programme</td>    <td>MWP</td>    <td>Well Name</td>    <td>Meterage Drilling</td>  </tr>  <tr>    <td>Drilling of 4 MWP wells</td>    <td>1800m/ basement</td>    <td>Mahemedabad#2</td>    <td>1840 m</td>  </tr>  <tr>    <td>Drilling of 4 MWP wells</td>    <td>1500m/ basement</td>    <td>Vanthavali#1</td>    <td>1600 m</td>  </tr>  <tr>    <td>Drilling of 4 MWP wells</td>    <td>2600m/ basement</td>    <td>Uttarsanda#1</td>    <td>2000 m (basement encountered at 2000 m)</td>  </tr>  <tr>    <td>Drilling of 4 MWP wells</td>    <td>2000m/ basement</td>    <td>Khatraj#1</td>    <td>1448 m</td>  </tr></table>"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "A meeting was held on 25.09.2007 at DGH for Block CB-ONN-2001/1, in which it was deliberated that the well Uttarsanda#1 was drilled up to basement had to be proved by providing relevant data to DGH and in case ONGC could not prove that basement was reached, target depth of well Khatraj#1 would to be treated as 2600 mtrs."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "4th well Khatraj#1 was spudded on 17.02.2007 and target depth of 2600 m was reached on 31.03.2007 after expiry of phase-I which was on 01.03.2007. Thus unfinished MWP at the end of phase-I was 1152 meters (Uttarsanda#1: 600m left over plus Khatraj#1: 512m)"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "In the meeting held on 25.09.2007, DGH deliberated that Contractor may seek extension from 02.03.2007 to 31.07.2007 and enter phase-II from 01.04.2007."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Scenario 1- In case, contractor had to pay LD and BG on unfinished MWP as on 01.03.2007 and unfinished MWP would be 2000 mtrs-1448 mtrs = 552 mtrs."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Scenario 2- however, ONGC entered the 2nd phase from 02.03.2007, which resulted in unfinished MWP at the end of phase-I as 1152 meters and not 552 meters."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Consortium of ONGC and Cairn paid LD of US$ 77,996."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "ONGC sent a letter dated 22.01.2021 to DGH mentioning that excess LD of US$ 17,679 had been paid by the Consortium (cost of unfinished work for short of depth of 1152 meters in well Khatraj#1) demanded refund. In response to the said letter of ONGC, DGH vide letter dated 28.06.2021 deliberated that Operator proposal for excess LD US$ 17,679 had been reviewed and examined and it was stated that differential LD amount to be paid for 2nd extension of phase-I had been re-calculated on the basis of Audited accounts for the FY 2006-07 and FY 2007-08, as the actual cost incurred by contractor was more than the budgetary estimates provided for initial LD computation. Based on the re-calculation the differential amount of LD to be paid by ONGC was US$ 37,242.18 (approx. Rs. 29 lakh) and requested to remit differential amount of LD along with interest @LIBOR plus 2% in accordance with PSC provisions."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "ONGC responded (11.01.022) to the demand letter received from DGH dated 28.06.2021 and stated that excess amount of LD of US$ 61,299 may be refunded to ONGC. In response to the said letter, DGH vide letter dated 25.02.2022 again demanded differential amount of LD on account of cost of unfinished work program of US$ 53,194.11 (ONGC-US$ 37,242.18 and Cairn-US$ 15.951.93)."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "From the above, audit observed that"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "1. ONGC without seeking extension for Phase I from 02.03.2007 to 31.07.2007, entered into Phase II on 01.04.2007 itself, so the basis of claiming refund for short of depth doesn’t hold good. As seen from scenario 1 and 2 stated above, ONGC had opted for Scenario 2 and so depth of unfinished work programme stands at 1152 meters and not 552 meters as contended by ONGC. So, basis of claiming payment of excess LD needs explanation."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "2. DGH had sought LD from consortium based on re-calculation on the basis of audited accounts. Despite ONGC responding to DGH, DGH had reiterated its demand of US$ 37,242.18 (approx. Rs. 29 lakh) from ONGC in Feb 2022."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Firstly, DGH is not in agreement as the re-calculation was based on audited accounts as the contention is straight on short of depth and 2nd extension of phase I, as the actual cost incurred by contractor was more than the budgetary estimates."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Secondly, the response of ONGC based on cost of dry well basis when DGH hadn’t commented any on this needs elaboration as audit is of the view that ONGC’s contention is deviating from the actual claim of DGH based on cost of unfinished work program."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management in its reply (March 2023) stated that WON Basin through BMG has been sending mail to EXCOM every month to pursue the matter with DGH/MoPNG. However, no relief/waiver has been received from DGH/MoPNG to ONGC."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Thus, fact remains that ONGC incurred avoidable payment of LD of Rs. 22 lakh and avoidable liability of Rs. 30 lakh plus interest towards LD on account of cost of unfinished work program in Block CB-ONN-2001/1 for which , no relief/waiver has been received from DGH/MoPNG by ONGC."
+                }
+              ]
+            },
+            {
+              "sub_section_title": "Para 4: Review of Block I, Western Onshore Basin - Block CB-OSN-2003/1",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "The block was awarded to ONGC in NELP-V round. PSC was signed on 23.09.2005 and effective date was 05.12.2005. Block was handed over to Ankleshwar Asset on 23.09.2014."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Excess expenditure yet to be approved by Ministry"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Excess expenditure was incurred to the tune of Rs 169.47 crore (US$ 24.21 Million * 70) by Basin in comparison to benchmark cost which was as follows:"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "US$"
+                },
+                {
+                  "type": "table",
+                  "table": "<table>  <tr>    <th>Activity</th>    <th colspan=\"4\">Estimates as per PSC</th>    <th colspan=\"4\">Actuals</th>    <th></th>  </tr>  <tr>    <td></td>    <td>Unit</td>    <td>Rate</td>    <td>Qty</td>    <td>Total in Million</td>    <td>Unit</td>    <td>Rate</td>    <td>Qty</td>    <td>Total in Million</td>    <td>Excess Expenditure in Million</td>  </tr>  <tr>    <td colspan=\"10\">Phase-I</td>  </tr>  <tr>    <td>2D API</td>    <td>LKM</td>    <td>2120</td>    <td>1000</td>    <td>2.12</td>    <td>LKM</td>    <td>16,633</td>    <td>1200</td>    <td>19.96</td>    <td>17.84</td>  </tr>  <tr>    <td colspan=\"10\">Exploratory Well</td>  </tr>  <tr>    <td>Gulf South F-1</td>    <td>Meters</td>    <td>3100</td>    <td>2400</td>    <td>7.44</td>    <td>Meters</td>    <td>8648</td>    <td>1450</td>    <td>13</td>    <td>5.56</td>  </tr>  <tr>    <td colspan=\"10\">Phase II</td>  </tr>  <tr>    <td>ABAH</td>    <td>Meters</td>    <td>3495</td>    <td>2000</td>    <td>6.99</td>    <td>Meters</td>    <td>3242</td>    <td>2406</td>    <td>7.80</td>    <td>0.81</td>  </tr>  <tr>    <td></td>    <td></td>    <td></td>    <td></td>    <td></td>    <td></td>    <td></td>    <td></td>    <td>Total</td>    <td>24.21</td>  </tr></table>"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "From the above table, it could be seen that the excess expenditure was due to 2D data acquisition processing and interpretation for which a Russian contractor was chosen in ICB whose rates were higher than bid cost and the other attribute was cost incurred on ultra-shallow water rig in place of normal off shore rig."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The detailed reasons furnished by Management were as follows:"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "After award of the block 2003/1, it was found that the block fell within land, transition zone and shallow water area which required special equipment for data acquisition.  Due to which for 2D data acquisition a Russian Contractor was selected in International Competitive Bidding, whose rates were much higher than the bid cost and increase in input costs (Manpower, Materials, Services) due to time gap between the submission of the bid and actual execution resulted in excess expenditure of USD$ 17.84 million on 2D data acquisition. So, data acquisition cost substantially increased from the bench mark cost which was estimated based on land data acquisition system."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The bench mark cost of drilling of well Gulf South F-1 as per PSC was USD 7.44 MM based on the assumption that it was a normal off shore well.  However, the water depth in the area surrounding the well was 10-14m which necessitated hiring of ultra-shallow water rig, availability of which was very limited in oil industry.  The Ultra Shallow Water rig was Charter-hired through Global tender at a very high cost of US$ 1.35 lakh/day which resulted in excess expenditure in drilling exploratory well Gulf South F-1."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Audit observed that:"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "1. The excess expenditure incurred by Basin incurred during exploration phase -I and II in excess of benchmark cost has not been approved by MoP&G since 2012 till date (October 2022). The status of the same and details of follow up action taken by WON Basin may be intimated to audit"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "2. Approval of Audited Accounts of FY 2012-13 is pending for the above expenditure as on date (October 2022)."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management in its reply (March 2023) stated that approval is awaited from MoPNG for cost incurred during exploration phase-I and phase-II in excess of benchmark cost. Thus, fact remains that excess expenditure incurred by Basin is yet to be approved."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management is required to update the status of approval as and when received."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Unsettled issue on cost allocation on rig mobilization"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "DGH on audited account 2011-12 (MCR-28) has approved USD 4.99 million against expenditure of USD 5.13 million. DGH deliberated the reason for the above stating that, “rig was mobilized for 3 wells in each CB-OSN-2003/1, CB-ONN-2004/3 & CB-ONN-2004/, however, cost allocation of rig mobilization and transportation was allocated only for two blocks. This had resulted in higher well rig mobilization cost for well ABAH in audited account FY 2011-12.”"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Audit observed that:"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "1. Resultantly USD 0.129 million is still unsettled as on date (October 2022)"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "2. Approval of audited accounts for FY 2013-14 is pending as on date (October 2022)."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The follow up action and measures taken by WON Basin towards getting the audited accounts approved along with settling the issue of unsettled balance may be intimated to audit."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management submitted (March 2023) that approval of USD 0.129 million along with audited accounts for the period 2013-14 is still pending with DGH. Hence, USD 0.129 million is still unsettled."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management is required to update the status of approval as and when received."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Non-Payment of Liquidated damages - USD 1,132,287"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "DGH had raised the issue of non-payment of balance amount of USD 1,132,287 towards LD in respect of Phase-I in May 2020.  However, it was noticed that the dispute regarding CoUMWP and LD under PSC is being taken up through CEEE.  Consent letter for referring dispute of ONGC in line with terms and conditions has been sent to DG/DGH on December 2021.  The matter of CB-OSN-2003/1 was represented to the CEEE on 14.03.2022, however the final verdict is awaited as on date (October 2022)."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "DGH as a nodal officer had sought extension till June 2022 only however, final conciliation of the proceedings by CEEE as on date is still awaited."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management in its reply (March 2023) stated that the issue has been taken up by EXCOM and Basin is in regular contract with EXCOM. Hence, it is pertinent to mention that dispute of non-payment of amount of USD 1,132,287 towards LD in respect of Phase-I is still not been resolved."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management is required to update the status of approval as and when received."
+                }
+              ]
+            },
+            {
+              "sub_section_title": "Para 5:  Non-implementation of resolution of Board of Directors and partial operation of Kendriya Vidyalaya without considering the recommendation of Chairman- VMC by KVS had resulted in injustice to CSR expenditure incurred by ONGC",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "Kendriya Vidyalaya (KV) No. 4 ONGC, Vadodara, Gujarat is a project school sponsored by ONGC which is located inside ONGC Campus on Makarpura Road, Vadodara. It was established in the year 1993 with CBSE Affiliation No 400035. It is a single-session school (regular shift) from classes I to XII, with only science stream in senior secondary. The school is being running in temporary buildings (as on March 2023) since beginning despite an assurance by ONGC for construction of a permanent building on the land demarcated near Central Workshop along Tarsali Road which was expected to commence within a year from opening of KV in the campus. The proposal was indeed resolved by Board of Directors of ONGC in its 100th meeting held in August 1992. Finally, the Master Plan drawing has been recently approved by EC as stated by Management, which includes the new location of KV building and demolition of old buildings at the proposed location. Necessary actions for construction of new building and tendering have been initiated. The construction works shall be started after finalization of tender."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "From the records made available to audit, it could be seen that the authorities of KVS along with Principal of KV had raised the issue of permanent building time and again since 2017 as the existing structure persisted with issues of termite, seepage, water logging, cracks, depression in walls, floors along with other safety aspects like broken boundary walls, absence of emergency exit and many more. As neither action to restore the condition of temporary building was taking place nor any resolution in providing for permanent building to KV by ONGC, the principal of KV proposed (Dec. 2020) to Dy. Commissioner, KVS, RO, Ahmedabad for discontinuation of admission in (entry level) Class I and XI for the session 2021-22. Accordingly, after approval from the KVS, RO, Ahmedabad, admission in class I and Class XI was stopped from the academic year 2021-22."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "ONGC provided (Nov. 2021) assurance to KVS for renovation of the school premise before start of academic year 2022-23 and Chairman had categorically asked to restart Class I and XI. Based on the assurance, the principal of KV proposed to Dy. Commissioner, KVS, RO, Ahmedabad (copy of the same was marked to Chairman- ONGC) for review the decision of admission for Class I and Class-XI (science). The sanctioned staff strength for the year 2022-23 was received by KV- ONGC by including staff for Class I and Class-XI. Subsequently, as the progress of work in the temporary building was not as expected, Principal KV- ONGC had proposed not to start Class I for the academic year 2022-23. However, class XI was restarted in the academic year 2022-23.  Similarly, for the year 2023-24, KVS had not approved starting of class I but had concurred for additional for class XII and continuing class XI.  At present (April 2023) the school is not having Class I, II and III. Class I admission for the year 2023-24 was not initiated in the school."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "From the scrutiny of files and related documents it was observed in audit that;"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Despite direction from ONGC’ Board of Directors, ONGC-Vadodara had failed to provide permanent building to KV as committed, even after lapse of 28 years."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management replied that  (March 2023) the Master Plan drawing has been recently approved by EC, which includes the new location of KV building and demolition of old buildings at the proposed location. Necessary actions for construction of new building and tendering have been initiated. The construction works shall be started after finalization of tender. Management is required to update the anticipated cost and detailed timeline on the same."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Non-synchronization of Civil works by ONGC Management in summer vacation of schools in the year 2022-23 had resulted in non-completion of work in temporary building which prompted KV – ONGC to propose discontinuation of Class I despite sanctioned staff strength for the year 2022-23 was received by KV- ONGC by including staff for Class I and Class-XI.  The lack of initiative by Civil Department of ONGC had resulted not only in discontinuing entry level in 2022-23, but it gave way to KV – ONGC for proposing to KVS the option of either restarting  the entry level in 2023-24 or otherwise."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "As per the established procedure of KVS, Principal of the Project KV with due approval of Chairperson/ VMC in Format A of KVS reporting form has to send the data of staff strength proposed for upcoming year (considering the addition/ deletion in classes/ section) to KVS, RO. In addition to the counter signed form, Principal, KV -"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "ONGC included two proposals, giving options for KVS to restart or put on hold the entry level admission for the year 2023-24, wherein the fulfilment of committed renovation work by ONGC, duly acknowledged by the incumbent principal had been deliberately ignored in the letter.  The requirement of permanent building was reinstated but the condition of school after renovation was not appraised. This invites attention, as in the year 2022-23, despite KVS granting permission to start entry level, photographs of incomplete civil work was shared by KV ONGC Baroda to KVS and admission was not commenced, however this year i.e., 2023-24, photographs of completed renovated work was not shared with KVS.  This tantamount to hiding the fact of restoration/renovation work undertaken at a huge cost out of CSR fund.  Justification from KV- ONGC may be obtained in this regard."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Further, ONGC had stated that they had  Phase-II works have been discussed in the VMC, and the proposal for seeking sanction is on and it had stated that the existing building is structurally safe and in healthy state. In view, of the current development in KV – ONGC, expenditure proposed to be incurred should be given a thought by the Management and proposal of ONGC may be furnished to audit."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "If permanent building was the only requirement and safety concerns were persisting, KV- ONGC/KVS may be asked to furnish the justification for inclusion/addition of Senior Secondary education in the year 2023-24 and ignoring entry level admission.  KV- ONGC/KVS has acted against the recommendations of Chairman- Vidyalaya Management Committee (VMC) starting from 2021-22 onwards and they are persisting with their own decisions. All the expenditures of the project school including salary and building requirements are borne by ONGC from its CSR fund. If, ONGC Management doesn’t have a say in the CSR expenditure incurred, it is high time that it is reviewed at the earliest."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management stated that (April 2023) that CSR expenditure for KV schools is a policy matter. However, based on the recent developments and inputs from KV, it has been planned to communicate to the headquarters and KVS requesting for suitable intervention."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management is required to obtain justification from KVS on its action against the recommendations of Chairman- VMC and the result of communication to Corporate Office and action proposed may be intimated to audit."
+                }
+              ]
+            },
+            {
+              "sub_section_title": "Para 6: Inaction by WON Basin- Vadodara even after dismissal of its petition by court has resulted in outstanding liability towards 10” and 12” water connection amounting to Rs. 4.83 crore",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "ONGC campus at WON Basin has two active 10-inch water pipeline connections and one 12-inch water pipeline connection as on October 2022. For the active three pipeline connections, bills are being raised by Vadodara Municipal Corporation (VMC) on quarterly basis. From the bills received and payment made by ONGC it was seen that outstanding was being accumulated year on year on one 10” water pipeline connection (old) and 12” water pipeline connection. With respect to new 10” water pipeline connection taken for residential purpose, there was no outstanding as on 31.03.2022."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "During the ongoing audit, the existing active water pipelines were studied in detail"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "10” water pipeline connection – OLD"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Connection of 10-inch water pipeline was installed in ONGC Campus for supplying water to 1373 quarters. From the files furnished to audit, it was seen that out of 1373 quarters for which demand was raised by VMC, many have been demolished and presently there were only 702 quarters. Even out of 702 quarters, 239 quarters had been earmarked for demolition.  This very fact though has been communicated to VMC, has not been resolved despite an assurance to Government Audit in 2017. Non-resolution of the status of existing quarters with VMC for which 10-inch water pipeline connections were being availed/serviced has resulted in VMC raising demand for the entire 1373 quarters at the prevailing rate i.e., Rs. 1000 per quarters on quarterly basis. Latest bill raised by VMC in February 2022 in respect of 10” water pipeline was to the tune of Rs. 1.48 crore, but Management deposited an amount of Rs. 4 lakh against VMC’s demand. The short deposit of minimum deposit amount by ONGC was seen as unilateral move which was as per its resolution No. 223 dated Feb 2013.  This has resulted in accumulation of outstanding bills to the tune of Rs. 1.44 crore as on March, 2022."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "In this regard, Audit called for"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "1. Since assurance to Government audit was provided for resolving the issue with VMC, the status was called for. In reply (March 2023) it was stated that ONGC Vadodara had a meeting with commissioner VMC on the issue (January 2023) and a formal letter was personally handed over to Asst. Commissioner (February 2023). Asst. Commissioner has deputed 02 officers (March 2023) to ONGC to physically see the ONGC properties/water pipelines. However, fact remains that issue has not been resolved till date."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "2. There were series of meetings in 2021 and VMC team had visited to inspect old abandoned quarters and directed ONGC to install water flow meter, which has not yet been installed (Oct 2022).  Inaction on the part of ONGC was called for."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management stated (March 2023) that decision of VMC is awaited on the matter of treatment of arrears and the matter of flow meter."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "12” water pipeline connection – Since 1987"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "In 1987 ONGC took up construction of 428 flats in seven multistory residential towers. A new line of 12-inch diameter was given by VMC to ONGC in August, 1989 for supply of 4.5 lakh gallons per day. VMC started raising the bills at commercial rates for 12” line which ONGC continued to pay till June, 1991. In July, 1991 ONGC noticed that the bills raised by VMC were at commercial rates which was about four times of Domestic rates and thereafter, ONGC stopped paying the bills. VMC disconnected the Water Connection in May, 1997 which was reinstated after payment of due bills by ONGC. ONGC filed a suit in District Court in May, 1997 and court passed an interim injunction on 23.05.1997 to maintain status quo by ONGC and VMC with condition to deposit 50% of outstanding amount by ONGC on or before 23.05.1997 to Court. ONGC deposited the amount on 22.05.1997. VMC continued to raise the Bills at commercial rates and ONGC continued to pay 50% of the Bills directly to the Court till 2000."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "A meeting was held between ED of ONGC Baroda and Commissioner VMC on 24.02.2000 and it was agreed upon that from future onwards ONGC will deposit 50% of the billed amount to VMC directly instead of Court and VMC assured to supply 3.5 lakh gallons of water per day against 4.5 lakh gallons/day. This arrangement was communicated to Court."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Subsequently an agreement (MOU) was signed between ONGC and VMC in 2004 for settlement of water charges issues, wherein payment in settlement of full and final claim passed vide resolution 203 dated 19.08.2004 was accepted by VMC subject to certain conditions."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Regular Civil Suit no: 947/1997 filed by ONGC against VMC was dismissed by Vadodara District Court on 31.07.2018."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "VMC team visited ONGC- Baroda in Feb-March 2021, after discussion on diameter of pipleines, number of connections and usage etc., it finally wanted to know the measurement of water supply but that could not be done as the water flow meters were out of order."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Audit observed that"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "1. The matter is no more subjudice and Honorable Court had finally dismissed the petition citing an agreement which was arrived in 2004, which was intimated to court then. Now even after 18 years of signing an MOU, ONGC – WON Basin could settle the levy of water charges at commercial rate vs domestic rates (as contented)."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "3. Even after two decades, ONGC couldn’t convince VMC to stop raising bills on commercial rates and it continues to pay 50% of dues on its own terms and the accumulated outstanding is to the tune of Rs. 3.39 crore up to March, 2022."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management in its reply (March 2023) had stated that the issue was under active examination by the municipal authorities. It had also stated that the water supply including internal pipelines was managed through a water contract which is taken care by civil department and all the sumps and pipelines are under constant surveillance and maintenance. But, audit could not ascertain whether a daily progress report (DPR) is drawn by civil department to measure the actual water intake by ONGC Vadodara and its real time bifurcation for commercial and domestic use. Further, there is no active flow-meter installed to justify or convince VMC to prove   the contention of ONGC."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management is required to address the issue of effective implementation of annual repair and maintenance water contract by civil department so that coordination of electrical, mechanical and civil work is in proper shape, which will help ONGC bifurcate the real time usage of commercial and domestic and correspond with VMC for early settlement of long pending issues."
+                }
+              ]
+            },
+            {
+              "sub_section_title": "Para 7: Non-compliance to Board’s decision and functioning of Baroda High school inside ONGC premises without valid agreement",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "ONGC requested Baroda Lions Club in 1964 to set up a school in ONGC premises, Baroda. Baroda Lions Club entered into a Leave and License Agreement with ONGC in 1964. Twelve numbers of ‘A’ type quarters were handed over to Baroda High school on License deed dated 07.06.2005. Later on, ONGC Baroda communicated to Lions Club Baroda that ONGC is not interested for renewal of agreement beyond 31.03.2006 and after approval of ED-Basin Manager, the Baroda Lions Club was allowed to run the school up to the academic session of 2010. The last Leave & License deed lapsed on 31.03.2010. After 2010, many eviction notices were issued to Baroda Lions Club to vacate the premises of ONGC. Meanwhile, a proposal was initiated by Western Onshore Basin, Baroda in 2015 for consideration and approval of Director (HR) with recommendation to approve the extension of Lease till end of academic session 2017. The decision of Director (HR) for extension was communicated to Baroda Lions Club with the direction to hand over the entire premises by April, 2017. However, no Leave & License agreement was entered for the period April, 2010 to March, 2017."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Thereafter, the ONGC Board has passed a resolution in its 197th Meeting (Jan 2010) and granted approval of the Board for Eviction Proceedings as per Public Premises (Eviction of unauthorized occupants) Act, 1971 for eviction of unauthorized occupier in line with the guidelines by the Ministry of Urban Development on 14.01.1992. The Director-HR also approved the proposal that no further extension beyond 31.03.2017 may be permitted to Baroda High School in ONGC Vadodara Premises. Accordingly, ONGC sent a letter dated 17.11.2016 to Baroda Lions Club to hand over the possession of Baroda High School Premises along with 12 ‘A’ type quarters by 31.03.2017. However, proposal for extension up to 31.03.2018 was forwarded from WOB Vadodara for obtaining approval of Director HR wherein approval was not given. Reminders were sent to BLCET for handing over the School Building along with 12 A type quarters. A Committee was also formed in August 2017 by Director-HR to examine the eviction case of Baroda High School. Vide reminder dated 09.05.2019 to President, BLCET, ONGC intimated that they will not be accepting any rent of BHS premises from June 2019."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Afterward, a separate file was initiated for continuation of BHS managed by BLCET in ONGC, Vadodara campus and communication was sent on 15.07.2019 for seeking approval of Director-HR with recommendations to allow BHS to continue in ONGC premises by mentioning facts of the case. The matter was followed with the office of D-HR vide communication dt: 27.11.2019 & 03.06.2020 and through mail dt: 08.06.2020 and 10.01.2021. However, no communication received from Head quarter in reply of mail dated 08.06.2020 from GGM (HR)-Support Manager, WON Basin, Vadodara and the file is still pending at the level of the ONGC Headquarters. Afterwards, proposal for continuation of BHS inside ONGC premises put in VCC for recommendation to submit to Director-HR for taking final decision in August 2021."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "During the course of Audit, following were observed:"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Board in 197th Meeting dated January 2010 directed for the Eviction of unauthorized occupier from ONGC premises. A committee was formed with the approval of Director (HR) with objective to examine the issue of non-implementation of decision of Director-HR along with suggesting way for getting the premises evicted. Report was expected to be submitted by September, 2017.  However, Committee report was not found on record. WON Basin, Baroda in its reply (June 2021) stated that the matter was followed up with Corp Estate, Dehradun to provide the copy of the report submitted by the 4 member committee, but the same has also received by audit till date (March 2023)."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "In connection with the issue, in Feb 2018 Shri S.C. NAGPAL, Advisor, ONGC also made a visit.  Report submitted by advisor was called for by audit. WON Basin, Baroda in its reply (March 2023) had stated that he has never submitted any report to ONGC, Vadodara office as far as their office records are concerned."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "BHS was paying the monthly rent as per the previous license deed which was valid till 31.03.2010. ONGC has also been accepting rent even after approval to continue the BHS was only till 31.03.2017. It was in June 2019, when ONGC stopped accepting rent from BHS. Despite that an amount of Rs. 70,902/- was deposited against the rent for the month of Dec’19, Jan’20, Feb’20 during 2019-20 as per information furnished by Management.  Further State Bank of India Branch in ONGC premises paying rent/license fee of Rs. 57,179/- (117.69 per sq. mtr per month) per month for 485.85 sq. mtr. area as per the license deed executed in August 2020. Previously, SBI was paying Rs. 45743/- (94.15 per sq. mtr per month) per month since November 2017 as per license deed. It is pertinent to mention that plinth area of BHS is 3585 sq. mtr. and ONGC should have demanded a rent of Rs. 3,37,527/- per month from April 2017 to July 2020 and Rs. 4,21,919/- from August 2020 to October 2022 or till eviction from ONGC premises amounting to total Rs. 2.49 crore from BHS, however, WON Basin, Baroda failed to evict their premises from BHS and BHS continued to deposit cheques of Rs. 23634/- towards rent to ONGC as per license deed which expired way back in March 2010 itself.  Management has stated that (March 2023) in case of decision awaited from the Headquarters conveyed then the lease /rent for remaining period after June, 2019 will be regularized. Rent will be calculated on the basis of market rate."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Property tax was being paid by BHS upon instruction of ONGC, the validity of such practice needs to be explained by Management.  No reply was furnished by Management."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Structural audit was asked to be conducted by BHS (September 2021) and the opinion/report was sought by ONGC- Baroda. Even if they furnish a report,"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "the validity of the report can’t be ascertained"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "the agency may not be a Government approved agency and safety of 3500 kids will be at stake"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Herein audit was asked to be appraised of justification of ONGC in asking BHS, which was not the owner of the building to conduct a structural audit on its own, which consented to conduct too in September 2021.  No reply was furnished by Management"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "ONGC, Baroda is making payment of Self lease at the rate of Rs.35 per square feet for 385 square feet to Employees entitled for “A” type quarters. Management needs to regularize the Leave and License Agreement from April, 2010 with recovery of rent from Baroda High School in line with valuation decided by ONGC for the areas nearby ONGC Premises. Management in its reply (June 2021) stated that since, the decision of the eviction was taken in 2010 and no further lease agreement was made rather only date of eviction of the BHS was extended, hence no discussion made with the BHS to enhance the lease rent at par with the self-lease rent. No reply was furnished by Management"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Vide noting dated 07.01.2016, it was mentioned that Baroda Lions Club had constructed a separate building outside Baroda ONGC campus for their school. If Baroda High School failed to hand over the possession by April 2017, the eviction proceedings will be initiated by ONGC. Director (HR) had approved (January 2016) the fact that no further extension beyond 31st March 2017 may be permitted to Baroda High School in ONGC Vadodara premises. Accordingly, ONGC had then sent a letter ref BDA/Estate/BHS/2016 dated 17.11.2016 to Baroda Lions Club Education Trust (BLCET) to hand over the possession of Baroda High School premises along with 12 A type quarters to this Office by 31st March 2017. Despite clear decision by Director HR that no further extension beyond 31st March 2017, no meaningful efforts appear to have been made for getting the premises evicted. In this regard it is pertinent to mention that as Director-HR approved the proposal that no further extension beyond 31.03.2017 may be permitted to Baroda High School in ONGC Vadodara Premises, despite that BHS is continue to run in ONGC premises till date. Even in September 2019 and August 2021 proposal was initiated for continuation of BHS inside ONGC premises by WON Basin, Baroda which is not in-line with the directives of Director-HR. Management may appraise to audit, how the local Management had initiated a fresh proposal seeking permission for continuation of BHS, when there was clear direction from Director (HR). No reply was furnished by Management"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Furthermore, Baroda Lions Club Education Trust (BLCET) visited ONGC premises on 17.02.2021 and 18.03.2021 and later on due to spread of covid-19, a virtual meeting was conducted on 03.05.2021. After the discussions, BLCET had verbally given consent for adopting CBSE board education system to accommodate students from KV No. 4 ONGC as KV new admission in Class-I and Class-11 for the academic year 2021-22 and also accommodate the current (around 600 nos.) KV school students into the new CBSE board or State Board as per their choice. Basin Manager, Western Onshore Basin, ONGC Vadodara will be the “Chairman” of the BHS School Management Committee along with three ONGC executives and three members of BLCET as other members. Further, quota of 50 seats reserved for “ONGC wards” (Category-I) in Standard-I every year and a quota for minimum 5 students per class in other standards as per the fee structure of KV. BHS shall pay rent to ONGC as per the revised rates from past date. Rates and periodicity will be fixed after negotiations between BLCET and ONGC. In view of the above it seems that WON Basin, Baroda not shown favoritism towards BHS by primarily not following directives of Director-HR for eviction of BHS from ONGC premises and secondly no legal action has been initiated by WON Basis even after 12 years of expiry of legal lease deed.  No reply was furnished by Management"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management’s plan and action for regularizing the extended occupancy period, recovery of revised rent beyond April 2010 along with servicing legal notices and ensuring vacation from ONGC premises may be elucidated along with decision on files submitted by ONGC Baroda was asked to be obtained from Chief HR, New Delhi and furnished to audit."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management in its reply (March 2023) stated that with reference to Govt. Audit observation they have sent mail to ED-Chief HR (January 2023) where the issues pertaining to BHS inside the ONGC premises highlighted for decision. However, till date no reply has been received from the office of ED-Chief HR."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Audit is of the view that the issue may be taken up with Corporate Office- New Delhi on priority with seriousness and communicate the outcome of the long pending issue at the earliest."
+                }
+              ]
+            },
+            {
+              "sub_section_title": "Para 8: Non-compliance to Business Allocation rule, 1961 and Office Memorandums issued by Ministry of Information and Broadcasting, Govt. of India by WON Basin, Vadodara",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "As per Para 23 (VI) of Business Allocation rule, 1961, Ministry of Information and Broadcasting (MoIB) is the nodal Ministry for ‘Production and release of advertisement on behalf of Govt. of India’. Bureau of Outreach and Communication (BOC) (erstwhile DAVP) is the nodal directorate under MoIB to execute the above mandate."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "MoIB vide its Office Memorandum (OM) dated October 2014 conveyed the recommendations of the Committee of Secretaries (CoS), which interalia mentioned that content, media plan and display of advertisement by different Ministries/ Department should be designed by BOC in consultation with client Ministries/ Departments so that uniformity and consistency with a broad theme is ensured."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The Cabinet Secretary vide his DO letter (September 2016) to all the Secretaries of Govt. of India, pointed out that many Public Sector Undertakings (PSUs) are issuing their advertisements directly to the newspaper without involvement of DAVP. The fact was also reiterated by Secretary/ MoIB vide his DO letter (June 2017 and October 2021) and OM dated December 2021 to all the Secretaries of Govt. of India and requested them for release of newspaper advertisements by all the PSUs under their Ministries through BOC (erstwhile DAVP) only."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "BOC not only releases advertisements at much lower rate in comparison to market rate, it is also to be noted that the rates which are charged finally are 15 percent less, as agency commission is ploughed back to the Ministry/ Department concerned. Audit observed that Corporate Communication department of ONGC Western Onshore Basin, Vadodara released both type of advertisements i.e. Display (Communication and Publicity) and Classified (Tender, recruitment and notices) either through ONGC empaneled agency or directly without involvement of BOC. During the period 2020-22, auditee advertised either through empaneled agencies or directly to tune of Rs. 9.97 lakhs.  By not advertising through BOC, auditee was deprived of benefit to the tune of Rs. 1,49,671 (15% agency commission)."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "It is also pertinent to mention that in accordance with directions (DO letters and OMs) issued by Govt. of India and Business Allocation rule, 1961, ONGC had no liberty to empanel the agency for advertisement and to advertise directly or through empaneled agency."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Management in reply (March 2023) had expressed correspondences by Corporate Communication – New Delhi issued in the year 2018 and no reference to OM dated December 2021 mentioned in the audit observation was replied by Management. Further, it had quoted constraints like ONGC does not have a system in place for making payment in advance, and that CC jobs are dynamic in nature and there is paucity of time, PMO clearance and newspapers not agreeing to use DAVP rates, ONGC like other oil PSU’s and CPSEs is releasing ads on commercial rates."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Audit is of the view that the issue may be taken up by Corporate Communication at Corporate Office- New Delhi with DAVP and it may communicate the outcome of the correspondence at the earliest."
+                }
+              ]
+            },
+            {
+              "sub_section_title": "Para 9:  Non-recovery of Rs. 35.17 crore from Oil India Ltd. due to lack of safeguard clause in work order",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "OIL India Limited requested ONGC management to mobilize Crisis Management Team (CMT) for Blowout control Operations due to blow out at chartered hire work over Rig John-25 in well no. Baghjan-5 of Oil India Ltd. in Duliajan, Assam on 27.05.2020. As per instruction of Director (T&FS), CMT members from Sivasagar and Corporate CMT, Baroda were mobilized to the location for carrying out blow out control operation.  Work order was subsequently placed by Contracts Department of OIL on 01.06.2020 which was as per ONGC Executive Committee’s approved current day rates (of ONGC CMT personnel) for their full deployment period applicable for the year 2020-21 & other ONGC payment conditions for Blow out control job including rental charges of ONGC equipment."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Well Baghjan-5 was successfully capped after 83 days on 17.08.2020. OIL India Limited finally declared well killing and final abandonment was completed on 03.12.2020. CMT ONGC-Baroda raised Invoice for Manpower deployment (Rs. 26.33 crore) and equipment rental charges (Rs. 8.84 crore) to OIL India Limited Duliajan in January 2021 and March 2021 respectively with request to pay the dues immediately. In the meanwhile, going through the correspondences between ONGC and OIL, the situation was declared as “National Crisis” by Hon’ble Minister of Petroleum and Natural Gas (MoPNG). As the payment was beyond the normal credit period, Director (T&FS) requested OIL to pay outstanding amount of Rs. 35.17 crore in September 2021.  OIL neither made any payment towards the dues as demanded by ONGC vide their invoice referred above nor it gave a  positive response to letter from Director (T&FS), but in contrast CMD OIL in January 2022 demanded for waive off of the invoiced amount stating Blowout incident as National Crisis.  CMD OIL reiterated ONGC management to waive off in March 2022 and went on to thank ONGC for considering their request."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "In view of the above, following observations were made during audit"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "(i) The fact remains that despite multiple reminders (last such reminder made available to audit was in May 2022) by Corporate CMT- ONGC, OIL has not paid any amount (as on Sep 2022) towards the due of Rs. 35.17 crores, but letter addressed by CMD OIL in March 2022 as stated above, carries a thanking note for considering their request. Audit was asked to appraised of the textual content conveyed by OIL to ONGC vide that letter and clarify if ONGC had formally agreed for waive off."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "(ii) Factually blow out happened on 27.05.2020 and work order was placed on 01.06.2020, when there was time gap between incidence and work order receipt, why was safeguard clause to prevent any unforeseen financial losses on account of contract overlooked by ONGC. Any sort of advance clause would have safeguarded ONGC on payment issues, which is being experienced now. It is almost two full years since service was rendered by ONGC for which zero payment was received by it till date (Sep 2022)."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "(iii) It was formally appraised to audit in June 2022 that a formal meeting was requested by ONGC for which M/s OIL has agreed to. The meeting was to be held shortly wherein it was intimated to audit that honoring of payment by M/s OIL would be insisted upon in terms of ‘ONGC Crisis Management Team Hazardous Work Order’ vide dated 01.06.2020. The formal MOM of this meeting was called for."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Reply of the Management is awaited (March 2023)."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "part_title": "PART III",
+      "sections": [
+        {
+          "section_title": "General",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "OUTSTANDING INSPECTION REPORTS/PARAS:"
+            },
+            {
+              "type": "paragraph",
+              "text": "NIL"
+            }
+          ],
+          "sub_sections": []
+        }
+      ]
+    },
+    {
+      "part_title": "PART IV- BEST PRACTICES:",
+      "sections": [
+        {
+          "section_title": "General",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "-NIL-"
+            }
+          ],
+          "sub_sections": []
+        }
+      ]
+    },
+    {
+      "part_title": "PART V- ACKNOWLEDGEMENT",
+      "sections": [
+        {
+          "section_title": "General",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "During the audit, all matters including production of records were fully cooperated by the officials of WON Basin- Baroda. The Basin was headed by Shri KRK Singh/P R Mishra, Executive Director who was designated as Basin Manager and assisted by respective Level-II Officers at the rank of (Group) General Manager/Dy. General Manager. Shri. Rishikesh Sonthalia, General Manager was Incharge of Finance and Accounts of Basin, Baroda."
+            },
+            {
+              "type": "paragraph",
+              "text": "(S. SURESH)"
+            },
+            {
+              "type": "paragraph",
+              "text": "Senior Audit Officer"
+            },
+            {
+              "type": "paragraph",
+              "text": "CAG Audit"
+            }
+          ],
+          "sub_sections": []
+        }
+      ]
+    }
+  ]
+}
