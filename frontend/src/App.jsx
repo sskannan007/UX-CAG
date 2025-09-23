@@ -10,6 +10,7 @@ import BulkUploadViewer from './pages/BulkUploadViewer';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
 import UserManagement from './pages/UserManagement';
+import DataValidationPage from './pages/DataValidationPage';
 import './App.css';
 
 function AppContent() {
@@ -140,12 +141,7 @@ function AppContent() {
         } />
         <Route path="/data-validation" element={
           <ProtectedRoute requiredRole="dataValidation">
-            <LayoutWithSidebar>
-              <div className="container mt-5">
-                <h1>Data Validation</h1>
-                <p>This is a placeholder data validation page.</p>
-      </div>
-            </LayoutWithSidebar>
+            <DataValidationPage />
           </ProtectedRoute>
         } />
         <Route path="/assigned-documents" element={

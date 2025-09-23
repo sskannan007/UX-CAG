@@ -3,15 +3,15 @@ import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react'
 
 import { Modal, Button, Spinner, Container, Card } from 'react-bootstrap';
 
-import CustomNavbar from './navbar';
+import TopNavbar from '../components/TopNavbar';
 
-import Sidebar from '../components/common/Sidebar';
+import SideNavbar from '../components/SideNavbar';
 
 import { Outlet, useLocation } from 'react-router-dom';
 
 import extractedData from './extractedData';
 
-import config from '../../config.js';
+import config from '../config.js';
 
 
 
@@ -6099,13 +6099,13 @@ const DataValidationPage = () => {
 
       <style>{docxCustomStyles}</style>
 
-      <CustomNavbar />
+      <TopNavbar />
 
       <div style={{ marginTop: '85px', height: 'calc(100vh - 85px)', backgroundColor: '#f7fbff' }}>
 
         <div className={isSidebarOpen ? 'navbar-open' : ''} style={{ display: 'flex', height: '100%' }}>
 
-          {/* <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} /> */}
+          <SideNavbar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
           <div className="flex-grow-1 pt-3 close-navbar-additional" style={{
 

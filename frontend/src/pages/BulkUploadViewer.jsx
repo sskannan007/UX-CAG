@@ -249,6 +249,89 @@ const BulkUpload = () => {
     // The filtering logic will be applied in the render function
   };
 
+  // Handle file row click to navigate to DataValidationPage
+  const handleFileRowClick = async (doc) => {
+    try {
+      console.log('Clicked file:', doc);
+      
+      // Fetch the file details and JSON data from the API
+      const response = await fetch(`${config.BASE_URL}/api/uploaded-files/${doc.id}`);
+      if (response.ok) {
+        const fileData = await response.json();
+        console.log('Fetched file data:', fileData);
+        
+        const navigationState = {
+          fileId: doc.id,
+          fileName: doc.name,
+          jsonData: fileData.extracted_json,
+          docxInfo: {
+            id: doc.id,
+            name: doc.name,
+            department: doc.department,
+            year: doc.year,
+            state: doc.state,
+            status: doc.status,
+            assignedTo: doc.assignedTo,
+            uploaded_at: doc.uploaded_at
+          },
+          isLoading: false,
+          source: 'original'
+        };
+        
+        console.log('Navigating with state:', navigationState);
+        
+        // Navigate to DataValidationPage with the file data
+        navigate('/data-validation', {
+          state: navigationState
+        });
+      } else {
+        console.error('Failed to fetch file details:', response.statusText);
+        // Still navigate but with limited data
+        navigate('/data-validation', {
+          state: {
+            fileId: doc.id,
+            fileName: doc.name,
+            jsonData: null,
+            docxInfo: {
+              id: doc.id,
+              name: doc.name,
+              department: doc.department,
+              year: doc.year,
+              state: doc.state,
+              status: doc.status,
+              assignedTo: doc.assignedTo,
+              uploaded_at: doc.uploaded_at
+            },
+            isLoading: false,
+            source: 'original'
+          }
+        });
+      }
+    } catch (error) {
+      console.error('Error fetching file details:', error);
+      // Navigate with available data
+      navigate('/data-validation', {
+        state: {
+          fileId: doc.id,
+          fileName: doc.name,
+          jsonData: null,
+          docxInfo: {
+            id: doc.id,
+            name: doc.name,
+            department: doc.department,
+            year: doc.year,
+            state: doc.state,
+            status: doc.status,
+            assignedTo: doc.assignedTo,
+            uploaded_at: doc.uploaded_at
+          },
+          isLoading: false,
+          source: 'original'
+        }
+      });
+    }
+  };
+  
   // Count active filters (excluding search since it's separate)
   const getActiveFilterCount = () => {
     let count = 0;
@@ -618,72 +701,74 @@ const BulkUpload = () => {
       <h2 className="dashboard-heading">Good Morning Sarav!</h2>
 
       {/* Summary Cards */}
-         <div className="dashboard-stats">
-             <div className="stat-card">
-                 <div className="stat-icon assigned">
-                 <i className="fas fa-file-arrow-up"></i>
-                 </div>
-                 <div className="stat-content">
-                 <p className="stat-count">{dashboardStats.assigned}</p>
-                 <p className="stat-label">Assigned</p>
-                 </div>
-             </div>
-             
-             <div className="stat-card">
-                 <div className="stat-icon unassigned">
-                 <i className="fas fa-file"></i>
-                 </div>
-                 <div className="stat-content">
-                 <p className="stat-count">{dashboardStats.unassigned}</p>
-                 <p className="stat-label">Unassigned</p>
-                 </div>
-             </div>
-             
-             <div className="stat-card">
-                 <div className="stat-icon pending">
-                 <i className="fas fa-clock"></i>
-                 </div>
-                 <div className="stat-content">
-                 <p className="stat-count">{dashboardStats.pendingValidation}</p>
-                 <p className="stat-label">Pending Validation</p>
-                 </div>
-             </div>
-             
-             <div className="stat-card">
-                 <div className="stat-icon overdue">
-                 <i className="fas fa-exclamation-triangle"></i>
-                 </div>
-                 <div className="stat-content">
-                 <p className="stat-count">{dashboardStats.overdue}</p>
-                 <p className="stat-label">Overdue</p>
-                 </div>
-             </div>
-             
-             <div className="stat-card">
-                 <div className="stat-icon completed">
-                 <i className="fas fa-check-circle"></i>
-                 </div>
-                 <div className="stat-content">
-                 <p className="stat-count">{dashboardStats.completed}</p>
-                 <p className="stat-label">Completed</p>
-                 </div>
-             </div>
-             
-             <div className="dashboard-buttons">
-                 <button 
-                     className="btn-add-document"
-                     onClick={() => navigate('/bulk-upload/upload')}
-                 >
-                     <i className="fas fa-upload"></i>
-              Add Document
-                 </button>
-                 <button 
-                     className="btn-assign-document"
-                     onClick={() => navigate('/bulk-upload/view-files')}
-                 >
-                     <i className="fas fa-user-plus"></i>
-              Assign Document
-                 </button>
+         <div className="dashboard-stats-contain">
+          <div className="dashboard-stats">
+              <div className="stat-card">
+                  <div className="stat-icon assigned">
+                  <i className="fas fa-file-arrow-up"></i>
+                  </div>
+                  <div className="stat-content">
+                  <p className="stat-count">{dashboardStats.assigned}</p>
+                  <p className="stat-label">Assigned</p>
+                  </div>
+              </div>
+              
+              <div className="stat-card">
+                  <div className="stat-icon unassigned">
+                  <i className="fas fa-file"></i>
+                  </div>
+                  <div className="stat-content">
+                  <p className="stat-count">{dashboardStats.unassigned}</p>
+                  <p className="stat-label">Unassigned</p>
+                  </div>
+              </div>
+              
+              <div className="stat-card">
+                  <div className="stat-icon pending">
+                  <i className="fas fa-clock"></i>
+                  </div>
+                  <div className="stat-content">
+                  <p className="stat-count">{dashboardStats.pendingValidation}</p>
+                  <p className="stat-label">Pending Validation</p>
+                  </div>
+              </div>
+              
+              <div className="stat-card">
+                  <div className="stat-icon overdue">
+                  <i className="fas fa-exclamation-triangle"></i>
+                  </div>
+                  <div className="stat-content">
+                  <p className="stat-count">{dashboardStats.overdue}</p>
+                  <p className="stat-label">Overdue</p>
+                  </div>
+              </div>
+              
+              <div className="stat-card">
+                  <div className="stat-icon completed">
+                  <i className="fas fa-check-circle"></i>
+                  </div>
+                  <div className="stat-content">
+                  <p className="stat-count">{dashboardStats.completed}</p>
+                  <p className="stat-label">Completed</p>
+                  </div>
+              </div>
+              
+              <div className="dashboard-buttons">
+                  <button 
+                      className="btn-add-document"
+                      onClick={() => navigate('/bulk-upload/upload')}
+                  >
+                      <i className="fas fa-upload"></i>
+                Add Document
+                  </button>
+                  <button 
+                      className="btn-assign-document"
+                      onClick={() => navigate('/bulk-upload/view-files')}
+                  >
+                      <i className="fas fa-user-plus"></i>
+                Assign Document
+                  </button>
+            </div>
           </div>
          </div>
 
@@ -1399,8 +1484,13 @@ const BulkUpload = () => {
                    </tr>
                  ) : (
                    filteredDocuments.map((doc) => (
-                     <tr key={doc.id}>
-                       <td>
+                     <tr 
+                        key={doc.id} 
+                          style={{ cursor: 'pointer' }}
+                          onClick={() => handleFileRowClick(doc)}
+                          className="table-row-hover"
+                      >
+                       <td onClick={(e) => e.stopPropagation()}>
                          <input type="checkbox" />
                        </td>
                        <td className="fw-medium">
@@ -1420,7 +1510,7 @@ const BulkUpload = () => {
                         <td>{doc.assignedTo}</td>
                         <td>
                           <div className="d-flex gap-1">
-                            <Button variant="outline-primary" size="sm" title="View">
+                            <Button variant="outline-primary" size="sm" title="View" onClick={() => handleFileRowClick(doc)}>
                               <i className="fas fa-eye"></i>
                             </Button>
                             <Button variant="outline-success" size="sm" title="Download">

@@ -402,6 +402,21 @@
   transform: none !important;
 }
 
+.dashboard-stats-contain {
+  background: white;
+  height: 139px;
+  padding: 22px 12px;
+}
+
+// Table row hover effect for clickable rows
+.table-row-hover:hover {
+  background-color: #f8f9fa !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+
 // Responsive design
 @media (max-width: 1200px) {
   .dashboard-stats {

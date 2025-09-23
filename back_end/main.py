@@ -336,6 +336,32 @@ async def get_uploaded_files(
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Failed to fetch files: {str(e)}")
 
+@app.get("/api/uploaded-files/{file_id}")
+async def get_file_details(file_id: int, db: Session = Depends(get_db)):
+    """Get details of a specific uploaded file"""
+    try:
+        file = db.query(UploadedFile).filter(UploadedFile.id == file_id).first()
+        
+        if not file:
+            raise HTTPException(status_code=404, detail="File not found")
+        
+        return {
+            "id": file.id,
+            "filename": file.filename,
+            "original_filename": file.original_filename,
+            "file_size": file.file_size,
+            "file_type": file.file_type,
+            "uploaded_at": file.uploaded_at.isoformat() if file.uploaded_at else None,
+            "status": file.status,
+            "extracted_json": file.extracted_json
+        }
+        
+    except Exception as e:
+        print(f"Error fetching file details: {str(e)}")
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Failed to fetch file details: {str(e)}")
+
+
 @app.get("/api/uploaded-files/{file_id}/content")
 async def get_file_content(file_id: int):
     """Get content of a specific file"""
