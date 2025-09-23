@@ -1,13 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaChevronDown, FaChevronRight, FaHome, FaCheckCircle, FaFileAlt, FaUpload, FaCog, FaTachometerAlt, FaFileUpload, FaUsers } from 'react-icons/fa';
 import config from '../config.js';
 
 const SideNavbar = ({ isSidebarOpen, toggleSidebar }) => {
+  console.log('SideNavbar rendering, isSidebarOpen:', isSidebarOpen);
   const sidebarRef = useRef(null);
   const location = useLocation();
   const [userPermissions, setUserPermissions] = useState([]);
-  const [userConfig, setUserConfig] = useState({});
+  const [expandedMenus, setExpandedMenus] = useState({
+    admin: false,
+    'data-validation': false,
+    'bulk-upload': true  // Default expand bulk upload to match screenshot
+  });
+  const [userConfig, setUserConfig] = useState({
+    // Default permissions for demo purposes
+    home: true,
+    dataValidation: true,
+    assignedDocuments: true,
+    bulkUpload: true,
+    admin: true
+  });
   const [userRole, setUserRole] = useState(null);
 
   // Fetch user permissions on component mount
@@ -31,142 +44,49 @@ const SideNavbar = ({ isSidebarOpen, toggleSidebar }) => {
     }
   }, []);
 
-  // Get current page type based on location
-  const getCurrentPageType = () => {
-    const path = location.pathname;
-    if (path.includes('/admin')) {
-      return 'admin';
-    } else if (path.includes('/data-validation')) {
-      return 'data-validation';
-    } else if (path.includes('/bulk-upload')) {
-      return 'bulk-upload';
-    } else if (path.includes('/assigned-documents')) {
-      return 'assigned-documents';
-    } else if (path.includes('/home')) {
-      return 'home';
-    }
-    return 'default';
-  };
-
-  // Generate menu items based on current page and user permissions
-  const generateMenuItems = () => {
-    const items = [];
-    const pageType = getCurrentPageType();
-
-    // Main navigation items for all pages
-    const mainNavItems = [
-      { path: '/home', label: 'Home', icon: 'fas fa-home', requiredRole: 'home' },
-      { path: '/data-validation', label: 'Data Validation', icon: 'fas fa-check-circle', requiredRole: 'dataValidation' },
-      { path: '/assigned-documents', label: 'Assigned Documents', icon: 'fas fa-file-check', requiredRole: 'assignedDocuments' },
-      { path: '/bulk-upload', label: 'Bulk Upload', icon: 'fas fa-upload', requiredRole: 'bulkUpload' },
-      { path: '/admin', label: 'Admin', icon: 'fas fa-cog', requiredRole: 'admin' }
-    ];
-
-    // Filter items based on user permissions
+  // Check if user has permission
+  const hasPermission = (role) => {
+    if (!role) return true;
+    
+    // Check in userConfig
+    if (userConfig?.[role]) return true;
+    
+    // Check in permissions array
     const flatPerms = Array.isArray(userPermissions)
       ? userPermissions.map(p => (typeof p === 'string' ? p : `${p?.menu_name}:${p?.action || 'view'}`))
       : [];
-
-    mainNavItems.forEach(item => {
-      // Check if user has the required role/permission
-      const hasPermission = !item.requiredRole || userConfig?.[item.requiredRole] || flatPerms.includes(`${item.requiredRole}:view`);
-      
-      if (hasPermission) {
-        items.push({
-          path: item.path,
-          label: item.label,
-          icon: item.icon,
-          end: true
-        });
-      }
-    });
-
-    // Add admin submenus if on admin page
-    if (pageType === 'admin') {
-      const adminSubmenus = [
-        { path: '/admin/rolecreation', label: 'Role Creation', perm: 'role_creation:view' },
-        { path: '/admin/menuscreation', label: 'Menu Creation', perm: 'menu_creation:view' },
-        { path: '/admin/roles', label: 'Roles Management', perm: 'role_management:view' },
-        { path: '/admin/menus', label: 'User Management', perm: 'user_management:view' },
-        { path: '/admin/existingmenus', label: 'Existing Menus', perm: 'existing_menus:view' },
-        { path: '/admin/audit-logs', label: 'Audit Logs', perm: 'audit_logs:view' },
-        { path: '/admin/inspection-period', label: 'Inspection Period', perm: 'inspection_period:view' },
-        { path: '/admin/feedback-management', label: 'Feedback Management', perm: 'feedback:view' }
-      ];
-      
-      adminSubmenus.forEach(submenu => {
-        if (Array.isArray(flatPerms) && flatPerms.includes(submenu.perm)) {
-          items.push({
-            path: submenu.path,
-            label: submenu.label,
-            icon: 'fas fa-circle',
-            end: false
-          });
-        }
-      });
-    }
-
-    // Add bulk upload submenus if on bulk upload page
-    else if (pageType === 'bulk-upload') {
-      const bulkUploadSubmenus = [
-        { path: '/bulk-upload', label: 'Dashboard', icon: 'fas fa-home' },
-        { path: '/bulk-upload/upload', label: 'Add Document', icon: 'fas fa-upload' },
-        { path: '/bulk-upload/view-files', label: 'Assign Document', icon: 'fas fa-user-plus' }
-      ];
-
-      bulkUploadSubmenus.forEach(submenu => {
-        items.push({
-          path: submenu.path,
-          label: submenu.label,
-          icon: submenu.icon,
-          end: false
-        });
-      });
-    }
-
-    // Add data validation submenus if on data validation page
-    else if (pageType === 'data-validation') {
-      const validationSubmenus = [
-        { path: '/data-validation/about-cag', label: 'About CAG', icon: 'fas fa-circle' },
-        { path: '/data-validation/validation', label: 'Validation', icon: 'fas fa-circle' }
-      ];
-
-      validationSubmenus.forEach(submenu => {
-        items.push({
-          path: submenu.path,
-          label: submenu.label,
-          icon: submenu.icon,
-          end: false
-        });
-      });
-    }
-
-    return items;
+    
+    return flatPerms.includes(`${role}:view`);
   };
 
-  const menuItems = generateMenuItems();
-
-  // Determine heading based on current page
-  const getHeading = () => {
-    const pageType = getCurrentPageType();
-    switch (pageType) {
-      case 'admin':
-        return 'Admin Panel';
-      case 'data-validation':
-        return 'Data Validation';
-      case 'bulk-upload':
-        return 'Bulk Upload';
-      case 'assigned-documents':
-        return 'Assigned Documents';
-      case 'home':
-        return 'Home';
-      default:
-        return 'Menu';
+  // Get current page from location
+  const currentPath = location.pathname;
+  const isActive = (path) => {
+    if (path === '/home') {
+      return currentPath === path;
     }
+    return currentPath.startsWith(path);
   };
+
+  // Toggle menu expansion
+  const toggleMenu = (menuType) => {
+    console.log(`Toggling menu: ${menuType}`);
+    setExpandedMenus(prev => ({
+      ...prev,
+      [menuType]: !prev[menuType]
+    }));
+  };
+
+  // Check current paths and expand menus accordingly
+  useEffect(() => {
+    if (currentPath.includes('/admin')) {
+      setExpandedMenus(prev => ({ ...prev, admin: true }));
+    } else if (currentPath.includes('/data-validation')) {
+      setExpandedMenus(prev => ({ ...prev, 'data-validation': true }));
+    }
+  }, [currentPath]);
 
   // Collapse sidebar on click outside or Escape key
-  const pageTypeForEffects = getCurrentPageType();
 
   useEffect(() => {
     if (!isSidebarOpen) return;
@@ -189,18 +109,7 @@ const SideNavbar = ({ isSidebarOpen, toggleSidebar }) => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleEsc);
     };
-  }, [isSidebarOpen, toggleSidebar, pageTypeForEffects]);
-
-  // On Admin routes, force the sidebar to start open and stay open unless hamburger is clicked
-  useEffect(() => {
-    if (getCurrentPageType() === 'admin') {
-      // Ensure open on mount
-      if (!isSidebarOpen) {
-        toggleSidebar();
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isSidebarOpen, toggleSidebar]);
 
   return (
     <>
@@ -215,38 +124,103 @@ const SideNavbar = ({ isSidebarOpen, toggleSidebar }) => {
           </button>
         </div>
       )}
+      
       {/* Sidebar */}
       {isSidebarOpen && (
         <div
           ref={sidebarRef}
-          className="text-white pt-3 sideNavbar navbar-open "
+          className="text-white pt-3 sideNavbar navbar-open"
           style={{ width: '280px', position: 'fixed', top: 93, left: 0, backgroundColor: '#031d39', minHeight: '100vh', zIndex: 1100 }}
         >
+          {/* Sidebar Header */}
           <div className="d-flex justify-content-between align-items-center mb-4 px-3">
-            <h5>{getHeading()}</h5>
+            <h5>{currentPath.split('/')[1] ? currentPath.split('/')[1].split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : 'Menu'}</h5>
             <FaBars onClick={toggleSidebar} style={{ cursor: 'pointer' }} />
           </div>
-          <nav className="flex-column">
-            {menuItems.length > 0 ? (
-              menuItems.map((item, index) => (
-                <NavLink
-                  key={index}
-                  to={item.path}
-                  end={item.end}
-                  className={({ isActive }) => {
-                    const currentPath = location.pathname;
-                    const isUsersItem = item.path === '/admin';
-                    const usersActive = isUsersItem && (currentPath === '/admin' || currentPath.startsWith('/admin/users'));
-                    const active = isUsersItem ? usersActive : isActive;
-                    return `nav-link text-white mb-3 d-flex align-items-center${active ? ' active' : ''}`;
-                  }}>
-                  <i className={`${item.icon} me-2`}></i>
-                  {item.label}
-                </NavLink>
-              ))
-            ) : (
-              <div className="text-white-50 small">
-                {/* No menu items available */}
+          
+          {/* Navigation Menu */}
+          <nav className="flex-column px-2">
+            {/* Home */}
+            {hasPermission('home') && (
+              <NavLink to="/home" className={`nav-link text-white py-2 ${isActive('/home') ? 'active' : ''}`}>
+                <FaHome className="me-3" /> Home
+              </NavLink>
+            )}
+            
+            {/* Data Validation */}
+            {hasPermission('dataValidation') && (
+              <div>
+                <div onClick={() => toggleMenu('data-validation')} className={`nav-link text-white py-2 d-flex justify-content-between align-items-center ${isActive('/data-validation') ? 'active' : ''}`} style={{ cursor: 'pointer' }}>
+                  <div>
+                    <FaCheckCircle className="me-3" /> Data Validation
+                  </div>
+                  {expandedMenus['data-validation'] ? <FaChevronDown size={12} /> : <FaChevronRight size={12} />}
+                </div>
+                
+                {expandedMenus['data-validation'] && (
+                  <div className="ms-4">
+                    <NavLink to="/data-validation/about-cag" className={`nav-link text-white py-2 ${currentPath.includes('/data-validation/about-cag') ? 'active' : ''}`}>
+                      <FaCheckCircle className="me-2" /> About CAG
+                    </NavLink>
+                    <NavLink to="/data-validation/validation" className={`nav-link text-white py-2 ${currentPath.includes('/data-validation/validation') ? 'active' : ''}`}>
+                      <FaCheckCircle className="me-2" /> Validation
+                    </NavLink>
+                  </div>
+                )}
+              </div>
+            )}
+            
+            {/* Assigned Documents */}
+            {hasPermission('assignedDocuments') && (
+              <NavLink to="/assigned-documents" className={`nav-link text-white py-2 ${isActive('/assigned-documents') ? 'active' : ''}`}>
+                <FaFileAlt className="me-3" /> Assigned Documents
+              </NavLink>
+            )}
+            
+            {/* Bulk Upload with submenus */}
+            {hasPermission('bulkUpload') && (
+              <div>
+                <div onClick={() => toggleMenu('bulk-upload')} className={`nav-link text-white py-2 d-flex justify-content-between align-items-center ${isActive('/bulk-upload') ? 'active' : ''}`} style={{ cursor: 'pointer' }}>
+                  <div>
+                    <FaUpload className="me-3" /> Bulk Upload
+                  </div>
+                  {expandedMenus['bulk-upload'] ? <FaChevronDown size={12} /> : <FaChevronRight size={12} />}
+                </div>
+                
+                {expandedMenus['bulk-upload'] && (
+                  <div className="ms-4">
+                    <NavLink to="/bulk-upload" end className={`nav-link text-white py-2 ${currentPath === '/bulk-upload' ? 'active' : ''}`}>
+                      <FaTachometerAlt className="me-2" /> Dashboard
+                    </NavLink>
+                    <NavLink to="/bulk-upload/upload" className={`nav-link text-white py-2 ${currentPath.includes('/bulk-upload/upload') ? 'active' : ''}`}>
+                      <FaFileUpload className="me-2" /> Add Document
+                    </NavLink>
+                    <NavLink to="/bulk-upload/view-files" className={`nav-link text-white py-2 ${currentPath.includes('/bulk-upload/view-files') ? 'active' : ''}`}>
+                      <FaUsers className="me-2" /> Assign Document
+                    </NavLink>
+                  </div>
+                )}
+              </div>
+            )}
+            
+            {/* Admin with submenus */}
+            {hasPermission('admin') && (
+              <div>
+                <div onClick={() => toggleMenu('admin')} className={`nav-link text-white py-2 d-flex justify-content-between align-items-center ${isActive('/admin') ? 'active' : ''}`} style={{ cursor: 'pointer' }}>
+                  <div>
+                    <FaCog className="me-3" /> Admin
+                  </div>
+                  {expandedMenus.admin ? <FaChevronDown size={12} /> : <FaChevronRight size={12} />}
+                </div>
+                
+                {expandedMenus.admin && (
+                  <div className="ms-4">
+                    <NavLink to="/admin/menus" className={`nav-link text-white py-2 ${currentPath.includes('/admin/menus') ? 'active' : ''}`}>
+                      <FaUsers className="me-2" /> User Management
+                    </NavLink>
+                    {/* Add other admin submenus as needed */}
+                  </div>
+                )}
               </div>
             )}
           </nav>

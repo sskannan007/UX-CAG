@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import BulkUploadViewer from './pages/BulkUploadViewer';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
+import UserManagement from './pages/UserManagement';
 import './App.css';
 
 function AppContent() {
@@ -30,7 +31,7 @@ function AppContent() {
         home: true,
         dataValidation: true,
         assignedDocuments: true,
-        admin: false
+        admin: true
       });
     }
     setLoading(false);
@@ -154,6 +155,13 @@ function AppContent() {
                 <h1>Assigned Documents</h1>
                 <p>This is a placeholder assigned documents page.</p>
       </div>
+            </LayoutWithSidebar>
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/menus" element={
+          <ProtectedRoute requiredRole="admin">
+            <LayoutWithSidebar>
+              <UserManagement />
             </LayoutWithSidebar>
           </ProtectedRoute>
         } />

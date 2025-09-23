@@ -855,6 +855,13 @@ def list_all_users(db: Session = Depends(get_db)):
             "name": f"{(u.firstname or '').strip()} {(u.lastname or '').strip()}".strip() or f"User {u.id}",
             "email": u.email,
             "role_status": u.role_status,
+            "contactno": u.contactno,
+            "place": u.place,
+            "city": u.city,
+            "state": u.state,
+            "pincode": u.pincode,
+            "gender": u.gender,
+            "account_created_at": u.account_created_at.isoformat() if hasattr(u.account_created_at, 'isoformat') else None
         }
         for u in users
     ]

@@ -1,1 +1,6 @@
 .env
+pipeline.log
+__pycache__/
+*.pyc
+xml_to_htmlmd_colspan.log
+doc_xml_colspan.log
