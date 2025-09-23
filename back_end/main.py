@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, UploadFile, File, Form, Query, Depends
+from fastapi import FastAPI, HTTPException, UploadFile, File, Form, Query, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
@@ -12,7 +12,9 @@ import traceback
 from werkzeug.utils import secure_filename
 from sqlalchemy.orm import Session
 from database import get_db
+import models
 from models import UploadedFile, User
+from schemas import RoleCreate
 
 # Try to import the full pipeline, fallback to simple processor
 try:
@@ -502,7 +504,7 @@ if __name__ == "__main__":
 def review_and_submit_changes(
     file_id: int,
     current_user: models.User = Depends(get_current_user),
-    db: Session = Depends(database.get_db)
+    db: Session = Depends(get_db)
 ):
     """
     Review and Submit: Move updated_json to extracted_json (finalize changes)
@@ -542,7 +544,7 @@ def review_and_submit_changes(
 def get_validation_json(
     file_id: int,
     current_user: models.User = Depends(get_current_user),
-    db: Session = Depends(database.get_db)
+    db: Session = Depends(get_db)
 ):
     """
     Validate: Get updated_json for validation (shows pending changes)
@@ -578,7 +580,7 @@ def save_validation_changes(
     file_id: int,
     updated_json: dict,
     current_user: models.User = Depends(get_current_user),
-    db: Session = Depends(database.get_db)
+    db: Session = Depends(get_db)
 ):
     """
     Save validation changes to updated_json (pending changes)
@@ -611,7 +613,7 @@ def save_validation_changes(
 # def create_audit_log(
 #     payload: AuditLogCreate,
 #     request: Request,
-#     db: Session = Depends(database.get_db),
+#     db: Session = Depends(get_db),
 #     current_user: models.User = Depends(get_current_user),
 # ):
 #     try:
@@ -651,7 +653,7 @@ def save_validation_changes(
         
 @app.get("/admin/audit-logs")
 async def list_audit_logs(
-    db: Session = Depends(database.get_db),
+    db: Session = Depends(get_db),
     current_user: models.User = Depends(get_current_user),
     state: Optional[str] = None,
     department: Optional[str] = None,
@@ -839,13 +841,13 @@ async def list_audit_logs(
         raise HTTPException(status_code=500, detail=f"Failed to list audit logs: {str(e)}")
 
 # --- Assign files to users API ---
-class AssignFilesPayload(_BaseModel):
+class AssignFilesPayload(BaseModel):
     user_ids: List[int]
     file_ids: List[int]
 
 
 @app.get("/admin/users/all")
-def list_all_users(db: Session = Depends(database.get_db)):
+def list_all_users(db: Session = Depends(get_db)):
     users = db.query(models.User).order_by(models.User.id.asc()).all()
     return [
         {
@@ -859,7 +861,7 @@ def list_all_users(db: Session = Depends(database.get_db)):
 
 
 @app.get("/admin/files/all")
-def list_all_files(db: Session = Depends(database.get_db)):
+def list_all_files(db: Session = Depends(get_db)):
     files = db.query(models.UploadedFile).order_by(models.UploadedFile.uploaded_at.desc()).all()
     return [
         {
@@ -874,7 +876,7 @@ def list_all_files(db: Session = Depends(database.get_db)):
 
 
 @app.post("/admin/assign-files")
-def assign_files(payload: AssignFilesPayload, db: Session = Depends(database.get_db), current_user: models.User = Depends(get_current_user)):
+def assign_files(payload: AssignFilesPayload, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
     if not payload.user_ids or not payload.file_ids:
         raise HTTPException(status_code=400, detail="user_ids and file_ids are required")
 
@@ -914,7 +916,7 @@ def assign_files(payload: AssignFilesPayload, db: Session = Depends(database.get
         raise HTTPException(status_code=500, detail=f"Failed to assign files: {str(e)}")
 
 @app.post("/admin/roles/update")
-def update_role_permissions(role_data: RoleCreate, db: Session = Depends(database.get_db)):
+def update_role_permissions(role_data: RoleCreate, db: Session = Depends(get_db)):
     # Find the role
     db_role = db.query(models.Role).filter(models.Role.name == role_data.name).first()
     if not db_role:
@@ -945,7 +947,7 @@ def update_role_permissions(role_data: RoleCreate, db: Session = Depends(databas
 
 # Get assigned files for a specific user
 @app.get("/api/users/{user_id}/assigned-files")
-async def get_user_assigned_files(user_id: int, db: Session = Depends(database.get_db)):
+async def get_user_assigned_files(user_id: int, db: Session = Depends(get_db)):
     """Get list of files assigned to a specific user"""
     try:
         # Get all file assignments for the user
@@ -984,7 +986,7 @@ async def get_user_assigned_files(user_id: int, db: Session = Depends(database.g
 
 # Get assigned files for current user
 @app.get("/api/my-assigned-files")
-async def get_my_assigned_files(current_user: models.User = Depends(get_current_user), db: Session = Depends(database.get_db)):
+async def get_my_assigned_files(current_user: models.User = Depends(get_current_user), db: Session = Depends(get_db)):
     """Get list of files assigned to the current authenticated user"""
     try:
         # Get all file assignments for the current user
@@ -1027,7 +1029,7 @@ async def get_my_assigned_files(current_user: models.User = Depends(get_current_
         raise HTTPException(status_code=500, detail=f"Failed to fetch assigned files: {str(e)}") 
 
 @app.get("/admin/check-missing-uploaded-files")
-def check_missing_uploaded_files(db: Session = Depends(database.get_db)):
+def check_missing_uploaded_files(db: Session = Depends(get_db)):
     """Return a list of uploaded_files DB rows where the file_path does not exist on disk."""
     files = db.query(models.UploadedFile).all()
     missing = []
@@ -1047,7 +1049,7 @@ def check_missing_uploaded_files(db: Session = Depends(database.get_db)):
 
 @app.get("/admin/file-assignments")
 def get_file_assignments(
-    db: Session = Depends(database.get_db),
+    db: Session = Depends(get_db),
     current_user: models.User = Depends(get_current_user),
 ):
     """Get all file assignments to check which files are assigned"""
@@ -1079,7 +1081,7 @@ def update_validation_status(
     file_id: int,
     validated: bool,
     current_user: models.User = Depends(get_current_user),
-    db: Session = Depends(database.get_db)
+    db: Session = Depends(get_db)
 ):
     """Update validation status for a file assignment"""
     try:
@@ -1137,7 +1139,7 @@ class FeedbackResponse(BaseModel):
 def create_data_validation_feedback(
     feedback_data: FeedbackCreateRequest,
     current_user: models.User = Depends(get_current_user),
-    db: Session = Depends(database.get_db)
+    db: Session = Depends(get_db)
 ):
     """Create a new data validation feedback entry"""
     try:
@@ -1248,7 +1250,7 @@ def create_data_validation_feedback(
 @app.get("/api/data-validation-feedback", response_model=List[FeedbackResponse])
 def get_data_validation_feedback(
     current_user: models.User = Depends(get_current_user),
-    db: Session = Depends(database.get_db),
+    db: Session = Depends(get_db),
     status_filter: Optional[str] = None,
     severity_filter: Optional[str] = None,
     date_from: Optional[str] = None,
@@ -1326,7 +1328,7 @@ def update_feedback_status(
     status: str,
     admin_notes: Optional[str] = None,
     current_user: models.User = Depends(get_current_user),
-    db: Session = Depends(database.get_db)
+    db: Session = Depends(get_db)
 ):
     """Update feedback status (admin only)"""
     try:
@@ -1372,7 +1374,7 @@ def update_feedback_status(
 @app.get("/api/data-validation-feedback/count")
 def get_feedback_count(
     current_user: models.User = Depends(get_current_user),
-    db: Session = Depends(database.get_db)
+    db: Session = Depends(get_db)
 ):
     """Get count of feedback entries by status"""
     try:
@@ -1833,7 +1835,7 @@ class DraftResponse(BaseModel):
 def create_data_validation_draft(
     draft_data: DraftCreateRequest,
     current_user: models.User = Depends(get_current_user),
-    db: Session = Depends(database.get_db)
+    db: Session = Depends(get_db)
 ):
     """Create a new data validation draft"""
     try:
@@ -1960,7 +1962,7 @@ def create_data_validation_draft(
 @app.get("/api/data-validation-drafts", response_model=List[DraftResponse])
 def get_data_validation_drafts(
     current_user: models.User = Depends(get_current_user),
-    db: Session = Depends(database.get_db),
+    db: Session = Depends(get_db),
     file_id: Optional[int] = None
 ):
     """Get all drafts for the current user, optionally filtered by file_id"""
@@ -2020,7 +2022,7 @@ def get_data_validation_drafts(
 def get_data_validation_draft(
     draft_id: int,
     current_user: models.User = Depends(get_current_user),
-    db: Session = Depends(database.get_db)
+    db: Session = Depends(get_db)
 ):
     """Get a specific draft by ID"""
     try:
@@ -2066,7 +2068,7 @@ def get_data_validation_draft(
 def delete_data_validation_draft(
     draft_id: int,
     current_user: models.User = Depends(get_current_user),
-    db: Session = Depends(database.get_db)
+    db: Session = Depends(get_db)
 ):
     """Delete a draft by ID"""
     try:
@@ -2289,7 +2291,7 @@ async def process_md_to_json(request: dict):
 # =============================================================================
 
 @app.post("/data-validation-upload")
-async def data_validation_upload(file: UploadFile = File(...), db: Session = Depends(database.get_db)):
+async def data_validation_upload(file: UploadFile = File(...), db: Session = Depends(get_db)):
     """
     Upload file for data validation with 3-step DOCX conversion workflow
     """

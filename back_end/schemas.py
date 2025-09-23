@@ -51,3 +51,8 @@ class TokenPayload(BaseModel):
     user_id: int
     role_status: str
     exp: Optional[datetime] = None  # Expiration time
+
+class RoleCreate(BaseModel):
+    """Schema for role creation"""
+    name: str
+    description: Optional[str] = None
