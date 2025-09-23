@@ -37,7 +37,7 @@ const BulkUpload = () => {
   const folderInputRef = useRef(null);
   const [canUploadFolder, setCanUploadFolder] = useState(true);
   const [permissionsLoaded, setPermissionsLoaded] = useState(false);
-  
+
   // Filter states
   const [search, setSearch] = useState('');
   const [filterState, setFilterState] = useState('');
@@ -604,6 +604,14 @@ const BulkUpload = () => {
     }
   };
 
+  const getAssignmentStatusBadge = (assignedTo) => {
+    if (assignedTo && assignedTo !== '—') {
+      return <Badge bg="success">Assigned</Badge>;
+    } else {
+      return <Badge bg="warning">Unassigned</Badge>;
+    }
+  };
+
   const renderDashboard = () => (
     <div>
       {/* Greeting */}
@@ -686,12 +694,12 @@ const BulkUpload = () => {
             <Col md={6}>
               <h5 className="mb-0 table-heading">All Documents</h5>
             </Col>
-             <Col md={6}>
+            <Col md={6}>
                <div className="d-flex gap-3 align-items-center justify-content-end">
                  <Dropdown>
                    <Dropdown.Toggle variant="outline-secondary" className="filter-btn">
-                     <i className="fas fa-filter me-2"></i>
-                     Filters
+                  <i className="fas fa-filter me-2"></i>
+                  Filters
                      {getActiveFilterCount() > 0 && (
                        <Badge bg="primary" className="ms-2" style={{ fontSize: '10px' }}>
                          {getActiveFilterCount()}
@@ -751,7 +759,7 @@ const BulkUpload = () => {
                          className="flex-fill"
                        >
                          Apply Filters
-                       </Button>
+                </Button>
                        <Button 
                          variant="outline-secondary" 
                          size="sm" 
@@ -770,13 +778,13 @@ const BulkUpload = () => {
                        value={search}
                        onChange={(e) => setSearch(e.target.value)}
                      />
-                     <InputGroup.Text>
-                       <i className="fas fa-search"></i>
-                     </InputGroup.Text>
-                   </InputGroup>
+                <InputGroup.Text>
+                  <i className="fas fa-search"></i>
+                </InputGroup.Text>
+              </InputGroup>
                  </div>
                </div>
-             </Col>
+            </Col>
           </Row>
         </Card.Header>
         <Card.Body className="p-0">
@@ -1204,60 +1212,155 @@ const BulkUpload = () => {
         
         <h2 className="mb-4">View Files</h2>
         
-        {/* File Management Controls */}
-        <Card className="shadow-sm mb-4">
-          <Card.Header className="bg-info text-white">
-            <Row className="align-items-center">
-              <Col md={6}>
-                <h5 className="mb-0">
-                      <i className="fas fa-file-alt me-2"></i>
-                  File Management
-                </h5>
-              </Col>
-              <Col md={6}>
-                <div className="d-flex gap-2 justify-content-end">
-                  <Button variant="outline-light" size="sm">
-                    <i className="fas fa-filter me-2"></i>
-                    Filter
-                  </Button>
-                  <Button variant="outline-light" size="sm">
-                    <i className="fas fa-download me-2"></i>
-                    Export
-                  </Button>
-                  <Button variant="light" size="sm">
-                    <i className="fas fa-user-plus me-2"></i>
-                    Assign Files
-                  </Button>
-                  </div>
-              </Col>
-            </Row>
-          </Card.Header>
-          <Card.Body>
-            <InputGroup className="mb-3">
-              <InputGroup.Text>
-                <i className="fas fa-search"></i>
-              </InputGroup.Text>
-              <FormControl placeholder="Search files..." />
-            </InputGroup>
-                </Card.Body>
-              </Card>
+        {/* Filter Summary */}
+        {getActiveFilterCount() > 0 && (
+          <div className="mb-3 p-3 bg-light rounded">
+            <div className="d-flex align-items-center justify-content-between">
+              <div className="d-flex align-items-center gap-2">
+                <i className="fas fa-filter text-primary"></i>
+                <span className="text-muted">
+                  Showing {filteredDocuments.length} of {documents.length} files
+                </span>
+                {search && search.trim() && (
+                  <Badge bg="info" className="ms-2">
+                    Search: "{search}"
+                  </Badge>
+                )}
+                {filterState && (
+                  <Badge bg="secondary" className="ms-1">
+                    State: {filterState}
+                  </Badge>
+                )}
+                {filterDepartment && (
+                  <Badge bg="secondary" className="ms-1">
+                    Department: {filterDepartment}
+                  </Badge>
+                )}
+                {filterAssignment && (
+                  <Badge bg="secondary" className="ms-1">
+                    Status: {filterAssignment}
+                  </Badge>
+                )}
+              </div>
+              <Button 
+                variant="outline-secondary" 
+                size="sm" 
+                onClick={clearFilters}
+              >
+                Clear All Filters
+              </Button>
+            </div>
+          </div>
+        )}
 
         {/* Files List */}
         <Card className="shadow-sm">
           <Card.Header className="bg-white border-bottom">
             <Row className="align-items-center">
-               <Col md={6}>
-                 <h6 className="mb-0">Uploaded Files ({documents.length})</h6>
-            </Col>
-              <Col md={6}>
-                <div className="d-flex gap-2 justify-content-end">
-                  <Button variant="outline-primary" size="sm">
-                    <i className="fas fa-check-square me-1"></i>
-                    Select All
-                  </Button>
-                  <Button variant="outline-danger" size="sm">
-                    <i className="fas fa-trash me-1"></i>
-                    Delete Selected
+              <Col md={4}>
+                <h6 className="mb-0">Uploaded Files ({filteredDocuments.length})</h6>
+              </Col>
+              <Col md={8}>
+                <div className="d-flex gap-2 align-items-center justify-content-end">
+                  {/* Search Input */}
+                  <div className="search-input-group" style={{ width: '250px' }}>
+                    <InputGroup size="sm">
+                      <FormControl 
+                        placeholder="Search files..." 
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                      />
+                      <InputGroup.Text>
+                        <i className="fas fa-search"></i>
+                      </InputGroup.Text>
+                    </InputGroup>
+                  </div>
+                  
+                  {/* Filter Dropdown */}
+                  <Dropdown>
+                    <Dropdown.Toggle 
+                      variant="outline-secondary" 
+                      size="sm"
+                      className="d-flex align-items-center"
+                    >
+                      <i className="fas fa-filter me-2"></i>
+                      Filter
+                      {getActiveFilterCount() > 0 && (
+                        <Badge bg="warning" className="ms-2">
+                          {getActiveFilterCount()}
+                        </Badge>
+                      )}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu className="p-3" style={{ minWidth: '300px' }}>
+                      <div className="mb-3">
+                        <label className="form-label fw-semibold">Filter by State</label>
+                        <FormControl
+                          as="select"
+                          value={filterState}
+                          onChange={(e) => setFilterState(e.target.value)}
+                          className="form-select"
+                        >
+                          <option value="">All States</option>
+                          {getUniqueValues('state').map(state => (
+                            <option key={state} value={state}>{state}</option>
+                          ))}
+                        </FormControl>
+                  </div>
+                      
+                      <div className="mb-3">
+                        <label className="form-label fw-semibold">Filter by Department</label>
+                        <FormControl
+                          as="select"
+                          value={filterDepartment}
+                          onChange={(e) => setFilterDepartment(e.target.value)}
+                          className="form-select"
+                        >
+                          <option value="">All Departments</option>
+                          {getUniqueValues('department').map(dept => (
+                            <option key={dept} value={dept}>{dept}</option>
+                          ))}
+                        </FormControl>
+                      </div>
+                      
+                      <div className="mb-3">
+                        <label className="form-label fw-semibold">Filter by Assignment Status</label>
+                        <FormControl
+                          as="select"
+                          value={filterAssignment}
+                          onChange={(e) => setFilterAssignment(e.target.value)}
+                          className="form-select"
+                        >
+                          <option value="">All Status</option>
+                          <option value="assigned">Assigned</option>
+                          <option value="unassigned">Unassigned</option>
+                        </FormControl>
+                      </div>
+                      
+                      <div className="d-flex gap-2">
+                        <Button 
+                          variant="primary" 
+                          size="sm" 
+                          onClick={applyFilters}
+                          className="flex-fill"
+                        >
+                          Apply Filters
+                        </Button>
+                        <Button 
+                          variant="outline-secondary" 
+                          size="sm" 
+                          onClick={clearFilters}
+                          className="flex-fill"
+                        >
+                          Clear All
+                        </Button>
+                      </div>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                  
+                  {/* Assign Files Button */}
+                  <Button variant="primary" size="sm">
+                    <i className="fas fa-user-plus me-2"></i>
+                    Assign Files
                   </Button>
                 </div>
               </Col>
@@ -1287,15 +1390,15 @@ const BulkUpload = () => {
                        Loading files...
                      </td>
                    </tr>
-                 ) : documents.length === 0 ? (
+                 ) : filteredDocuments.length === 0 ? (
                    <tr>
                      <td colSpan="8" className="text-center py-4 text-muted">
                        <i className="fas fa-upload fa-2x mb-2 d-block"></i>
-                       No files uploaded yet. Upload some files to get started!
+                       {documents.length === 0 ? 'No files uploaded yet. Upload some files to get started!' : 'No files match your filters'}
                      </td>
                    </tr>
                  ) : (
-                   documents.map((doc) => (
+                   filteredDocuments.map((doc) => (
                      <tr key={doc.id}>
                        <td>
                          <input type="checkbox" />
@@ -1310,33 +1413,27 @@ const BulkUpload = () => {
                        <td>
                          <span className="text-muted">{doc.year}</span>
                        </td>
-                       <td>
-                         <Badge bg="secondary">{doc.state}</Badge>
-                       </td>
-                       <td>{getStatusBadge(doc.status)}</td>
-                       <td>{doc.assignedTo}</td>
-                       <td>
-                         <div className="d-flex gap-1">
-                           <Button variant="outline-primary" size="sm">
-                             <i className="fas fa-eye"></i>
-                           </Button>
-                           <Button variant="outline-success" size="sm">
-                             <i className="fas fa-download"></i>
-                           </Button>
-                           <Button variant="outline-warning" size="sm">
-                             <i className="fas fa-edit"></i>
-                           </Button>
-                           <Button variant="outline-danger" size="sm">
-                             <i className="fas fa-trash"></i>
-                           </Button>
-                         </div>
-                       </td>
+                        <td>
+                          <Badge bg="secondary">{doc.state}</Badge>
+                        </td>
+                        <td>{getAssignmentStatusBadge(doc.assignedTo)}</td>
+                        <td>{doc.assignedTo}</td>
+                        <td>
+                          <div className="d-flex gap-1">
+                            <Button variant="outline-primary" size="sm" title="View">
+                              <i className="fas fa-eye"></i>
+                            </Button>
+                            <Button variant="outline-success" size="sm" title="Download">
+                              <i className="fas fa-download"></i>
+                            </Button>
+                          </div>
+                        </td>
                      </tr>
                    ))
                  )}
                </tbody>
             </Table>
-          </Card.Body>
+                </Card.Body>
           <Card.Footer className="bg-light">
             <Row className="align-items-center">
               <Col md={6}>
@@ -1354,7 +1451,7 @@ const BulkUpload = () => {
                   </FormControl>
                   <span className="text-muted">entries</span>
                 </div>
-              </Col>
+            </Col>
               <Col md={6}>
                 <div className="d-flex justify-content-end gap-2">
                   <Button variant="outline-primary" size="sm">

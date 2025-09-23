@@ -220,7 +220,7 @@ const SideNavbar = ({ isSidebarOpen, toggleSidebar }) => {
         <div
           ref={sidebarRef}
           className="text-white pt-3 sideNavbar navbar-open "
-          style={{ width: '280px', position: 'fixed', top: 85, left: 0, backgroundColor: '#031d39', minHeight: '100vh', zIndex: 1100 }}
+          style={{ width: '280px', position: 'fixed', top: 93, left: 0, backgroundColor: '#031d39', minHeight: '100vh', zIndex: 1100 }}
         >
           <div className="d-flex justify-content-between align-items-center mb-4 px-3">
             <h5>{getHeading()}</h5>

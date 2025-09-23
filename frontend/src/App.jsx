@@ -80,7 +80,7 @@ function AppContent() {
       <>
         <TopNavbar />
         <SideNavbar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-        <div style={{ marginLeft: isSidebarOpen ? '280px' : '50px', transition: 'margin-left 0.3s ease', marginTop: '80px' }}>
+        <div style={{ marginLeft: isSidebarOpen ? '280px' : '50px', transition: 'margin-left 0.3s ease', marginTop: '66px' }}>
           {children}
         </div>
       </>
