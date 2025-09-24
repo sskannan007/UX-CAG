@@ -13,6 +13,7 @@ import UserManagement from './pages/UserManagement';
 import DataValidationPage from './pages/DataValidationPage';
 import './App.css';
 import Chatbot from './pages/Chatbot';
+import AssignedDocuments from './pages/AssignedDocuments';
 
 function AppContent() {
   const [isSidebarOpen] = useState(true); // Always keep sidebar open
@@ -144,10 +145,7 @@ function AppContent() {
         <Route path="/assigned-documents" element={
           <ProtectedRoute requiredRole="assignedDocuments">
             <LayoutWithSidebar>
-              <div className="container mt-5">
-                <h1>Assigned Documents</h1>
-                <p>This is a placeholder assigned documents page.</p>
-      </div>
+              <AssignedDocuments />
             </LayoutWithSidebar>
           </ProtectedRoute>
         } />

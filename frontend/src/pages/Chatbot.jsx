@@ -1,14 +1,29 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Container, Row, Col, Button, Form, InputGroup } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form, InputGroup, Spinner } from 'react-bootstrap';
 import BotImage from '../assets/assistant.png';
 import SendIcon from '../assets/send-arrow.png';
+// import '../styles/chatbot.css';
 
 const Chatbot = () => {
   const [conversations, setConversations] = useState([]);
   const [activeConversationId, setActiveConversationId] = useState(null);
   const [newMessage, setNewMessage] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [showRelatedQuestions, setShowRelatedQuestions] = useState(true);
   const messagesEndRef = useRef(null);
+
+  const relatedQuestions = [
+    "What are the key findings from the compliance audit?",
+    "What are the major non-compliances identified?",
+    "What are the recommendations provided?",
+    "What is the overall compliance status?",
+    "What are the financial implications mentioned?",
+    "What are the timeline requirements for compliance?",
+    "What are the specific areas of concern?",
+    "What are the corrective actions suggested?"
+  ];
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -26,6 +41,7 @@ const Chatbot = () => {
     };
     setConversations(prev => [newChat, ...prev]);
     setActiveConversationId(newChat.id);
+    setShowRelatedQuestions(true);
   };
 
   const getActiveConversation = () => {
@@ -42,11 +58,94 @@ const Chatbot = () => {
     );
   };
 
-  const sendMessage = () => {
-    if (!newMessage.trim()) return;
+  const callBackendAPI = async (query) => {
+    try {
+      // Ensure query is a string
+      const queryString = String(query).trim();
+      console.log('API call with query:', queryString, 'Type:', typeof queryString);
+      
+      const response = await fetch('/api/message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-Key': '8122'
+        },
+        body: JSON.stringify({ query: queryString })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('API Error:', error);
+      return {
+        success: false,
+        error: error.message,
+        summary: "Sorry, I couldn't process your request at the moment.",
+        chunks: [],
+        sources: []
+      };
+    }
+  };
+
+  const formatBotResponse = (apiResponse) => {
+    if (!apiResponse.success || apiResponse.error) {
+      return `❌ **Error**: ${apiResponse.error || 'Unknown error occurred'}\n\nPlease try again later.`
+    }
+
+    let formattedResponse = `📋 **Summary**\n${apiResponse.summary}\n\n`
+
+    if (apiResponse.chunks && apiResponse.chunks.length > 0) {
+      formattedResponse += `📄 **Detailed Information**\n`
+      apiResponse.chunks.forEach((chunk, index) => {
+        // Add separator line between chunks (except for the first one)
+        if (index > 0) {
+          formattedResponse += `\n---\n\n`
+        }
+        
+        formattedResponse += `**Chunk ${index + 1}:**\n${chunk.text}\n`
+        
+        if (chunk.source) {
+          const sourceInfo = Object.entries(chunk.source)
+            .filter(([key, value]) => value && value !== '')
+            .map(([key, value]) => `${key}: ${value}`)
+            .join(', ')
+          if (sourceInfo) {
+            formattedResponse += `\n*Source: ${sourceInfo}*\n`
+          }
+        }
+        if (chunk.score) {
+          formattedResponse += `*Relevance Score: ${chunk.score}*\n`
+        }
+      })
+    }
+
+    if (apiResponse.sources && apiResponse.sources.length > 0) {
+      formattedResponse += `\n📁 **Sources**\n`
+      apiResponse.sources.forEach((source, index) => {
+        formattedResponse += `${index + 1}. ${source}\n`
+      })
+    }
+
+    return formattedResponse
+  }
+
+  const sendMessage = async (messageText = null) => {
+    const messageToSend = messageText || newMessage.trim();
+    
+    if (!messageToSend) {
+      console.log('No message to send');
+      return;
+    }
+
+    console.log('sendMessage called with:', messageToSend);
 
     const activeConv = getActiveConversation();
     if (!activeConv) {
+      console.log('No active conversation, creating new chat');
       createNewChat();
       return;
     }
@@ -54,30 +153,77 @@ const Chatbot = () => {
     const userMessage = {
       id: Date.now(),
       type: 'user',
-      content: newMessage,
+      content: String(messageToSend),
       timestamp: new Date()
     };
 
-    const botMessage = {
-      id: Date.now() + 1,
-      type: 'bot',
-      content: `I don't have information on roadways. My expertise is limited to CAG inspection data.`,
-      timestamp: new Date()
-    };
-
+    // Add user message immediately
     setConversations(prev => 
       prev.map(conv => 
         conv.id === activeConversationId
           ? {
               ...conv,
-              messages: [...conv.messages, userMessage, botMessage],
-              title: conv.messages.length === 0 ? userMessage.content.substring(0, 30) + (userMessage.content.length > 30 ? '...' : '') : conv.title
+              messages: [...conv.messages, userMessage],
+              title: conv.messages.length === 0 ? String(userMessage.content).substring(0, 30) + (String(userMessage.content).length > 30 ? '...' : '') : conv.title
             }
           : conv
       )
     );
 
+    const query = messageToSend;
+    setIsLoading(true);
+    setError('');
     setNewMessage('');
+    setShowRelatedQuestions(false);
+
+    try {
+      console.log('Sending query:', query, 'Type:', typeof query);
+      const apiResponse = await callBackendAPI(String(query));
+      console.log('Received API response:', apiResponse);
+      const formattedResponse = formatBotResponse(apiResponse);
+      console.log('Formatted response:', formattedResponse);
+      
+      const botMessage = {
+        id: Date.now() + 1,
+        type: 'bot',
+        content: formattedResponse,
+        timestamp: new Date()
+      };
+
+      setConversations(prev => 
+        prev.map(conv => 
+          conv.id === activeConversationId
+            ? {
+                ...conv,
+                messages: [...conv.messages, botMessage]
+              }
+            : conv
+        )
+      );
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setError('Failed to send message. Please try again.');
+      
+      const errorMessage = {
+        id: Date.now() + 1,
+        type: 'bot',
+        content: `❌ **Error**: Failed to get response from server. Please try again later.`,
+        timestamp: new Date()
+      };
+
+      setConversations(prev => 
+        prev.map(conv => 
+          conv.id === activeConversationId
+            ? {
+                ...conv,
+                messages: [...conv.messages, errorMessage]
+              }
+            : conv
+        )
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleKeyPress = (e) => {
@@ -101,6 +247,24 @@ const Chatbot = () => {
 
   const handleMenuClick = () => {
     console.log('Menu clicked');
+  };
+
+  const handleQuestionClick = (question) => {
+    sendMessage(String(question));
+  };
+
+  const handleNewChat = () => {
+    createNewChat();
+    setShowRelatedQuestions(true);
+  };
+
+  const handleInputChange = (e) => {
+    setNewMessage(e.target.value);
+    if (e.target.value.trim()) {
+      setShowRelatedQuestions(false);
+    } else {
+      setShowRelatedQuestions(true);
+    }
   };
 
   const filteredConversations = conversations.filter(conv =>
@@ -130,7 +294,7 @@ const Chatbot = () => {
               <Button
                 style={{ backgroundColor: '#141824', border: 'none' }}
                 size="sm"
-                onClick={createNewChat}
+                onClick={handleNewChat}
               >
                 New Chat
               </Button>
@@ -201,6 +365,11 @@ const Chatbot = () => {
 
           {/* Messages Area */}
           <div className="flex-grow-1 overflow-auto p-3" style={{ maxHeight: 'calc(100vh - 200px)' }}>
+            {error && (
+              <div className="alert alert-danger mb-3">
+                {error}
+              </div>
+            )}
             {activeConversation && activeConversation.messages.length > 0 ? (
               activeConversation.messages.map((message) => (
                 <div
@@ -237,9 +406,9 @@ const Chatbot = () => {
                           display: 'inline-block',
                           maxWidth: '80%'
                         }}
-                      >
-                        {message.content}
-                      </div>
+                       >
+                         {message.content}
+                       </div>
                     </div>
                   </div>
                 </div>
@@ -250,11 +419,60 @@ const Chatbot = () => {
                 <p>Start a new conversation by typing a message below.</p>
               </div>
             )}
+            {isLoading && (
+              <div className="d-flex align-items-center mb-2">
+                <div className="me-2 mt-1">
+                  <img 
+                    src={BotImage} 
+                    alt="Bot" 
+                    style={{ width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover' }}
+                  />
+                </div>
+                <div className="flex-grow-1">
+                  <div className="d-flex align-items-center mb-1">
+                    <small className="text-muted">Proofbot</small>
+                  </div>
+                  <div className="p-2 rounded bg-light text-dark d-inline-block">
+                    <Spinner animation="border" size="sm" className="me-2" />
+                    Thinking...
+                  </div>
+                </div>
+              </div>
+            )}
             <div ref={messagesEndRef} />
           </div>
 
           {/* Input Area */}
           <div className="p-3 border-top bg-white">
+            {/* Related Questions */}
+            {showRelatedQuestions && (
+              <div className="mb-3">
+                <div className="text-center mb-3">
+                  <h6 className="text-muted">Suggested Questions</h6>
+                </div>
+                <div className="row g-2">
+                  {relatedQuestions.map((question, index) => (
+                    <div key={index} className="col-md-6">
+                      <Button
+                        variant="outline-primary"
+                        className="w-100 text-start"
+                        size="sm"
+                        onClick={() => handleQuestionClick(question)}
+                        style={{ 
+                          whiteSpace: 'normal',
+                          height: 'auto',
+                          padding: '8px 12px',
+                          fontSize: '0.9rem'
+                        }}
+                      >
+                        {question}
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            
             <InputGroup>
               <InputGroup.Text className=" text-white">
                 <img 
@@ -267,21 +485,25 @@ const Chatbot = () => {
                 as="textarea"
                 placeholder="Type your message here..."
                 value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
+                onChange={handleInputChange}
                 onKeyPress={handleKeyPress}
                 rows={1}
                 style={{ resize: 'none' }}
               />
               <Button
-                
+                variant="primary"
                 onClick={sendMessage}
-                disabled={!newMessage.trim()}
+                disabled={!newMessage.trim() || isLoading}
               >
-                <img 
-                  src={SendIcon} 
-                  alt="Send" 
-                  style={{ width: '16px', height: '16px' }}
-                />
+                {isLoading ? (
+                  <Spinner animation="border" size="sm" />
+                ) : (
+                  <img 
+                    src={SendIcon} 
+                    alt="Send" 
+                    style={{ width: '16px', height: '16px' }}
+                  />
+                )}
               </Button>
             </InputGroup>
           </div>

@@ -57,6 +57,14 @@ const BulkUpload = () => {
   const [documents, setDocuments] = useState([]);
   const [documentsLoading, setDocumentsLoading] = useState(true);
 
+  // File assignment states
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [assignStatus, setAssignStatus] = useState(null);
+  const [assignLoading, setAssignLoading] = useState(false);
+  const [showAssignModal, setShowAssignModal] = useState(false);
+  const [selectedFilesForAssignment, setSelectedFilesForAssignment] = useState([]);
+
   // Update dashboard stats based on documents
   useEffect(() => {
     const stats = {
@@ -89,6 +97,22 @@ const BulkUpload = () => {
       })
       .finally(() => setPermissionsLoaded(true));
   }, []);
+
+  // Fetch users for assignment
+  const fetchUsers = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`${config.BASE_URL}/users`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setUsers(data.users || []);
+      }
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
+  };
 
   // Load existing uploaded files on component mount
   useEffect(() => {
@@ -692,6 +716,178 @@ const BulkUpload = () => {
       return <Badge bg="success">Assigned</Badge>;
     } else {
       return <Badge bg="warning">Unassigned</Badge>;
+    }
+  };
+
+  // Handle file selection for assignment
+  const handleFileSelection = (fileId, isSelected) => {
+    if (isSelected) {
+      setSelectedFilesForAssignment(prev => [...prev, fileId]);
+    } else {
+      setSelectedFilesForAssignment(prev => prev.filter(id => id !== fileId));
+    }
+  };
+
+  // Handle select all files for assignment
+  const handleSelectAllFiles = (isSelected) => {
+    if (isSelected) {
+      const unassignedFiles = filteredDocuments
+        .filter(doc => !doc.assignedTo || doc.assignedTo === '—')
+        .map(doc => doc.id);
+      setSelectedFilesForAssignment(unassignedFiles);
+    } else {
+      setSelectedFilesForAssignment([]);
+    }
+  };
+
+  // Open assignment modal
+  const handleOpenAssignModal = () => {
+    if (selectedFilesForAssignment.length === 0) {
+      setAssignStatus({ type: 'warning', msg: 'Please select at least one document to assign.' });
+      return;
+    }
+    fetchUsers();
+    setShowAssignModal(true);
+  };
+
+  const assignFilesToUser = async () => {
+    if (!selectedUser || selectedFilesForAssignment.length === 0) {
+      setAssignStatus({ type: 'warning', msg: 'Select a user and at least one document.' });
+      return;
+    }
+    
+    // Check if any selected files are already assigned to any user
+    const alreadyAssignedFiles = selectedFilesForAssignment.filter(fileId => {
+      const file = documents.find(f => f.id === fileId);
+      return file && file.assignedTo && file.assignedTo !== '—';
+    });
+    
+    if (alreadyAssignedFiles.length > 0) {
+      setAssignStatus({ type: 'warning', msg: 'Some selected documents are already assigned to users. Please select unassigned documents.' });
+      return;
+    }
+    try {
+      setAssignLoading(true);
+      setAssignStatus(null);
+      const token = localStorage.getItem('token');
+      const response = await fetch(`${config.BASE_URL}/admin/assign-files`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user_ids: [selectedUser.id],
+          file_ids: selectedFilesForAssignment
+        })
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setAssignStatus({ type: 'success', msg: `Assigned successfully. New links: ${data.created || 0}` });
+        setSelectedFilesForAssignment([]);
+        setShowAssignModal(false);
+        setSelectedUser(null);
+        // Refresh the documents list
+        const refreshDocuments = async () => {
+          try {
+            const response = await fetch(`${config.BASE_URL}/api/uploaded-files`);
+            if (response.ok) {
+              const data = await response.json();
+              if (data.files && Array.isArray(data.files)) {
+                const existingDocuments = data.files.map(file => {
+                  let documentName = file.filename;
+                  let department = 'Uploaded';
+                  let year = new Date(file.uploaded_at).getFullYear().toString();
+                  let state = 'Tamilnadu';
+                  
+                  if (file.extracted_json && typeof file.extracted_json === 'object') {
+                    if (file.extracted_json.metadata) {
+                      documentName = file.filename;
+                      if (file.extracted_json.metadata.departments && file.extracted_json.metadata.departments !== null) {
+                        department = file.extracted_json.metadata.departments;
+                      } else {
+                        if (file.extracted_json.metadata.document_heading) {
+                          const heading = file.extracted_json.metadata.document_heading.toLowerCase();
+                          if (heading.includes('registry')) {
+                            department = 'Sub Registry';
+                          } else if (heading.includes('commercial')) {
+                            department = 'Commercial';
+                          } else if (heading.includes('revenue')) {
+                            department = 'Revenue';
+                          } else if (heading.includes('accountant general') || heading.includes('audit')) {
+                            department = 'Accountant General';
+                          } else {
+                            department = 'Uploaded';
+                          }
+                        } else {
+                          department = 'Uploaded';
+                        }
+                      }
+                      
+                      if (file.extracted_json.metadata.Period_of_audit?.Period_From && file.extracted_json.metadata.Period_of_audit?.Period_To) {
+                        year = `${file.extracted_json.metadata.Period_of_audit.Period_From} - ${file.extracted_json.metadata.Period_of_audit.Period_To}`;
+                      } else if (file.extracted_json.metadata.Period_of_audit?.Period_From) {
+                        year = file.extracted_json.metadata.Period_of_audit.Period_From;
+                      } else if (file.extracted_json.metadata.Period_of_audit?.Period_To) {
+                        year = file.extracted_json.metadata.Period_of_audit.Period_To;
+                      } else if (file.extracted_json.metadata.Date_of_audit?.Period_From) {
+                        const dateStr = file.extracted_json.metadata.Date_of_audit.Period_From;
+                        const yearMatch = dateStr.match(/(\d{4})/);
+                        if (yearMatch) {
+                          year = yearMatch[1];
+                        } else {
+                          year = new Date(file.uploaded_at).getFullYear().toString();
+                        }
+                      } else {
+                        const heading = file.extracted_json.metadata.document_heading || '';
+                        const yearMatch = heading.match(/(\d{4})/);
+                        if (yearMatch) {
+                          year = yearMatch[1];
+                        } else {
+                          year = new Date(file.uploaded_at).getFullYear().toString();
+                        }
+                      }
+                      state = file.extracted_json.metadata.state || 'Tamilnadu';
+                    } else {
+                      documentName = file.filename;
+                      department = file.extracted_json.department || 'Uploaded';
+                      year = file.extracted_json.year ? file.extracted_json.year.toString() : new Date(file.uploaded_at).getFullYear().toString();
+                      state = file.extracted_json.state || 'Tamilnadu';
+                    }
+                  }
+                  
+                  return {
+                    id: file.id,
+                    name: documentName,
+                    department: department,
+                    year: year,
+                    state: state,
+                    assignedTo: '—',
+                    assignedOn: '—',
+                    modification: '—',
+                    status: file.status === 'processed' ? 'Completed' : 'Unassigned',
+                    severity: '—',
+                    file_type: file.file_type ? file.file_type.toUpperCase() : 'Unknown',
+                    file_size: file.file_size || 0,
+                    uploaded_at: file.uploaded_at ? file.uploaded_at.split('T')[0] : new Date().toISOString().split('T')[0]
+                  };
+                });
+                setDocuments(existingDocuments);
+              }
+            }
+          } catch (error) {
+            console.log('Could not refresh documents:', error);
+          }
+        };
+        refreshDocuments();
+      } else {
+        setAssignStatus({ type: 'danger', msg: data.detail || 'Failed to assign files' });
+      }
+    } catch (err) {
+      console.error('Error assigning files:', err);
+      setAssignStatus({ type: 'danger', msg: 'Error assigning files' });
+    } finally {
+      setAssignLoading(false);
     }
   };
 
@@ -1488,9 +1684,14 @@ const BulkUpload = () => {
                   </Dropdown>
                   
                   {/* Assign Files Button */}
-                  <Button variant="primary" size="sm">
+                  <Button 
+                    variant="primary" 
+                    size="sm"
+                    onClick={handleOpenAssignModal}
+                    disabled={selectedFilesForAssignment.length === 0}
+                  >
                     <i className="fas fa-user-plus me-2"></i>
-                    Assign Files
+                    Assign Files ({selectedFilesForAssignment.length})
                   </Button>
                 </div>
               </Col>
@@ -1501,7 +1702,11 @@ const BulkUpload = () => {
               <thead className="table-light">
                 <tr>
                   <th style={{ width: '40px' }}>
-                    <input type="checkbox" />
+                    <input 
+                      type="checkbox" 
+                      onChange={(e) => handleSelectAllFiles(e.target.checked)}
+                      checked={selectedFilesForAssignment.length > 0 && selectedFilesForAssignment.length === filteredDocuments.filter(doc => !doc.assignedTo || doc.assignedTo === '—').length}
+                    />
                   </th>
                     <th>Document Name</th>
                     <th>Department</th>
@@ -1536,7 +1741,12 @@ const BulkUpload = () => {
                           className="table-row-hover"
                       >
                        <td onClick={(e) => e.stopPropagation()}>
-                         <input type="checkbox" />
+                         <input 
+                           type="checkbox" 
+                           checked={selectedFilesForAssignment.includes(doc.id)}
+                           onChange={(e) => handleFileSelection(doc.id, e.target.checked)}
+                           disabled={doc.assignedTo && doc.assignedTo !== '—'}
+                         />
                        </td>
                        <td className="fw-medium">
                          <i className={`${getFileIcon(doc.name)} me-2`}></i>
@@ -1631,6 +1841,100 @@ const BulkUpload = () => {
               {currentView === 'dashboard' && renderDashboard()}
               {currentView === 'upload' && renderUploadView()}
               {currentView === 'view-files' && renderViewFiles()}
+              
+              {/* Assignment Modal */}
+              {showAssignModal && (
+                <div className="modal show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+                  <div className="modal-dialog modal-lg">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title">Assign Files to User</h5>
+                        <button 
+                          type="button" 
+                          className="btn-close" 
+                          onClick={() => {
+                            setShowAssignModal(false);
+                            setSelectedUser(null);
+                            setAssignStatus(null);
+                          }}
+                        ></button>
+                      </div>
+                      <div className="modal-body">
+                        {assignStatus && (
+                          <Alert variant={assignStatus.type} onClose={() => setAssignStatus(null)} dismissible>
+                            {assignStatus.msg}
+                          </Alert>
+                        )}
+                        
+                        <div className="mb-3">
+                          <label className="form-label">Select User</label>
+                          <FormControl
+                            as="select"
+                            value={selectedUser?.id || ''}
+                            onChange={(e) => {
+                              const userId = e.target.value;
+                              const user = users.find(u => u.id === parseInt(userId));
+                              setSelectedUser(user);
+                            }}
+                            className="form-select"
+                          >
+                            <option value="">Choose a user...</option>
+                            {users.map(user => (
+                              <option key={user.id} value={user.id}>
+                                {user.username} ({user.email})
+                              </option>
+                            ))}
+                          </FormControl>
+                        </div>
+                        
+                        <div className="mb-3">
+                          <label className="form-label">Selected Files ({selectedFilesForAssignment.length})</label>
+                          <div className="border rounded p-3" style={{ maxHeight: '200px', overflowY: 'auto' }}>
+                            {selectedFilesForAssignment.map(fileId => {
+                              const file = documents.find(d => d.id === fileId);
+                              return file ? (
+                                <div key={fileId} className="d-flex justify-content-between align-items-center py-1">
+                                  <span>
+                                    <i className={`${getFileIcon(file.name)} me-2`}></i>
+                                    {file.name}
+                                  </span>
+                                  <Badge bg="info">{file.department}</Badge>
+                                </div>
+                              ) : null;
+                            })}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="modal-footer">
+                        <Button 
+                          variant="secondary" 
+                          onClick={() => {
+                            setShowAssignModal(false);
+                            setSelectedUser(null);
+                            setAssignStatus(null);
+                          }}
+                        >
+                          Cancel
+                        </Button>
+                        <Button 
+                          variant="primary" 
+                          onClick={assignFilesToUser}
+                          disabled={!selectedUser || assignLoading}
+                        >
+                          {assignLoading ? (
+                            <>
+                              <Spinner animation="border" size="sm" className="me-2" />
+                              Assigning...
+                            </>
+                          ) : (
+                            'Assign Files'
+                          )}
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
       </div>
   );
 };
