@@ -12,15 +12,12 @@ import Registration from './pages/Registration';
 import UserManagement from './pages/UserManagement';
 import DataValidationPage from './pages/DataValidationPage';
 import './App.css';
+import Chatbot from './pages/Chatbot';
 
 function AppContent() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen] = useState(true); // Always keep sidebar open
   const [userConfig, setUserConfig] = useState({});
   const [loading, setLoading] = useState(false);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
 
   // Simple auth check - you can replace this with your actual auth logic
   useEffect(() => {
@@ -81,8 +78,8 @@ function AppContent() {
     return (
       <>
         <TopNavbar />
-        <SideNavbar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-        <div style={{ marginLeft: isSidebarOpen ? '280px' : '50px', transition: 'margin-left 0.3s ease', marginTop: '66px' }}>
+        <SideNavbar isSidebarOpen={isSidebarOpen} />
+        <div style={{ marginLeft: '280px', marginTop: '92px' }}>
           {children}
         </div>
       </>
@@ -161,7 +158,16 @@ function AppContent() {
             </LayoutWithSidebar>
           </ProtectedRoute>
         } />
+          <Route path="/chatbot" element={
+          <ProtectedRoute>
+            <LayoutWithSidebar>
+              <Chatbot />
+            </LayoutWithSidebar>
+          </ProtectedRoute>
+        } />
       </Routes>
+     
+      
     </>
   );
 }

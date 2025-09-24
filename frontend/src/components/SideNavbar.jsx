@@ -1,17 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { FaBars, FaChevronDown, FaChevronRight, FaHome, FaCheckCircle, FaFileAlt, FaUpload, FaCog, FaTachometerAlt, FaFileUpload, FaUsers } from 'react-icons/fa';
+import { FaChevronDown, FaChevronRight, FaHome, FaCheckCircle, FaFileAlt, FaCog, FaTachometerAlt, FaUsers } from 'react-icons/fa';
 import config from '../config.js';
 
-const SideNavbar = ({ isSidebarOpen, toggleSidebar }) => {
+const SideNavbar = ({ isSidebarOpen }) => {
   console.log('SideNavbar rendering, isSidebarOpen:', isSidebarOpen);
   const sidebarRef = useRef(null);
   const location = useLocation();
   const [userPermissions, setUserPermissions] = useState([]);
   const [expandedMenus, setExpandedMenus] = useState({
-    admin: false,
-    'data-validation': false,
-    'bulk-upload': true  // Default expand bulk upload to match screenshot
+    admin: false
   });
   const [userConfig, setUserConfig] = useState({
     // Default permissions for demo purposes
@@ -81,132 +79,59 @@ const SideNavbar = ({ isSidebarOpen, toggleSidebar }) => {
   useEffect(() => {
     if (currentPath.includes('/admin')) {
       setExpandedMenus(prev => ({ ...prev, admin: true }));
-    } else if (currentPath.includes('/data-validation')) {
-      setExpandedMenus(prev => ({ ...prev, 'data-validation': true }));
     }
   }, [currentPath]);
 
-  // Collapse sidebar on click outside or Escape key
-
-  useEffect(() => {
-    if (!isSidebarOpen) return;
-
-    const handleClickOutside = (event) => {
-      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-        toggleSidebar();
-      }
-    };
-
-    const handleEsc = (event) => {
-      if (event.key === 'Escape') {
-        toggleSidebar();
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleEsc);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEsc);
-    };
-  }, [isSidebarOpen, toggleSidebar]);
+  // Sidebar is always open, no collapse functionality needed
 
   return (
     <>
-      {/* Hamburger icon for collapse/expand, only show when sidebar is closed */}
-      {!isSidebarOpen && (
-        <div className="menu-btn" style={{ position: 'fixed', top: 85, left: 0, zIndex: 1000, width: '50px', height: '100%', backgroundColor: '#031d39', borderRadius: '0px' }}>
-          <button
-            className="btn btn-dark menu-btn"
-            style={{background: 'transparent'}}
-            onClick={toggleSidebar}>
-            <FaBars />
-          </button>
-        </div>
-      )}
-      
-      {/* Sidebar */}
+      {/* Sidebar - always visible */}
       {isSidebarOpen && (
         <div
           ref={sidebarRef}
-          className="text-white pt-3 sideNavbar navbar-open"
-          style={{ width: '280px', position: 'fixed', top: 93, left: 0, backgroundColor: '#031d39', minHeight: '100vh', zIndex: 1100 }}
+          className="pt-3 sideNavbar navbar-open"
+          style={{ width: '280px', position: 'fixed', top: 80, left: 0, backgroundColor: '#fff', minHeight: '100vh', zIndex: 1100, color: '#161616' }}
         >
           {/* Sidebar Header */}
-          <div className="d-flex justify-content-between align-items-center mb-4 px-3">
+          {/* <div className="d-flex justify-content-between align-items-center mb-4 px-3">
             <h5>{currentPath.split('/')[1] ? currentPath.split('/')[1].split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : 'Menu'}</h5>
-            <FaBars onClick={toggleSidebar} style={{ cursor: 'pointer' }} />
-          </div>
+          </div> */}
           
           {/* Navigation Menu */}
-          <nav className="flex-column px-2">
+          <nav className="flex-column sidebar-style">
             {/* Home */}
             {hasPermission('home') && (
-              <NavLink to="/home" className={`nav-link text-white py-2 ${isActive('/home') ? 'active' : ''}`}>
+              <NavLink to="/home" className={`nav-link ${isActive('/home') ? 'active' : ''}`} style={{ color: isActive('/home') ? '#161616' : '#828282' }}>
                 <FaHome className="me-3" /> Home
               </NavLink>
             )}
             
             {/* Data Validation */}
             {hasPermission('dataValidation') && (
-              <div>
-                <div onClick={() => toggleMenu('data-validation')} className={`nav-link text-white py-2 d-flex justify-content-between align-items-center ${isActive('/data-validation') ? 'active' : ''}`} style={{ cursor: 'pointer' }}>
-                  <div>
-                    <FaCheckCircle className="me-3" /> Data Validation
-                  </div>
-                  {expandedMenus['data-validation'] ? <FaChevronDown size={12} /> : <FaChevronRight size={12} />}
-                </div>
-                
-                {expandedMenus['data-validation'] && (
-                  <div className="ms-4">
-                    <NavLink to="/data-validation/about-cag" className={`nav-link text-white py-2 ${currentPath.includes('/data-validation/about-cag') ? 'active' : ''}`}>
-                      <FaCheckCircle className="me-2" /> About CAG
-                    </NavLink>
-                    <NavLink to="/data-validation/validation" className={`nav-link text-white py-2 ${currentPath.includes('/data-validation/validation') ? 'active' : ''}`}>
-                      <FaCheckCircle className="me-2" /> Validation
-                    </NavLink>
-                  </div>
-                )}
-              </div>
+              <NavLink to="/data-validation" className={`nav-link ${isActive('/data-validation') ? 'active' : ''}`} style={{ color: isActive('/data-validation') ? '#161616' : '#828282' }}>
+                <FaCheckCircle className="me-3" /> Data Validation
+              </NavLink>
             )}
             
             {/* Assigned Documents */}
             {hasPermission('assignedDocuments') && (
-              <NavLink to="/assigned-documents" className={`nav-link text-white py-2 ${isActive('/assigned-documents') ? 'active' : ''}`}>
+              <NavLink to="/assigned-documents" className={`nav-link ${isActive('/assigned-documents') ? 'active' : ''}`} style={{ color: isActive('/assigned-documents') ? '#161616' : '#828282' }}>
                 <FaFileAlt className="me-3" /> Assigned Documents
               </NavLink>
             )}
             
-            {/* Bulk Upload with submenus */}
+            {/* Dashboard */}
             {hasPermission('bulkUpload') && (
-              <div>
-                <div onClick={() => toggleMenu('bulk-upload')} className={`nav-link text-white py-2 d-flex justify-content-between align-items-center ${isActive('/bulk-upload') ? 'active' : ''}`} style={{ cursor: 'pointer' }}>
-                  <div>
-                    <FaUpload className="me-3" /> Bulk Upload
-                  </div>
-                  {expandedMenus['bulk-upload'] ? <FaChevronDown size={12} /> : <FaChevronRight size={12} />}
-                </div>
-                
-                {expandedMenus['bulk-upload'] && (
-                  <div className="ms-4">
-                    <NavLink to="/bulk-upload" end className={`nav-link text-white py-2 ${currentPath === '/bulk-upload' ? 'active' : ''}`}>
-                      <FaTachometerAlt className="me-2" /> Dashboard
-                    </NavLink>
-                    <NavLink to="/bulk-upload/upload" className={`nav-link text-white py-2 ${currentPath.includes('/bulk-upload/upload') ? 'active' : ''}`}>
-                      <FaFileUpload className="me-2" /> Add Document
-                    </NavLink>
-                    <NavLink to="/bulk-upload/view-files" className={`nav-link text-white py-2 ${currentPath.includes('/bulk-upload/view-files') ? 'active' : ''}`}>
-                      <FaUsers className="me-2" /> Assign Document
-                    </NavLink>
-                  </div>
-                )}
-              </div>
+              <NavLink to="/bulk-upload" className={`nav-link ${isActive('/bulk-upload') ? 'active' : ''}`} style={{ color: isActive('/bulk-upload') ? '#161616' : '#828282' }}>
+                <FaTachometerAlt className="me-3" /> Dashboard
+              </NavLink>
             )}
             
             {/* Admin with submenus */}
             {hasPermission('admin') && (
               <div>
-                <div onClick={() => toggleMenu('admin')} className={`nav-link text-white py-2 d-flex justify-content-between align-items-center ${isActive('/admin') ? 'active' : ''}`} style={{ cursor: 'pointer' }}>
+                <div onClick={() => toggleMenu('admin')} className={`nav-link d-flex justify-content-between align-items-center ${isActive('/admin') ? 'active' : ''}`} style={{ cursor: 'pointer', color: isActive('/admin') ? '#161616' : '#828282' }}>
                   <div>
                     <FaCog className="me-3" /> Admin
                   </div>
@@ -215,7 +140,7 @@ const SideNavbar = ({ isSidebarOpen, toggleSidebar }) => {
                 
                 {expandedMenus.admin && (
                   <div className="ms-4">
-                    <NavLink to="/admin/menus" className={`nav-link text-white py-2 ${currentPath.includes('/admin/menus') ? 'active' : ''}`}>
+                    <NavLink to="/admin/menus" className={`nav-link ${currentPath.includes('/admin/menus') ? 'active' : ''}`} style={{ color: currentPath.includes('/admin/menus') ? '#161616' : '#828282' }}>
                       <FaUsers className="me-2" /> User Management
                     </NavLink>
                     {/* Add other admin submenus as needed */}

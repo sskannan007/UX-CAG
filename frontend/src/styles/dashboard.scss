@@ -1,3 +1,23 @@
+.top-nav-links {
+  align-items: center;
+}
+.top-nav-links a{
+  height: fit-content;
+}
+.top-nav-user .dropdown-toggle::after {
+  display: none;
+}
+.top-nav-bar {
+  height: 80px;
+  background-color: #0D61AE;
+}
+.vertical-line {
+  border: 1px solid #D8D8D8;
+  height: 42px;
+}
+.top-nav-bar .container-fluid {
+  padding: 0 32px;
+}
 // Dashboard Heading Styles
 .dashboard-heading {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -14,7 +34,6 @@
 .dashboard-stats {
   display: flex;
   gap: 16px;
-  margin-bottom: 24px;
   flex-wrap: wrap;
   align-items: center;
 
@@ -295,10 +314,10 @@
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.3px;
-    color: #6b7280;
-    border: 1px solid #d1d5db;
+    color: #747474;
+    border: 1px solid #CBCBCB;
     background-color: #ffffff;
-    padding: 8px 16px;
+    padding: 8px;
     border-radius: 6px;
     transition: all 0.2s ease-in-out;
     
@@ -328,10 +347,11 @@
         font-style: normal;
         font-size: 14px;
         line-height: 20px;
-        color: #111827;
-        border: 1px solid #d1d5db;
+        color: #747474;
+        border: 1px solid #CBCBCB;
         border-radius: 6px;
         padding: 8px 12px;
+        border-right: none;
         
         &:focus {
             border-color: #3b82f6;
@@ -339,18 +359,19 @@
         }
         
         &::placeholder {
-            color: #9ca3af;
+            color: #747474;
         }
     }
     
     .input-group-text {
-        background-color: #f9fafb;
-        border: 1px solid #d1d5db;
+        background-color: #fff;
         border-left: none;
+        border: 1px solid #d1d5db;
         color: #6b7280;
         
         i {
             font-size: 14px;
+            color: #37404A;
         }
     }
 }
@@ -393,6 +414,9 @@
 }
 .table-light tr th {
     padding: 12px !important;
+    font-size: 14px;
+    font-weight: 500;
+    color: #202224;
 }
 .table-light tr th.table-checkbox, .table-checkbox {
     padding-left: 24px !important;
@@ -404,8 +428,9 @@
 
 .dashboard-stats-contain {
   background: white;
-  height: 139px;
+  height: auto;
   padding: 22px 12px;
+  margin-bottom: 24px;
 }
 
 // Table row hover effect for clickable rows
@@ -414,6 +439,141 @@
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease-in-out;
+}
+
+.sidebar-style {
+  padding-left: 18px !important;
+  padding-right: 16px !important;
+}
+.sidebar-style .nav-link {
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+.sidebar-style .nav-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+h5 {
+  color: #202224;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.11px;
+}
+.upload-area {
+  border-style: dashed;
+  border-color: #918686 !important;
+  background-color: #f8f9fa;
+}
+.import-btn-header {
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+.import-btn-header button {
+  width: 120px;
+  height: 48px;
+}
+.lessthan-icon {
+  font-size: 15px;
+  margin-top: 2.5px;
+}
+.page-button:hover {
+  background-color: #363285;
+  border-color: #363285;
+  color: #fff !important;
+}
+.page-button.btn-primary {
+  width: 32px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #363285;
+  border-color: #363285;
+}
+.page-button.btn-outline-primary {
+  width: 32px;
+  height: 40px;
+  border-radius: 8px;
+  border-color: #E8E8E8;
+  color: #828282;
+}
+.table-card {
+  border: none;
+}
+
+// Dashboard table styling
+.table thead tr th {
+  background-color: #F1F4F9 !important;
+  border: none !important;
+  border-bottom: none !important;
+}
+.table tbody tr td{
+  background-color: transparent !important;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #fff !important;
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #FAFAFA !important;
+}
+
+.table tbody tr {
+  border: none !important;
+}
+
+.table tbody tr td {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+.table tbody tr th {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+// View Files table styling (same as dashboard table)
+.view-files-table thead tr th {
+  background-color: #F1F4F9 !important;
+  border: none !important;
+  border-bottom: none !important;
+}
+
+.view-files-table tbody tr td {
+  background-color: transparent !important;
+}
+
+.view-files-table tbody tr:nth-child(even) {
+  background-color: #fff !important;
+}
+
+.view-files-table tbody tr:nth-child(odd) {
+  background-color: #FAFAFA !important;
+}
+
+.view-files-table tbody tr {
+  border: none !important;
+}
+
+.view-files-table tbody tr td {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+.view-files-table tbody tr th {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+.badge-style span{
+  padding: 7.5px 12px;
 }
 
 

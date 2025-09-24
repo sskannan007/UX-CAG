@@ -7,7 +7,7 @@ import TopNavbar from '../components/TopNavbar';
 
 import SideNavbar from '../components/SideNavbar';
 
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import extractedData from './extractedData';
 
@@ -24,6 +24,7 @@ const BASE_URL = config.BASE_URL;
 const DataValidationPage = () => {
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   const docxInfo = location.state?.docxInfo;
 
@@ -6124,6 +6125,25 @@ const DataValidationPage = () => {
 
 
           }}>
+            {/* Home Button */}
+            <div className="mb-3 px-3">
+              <button 
+                className="btn btn-outline-primary d-flex align-items-center"
+                onClick={() => navigate('/bulk-upload/view-files')}
+                style={{ 
+                  border: '1px solid #0D61AE',
+                  borderRadius: '12px',
+                  padding: '8px 16px',
+                  fontSize: '18px',
+                  fontWeight: '500',
+                  color: '#0D61AE',
+                  height: '42px'
+                }}
+              >
+                <i className="fas fa-less-than me-2 lessthan-icon"></i>
+                Home
+              </button>
+            </div>
 
             {isRoot ? (
 

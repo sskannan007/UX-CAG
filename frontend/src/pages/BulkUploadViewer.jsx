@@ -773,7 +773,7 @@ const BulkUpload = () => {
          </div>
 
       {/* Documents Table */}
-      <Card className="shadow-sm">
+      <Card className="shadow-sm table-card">
         <Card.Header className="bg-white border-bottom">
           <Row className="align-items-center">
             <Col md={6}>
@@ -960,7 +960,7 @@ const BulkUpload = () => {
                   <td>{doc.assignedTo}</td>
                   <td>{doc.assignedOn}</td>
                   <td>{doc.modification}</td>
-                  <td>{getStatusBadge(doc.status)}</td>
+                  <td className="badge-style">{getStatusBadge(doc.status)}</td>
                   <td>{getSeverityBadge(doc.severity)}</td>
                   <td>
                     <Button variant="outline-secondary" size="sm">
@@ -988,14 +988,14 @@ const BulkUpload = () => {
             </Col>
             <Col md={6}>
               <div className="d-flex justify-content-end gap-2">
-                <Button variant="outline-primary" size="sm">
+                <Button className="page-button" variant="outline-primary" size="sm">
                   <i className="fas fa-angle-left"></i>
                 </Button>
-                <Button variant="primary" size="sm">1</Button>
-                <Button variant="outline-primary" size="sm">2</Button>
-                <Button variant="outline-primary" size="sm">3</Button>
-                <Button variant="outline-primary" size="sm">4</Button>
-                <Button variant="outline-primary" size="sm">
+                <Button className="page-button" variant="primary" size="sm">1</Button>
+                <Button className="page-button" variant="outline-primary" size="sm">2</Button>
+                <Button className="page-button" variant="outline-primary" size="sm">3</Button>
+                <Button className="page-button" variant="outline-primary" size="sm">4</Button>
+                <Button className="page-button" variant="outline-primary" size="sm">
                   <i className="fas fa-angle-right"></i>
                 </Button>
               </div>
@@ -1023,15 +1023,14 @@ const BulkUpload = () => {
               Home
             </a>
           </li>
-          <li className="breadcrumb-item active">Add Upload Folder</li>
+          <li className="breadcrumb-item active">Upload document</li>
         </ol>
       </nav>
       
     <Card className="shadow-sm">
-      <Card.Header className="text-white text-center bg-primary">
+      <Card.Header className="text-white text-left">
         <h5 className="mb-0">
-          <i className="fas fa-upload me-2"></i>
-          Upload Files & Folders
+          Upload document
         </h5>
       </Card.Header>
       <Card.Body>
@@ -1041,173 +1040,219 @@ const BulkUpload = () => {
           </Alert>
         )}
         
-        <div className="text-center pb-5">
-          <div
-            className="upload-area p-5 border-2 border-dashed border-primary rounded" 
-            style={{ 
-              borderStyle: 'dashed', 
-              borderColor: '#007bff', 
-              backgroundColor: '#f8f9fa'
-            }}
-            onDragOver={handleDragOver}
-            onDragLeave={handleDragLeave}
-            onDrop={handleDrop}
-          >
-            <i className="fas fa-cloud-upload-alt fa-3x text-primary mb-3"></i>
-            <h5 className="mb-3">Upload Files or Folder</h5>
-            <p className="text-muted mb-4">
-              Drag and drop files/folder here or click to browse
-            </p>
-            <small className="text-muted d-block mb-3">Allowed types: .json, .csv, .xlsx, .xls, .pdf, .txt, .docx</small>
-            
-            {/* Progress Bar */}
-            {isUploading && (
-              <div className="mb-4">
-                <div className="progress" style={{ height: '20px' }}>
-                  <div 
-                    className="progress-bar progress-bar-striped progress-bar-animated" 
-                    role="progressbar" 
-                    style={{ width: `${uploadProgress}%` }}
-                    aria-valuenow={uploadProgress} 
-                    aria-valuemin="0" 
-                    aria-valuemax="100"
-                  >
-                    {uploadProgress}%
-                  </div>
-                </div>
-                <small className="text-muted">Uploading to database...</small>
-              </div>
-            )}
-            
-            {/* Conversion Progress Bar */}
-            {convertingFiles && (
-              <div className="mb-4">
-                <div className="progress" style={{ height: '20px' }}>
-                  <div 
-                    className="progress-bar progress-bar-striped progress-bar-animated bg-warning" 
-                    role="progressbar" 
-                    style={{ width: `${conversionProgress}%` }}
-                    aria-valuenow={conversionProgress} 
-                    aria-valuemin="0" 
-                    aria-valuemax="100"
-                  >
-                    {conversionProgress}%
-                  </div>
-                </div>
-                <small className="text-muted">
-                  {currentProcessingFile ? `Processing: ${currentProcessingFile}` : 'Processing files...'}
-                </small>
-              </div>
-            )}
-            
-            <div className="d-flex gap-3 justify-content-center">
-              <div>
-                {canUploadFolder && (
-                  <>
-                    <input
-                      type="file"
-                      multiple
-                      webkitdirectory=""
-                      directory=""
-                      onChange={handleFolderSelect}
-                      style={{ display: 'none' }}
-                      id="folder-select"
-                      ref={folderInputRef}
-                    />
-                    <label htmlFor="folder-select">
-                      <Button variant="primary" as="span" disabled={isUploading || convertingFiles}>
-                        <i className="fas fa-folder-open me-2"></i>
-                        Select Folder
-                      </Button>
-                    </label>
-                  </>
-                )}
-              </div>
+        {/* Dynamic Layout - Full width when no files, split when files selected */}
+        {selectedFiles.length === 0 ? (
+          /* Full Width - No Files Selected */
+          <div className="pb-5">
+            <div
+              className="upload-area p-5 border-2 border-dashed rounded" 
+              style={{
+                borderColor: '#E8E8E8',
+                backgroundColor: '#f8f9fa',
+                minHeight: '400px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+            >
+              <i className="fas fa-file-upload fa-3x text-muted mb-3"></i>
+              <h5 className="mb-3 text-muted">Drag files here</h5>
+              <p className="text-muted mb-4">
+                or <span className="text-primary" style={{ cursor: 'pointer' }} onClick={() => fileInputRef.current?.click()}>browse your computer</span>
+              </p>
+              <small className="text-muted d-block mb-3">Allowed types: .json, .csv, .xlsx, .xls, .pdf, .txt, .docx</small>
               
-              <div>
-                <input
-                  type="file"
-                  multiple
-                  accept=".json,.csv,.xlsx,.xls,.pdf,.txt,.docx"
-                  onChange={handleFileUpload}
-                  style={{ display: 'none' }}
-                  id="file-upload"
-                  ref={fileInputRef}
-                />
-                <label htmlFor="file-upload">
-                  <Button variant="outline-primary" as="span" disabled={isUploading || convertingFiles}>
-                    <i className="fas fa-file me-2"></i>
-                    Select Files
-                  </Button>
-                </label>
+              <div className="d-flex gap-3 justify-content-center">
+                <div>
+                  {canUploadFolder && (
+                    <>
+                      <input
+                        type="file"
+                        multiple
+                        webkitdirectory=""
+                        directory=""
+                        onChange={handleFolderSelect}
+                        style={{ display: 'none' }}
+                        id="folder-select"
+                        ref={folderInputRef}
+                      />
+                      <label htmlFor="folder-select">
+                        <Button variant="primary" as="span" disabled={isUploading || convertingFiles}>
+                          <i className="fas fa-folder-open me-2"></i>
+                          Select Folder
+                        </Button>
+                      </label>
+                    </>
+                  )}
+                </div>
+                
+                <div>
+                  <input
+                    type="file"
+                    multiple
+                    accept=".json,.csv,.xlsx,.xls,.pdf,.txt,.docx"
+                    onChange={handleFileUpload}
+                    style={{ display: 'none' }}
+                    id="file-upload"
+                    ref={fileInputRef}
+                  />
+                  <label htmlFor="file-upload">
+                    <Button variant="outline-primary" as="span" disabled={isUploading || convertingFiles}>
+                      <i className="fas fa-file me-2"></i>
+                      Select Files
+                    </Button>
+                  </label>
+                </div>
               </div>
             </div>
           </div>
-
-          {/* Selected Files List */}
-          {selectedFiles.length > 0 && (
-            <div className="mt-4">
-              <Card className="shadow-sm">
-                <Card.Header className="bg-light">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div>
-                      <h6 className="mb-0">
-                        <i className="fas fa-list me-2"></i>
-                        Selected Files ({selectedFiles.length})
-                      </h6>
-                    </div>
-                    <div className="d-flex gap-2">
-                      <Button 
-                        variant="outline-secondary" 
-                        onClick={clearSelection}
-                        disabled={isUploading || convertingFiles}
-                        size="sm"
-                      >
-                        <i className="fas fa-times me-1"></i>
-                        Clear
-                      </Button>
-                      <Button 
-                        variant="success" 
-                        onClick={uploadFilesToDatabase}
-                        disabled={isUploading || convertingFiles}
-                      >
-                        <i className="fas fa-upload me-2"></i>
-                        Upload Files to Database
-                      </Button>
-                    </div>
-                  </div>
-                </Card.Header>
-                <Card.Body className="p-0">
-                  <ListGroup variant="flush">
-                    {selectedFiles.map((file, index) => (
-                      <ListGroup.Item key={`${file.name}-${index}`} className="d-flex justify-content-between align-items-center">
-                        <div className="d-flex align-items-center">
-                          <i className={`${getFileIcon(file.name)} me-3`} style={{ fontSize: '1.2rem' }}></i>
-                          <div>
-                            <strong>{file.name}</strong>
-                            <br />
-                            <small className="text-muted">
-                              {formatFileSize(file.size)} • {file.type || 'Unknown type'}
-                            </small>
-                          </div>
-                        </div>
-                        <div className="d-flex align-items-center gap-2">
-                          <Badge bg="primary">Ready</Badge>
-                          <Button
-                            variant="outline-danger"
-                            size="sm"
-                            onClick={() => setSelectedFiles(prev => prev.filter((_, idx) => idx !== index))}
-                          >
-                            <i className="fas fa-trash"></i>
+        ) : (
+          /* Split Layout - Files Selected */
+          <Row className="pb-5">
+            {/* Left Column - File Drop Zone */}
+            <Col md={6}>
+              <div
+                className="upload-area p-5 border-2 border-dashed rounded h-100" 
+                style={{
+                  borderColor: '#E8E8E8',
+                  backgroundColor: '#f8f9fa',
+                  minHeight: '400px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
+              >
+                <i className="fas fa-file-upload fa-3x text-muted mb-3"></i>
+                <h5 className="mb-3 text-muted">Drag files here</h5>
+                <p className="text-muted mb-4">
+                  or <span className="text-primary" style={{ cursor: 'pointer' }} onClick={() => fileInputRef.current?.click()}>browse your computer</span>
+                </p>
+                <small className="text-muted d-block mb-3">Allowed types: .json, .csv, .xlsx, .xls, .pdf, .txt, .docx</small>
+                
+                <div className="d-flex gap-3 justify-content-center">
+                  <div>
+                    {canUploadFolder && (
+                      <>
+                        <input
+                          type="file"
+                          multiple
+                          webkitdirectory=""
+                          directory=""
+                          onChange={handleFolderSelect}
+                          style={{ display: 'none' }}
+                          id="folder-select"
+                          ref={folderInputRef}
+                        />
+                        <label htmlFor="folder-select">
+                          <Button variant="primary" as="span" disabled={isUploading || convertingFiles}>
+                            <i className="fas fa-folder-open me-2"></i>
+                            Select Folder
                           </Button>
+                        </label>
+                      </>
+                    )}
+                  </div>
+                  
+                  <div>
+                    <input
+                      type="file"
+                      multiple
+                      accept=".json,.csv,.xlsx,.xls,.pdf,.txt,.docx"
+                      onChange={handleFileUpload}
+                      style={{ display: 'none' }}
+                      id="file-upload"
+                      ref={fileInputRef}
+                    />
+                    <label htmlFor="file-upload">
+                      <Button variant="outline-primary" as="span" disabled={isUploading || convertingFiles}>
+                        <i className="fas fa-file me-2"></i>
+                        Select Files
+                      </Button>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </Col>
+
+            {/* Right Column - Files Uploading Progress */}
+            <Col md={6}>
+              <div className="h-100 d-flex flex-column">
+                <h5 className="text-muted mb-3">Files uploading</h5>
+                
+                {/* Individual File Progress */}
+                <div className="flex-grow-1">
+                  {selectedFiles.map((file, index) => (
+                    <div key={`${file.name}-${index}`} className="d-flex align-items-center mb-3 p-3">
+                      {/* File Icon */}
+                      <div className="me-3">
+                        <img 
+                          src="/src/assets/ExcelFile_Icon.png" 
+                          alt="File" 
+                          style={{ width: '35px', height: '39px' }}
+                        />
+                      </div>
+                      
+                      {/* Progress Bar */}
+                      <div className="flex-grow-1 me-3">
+                        <div className="progress" style={{ height: '8px' }}>
+                          <div 
+                            className="progress-bar" 
+                            role="progressbar" 
+                            style={{ 
+                              width: isUploading ? `${uploadProgress}%` : '0%',
+                              backgroundColor: '#007bff'
+                            }}
+                            aria-valuenow={isUploading ? uploadProgress : 0} 
+                            aria-valuemin="0" 
+                            aria-valuemax="100"
+                          ></div>
                         </div>
-                      </ListGroup.Item>
-                    ))}
-                  </ListGroup>
-                </Card.Body>
-              </Card>
-            </div>
-          )}
+                      </div>
+                      
+                      {/* Percentage */}
+                      <div className="me-3">
+                        <span className="text-muted">{isUploading ? `${uploadProgress}%` : '0%'}</span>
+                      </div>
+                      
+                      {/* Delete Icon */}
+                      <div>
+                        <i 
+                          className="fas fa-trash text-muted" 
+                          style={{ cursor: 'pointer' }}
+                          onClick={() => setSelectedFiles(prev => prev.filter((_, idx) => idx !== index))}
+                        ></i>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Action Buttons */}
+                <div className="d-flex gap-2 mt-auto import-btn-header">
+                  <Button 
+                    variant="outline-secondary" 
+                    size="sm" 
+                    onClick={() => setSelectedFiles([])}
+                    disabled={isUploading || convertingFiles}
+                  >
+                    Cancel
+                  </Button>
+                  <Button variant="primary" size="sm" onClick={uploadFilesToDatabase} disabled={isUploading || convertingFiles}>
+                    Import
+                  </Button>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        )}
+
 
           {/* Selected Folder List */}
           {canUploadFolder && selectedFolder && selectedFolder.length > 0 && (
@@ -1267,7 +1312,6 @@ const BulkUpload = () => {
               </Card>
             </div>
           )}
-        </div>
       </Card.Body>
     </Card>
      </div>
@@ -1330,6 +1374,7 @@ const BulkUpload = () => {
               <Button 
                 variant="outline-secondary" 
                 size="sm" 
+                className="filter-btn"
                 onClick={clearFilters}
               >
                 Clear All Filters
@@ -1343,7 +1388,7 @@ const BulkUpload = () => {
           <Card.Header className="bg-white border-bottom">
             <Row className="align-items-center">
               <Col md={4}>
-                <h6 className="mb-0">Uploaded Files ({filteredDocuments.length})</h6>
+                <h5 className="mb-0">Uploaded Files ({filteredDocuments.length})</h5>
               </Col>
               <Col md={8}>
                 <div className="d-flex gap-2 align-items-center justify-content-end">
@@ -1366,7 +1411,7 @@ const BulkUpload = () => {
                     <Dropdown.Toggle 
                       variant="outline-secondary" 
                       size="sm"
-                      className="d-flex align-items-center"
+                      className="d-flex align-items-center filter-btn"
                     >
                       <i className="fas fa-filter me-2"></i>
                       Filter
@@ -1426,7 +1471,7 @@ const BulkUpload = () => {
                           variant="primary" 
                           size="sm" 
                           onClick={applyFilters}
-                          className="flex-fill"
+                          className="flex-fill filter-btn"
                         >
                           Apply Filters
                         </Button>
@@ -1434,7 +1479,7 @@ const BulkUpload = () => {
                           variant="outline-secondary" 
                           size="sm" 
                           onClick={clearFilters}
-                          className="flex-fill"
+                          className="flex-fill filter-btn"
                         >
                           Clear All
                         </Button>
@@ -1452,7 +1497,7 @@ const BulkUpload = () => {
             </Row>
           </Card.Header>
           <Card.Body className="p-0">
-            <Table responsive hover className="mb-0">
+            <Table responsive hover className="mb-0 view-files-table">
               <thead className="table-light">
                 <tr>
                   <th style={{ width: '40px' }}>
@@ -1503,7 +1548,7 @@ const BulkUpload = () => {
                        <td>
                          <span className="text-muted">{doc.year}</span>
                        </td>
-                        <td>
+                        <td className="badge-style">
                           <Badge bg="secondary">{doc.state}</Badge>
                         </td>
                         <td>{getAssignmentStatusBadge(doc.assignedTo)}</td>
@@ -1544,13 +1589,32 @@ const BulkUpload = () => {
             </Col>
               <Col md={6}>
                 <div className="d-flex justify-content-end gap-2">
-                  <Button variant="outline-primary" size="sm">
+                  <Button 
+                    variant="outline-primary" 
+                    size="sm" className="page-button"
+                  >
                     <i className="fas fa-angle-left"></i>
                   </Button>
-                  <Button variant="primary" size="sm">1</Button>
-                  <Button variant="outline-primary" size="sm">2</Button>
-                  <Button variant="outline-primary" size="sm">3</Button>
-                  <Button variant="outline-primary" size="sm">
+                  <Button 
+                    variant="primary" 
+                    size="sm"
+                    className="page-button"
+                  >
+                    1
+                  </Button>
+                  <Button 
+                    variant="outline-primary" className="page-button" size="sm"
+                  >
+                    2
+                  </Button>
+                  <Button 
+                    variant="outline-primary" className="page-button" size="sm">
+                    3
+                  </Button>
+                  <Button 
+                    variant="outline-primary" 
+                    className="page-button" size="sm"
+                  >
                     <i className="fas fa-angle-right"></i>
                   </Button>
                 </div>
