@@ -158,9 +158,7 @@ function AppContent() {
         } />
           <Route path="/chatbot" element={
           <ProtectedRoute>
-            <LayoutWithSidebar>
-              <Chatbot />
-            </LayoutWithSidebar>
+            <Chatbot />
           </ProtectedRoute>
         } />
       </Routes>

@@ -1,5 +1,5 @@
 from database import engine, SessionLocal
-from models import Base, User, UserConfig, Role, Menu, RoleMenu, UserRole
+from models import Base, User, UserConfig, Role, Menu, RoleMenu, UserRole, UserFileAssignment
 from sqlalchemy.orm import Session
 import os
 

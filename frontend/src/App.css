@@ -57,3 +57,15 @@ footer {
     transform: translateY(0);
   }
 }
+.chatbot-input {
+  padding: 18px 25px;
+  border-radius: 30px !important;
+  border: 27px solid #B5BED8;
+}
+.chatbot-input-group {
+  position: relative;
+}
+.chatbot-input-group button {
+  position: absolute;
+  right: 20px;
+}

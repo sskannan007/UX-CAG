@@ -11,7 +11,7 @@ from datetime import datetime
 import traceback
 from werkzeug.utils import secure_filename
 from sqlalchemy.orm import Session
-from database import get_db
+from database import get_db, engine
 import models
 from models import UploadedFile, User
 from schemas import RoleCreate
@@ -363,25 +363,56 @@ async def get_file_details(file_id: int, db: Session = Depends(get_db)):
 
 
 @app.get("/api/uploaded-files/{file_id}/content")
-async def get_file_content(file_id: int):
+async def get_file_content(file_id: int, db: Session = Depends(get_db)):
     """Get content of a specific file"""
     try:
-        file = next((f for f in uploaded_files_db if f["id"] == file_id), None)
+        # Get file from database
+        file = db.query(models.UploadedFile).filter(models.UploadedFile.id == file_id).first()
         
         if not file:
             raise HTTPException(status_code=404, detail="File not found")
         
-        content = file["extracted_json"] or {}
+        # Try to get extracted JSON content
+        content = {}
+        if hasattr(file, 'extracted_json') and file.extracted_json:
+            try:
+                import json
+                content = json.loads(file.extracted_json) if isinstance(file.extracted_json, str) else file.extracted_json
+            except:
+                content = {}
         
         return {
             "status": "success",
-            "content": content
+            "content": content,
+            "source": "database"
         }
         
     except Exception as e:
         print(f"Error fetching file content: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Failed to fetch file content: {str(e)}")
 
+@app.get("/api/uploaded-files/{file_id}/related-docx")
+async def get_related_docx(file_id: int, db: Session = Depends(get_db)):
+    """Get related DOCX file information"""
+    try:
+        # Get file from database
+        file = db.query(models.UploadedFile).filter(models.UploadedFile.id == file_id).first()
+        
+        if not file:
+            raise HTTPException(status_code=404, detail="File not found")
+        
+        # Return basic file info (you can extend this based on your needs)
+        return {
+            "id": file.id,
+            "filename": file.filename,
+            "file_type": file.file_type,
+            "file_size": file.file_size,
+            "uploaded_at": file.uploaded_at.isoformat() if file.uploaded_at else None
+        }
+        
+    except Exception as e:
+        print(f"Error fetching related DOCX: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to fetch related DOCX: {str(e)}")
 
 @app.delete("/api/uploaded-files/{file_id}")
 async def delete_uploaded_file(file_id: int, db: Session = Depends(get_db)):
@@ -923,6 +954,7 @@ def assign_files(payload: AssignFilesPayload, db: Session = Depends(get_db), cur
         existing_files = {f.id for f in db.query(models.UploadedFile).filter(models.UploadedFile.id.in_(file_ids)).all()}
         missing_users = [uid for uid in user_ids if uid not in existing_users]
         missing_files = [fid for fid in file_ids if fid not in existing_files]
+        
         if missing_users or missing_files:
             raise HTTPException(status_code=400, detail=f"Invalid IDs. Missing users: {missing_users}, Missing files: {missing_files}")
 
@@ -934,9 +966,19 @@ def assign_files(payload: AssignFilesPayload, db: Session = Depends(get_db), cur
                     models.UserFileAssignment.user_id == uid,
                     models.UserFileAssignment.file_id == fid,
                 ).first()
+                
                 if exists:
                     continue
-                assignment = models.UserFileAssignment(user_id=uid, file_id=fid, assigned_by=current_user.id if current_user else None)
+                    
+                # Handle both dict and User object cases
+                assigned_by_id = None
+                if current_user:
+                    if isinstance(current_user, dict):
+                        assigned_by_id = current_user.get('id')
+                    else:
+                        assigned_by_id = getattr(current_user, 'id', None)
+                
+                assignment = models.UserFileAssignment(user_id=uid, file_id=fid, assigned_by=assigned_by_id)
                 db.add(assignment)
                 created += 1
 
@@ -1022,35 +1064,68 @@ async def get_user_assigned_files(user_id: int, db: Session = Depends(get_db)):
 async def get_my_assigned_files(current_user: models.User = Depends(get_current_user), db: Session = Depends(get_db)):
     """Get list of files assigned to the current authenticated user"""
     try:
+        print(f"=== MY ASSIGNED FILES DEBUG ===")
+        print(f"Current user type: {type(current_user)}")
+        print(f"Current user: {current_user}")
+        if hasattr(current_user, 'id'):
+            print(f"User ID: {current_user.id}")
+        elif isinstance(current_user, dict):
+            print(f"User ID from dict: {current_user.get('id')}")
+        print(f"=== END MY ASSIGNED FILES DEBUG ===")
+        
+        # Check if current_user is a dict or User object
+        if isinstance(current_user, dict):
+            print("ERROR: current_user is a dict, not a User object")
+            user_id = current_user.get('id')
+            if not user_id:
+                raise HTTPException(status_code=500, detail="Invalid user data: no id field")
+        else:
+            user_id = current_user.id
+            
+        print(f"Fetching assigned files for user ID: {user_id}")
+        
         # Get all file assignments for the current user
         assignments = db.query(models.UserFileAssignment).filter(
-            models.UserFileAssignment.user_id == current_user.id
+            models.UserFileAssignment.user_id == user_id
         ).all()
+        
+        print(f"Found {len(assignments)} assignments for user {user_id}")
+        print(f"Assignment details: {[(a.id, a.user_id, a.file_id, a.assigned_at) for a in assignments]}")
         
         assigned_files = []
         for assignment in assignments:
+            print(f"Processing assignment: file_id={assignment.file_id}, assigned_at={assignment.assigned_at}")
+            
             # Get the file details
             file_record = db.query(models.UploadedFile).filter(
                 models.UploadedFile.id == assignment.file_id
             ).first()
             
             if file_record:
+                print(f"Found file record: {file_record.filename}")
+                
                 # Get the name of the admin who assigned the file
-                assigned_by_user = db.query(models.User).filter(
-                    models.User.id == assignment.assigned_by
-                ).first()
+                assigned_by_user = None
+                if assignment.assigned_by:
+                    assigned_by_user = db.query(models.User).filter(
+                        models.User.id == assignment.assigned_by
+                    ).first()
                 
                 assigned_files.append({
                     "id": file_record.id,
                     "filename": file_record.filename,
                     "size": file_record.file_size,
                     "type": file_record.file_type,
-                    "uploaded_at": file_record.uploaded_at.isoformat(),
-                    "assigned_at": assignment.assigned_at.isoformat(),
+                    "uploaded_at": file_record.uploaded_at.isoformat() if file_record.uploaded_at else None,
+                    "assigned_at": assignment.assigned_at.isoformat() if assignment.assigned_at else None,
                     "assigned_by_name": f"{assigned_by_user.firstname} {assigned_by_user.lastname}" if assigned_by_user else "Unknown Admin",
                     "validated": bool(assignment.validated)
                 })
+            else:
+                print(f"File record not found for file_id: {assignment.file_id}")
         
+        print(f"Returning {len(assigned_files)} assigned files")
+        print(f"Assigned files data: {assigned_files}")
         return {
             "status": "success",
             "assigned_files": assigned_files,
@@ -1059,7 +1134,220 @@ async def get_my_assigned_files(current_user: models.User = Depends(get_current_
         
     except Exception as e:
         print(f"Error fetching assigned files for current user: {e}")
+        import traceback
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Failed to fetch assigned files: {str(e)}") 
+
+@app.post("/api/create-assignment-table")
+async def create_assignment_table(db: Session = Depends(get_db)):
+    """Create UserFileAssignment table if it doesn't exist"""
+    try:
+        from models import UserFileAssignment
+        # This will create the table if it doesn't exist
+        UserFileAssignment.__table__.create(bind=engine, checkfirst=True)
+        
+        # Test if we can query the table
+        count = db.query(UserFileAssignment).count()
+        return {"status": "success", "message": f"UserFileAssignment table created/verified. Current assignments: {count}"}
+    except Exception as e:
+        import traceback
+        return {"status": "error", "message": str(e), "traceback": traceback.format_exc()}
+
+@app.get("/api/test-assigned-files")
+async def test_assigned_files(current_user: models.User = Depends(get_current_user), db: Session = Depends(get_db)):
+    """Test endpoint to check assigned files functionality"""
+    try:
+        print(f"Testing assigned files for user type: {type(current_user)}")
+        print(f"Testing assigned files for user: {current_user}")
+        
+        # Check if current_user is a dict or User object
+        if isinstance(current_user, dict):
+            print("ERROR: current_user is a dict, not a User object")
+            user_id = current_user.get('id')
+            if not user_id:
+                return {"error": "Invalid user data: no id field", "user_type": type(current_user).__name__}
+        else:
+            user_id = current_user.id
+            
+        print(f"Testing assigned files for user ID: {user_id}")
+        
+        # Check if UserFileAssignment table exists
+        try:
+            assignments_count = db.query(models.UserFileAssignment).count()
+            print(f"UserFileAssignment table exists, total assignments: {assignments_count}")
+        except Exception as e:
+            print(f"UserFileAssignment table error: {e}")
+            return {"error": "UserFileAssignment table not found", "details": str(e)}
+        
+        # Check if user has any assignments
+        user_assignments = db.query(models.UserFileAssignment).filter(
+            models.UserFileAssignment.user_id == user_id
+        ).count()
+        
+        print(f"User {user_id} has {user_assignments} assignments")
+        
+        # Check available files and users
+        available_files = db.query(models.UploadedFile).count()
+        available_users = db.query(models.User).count()
+        
+        print(f"Available files: {available_files}, Available users: {available_users}")
+        
+        return {
+            "status": "success",
+            "user_id": user_id,
+            "user_type": type(current_user).__name__,
+            "total_assignments": assignments_count,
+            "user_assignments": user_assignments,
+            "available_files": available_files,
+            "available_users": available_users,
+            "table_exists": True
+        }
+        
+    except Exception as e:
+        print(f"Test error: {e}")
+        import traceback
+        traceback.print_exc()
+        return {"error": str(e), "details": traceback.format_exc()}
+
+@app.post("/api/test-assign-files")
+async def test_assign_files(current_user: models.User = Depends(get_current_user), db: Session = Depends(get_db)):
+    """Test endpoint to assign some files to the current user for testing"""
+    try:
+        print(f"Test assigning files for user ID: {current_user.id}")
+        
+        # Get the first few uploaded files
+        files = db.query(models.UploadedFile).limit(3).all()
+        if not files:
+            return {"error": "No files available to assign. Please upload some files first."}
+        
+        # Assign files to current user
+        created = 0
+        for file in files:
+            # Check if already assigned
+            exists = db.query(models.UserFileAssignment).filter(
+                models.UserFileAssignment.user_id == current_user.id,
+                models.UserFileAssignment.file_id == file.id,
+            ).first()
+            
+            if not exists:
+                assignment = models.UserFileAssignment(
+                    user_id=current_user.id, 
+                    file_id=file.id, 
+                    assigned_by=current_user.id
+                )
+                db.add(assignment)
+                created += 1
+        
+        db.commit()
+        
+        return {
+            "status": "success",
+            "message": f"Assigned {created} files to user {current_user.id}",
+            "files_assigned": [{"id": f.id, "filename": f.filename} for f in files[:created]]
+        }
+        
+    except Exception as e:
+        print(f"Test assignment error: {e}")
+        import traceback
+        traceback.print_exc()
+        return {"error": str(e), "details": traceback.format_exc()}
+
+@app.get("/api/debug-assignments")
+async def debug_assignments(current_user: models.User = Depends(get_current_user), db: Session = Depends(get_db)):
+    """Debug endpoint to check assignment data directly"""
+    try:
+        user_id = current_user.id if hasattr(current_user, 'id') else current_user.get('id')
+        
+        # Check assignments
+        assignments = db.query(models.UserFileAssignment).filter(
+            models.UserFileAssignment.user_id == user_id
+        ).all()
+        
+        # Check all assignments in the table
+        all_assignments = db.query(models.UserFileAssignment).all()
+        
+        # Check uploaded files
+        uploaded_files = db.query(models.UploadedFile).all()
+        
+        return {
+            "user_id": user_id,
+            "user_assignments": [
+                {
+                    "id": a.id,
+                    "user_id": a.user_id,
+                    "file_id": a.file_id,
+                    "assigned_at": a.assigned_at.isoformat() if a.assigned_at else None,
+                    "assigned_by": a.assigned_by,
+                    "validated": a.validated
+                } for a in assignments
+            ],
+            "all_assignments": [
+                {
+                    "id": a.id,
+                    "user_id": a.user_id,
+                    "file_id": a.file_id,
+                    "assigned_at": a.assigned_at.isoformat() if a.assigned_at else None,
+                    "assigned_by": a.assigned_by,
+                    "validated": a.validated
+                } for a in all_assignments
+            ],
+            "uploaded_files": [
+                {
+                    "id": f.id,
+                    "filename": f.filename,
+                    "file_type": f.file_type,
+                    "file_size": f.file_size,
+                    "uploaded_at": f.uploaded_at.isoformat() if f.uploaded_at else None
+                } for f in uploaded_files
+            ],
+            "total_assignments": len(all_assignments),
+            "user_assignments_count": len(assignments),
+            "uploaded_files_count": len(uploaded_files)
+        }
+        
+    except Exception as e:
+        import traceback
+        return {"error": str(e), "details": traceback.format_exc()}
+
+@app.post("/api/file-assignments")
+async def get_file_assignments(payload: dict, db: Session = Depends(get_db)):
+    """Get assignment information for multiple files"""
+    try:
+        file_ids = payload.get('file_ids', [])
+        if not file_ids:
+            return {"assignments": {}}
+        
+        # Get all assignments for the given file IDs
+        assignments = db.query(models.UserFileAssignment).filter(
+            models.UserFileAssignment.file_id.in_(file_ids)
+        ).all()
+        
+        # Get user information for assigned users
+        user_ids = [a.user_id for a in assignments]
+        users = db.query(models.User).filter(models.User.id.in_(user_ids)).all()
+        user_map = {u.id: u for u in users}
+        
+        # Build assignment info
+        assignment_info = {}
+        for assignment in assignments:
+            user = user_map.get(assignment.user_id)
+            user_name = f"{user.firstname} {user.lastname}".strip() if user else f"User {assignment.user_id}"
+            
+            assignment_info[assignment.file_id] = {
+                "user_id": assignment.user_id,
+                "user_name": user_name,
+                "assigned_at": assignment.assigned_at.isoformat() if assignment.assigned_at else None,
+                "assigned_by": assignment.assigned_by,
+                "validated": assignment.validated
+            }
+        
+        return {"assignments": assignment_info}
+        
+    except Exception as e:
+        print(f"Error fetching file assignments: {e}")
+        import traceback
+        traceback.print_exc()
+        return {"error": str(e), "assignments": {}}
 
 @app.get("/admin/check-missing-uploaded-files")
 def check_missing_uploaded_files(db: Session = Depends(get_db)):

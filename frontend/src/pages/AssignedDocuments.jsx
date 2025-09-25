@@ -23,6 +23,70 @@ const AssignedDocuments = () => {
     fetchAssignedFiles();
   }, []);
 
+  const testAssignedFiles = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      console.log('Testing assigned files endpoint...');
+      
+      // First test the table creation
+      const createResponse = await axios.post(`${config.BASE_URL}/api/create-assignment-table`, {}, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      console.log('Table creation response:', createResponse.data);
+      
+      // Then test the assigned files endpoint
+      const testResponse = await axios.get(`${config.BASE_URL}/api/test-assigned-files`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      console.log('Test response:', testResponse.data);
+      
+      alert(`Test Results:\nTable Status: ${createResponse.data.message}\nUser Assignments: ${testResponse.data.user_assignments}\nTotal Assignments: ${testResponse.data.total_assignments}\nAvailable Files: ${testResponse.data.available_files}\nAvailable Users: ${testResponse.data.available_users}`);
+    } catch (error) {
+      console.error('Test error:', error);
+      alert('Test failed: ' + (error.response?.data?.error || error.message));
+    }
+  };
+
+  const testAssignFiles = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      console.log('Testing file assignment...');
+      
+      const response = await axios.post(`${config.BASE_URL}/api/test-assign-files`, {}, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      console.log('Assignment response:', response.data);
+      
+      if (response.data.status === 'success') {
+        alert(`Assignment successful!\n${response.data.message}\nFiles assigned: ${response.data.files_assigned.map(f => f.filename).join(', ')}`);
+        // Refresh the assigned files list
+        fetchAssignedFiles();
+      } else {
+        alert('Assignment failed: ' + response.data.error);
+      }
+    } catch (error) {
+      console.error('Assignment error:', error);
+      alert('Assignment failed: ' + (error.response?.data?.error || error.message));
+    }
+  };
+
+  const debugAssignments = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      console.log('Debugging assignments...');
+      
+      const response = await axios.get(`${config.BASE_URL}/api/debug-assignments`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      console.log('Debug response:', response.data);
+      
+      alert(`Debug Results:\nUser ID: ${response.data.user_id}\nUser Assignments: ${response.data.user_assignments_count}\nTotal Assignments: ${response.data.total_assignments}\nUploaded Files: ${response.data.uploaded_files_count}\n\nCheck console for full details.`);
+    } catch (error) {
+      console.error('Debug error:', error);
+      alert('Debug failed: ' + (error.response?.data?.error || error.message));
+    }
+  };
+
   const fetchAssignedFiles = async () => {
     try {
       setLoading(true);
@@ -33,11 +97,6 @@ const AssignedDocuments = () => {
         timeout: 15000 // 15 second timeout for initial request
       });
       const files = response.data.assigned_files || [];
-      console.log('=== ASSIGNED FILES DEBUG ===');
-      console.log('API Response:', response.data);
-      console.log('Files array:', files);
-      console.log('Files length:', files.length);
-      console.log('=== END ASSIGNED FILES DEBUG ===');
       setAssignedFiles(files);
 
       // Show files immediately, then load content in background
@@ -103,7 +162,7 @@ const AssignedDocuments = () => {
       }
     } catch (err) {
       console.error('Error fetching assigned files:', err);
-      setError('Failed to load assigned files. Please try again.');
+      setError(`Failed to load assigned files: ${err.response?.data?.detail || err.message}. Please try the Test button to debug.`);
     } finally {
       setLoading(false);
     }
@@ -471,7 +530,7 @@ const AssignedDocuments = () => {
       alert(`Error loading file content: ${errorMessage}\n\nPlease try again or contact support if the problem persists.`);
       
       // Navigate back to the assigned documents page
-      navigate('/admin/assigned-documents');
+      navigate('/assigned-documents');
     } finally {
       setValidatingFileId(null); // End loading for the specific file
     }
@@ -512,11 +571,6 @@ const AssignedDocuments = () => {
   };
 
   const filteredFiles = filterData(assignedFiles);
-  console.log('=== TABLE RENDERING DEBUG ===');
-  console.log('assignedFiles:', assignedFiles);
-  console.log('filteredFiles:', filteredFiles);
-  console.log('filteredFiles length:', filteredFiles.length);
-  console.log('=== END TABLE RENDERING DEBUG ===');
   const totalPages = Math.ceil(filteredFiles.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -527,6 +581,7 @@ const AssignedDocuments = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  
   if (loading && !assignedFiles.length) {
     return (
       <Container fluid className="py-4">
@@ -655,6 +710,18 @@ const AssignedDocuments = () => {
                   <i className="fas fa-sync-alt me-2"></i>
                   Refresh
                 </Button>
+            <Button variant="outline-warning" onClick={testAssignedFiles} style={{ width: '120px', marginLeft: '10px' }}>
+              <i className="fas fa-bug me-2"></i>
+              Test
+            </Button>
+            <Button variant="outline-success" onClick={testAssignFiles} style={{ width: '140px', marginLeft: '10px' }}>
+              <i className="fas fa-plus me-2"></i>
+              Assign Test Files
+            </Button>
+            <Button variant="outline-info" onClick={debugAssignments} style={{ width: '120px', marginLeft: '10px' }}>
+              <i className="fas fa-search me-2"></i>
+              Debug
+            </Button>
               </div>
               {contentLoading && (
                 <div className="mb-3">

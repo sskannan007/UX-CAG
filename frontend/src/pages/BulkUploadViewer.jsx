@@ -63,7 +63,31 @@ const BulkUpload = () => {
   const [assignStatus, setAssignStatus] = useState(null);
   const [assignLoading, setAssignLoading] = useState(false);
   const [showAssignModal, setShowAssignModal] = useState(false);
-  const [selectedFilesForAssignment, setSelectedFilesForAssignment] = useState([]);
+  const [usersLoading, setUsersLoading] = useState(false);
+
+  // Function to get assignment information for files
+  const getAssignmentInfo = async (fileIds) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`${config.BASE_URL}/api/file-assignments`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ file_ids: fileIds })
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        return data.assignments || {};
+      }
+      return {};
+    } catch (error) {
+      console.error('Error fetching assignment info:', error);
+      return {};
+    }
+  };
 
   // Update dashboard stats based on documents
   useEffect(() => {
@@ -101,16 +125,56 @@ const BulkUpload = () => {
   // Fetch users for assignment
   const fetchUsers = async () => {
     try {
+      setUsersLoading(true);
       const token = localStorage.getItem('token');
-      const response = await fetch(`${config.BASE_URL}/users`, {
+      console.log('Fetching users from:', `${config.BASE_URL}/admin/users/all`);
+      
+      // Try admin endpoint first
+      let response = await fetch(`${config.BASE_URL}/admin/users/all`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
+      
+      console.log('Admin users response status:', response.status);
+      
+      if (!response.ok) {
+        console.log('Admin endpoint failed, trying /api/users');
+        // Fallback to /api/users endpoint
+        response = await fetch(`${config.BASE_URL}/api/users`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        console.log('API users response status:', response.status);
+      }
+      
       if (response.ok) {
         const data = await response.json();
-        setUsers(data.users || []);
+        console.log('Users data received:', data);
+        
+        // Handle different response formats
+        let usersList = [];
+        if (Array.isArray(data)) {
+          usersList = data;
+        } else if (data.users && Array.isArray(data.users)) {
+          usersList = data.users;
+        }
+        
+        // Transform data to ensure consistent format
+        const transformedUsers = usersList.map(user => ({
+          id: user.id,
+          name: user.name || user.username || `${user.firstname || ''} ${user.lastname || ''}`.trim() || `User ${user.id}`,
+          email: user.email || user.email_address || 'No email'
+        }));
+        
+        console.log('Transformed users:', transformedUsers);
+        setUsers(transformedUsers);
+      } else {
+        console.error('Failed to fetch users:', response.status, response.statusText);
+        setUsers([]);
       }
     } catch (error) {
       console.error('Error fetching users:', error);
+      setUsers([]);
+    } finally {
+      setUsersLoading(false);
     }
   };
 
@@ -123,6 +187,9 @@ const BulkUpload = () => {
         if (response.ok) {
           const data = await response.json();
           if (data.files && Array.isArray(data.files)) {
+            // Get assignment information for all files
+            const assignmentInfo = await getAssignmentInfo(data.files.map(f => f.id));
+            
             const existingDocuments = data.files.map(file => {
               // Extract metadata from JSON if available
               let documentName = file.filename;
@@ -197,14 +264,19 @@ const BulkUpload = () => {
                 }
               }
               
+              // Get assignment info for this file
+              const fileAssignment = assignmentInfo[file.id];
+              const assignedTo = fileAssignment ? fileAssignment.user_name : '—';
+              const assignedOn = fileAssignment ? fileAssignment.assigned_at : '—';
+              
               return {
                 id: file.id,
                 name: documentName,
                 department: department,
                 year: year,
                 state: state,
-                assignedTo: '—',
-                assignedOn: '—',
+                assignedTo: assignedTo,
+                assignedOn: assignedOn,
                 modification: '—',
                 status: file.status === 'processed' ? 'Completed' : 'Unassigned',
                 severity: '—',
@@ -593,21 +665,31 @@ const BulkUpload = () => {
             if (response.ok) {
               const data = await response.json();
               if (data.files && Array.isArray(data.files)) {
-                const existingDocuments = data.files.map(file => ({
+                // Get assignment information for all files
+                const assignmentInfo = await getAssignmentInfo(data.files.map(f => f.id));
+                
+                const existingDocuments = data.files.map(file => {
+                  // Get assignment info for this file
+                  const fileAssignment = assignmentInfo[file.id];
+                  const assignedTo = fileAssignment ? fileAssignment.user_name : '—';
+                  const assignedOn = fileAssignment ? fileAssignment.assigned_at : '—';
+
+                  return {
                   id: file.id,
                   name: file.filename,
                   department: 'Uploaded',
                   year: new Date(file.uploaded_at).getFullYear().toString(),
                   state: 'Tamilnadu',
-                  assignedTo: '—',
-                  assignedOn: '—',
+                    assignedTo: assignedTo,
+                    assignedOn: assignedOn,
                   modification: '—',
                   status: file.status === 'processed' ? 'Completed' : 'Unassigned',
                   severity: '—',
                   file_type: file.file_type ? file.file_type.toUpperCase() : 'Unknown',
                   file_size: file.file_size || 0,
                   uploaded_at: file.uploaded_at ? file.uploaded_at.split('T')[0] : new Date().toISOString().split('T')[0]
-                }));
+                  };
+                });
                 setDocuments(existingDocuments);
               }
             }
@@ -722,9 +804,9 @@ const BulkUpload = () => {
   // Handle file selection for assignment
   const handleFileSelection = (fileId, isSelected) => {
     if (isSelected) {
-      setSelectedFilesForAssignment(prev => [...prev, fileId]);
+      setSelectedFiles(prev => [...prev, fileId]);
     } else {
-      setSelectedFilesForAssignment(prev => prev.filter(id => id !== fileId));
+      setSelectedFiles(prev => prev.filter(id => id !== fileId));
     }
   };
 
@@ -734,15 +816,15 @@ const BulkUpload = () => {
       const unassignedFiles = filteredDocuments
         .filter(doc => !doc.assignedTo || doc.assignedTo === '—')
         .map(doc => doc.id);
-      setSelectedFilesForAssignment(unassignedFiles);
+      setSelectedFiles(unassignedFiles);
     } else {
-      setSelectedFilesForAssignment([]);
+      setSelectedFiles([]);
     }
   };
 
   // Open assignment modal
   const handleOpenAssignModal = () => {
-    if (selectedFilesForAssignment.length === 0) {
+    if (selectedFiles.length === 0) {
       setAssignStatus({ type: 'warning', msg: 'Please select at least one document to assign.' });
       return;
     }
@@ -751,13 +833,13 @@ const BulkUpload = () => {
   };
 
   const assignFilesToUser = async () => {
-    if (!selectedUser || selectedFilesForAssignment.length === 0) {
+    if (!selectedUser || selectedFiles.length === 0) {
       setAssignStatus({ type: 'warning', msg: 'Select a user and at least one document.' });
       return;
     }
     
     // Check if any selected files are already assigned to any user
-    const alreadyAssignedFiles = selectedFilesForAssignment.filter(fileId => {
+    const alreadyAssignedFiles = selectedFiles.filter(fileId => {
       const file = documents.find(f => f.id === fileId);
       return file && file.assignedTo && file.assignedTo !== '—';
     });
@@ -770,6 +852,7 @@ const BulkUpload = () => {
       setAssignLoading(true);
       setAssignStatus(null);
       const token = localStorage.getItem('token');
+      
       const response = await fetch(`${config.BASE_URL}/admin/assign-files`, {
         method: 'POST',
         headers: {
@@ -778,15 +861,21 @@ const BulkUpload = () => {
         },
         body: JSON.stringify({
           user_ids: [selectedUser.id],
-          file_ids: selectedFilesForAssignment
+          file_ids: selectedFiles
         })
       });
+      
       const data = await response.json();
+      
       if (response.ok) {
-        setAssignStatus({ type: 'success', msg: `Assigned successfully. New links: ${data.created || 0}` });
-        setSelectedFilesForAssignment([]);
-        setShowAssignModal(false);
-        setSelectedUser(null);
+        if (data.created && data.created > 0) {
+          setAssignStatus({ type: 'success', msg: `Assigned successfully. New links: ${data.created}. Please refresh the Assigned Documents page to see the new assignment.` });
+        setSelectedFiles([]);
+          setShowAssignModal(false);
+          setSelectedUser(null);
+      } else {
+          setAssignStatus({ type: 'warning', msg: 'Assignment completed but no new assignments were created. File might already be assigned.' });
+        }
         // Refresh the documents list
         const refreshDocuments = async () => {
           try {
@@ -794,6 +883,9 @@ const BulkUpload = () => {
             if (response.ok) {
               const data = await response.json();
               if (data.files && Array.isArray(data.files)) {
+                // Get assignment information for all files
+                const assignmentInfo = await getAssignmentInfo(data.files.map(f => f.id));
+                
                 const existingDocuments = data.files.map(file => {
                   let documentName = file.filename;
                   let department = 'Uploaded';
@@ -856,14 +948,19 @@ const BulkUpload = () => {
                     }
                   }
                   
+                  // Get assignment info for this file
+                  const fileAssignment = assignmentInfo[file.id];
+                  const assignedTo = fileAssignment ? fileAssignment.user_name : '—';
+                  const assignedOn = fileAssignment ? fileAssignment.assigned_at : '—';
+
                   return {
                     id: file.id,
                     name: documentName,
                     department: department,
                     year: year,
                     state: state,
-                    assignedTo: '—',
-                    assignedOn: '—',
+                    assignedTo: assignedTo,
+                    assignedOn: assignedOn,
                     modification: '—',
                     status: file.status === 'processed' ? 'Completed' : 'Unassigned',
                     severity: '—',
@@ -881,11 +978,11 @@ const BulkUpload = () => {
         };
         refreshDocuments();
       } else {
-        setAssignStatus({ type: 'danger', msg: data.detail || 'Failed to assign files' });
+        setAssignStatus({ type: 'danger', msg: data.detail || `Failed to assign files. Status: ${response.status}` });
       }
     } catch (err) {
       console.error('Error assigning files:', err);
-      setAssignStatus({ type: 'danger', msg: 'Error assigning files' });
+      setAssignStatus({ type: 'danger', msg: `Error assigning files: ${err.message}` });
     } finally {
       setAssignLoading(false);
     }
@@ -1113,9 +1210,7 @@ const BulkUpload = () => {
           <Table responsive hover className="mb-0">
             <thead className="table-light">
               <tr>
-                <th className="table-checkbox" style={{ width: '40px'}}>
-                  <input type="checkbox" />
-                </th>
+                <th>S.NO</th>
                 <th>Document Name</th>
                 <th>Department</th>
                 <th>Year</th>
@@ -1144,10 +1239,10 @@ const BulkUpload = () => {
                    </td>
                  </tr>
                ) : (
-                 filteredDocuments.map((doc) => (
+                 filteredDocuments.map((doc, index) => (
                 <tr key={doc.id}>
-                     <td className="table-checkbox">
-                    <input type="checkbox" />
+                     <td className="text-center fw-medium text-muted">
+                    {index + 1}
                   </td>
                   <td className="fw-medium">{doc.name}</td>
                   <td>{doc.department}</td>
@@ -1688,10 +1783,10 @@ const BulkUpload = () => {
                     variant="primary" 
                     size="sm"
                     onClick={handleOpenAssignModal}
-                    disabled={selectedFilesForAssignment.length === 0}
+                    disabled={selectedFiles.length === 0}
                   >
                     <i className="fas fa-user-plus me-2"></i>
-                    Assign Files ({selectedFilesForAssignment.length})
+                    Assign Files ({selectedFiles.length})
                   </Button>
                 </div>
               </Col>
@@ -1705,7 +1800,7 @@ const BulkUpload = () => {
                     <input 
                       type="checkbox" 
                       onChange={(e) => handleSelectAllFiles(e.target.checked)}
-                      checked={selectedFilesForAssignment.length > 0 && selectedFilesForAssignment.length === filteredDocuments.filter(doc => !doc.assignedTo || doc.assignedTo === '—').length}
+                      checked={selectedFiles.length > 0 && selectedFiles.length === filteredDocuments.filter(doc => !doc.assignedTo || doc.assignedTo === '—').length}
                     />
                   </th>
                     <th>Document Name</th>
@@ -1736,14 +1831,11 @@ const BulkUpload = () => {
                    filteredDocuments.map((doc) => (
                      <tr 
                         key={doc.id} 
-                          style={{ cursor: 'pointer' }}
-                          onClick={() => handleFileRowClick(doc)}
-                          className="table-row-hover"
                       >
-                       <td onClick={(e) => e.stopPropagation()}>
+                       <td>
                          <input 
                            type="checkbox" 
-                           checked={selectedFilesForAssignment.includes(doc.id)}
+                           checked={selectedFiles.includes(doc.id)}
                            onChange={(e) => handleFileSelection(doc.id, e.target.checked)}
                            disabled={doc.assignedTo && doc.assignedTo !== '—'}
                          />
@@ -1765,9 +1857,6 @@ const BulkUpload = () => {
                         <td>{doc.assignedTo}</td>
                         <td>
                           <div className="d-flex gap-1">
-                            <Button variant="outline-primary" size="sm" title="View" onClick={() => handleFileRowClick(doc)}>
-                              <i className="fas fa-eye"></i>
-                            </Button>
                             <Button variant="outline-success" size="sm" title="Download">
                               <i className="fas fa-download"></i>
                             </Button>
@@ -1879,18 +1968,30 @@ const BulkUpload = () => {
                             className="form-select"
                           >
                             <option value="">Choose a user...</option>
-                            {users.map(user => (
-                              <option key={user.id} value={user.id}>
-                                {user.username} ({user.email})
-                              </option>
-                            ))}
+                            {usersLoading ? (
+                              <option disabled>Loading users...</option>
+                            ) : users.length === 0 ? (
+                              <option disabled>No users available</option>
+                            ) : (
+                              users.map(user => (
+                                <option key={user.id} value={user.id}>
+                                  {user.name} ({user.email})
+                                </option>
+                              ))
+                            )}
                           </FormControl>
+                          {usersLoading && (
+                            <small className="text-muted">Loading users...</small>
+                          )}
+                          {!usersLoading && users.length === 0 && (
+                            <small className="text-muted">No users available</small>
+                          )}
                         </div>
                         
                         <div className="mb-3">
-                          <label className="form-label">Selected Files ({selectedFilesForAssignment.length})</label>
+                          <label className="form-label">Selected Files ({selectedFiles.length})</label>
                           <div className="border rounded p-3" style={{ maxHeight: '200px', overflowY: 'auto' }}>
-                            {selectedFilesForAssignment.map(fileId => {
+                            {selectedFiles.map(fileId => {
                               const file = documents.find(d => d.id === fileId);
                               return file ? (
                                 <div key={fileId} className="d-flex justify-content-between align-items-center py-1">
@@ -1919,16 +2020,16 @@ const BulkUpload = () => {
                         <Button 
                           variant="primary" 
                           onClick={assignFilesToUser}
-                          disabled={!selectedUser || assignLoading}
+                          disabled={!selectedUser || assignLoading || selectedFiles.length === 0}
                         >
                           {assignLoading ? (
                             <>
                               <Spinner animation="border" size="sm" className="me-2" />
                               Assigning...
                             </>
-                          ) : (
-                            'Assign Files'
-                          )}
+                            ) : (
+                              `Assign ${selectedFiles.length} File${selectedFiles.length !== 1 ? 's' : ''}`
+                            )}
                         </Button>
                       </div>
                     </div>

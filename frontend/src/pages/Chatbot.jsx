@@ -1,17 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Container, Row, Col, Button, Form, InputGroup, Spinner } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import BotImage from '../assets/assistant.png';
+import ChatbotImage from '../assets/chatbot.png';
 import SendIcon from '../assets/send-arrow.png';
 // import '../styles/chatbot.css';
 
 const Chatbot = () => {
+  const navigate = useNavigate();
   const [conversations, setConversations] = useState([]);
   const [activeConversationId, setActiveConversationId] = useState(null);
   const [newMessage, setNewMessage] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const [showRelatedQuestions, setShowRelatedQuestions] = useState(true);
+  const [showRelatedQuestions, setShowRelatedQuestions] = useState(false);
+  const [hasMessages, setHasMessages] = useState(false);
   const messagesEndRef = useRef(null);
 
   const relatedQuestions = [
@@ -41,7 +45,8 @@ const Chatbot = () => {
     };
     setConversations(prev => [newChat, ...prev]);
     setActiveConversationId(newChat.id);
-    setShowRelatedQuestions(true);
+    setShowRelatedQuestions(false);
+    setHasMessages(false);
   };
 
   const getActiveConversation = () => {
@@ -175,6 +180,7 @@ const Chatbot = () => {
     setError('');
     setNewMessage('');
     setShowRelatedQuestions(false);
+    setHasMessages(true);
 
     try {
       console.log('Sending query:', query, 'Type:', typeof query);
@@ -235,6 +241,8 @@ const Chatbot = () => {
 
   const loadConversation = (conversationId) => {
     setActiveConversationId(conversationId);
+    const conversation = conversations.find(conv => conv.id === conversationId);
+    setHasMessages(conversation && conversation.messages.length > 0);
   };
 
   const handleShare = () => {
@@ -255,15 +263,16 @@ const Chatbot = () => {
 
   const handleNewChat = () => {
     createNewChat();
-    setShowRelatedQuestions(true);
+    setShowRelatedQuestions(false);
+    setHasMessages(false);
   };
 
   const handleInputChange = (e) => {
     setNewMessage(e.target.value);
     if (e.target.value.trim()) {
-      setShowRelatedQuestions(false);
-    } else {
       setShowRelatedQuestions(true);
+    } else {
+      setShowRelatedQuestions(false);
     }
   };
 
@@ -274,10 +283,33 @@ const Chatbot = () => {
   const activeConversation = getActiveConversation();
 
   return (
-    <Container fluid style={{ padding: '20px' }}>
-      <Row className="h-100 g-0">
-        {/* Left Sidebar */}
-        <Col md={3} className="bg-light border-end d-flex flex-column" style={{ minHeight: 'calc(100vh - 160px)' }}>
+    <div style={{ height: '100vh', backgroundColor: '#f8f9fa' }}>
+      {/* Header */}
+      <div className="d-flex justify-content-between align-items-center p-3" style={{ backgroundColor: 'white', borderBottom: '1px solid #dee2e6' }}>
+        <div className="d-flex align-items-center">
+          <span 
+            className="text-primary fw-bold me-2" 
+            style={{ cursor: 'pointer' }}
+            onClick={() => navigate('/dashboard')}
+          >
+            Overview
+          </span>
+          <span className="text-muted me-2">{'>'}</span>
+          <span className="text-muted">New Chat</span>
+        </div>
+        <Button 
+          variant="outline-secondary" 
+          size="sm"
+          onClick={() => navigate('/dashboard')}
+        >
+          Close
+        </Button>
+      </div>
+
+      {/* Main Content */}
+      <div className="d-flex" style={{ height: 'calc(100vh - 60px)' }}>
+        {/* Left Sidebar - Chatbot Sidebar */}
+        <div className="bg-light border-end d-flex flex-column" style={{ width: '300px', minHeight: '100%' }}>
           {/* Header */}
           <div className="p-3 border-bottom">
             <h5 className="mb-3 text-primary">PROOF BOX</h5>
@@ -341,10 +373,10 @@ const Chatbot = () => {
               </div>
             ))}
           </div>
-        </Col>
+        </div>
 
         {/* Main Chat Area */}
-        <Col md={9} className="d-flex flex-column">
+        <div className="flex-grow-1 d-flex flex-column">
           {/* Chat Header */}
           <div className="p-3 border-bottom bg-white d-flex justify-content-between align-items-center">
             <div>
@@ -363,154 +395,205 @@ const Chatbot = () => {
             </div>
           </div>
 
-          {/* Messages Area */}
-          <div className="flex-grow-1 overflow-auto p-3" style={{ maxHeight: 'calc(100vh - 200px)' }}>
-            {error && (
-              <div className="alert alert-danger mb-3">
-                {error}
+          {/* Input Area - Positioned at top when no messages, bottom when messages exist */}
+          {!hasMessages && (
+            <div className="p-3 bg-white">
+              {/* Chatbot Image */}
+              <div className="text-center mb-4">
+                <img 
+                  src={ChatbotImage} 
+                  alt="Chatbot" 
+                  style={{ width: '120px', height: '120px', objectFit: 'contain' }}
+                />
               </div>
-            )}
-            {activeConversation && activeConversation.messages.length > 0 ? (
-              activeConversation.messages.map((message) => (
-                <div
-                  key={message.id}
-                  className="mb-2"
-                  style={{ width: '100%' }}
-                >
-                  <div className="d-flex align-items-start">
-                    {message.type === 'bot' && (
-                      <div className="me-2 mt-1">
-                        <img 
-                          src={BotImage} 
-                          alt="Bot" 
-                          style={{ width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover' }}
-                        />
-                      </div>
-                    )}
-                    <div className="flex-grow-1">
-                      <div className="d-flex align-items-center mb-1">
-                        <small className={message.type === 'user' ? 'text-primary fw-bold' : 'text-muted'}>
-                          {message.type === 'user' ? 'You' : 'Proofbot'}
-                        </small>
-                        <small className="text-muted ms-2">
-                          {message.timestamp.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
-                        </small>
-                      </div>
-                      <div 
-                        className={`p-2 rounded ${
-                          message.type === 'user'
-                            ? 'bg-primary text-white'
-                            : 'bg-light text-dark'
-                        }`}
-                        style={{ 
-                          display: 'inline-block',
-                          maxWidth: '80%'
-                        }}
-                       >
-                         {message.content}
-                       </div>
-                    </div>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="text-center text-muted mt-5">
-                <h5>Welcome to PROOF BOX</h5>
-                <p>Start a new conversation by typing a message below.</p>
-              </div>
-            )}
-            {isLoading && (
-              <div className="d-flex align-items-center mb-2">
-                <div className="me-2 mt-1">
+              
+              <InputGroup className="chatbot-input-group">
+                <InputGroup.Text style={{ backgroundColor: '#f8f9fa', border: '1px solid #dee2e6' }}>
                   <img 
                     src={BotImage} 
                     alt="Bot" 
-                    style={{ width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover' }}
+                    style={{ width: '25px', height: '25px', borderRadius: '50%', objectFit: 'cover' }}
                   />
-                </div>
-                <div className="flex-grow-1">
-                  <div className="d-flex align-items-center mb-1">
-                    <small className="text-muted">Proofbot</small>
-                  </div>
-                  <div className="p-2 rounded bg-light text-dark d-inline-block">
-                    <Spinner animation="border" size="sm" className="me-2" />
-                    Thinking...
-                  </div>
-                </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
-
-          {/* Input Area */}
-          <div className="p-3 border-top bg-white">
-            {/* Related Questions */}
-            {showRelatedQuestions && (
-              <div className="mb-3">
-                <div className="text-center mb-3">
-                  <h6 className="text-muted">Suggested Questions</h6>
-                </div>
-                <div className="row g-2">
-                  {relatedQuestions.map((question, index) => (
-                    <div key={index} className="col-md-6">
-                      <Button
-                        variant="outline-primary"
-                        className="w-100 text-start"
-                        size="sm"
-                        onClick={() => handleQuestionClick(question)}
-                        style={{ 
-                          whiteSpace: 'normal',
-                          height: 'auto',
-                          padding: '8px 12px',
-                          fontSize: '0.9rem'
-                        }}
-                      >
-                        {question}
-                      </Button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-            
-            <InputGroup>
-              <InputGroup.Text className=" text-white">
-                <img 
-                  src={BotImage} 
-                  alt="Bot" 
-                  style={{ width: '25px', height: '25px', borderRadius: '50%', objectFit: 'cover' }}
+                </InputGroup.Text>
+                <Form.Control
+                  as="textarea"
+                  className="chatbot-input"
+                  placeholder="| Enter your prompt to get your insights"
+                  value={newMessage}
+                  onChange={handleInputChange}
+                  onKeyPress={handleKeyPress}
+                  rows={1}
+                  style={{ resize: 'none' }}
                 />
-              </InputGroup.Text>
-              <Form.Control
-                as="textarea"
-                placeholder="Type your message here..."
-                value={newMessage}
-                onChange={handleInputChange}
-                onKeyPress={handleKeyPress}
-                rows={1}
-                style={{ resize: 'none' }}
-              />
-              <Button
-                variant="primary"
-                onClick={sendMessage}
-                disabled={!newMessage.trim() || isLoading}
-              >
-                {isLoading ? (
-                  <Spinner animation="border" size="sm" />
-                ) : (
+                <Button
+                  variant="primary"
+                  onClick={sendMessage}
+                  disabled={!newMessage.trim() || isLoading}
+                >
+                  {isLoading ? (
+                    <Spinner animation="border" size="sm" />
+                  ) : (
+                    <img 
+                      src={SendIcon} 
+                      alt="Send" 
+                      style={{ width: '16px', height: '16px' }}
+                    />
+                  )}
+                </Button>
+              </InputGroup>
+              
+              {/* Related Questions - Below input box */}
+              {showRelatedQuestions && (
+                <div className="mt-3">
+                  <div className="text-center mb-3">
+                    <h6 className="text-muted">Suggested Questions</h6>
+                  </div>
+                  <div className="row g-2">
+                    {relatedQuestions.map((question, index) => (
+                      <div key={index} className="col-md-6">
+                        <Button
+                          variant="outline-primary"
+                          className="w-100 text-start"
+                          size="sm"
+                          onClick={() => handleQuestionClick(question)}
+                          style={{ 
+                            whiteSpace: 'normal',
+                            height: 'auto',
+                            padding: '8px 12px',
+                            fontSize: '0.9rem'
+                          }}
+                        >
+                          {question}
+                        </Button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Messages Area - Only show when there are messages */}
+          {hasMessages && (
+            <div className="flex-grow-1 overflow-auto p-3" style={{ maxHeight: 'calc(100vh - 200px)' }}>
+              {error && (
+                <div className="alert alert-danger mb-3">
+                  {error}
+                </div>
+              )}
+              {activeConversation && activeConversation.messages.length > 0 && (
+                activeConversation.messages.map((message) => (
+                  <div
+                    key={message.id}
+                    className="mb-2"
+                    style={{ width: '100%' }}
+                  >
+                    <div className="d-flex align-items-start">
+                      {message.type === 'bot' && (
+                        <div className="me-2 mt-1">
+                          <img 
+                            src={BotImage} 
+                            alt="Bot" 
+                            style={{ width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover' }}
+                          />
+                        </div>
+                      )}
+                      <div className="flex-grow-1">
+                        <div className="d-flex align-items-center mb-1">
+                          <small className={message.type === 'user' ? 'text-primary fw-bold' : 'text-muted'}>
+                            {message.type === 'user' ? 'You' : 'Proofbot'}
+                          </small>
+                          <small className="text-muted ms-2">
+                            {message.timestamp.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                          </small>
+                        </div>
+                        <div 
+                          className={`p-2 rounded ${
+                            message.type === 'user'
+                              ? 'bg-primary text-white'
+                              : 'bg-light text-dark'
+                          }`}
+                          style={{ 
+                            display: 'inline-block',
+                            maxWidth: '80%'
+                          }}
+                         >
+                           {message.content}
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              )}
+              {isLoading && (
+                <div className="d-flex align-items-center mb-2">
+                  <div className="me-2 mt-1">
+                    <img 
+                      src={BotImage} 
+                      alt="Bot" 
+                      style={{ width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover' }}
+                    />
+                  </div>
+                  <div className="flex-grow-1">
+                    <div className="d-flex align-items-center mb-1">
+                      <small className="text-muted">Proofbot</small>
+                    </div>
+                    <div className="p-2 rounded bg-light text-dark d-inline-block">
+                      <Spinner animation="border" size="sm" className="me-2" />
+                      Thinking...
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+          )}
+
+          {/* Input Area - Positioned at bottom when messages exist */}
+          {hasMessages && (
+            <div className="p-3 border-top bg-white">
+              <InputGroup>
+                <InputGroup.Text style={{ backgroundColor: '#f8f9fa', border: '1px solid #dee2e6' }}>
                   <img 
-                    src={SendIcon} 
-                    alt="Send" 
-                    style={{ width: '16px', height: '16px' }}
+                    src={BotImage} 
+                    alt="Bot" 
+                    style={{ width: '25px', height: '25px', borderRadius: '50%', objectFit: 'cover' }}
                   />
-                )}
-              </Button>
-            </InputGroup>
-          </div>
-        </Col>
-      </Row>
-    </Container>
+                </InputGroup.Text>
+                <Form.Control
+                  as="textarea"
+                  placeholder="Type your message here..."
+                  value={newMessage}
+                  onChange={handleInputChange}
+                  onKeyPress={handleKeyPress}
+                  rows={1}
+                  style={{ resize: 'none' }}
+                />
+                <Button
+                  variant="primary"
+                  onClick={sendMessage}
+                  disabled={!newMessage.trim() || isLoading}
+                >
+                  {isLoading ? (
+                    <Spinner animation="border" size="sm" />
+                  ) : (
+                    <img 
+                      src={SendIcon} 
+                      alt="Send" 
+                      style={{ width: '16px', height: '16px' }}
+                    />
+                  )}
+                </Button>
+              </InputGroup>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 
 export default Chatbot;
+
+
+
