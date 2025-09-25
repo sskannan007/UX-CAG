@@ -7,6 +7,8 @@ import uvicorn
 import os
 import tempfile
 import json
+import csv
+import io
 from datetime import datetime
 import traceback
 from werkzeug.utils import secure_filename
@@ -15,6 +17,10 @@ from database import get_db, engine
 import models
 from models import UploadedFile, User
 from schemas import RoleCreate
+from otp_cleanup import otp_cleanup_scheduler
+import openpyxl
+from passlib.context import CryptContext
+from security import hash_password
 
 # Try to import the full pipeline, fallback to simple processor
 try:
@@ -44,6 +50,23 @@ app.add_middleware(
 from auth import router as auth_router
 from dependencies import get_current_user, get_current_active_user
 app.include_router(auth_router)
+
+# Application startup and shutdown events
+@app.on_event("startup")
+async def startup_event():
+    """Application startup tasks"""
+    print("Starting up the application...")
+    # Start the OTP cleanup scheduler
+    otp_cleanup_scheduler.start_scheduler()
+    print("Application startup complete")
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    """Application shutdown tasks"""
+    print("Shutting down the application...")
+    # Stop the OTP cleanup scheduler
+    otp_cleanup_scheduler.stop_scheduler()
+    print("Application shutdown complete")
 
 # Configuration
 UPLOAD_FOLDER = 'uploads'
@@ -1019,6 +1042,278 @@ def update_role_permissions(role_data: RoleCreate, db: Session = Depends(get_db)
                 db.add(role_menu)
         db.commit()
     return {"message": "Role permissions updated successfully"}
+
+@app.post("/admin/users/bulk-upload")
+async def bulk_upload_users(file: UploadFile = File(...), db: Session = Depends(get_db)):
+    """
+    Bulk upload users from CSV or Excel file
+    
+    Args:
+        file: CSV or Excel file containing user data
+        db: Database session
+        
+    Returns:
+        dict: Upload results with successful and failed counts
+    """
+    if not file.filename:
+        raise HTTPException(status_code=400, detail="No file uploaded")
+    
+    # Validate file type
+    allowed_extensions = {'.csv', '.xlsx', '.xls'}
+    file_extension = None
+    for ext in allowed_extensions:
+        if file.filename.lower().endswith(ext):
+            file_extension = ext
+            break
+    
+    if not file_extension:
+        raise HTTPException(
+            status_code=400, 
+            detail="Invalid file format. Only CSV and Excel files are allowed."
+        )
+    
+    try:
+        # Read file content
+        content = await file.read()
+        
+        # Parse file based on extension
+        users_data = []
+        if file_extension == '.csv':
+            # Parse CSV
+            csv_data = content.decode('utf-8')
+            csv_reader = csv.DictReader(io.StringIO(csv_data))
+            users_data = list(csv_reader)
+        else:
+            # Parse Excel
+            workbook = openpyxl.load_workbook(io.BytesIO(content))
+            sheet = workbook.active
+            
+            # Get headers from first row
+            headers = []
+            for cell in sheet[1]:
+                headers.append(cell.value)
+            
+            # Parse data rows
+            for row in sheet.iter_rows(min_row=2, values_only=True):
+                if any(row):  # Skip empty rows
+                    user_dict = {}
+                    for i, value in enumerate(row):
+                        if i < len(headers) and headers[i]:
+                            user_dict[headers[i]] = value
+                    users_data.append(user_dict)
+        
+        if not users_data:
+            raise HTTPException(status_code=400, detail="No valid user data found in file")
+        
+        # Required fields
+        required_fields = ['firstname', 'lastname', 'email', 'password']
+        
+        # Process users
+        successful_users = 0
+        failed_users = 0
+        errors = []
+        
+        for row_num, user_data in enumerate(users_data, start=2):  # Start from row 2 (after header)
+            try:
+                # Validate required fields
+                missing_fields = []
+                for field in required_fields:
+                    if field not in user_data or not user_data[field] or str(user_data[field]).strip() == '':
+                        missing_fields.append(field)
+                
+                if missing_fields:
+                    errors.append(f"Row {row_num}: Missing required fields: {', '.join(missing_fields)}")
+                    failed_users += 1
+                    continue
+                
+                # Clean and validate email
+                email = str(user_data['email']).strip().lower()
+                if '@' not in email or '.' not in email:
+                    errors.append(f"Row {row_num}: Invalid email format")
+                    failed_users += 1
+                    continue
+                
+                # Check if user already exists
+                existing_user = db.query(models.User).filter(models.User.email == email).first()
+                if existing_user:
+                    errors.append(f"Row {row_num}: User with email {email} already exists")
+                    failed_users += 1
+                    continue
+                
+                # Hash password
+                password = str(user_data['password']).strip()
+                if len(password) < 6:
+                    errors.append(f"Row {row_num}: Password must be at least 6 characters long")
+                    failed_users += 1
+                    continue
+                
+                hashed_password = hash_password(password)
+                
+                # Parse date of birth if provided
+                dob = None
+                if user_data.get('dob'):
+                    try:
+                        dob_str = str(user_data['dob']).strip()
+                        if dob_str:
+                            # Try to parse common date formats
+                            for date_format in ['%Y-%m-%d', '%d/%m/%Y', '%m/%d/%Y', '%d-%m-%Y']:
+                                try:
+                                    dob = datetime.strptime(dob_str, date_format).date()
+                                    break
+                                except ValueError:
+                                    continue
+                            
+                            if not dob:
+                                errors.append(f"Row {row_num}: Invalid date format for dob. Use YYYY-MM-DD format.")
+                                failed_users += 1
+                                continue
+                    except:
+                        pass  # dob is optional, so we ignore parsing errors
+                
+                # Create user object
+                new_user = models.User(
+                    firstname=str(user_data['firstname']).strip(),
+                    lastname=str(user_data['lastname']).strip(),
+                    email=email,
+                    password=hashed_password,
+                    contactno=str(user_data.get('contactno', '')).strip() or None,
+                    dob=dob,
+                    place=str(user_data.get('place', '')).strip() or None,
+                    city=str(user_data.get('city', '')).strip() or None,
+                    state=str(user_data.get('state', '')).strip() or None,
+                    pincode=str(user_data.get('pincode', '')).strip() or None,
+                    gender=str(user_data.get('gender', '')).strip() or None,
+                    role_status='unassigned'
+                )
+                
+                # Add to database
+                db.add(new_user)
+                successful_users += 1
+                
+            except Exception as e:
+                errors.append(f"Row {row_num}: {str(e)}")
+                failed_users += 1
+                continue
+        
+        # Commit successful users
+        if successful_users > 0:
+            db.commit()
+        else:
+            db.rollback()
+        
+        # Prepare response
+        response = {
+            "successful_users": successful_users,
+            "failed_users": failed_users,
+            "total_rows": len(users_data)
+        }
+        
+        if errors:
+            response["errors"] = errors[:10]  # Limit to first 10 errors
+            if len(errors) > 10:
+                response["additional_errors"] = len(errors) - 10
+        
+        return response
+        
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=500, 
+            detail=f"Failed to process bulk upload: {str(e)}"
+        )
+
+@app.delete("/admin/users/{user_id}")
+async def delete_user(user_id: int, db: Session = Depends(get_db)):
+    """
+    Delete a user by ID
+    
+    Args:
+        user_id: ID of the user to delete
+        db: Database session
+        
+    Returns:
+        dict: Success message
+    """
+    try:
+        # Find the user
+        user = db.query(models.User).filter(models.User.id == user_id).first()
+        
+        if not user:
+            raise HTTPException(status_code=404, detail="User not found")
+        
+        # Delete related records first (due to foreign key constraints)
+        # Delete user roles
+        db.query(models.UserRole).filter(models.UserRole.user_id == user_id).delete()
+        
+        # Delete user config
+        db.query(models.UserConfig).filter(models.UserConfig.user_id == user_id).delete()
+        
+        # Delete user file assignments
+        db.query(models.UserFileAssignment).filter(models.UserFileAssignment.user_id == user_id).delete()
+        
+        # Delete the user
+        db.delete(user)
+        db.commit()
+        
+        return {"message": "User deleted successfully", "deleted_user_id": user_id}
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=500, 
+            detail=f"Failed to delete user: {str(e)}"
+        )
+
+@app.put("/admin/users/{user_id}/status")
+async def update_user_status(user_id: int, status_data: dict, db: Session = Depends(get_db)):
+    """
+    Update user status (active/inactive/locked)
+    
+    Args:
+        user_id: ID of the user to update
+        status_data: Dictionary containing the new status
+        db: Database session
+        
+    Returns:
+        dict: Success message with updated user info
+    """
+    try:
+        # Find the user
+        user = db.query(models.User).filter(models.User.id == user_id).first()
+        
+        if not user:
+            raise HTTPException(status_code=404, detail="User not found")
+        
+        # Validate status
+        valid_statuses = ['active', 'inactive', 'locked', 'unassigned']
+        new_status = status_data.get('status', '').lower()
+        
+        if new_status not in valid_statuses:
+            raise HTTPException(
+                status_code=400, 
+                detail=f"Invalid status. Must be one of: {', '.join(valid_statuses)}"
+            )
+        
+        # Update user status
+        user.role_status = new_status
+        db.commit()
+        
+        return {
+            "message": "User status updated successfully", 
+            "user_id": user_id,
+            "new_status": new_status
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=500, 
+            detail=f"Failed to update user status: {str(e)}"
+        )
 
 # Get assigned files for a specific user
 @app.get("/api/users/{user_id}/assigned-files")

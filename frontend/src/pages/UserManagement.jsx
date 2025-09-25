@@ -131,6 +131,11 @@ const UserManagement = () => {
     navigate('/create-user');
   };
 
+  // Navigate to bulk upload page
+  const handleBulkUpload = () => {
+    navigate('/bulk-upload-users');
+  };
+
   // Handle user edit
   const handleEdit = (userId) => {
     // Implement edit functionality
@@ -183,7 +188,11 @@ const UserManagement = () => {
 
   // Handle user delete
   const handleDelete = async (userId) => {
-    if (!window.confirm('Are you sure you want to delete this user?')) {
+    // Get user info for the confirmation dialog
+    const userToDelete = users.find(user => user.id === userId);
+    const userName = userToDelete ? userToDelete.name : `User ${userId}`;
+    
+    if (!window.confirm(`Are you sure you want to delete "${userName}"? This will permanently remove the user and all their associated data. This action cannot be undone.`)) {
       return;
     }
 
@@ -201,22 +210,34 @@ const UserManagement = () => {
         throw new Error(errorData.detail || 'Failed to delete user');
       }
 
+      // Parse response to get confirmation
+      const result = await response.json().catch(() => ({}));
+      
       // Remove user from local state
       setUsers(users.filter(user => user.id !== userId));
       setTotalUsers(prev => prev - 1);
       
       // Update relevant count based on user's status
-      const userToDelete = users.find(user => user.id === userId);
       if (userToDelete) {
         if (userToDelete.status === 'Active') {
           setActiveUsers(prev => prev - 1);
-        } else if (userToDelete.status === 'Inactive') {
+        } else if (userToDelete.status === 'Inactive' || userToDelete.status === 'Locked') {
           setInactiveUsers(prev => prev - 1);
         }
       }
+
+      // Show success message
+      setSuccessMessage(`User "${userName}" has been deleted successfully`);
+      
+      // Clear any previous error messages
+      setError(null);
+      
+      // Auto-dismiss success message after 5 seconds
+      setTimeout(() => setSuccessMessage(''), 5000);
+      
     } catch (err) {
       console.error("Delete error:", err);
-      setError(`Failed to delete user: ${err.message}`);
+      setError(`Failed to delete user "${userName}": ${err.message}`);
     }
   };
 
@@ -325,7 +346,7 @@ const UserManagement = () => {
             </button>
             <button 
               className="btn-assign-document"
-              onClick={() => console.log('Bulk upload users')}
+              onClick={handleBulkUpload}
             >
               <i className="fas fa-upload"></i>
               Bulk Upload

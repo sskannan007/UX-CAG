@@ -664,3 +664,252 @@ body {
     }
   }
 }
+
+// Bulk Upload Modal Styles
+.drag-drop-area {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: #f8f9fa !important;
+    border-color: #007bff !important;
+  }
+  
+  &.dragging {
+    background-color: #e3f2fd !important;
+    border-color: #1976d2 !important;
+    transform: scale(1.02);
+  }
+  
+  &.has-file {
+    background-color: #e8f5e9 !important;
+    border-color: #4caf50 !important;
+  }
+  
+  .fa-cloud-upload, .MdCloudUpload {
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+}
+
+// Bulk upload page styles
+.bulk-upload-page {
+  .breadcrumb {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    
+    .breadcrumb-item {
+      &:not(.active) {
+        color: #6c757d;
+        cursor: pointer;
+        
+        &:hover {
+          color: #495057;
+        }
+      }
+      
+      &.active {
+        color: #495057;
+        font-weight: 500;
+      }
+      
+      & + .breadcrumb-item::before {
+        content: ">";
+        color: #6c757d;
+      }
+    }
+  }
+  
+  .upload-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .files-uploading-section {
+    .file-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #f1f3f4;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      .file-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 12px;
+      }
+      
+      .file-info {
+        flex: 1;
+        
+        .file-name {
+          font-weight: 500;
+          font-size: 14px;
+          color: #1f2937;
+        }
+      }
+      
+      .file-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        
+        .progress-text {
+          font-size: 14px;
+          color: #6b7280;
+          min-width: 35px;
+        }
+        
+        .delete-icon {
+          cursor: pointer;
+          color: #dc2626;
+          
+          &:hover {
+            color: #b91c1c;
+          }
+        }
+      }
+    }
+    
+    .progress-bar {
+      height: 4px;
+      border-radius: 2px;
+      margin-top: 8px;
+    }
+  }
+  
+  .preview-table {
+    .table {
+      font-size: 14px;
+      
+      th {
+        background-color: #f9fafb;
+        font-weight: 600;
+        color: #374151;
+        border-top: none;
+        padding: 12px;
+      }
+      
+      td {
+        padding: 12px;
+        vertical-align: middle;
+        border-color: #f3f4f6;
+      }
+      
+      .badge {
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+// Success modal styles
+.success-modal {
+  .modal-body {
+    padding: 2rem;
+    
+    .success-icon {
+      color: #10b981;
+      margin-bottom: 1rem;
+    }
+    
+    h4 {
+      color: #1f2937;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .text-muted {
+      color: #6b7280 !important;
+      margin-bottom: 1.5rem;
+    }
+    
+    .btn-primary {
+      background-color: #3b82f6;
+      border-color: #3b82f6;
+      padding: 0.5rem 2rem;
+      
+      &:hover {
+        background-color: #2563eb;
+        border-color: #2563eb;
+      }
+    }
+  }
+}
+
+// Success card styles (inline success message)
+.success-card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #28a745 !important;
+  background-color: #f8fff9;
+  
+  .card-body {
+    padding: 2rem;
+    
+    h4 {
+      color: #1f2937;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .text-muted {
+      color: #6b7280 !important;
+      margin-bottom: 1.5rem;
+    }
+    
+    .btn-primary {
+      background-color: #3b82f6;
+      border-color: #3b82f6;
+      padding: 0.5rem 2rem;
+      border-radius: 6px;
+      
+      &:hover {
+        background-color: #2563eb;
+        border-color: #2563eb;
+      }
+    }
+  }
+}
+
+// Bulk upload success/error states
+.bulk-upload-status {
+  .success-icon {
+    color: #28a745;
+    font-size: 2rem;
+  }
+  
+  .error-icon {
+    color: #dc3545;
+    font-size: 2rem;
+  }
+}
+
+// File format requirements styling
+.file-requirements {
+  background-color: #f8f9fa;
+  border-left: 4px solid #007bff;
+  padding: 16px;
+  border-radius: 4px;
+  
+  .requirements-title {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 8px;
+  }
+  
+  .requirement-item {
+    color: #6c757d;
+    margin-bottom: 4px;
+    
+    &.required {
+      font-weight: 500;
+      color: #dc3545;
+    }
+  }
+}

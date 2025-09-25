@@ -218,3 +218,13 @@ class ActivityLog(Base):
     # Relationships
     user = relationship("User", foreign_keys=[user_id])
     file = relationship("UploadedFile", foreign_keys=[file_id])
+
+class PasswordResetOTP(Base):
+    __tablename__ = "password_reset_otps"
+
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String(255), index=True, nullable=False)
+    otp_code = Column(String(10), nullable=False)
+    expires_at = Column(DateTime, nullable=False)
+    is_used = Column(Boolean, default=False)
+    created_at = Column(DateTime, server_default=func.now(timezone='utc'))

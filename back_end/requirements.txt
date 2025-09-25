@@ -32,3 +32,5 @@ starlette
 typing-inspection
 typing_extensions
 uvicorn
+pydantic-settings
+PyJWT

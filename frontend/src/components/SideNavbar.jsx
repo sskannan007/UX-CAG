@@ -77,7 +77,7 @@ const SideNavbar = ({ isSidebarOpen }) => {
 
   // Check current paths and expand menus accordingly
   useEffect(() => {
-    if (currentPath.includes('/admin')) {
+    if (currentPath.includes('/admin') || currentPath.includes('/user-management') || currentPath.includes('/create-user') || currentPath.includes('/bulk-upload-users')) {
       setExpandedMenus(prev => ({ ...prev, admin: true }));
     }
   }, [currentPath]);
@@ -131,7 +131,7 @@ const SideNavbar = ({ isSidebarOpen }) => {
             {/* Admin with submenus */}
             {hasPermission('admin') && (
               <div>
-                <div onClick={() => toggleMenu('admin')} className={`nav-link d-flex justify-content-between align-items-center ${isActive('/admin') ? 'active' : ''}`} style={{ cursor: 'pointer', color: isActive('/admin') ? '#161616' : '#828282' }}>
+                <div onClick={() => toggleMenu('admin')} className={`nav-link d-flex justify-content-between align-items-center ${(isActive('/admin') || isActive('/user-management')) ? 'active' : ''}`} style={{ cursor: 'pointer', color: (isActive('/admin') || isActive('/user-management')) ? '#161616' : '#828282' }}>
                   <div>
                     <FaCog className="me-3" /> Admin
                   </div>
@@ -140,7 +140,7 @@ const SideNavbar = ({ isSidebarOpen }) => {
                 
                 {expandedMenus.admin && (
                   <div className="ms-4">
-                    <NavLink to="/admin/menus" className={`nav-link ${currentPath.includes('/admin/menus') ? 'active' : ''}`} style={{ color: currentPath.includes('/admin/menus') ? '#161616' : '#828282' }}>
+                    <NavLink to="/user-management" className={`nav-link ${currentPath.includes('/user-management') ? 'active' : ''}`} style={{ color: currentPath.includes('/user-management') ? '#161616' : '#828282' }}>
                       <FaUsers className="me-2" /> User Management
                     </NavLink>
                     {/* Add other admin submenus as needed */}

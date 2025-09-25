@@ -9,6 +9,8 @@ from database import get_db
 from models import User
 from security import hash_password, verify_password
 from jwt_token import create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES
+from password_reset import create_password_reset_otp, verify_otp, reset_password_with_token
+from otp_cleanup import otp_cleanup_scheduler
 
 # Create API router for auth endpoints
 router = APIRouter(
@@ -140,3 +142,144 @@ async def login_with_email_password(user_data: UserLogin, db: Session = Depends(
     )
     
     return {"access_token": access_token, "token_type": "bearer"}
+@router.post("/forgot-password")
+async def forgot_password(request_data: dict, db: Session = Depends(get_db)) -> Any:
+    """
+    Send OTP to user's email for password reset
+    
+    Args:
+        request_data: Contains email
+        db: Database session
+        
+    Returns:
+        Success message
+        
+    Raises:
+        HTTPException: If user not found or email sending fails
+    """
+    email = request_data.get("email")
+    if not email:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Email is required"
+        )
+    
+    try:
+        create_password_reset_otp(db, email)
+        return {"message": "OTP sent to your email"}
+    except ValueError as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(e)
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to send OTP"
+        )
+
+@router.post("/verify-otp")
+async def verify_password_reset_otp(request_data: dict, db: Session = Depends(get_db)) -> Any:
+    """
+    Verify OTP and return reset token
+    
+    Args:
+        request_data: Contains email and otp
+        db: Database session
+        
+    Returns:
+        Reset token
+        
+    Raises:
+        HTTPException: If OTP is invalid or expired
+    """
+    email = request_data.get("email")
+    otp = request_data.get("otp")
+    
+    if not email or not otp:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Email and OTP are required"
+        )
+    
+    try:
+        reset_token = verify_otp(db, email, otp)
+        return {"reset_token": reset_token, "message": "OTP verified successfully"}
+    except ValueError as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(e)
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to verify OTP"
+        )
+
+@router.post("/reset-password")
+async def reset_password(request_data: dict, db: Session = Depends(get_db)) -> Any:
+    """
+    Reset password using verification token
+    
+    Args:
+        request_data: Contains email, token, and new_password
+        db: Database session
+        
+    Returns:
+        Success message
+        
+    Raises:
+        HTTPException: If token is invalid or password reset fails
+    """
+    email = request_data.get("email")
+    token = request_data.get("token")
+    new_password = request_data.get("new_password")
+    
+    if not email or not token or not new_password:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Email, token, and new password are required"
+        )
+    
+    if len(new_password) < 6:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Password must be at least 6 characters long"
+        )
+    
+    try:
+        reset_password_with_token(db, email, token, new_password)
+        return {"message": "Password reset successfully"}
+    except ValueError as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(e)
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to reset password"
+        )
+
+@router.post("/cleanup-expired-otps")
+async def cleanup_expired_otps_endpoint(db: Session = Depends(get_db)) -> Any:
+    """
+    Manually trigger cleanup of expired OTPs (for testing/admin purposes)
+    
+    Args:
+        db: Database session
+        
+    Returns:
+        Cleanup result message
+    """
+    try:
+        deleted_count = otp_cleanup_scheduler.force_cleanup()
+        return {
+            "message": f"Cleanup completed successfully",
+            "deleted_otps": deleted_count
+        }
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to cleanup expired OTPs: {str(e)}"
+        )

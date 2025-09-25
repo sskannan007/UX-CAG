@@ -171,7 +171,7 @@ const Login = ({ setUserConfig }) => {
                     />
                     Remember me
                   </label>
-                  <a href="#" className="forgot-password">Forgot Password?</a>
+                  <a href="#" className="forgot-password" onClick={() => navigate('/forgot-password')}>Forgot Password?</a>
                 </div>
 
                 <button 

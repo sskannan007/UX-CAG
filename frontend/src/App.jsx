@@ -9,8 +9,12 @@ import Contact from './pages/Contact';
 import BulkUploadViewer from './pages/BulkUploadViewer';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
+import ForgotPassword from './pages/ForgotPassword';
+import VerifyOTP from './pages/VerifyOTP';
+import ResetPassword from './pages/ResetPassword';
 import UserManagement from './pages/UserManagement';
 import CreateUser from './pages/CreateUser';
+import BulkUploadUsers from './pages/BulkUploadUsers';
 import DataValidationPage from './pages/DataValidationPage';
 import './App.css';
 import Chatbot from './pages/Chatbot';
@@ -88,7 +92,6 @@ function AppContent() {
     );
   };
 
-  // Simple login page component has been moved to ./pages/Login.jsx
 
   return (
     <>
@@ -96,6 +99,9 @@ function AppContent() {
         <Route path="/" element={<Login setUserConfig={setUserConfig} />} />
         <Route path="/login" element={<Login setUserConfig={setUserConfig} />} />
         <Route path="/registration" element={<Registration />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/verify-otp" element={<VerifyOTP />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/dashboard" element={
           <ProtectedRoute requiredRole="home">
             <LayoutWithSidebar>
@@ -152,6 +158,13 @@ function AppContent() {
             </LayoutWithSidebar>
           </ProtectedRoute>
         } />
+        <Route path="/bulk-upload-users" element={
+          <ProtectedRoute requiredRole="admin">
+            <LayoutWithSidebar>
+              <BulkUploadUsers />
+            </LayoutWithSidebar>
+          </ProtectedRoute>
+        } />
         <Route path="/data-validation" element={
           <ProtectedRoute requiredRole="dataValidation">
             <DataValidationPage />
@@ -164,14 +177,14 @@ function AppContent() {
             </LayoutWithSidebar>
           </ProtectedRoute>
         } />
-        <Route path="/admin/menus" element={
+        <Route path="/user-management" element={
           <ProtectedRoute requiredRole="admin">
             <LayoutWithSidebar>
               <UserManagement />
             </LayoutWithSidebar>
           </ProtectedRoute>
         } />
-        <Route path="/user-management" element={
+        <Route path="/admin/menus" element={
           <ProtectedRoute requiredRole="admin">
             <LayoutWithSidebar>
               <UserManagement />

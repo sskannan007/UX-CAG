@@ -1,10 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Container, Button, Dropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const TopNavbar = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+  const [currentUser, setCurrentUser] = useState({ firstname: '', lastname: '' });
+
+  useEffect(() => {
+    // Load user data from localStorage when component mounts
+    const userData = localStorage.getItem('user_data');
+    if (userData) {
+      try {
+        const parsedUserData = JSON.parse(userData);
+        setCurrentUser({
+          firstname: parsedUserData.firstname || '',
+          lastname: parsedUserData.lastname || ''
+        });
+      } catch (error) {
+        console.error('Error parsing user data:', error);
+      }
+    }
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -85,15 +102,21 @@ const TopNavbar = () => {
                           border: '2px solid white'
                         }}
                       >
-                        <img 
-                          src="https://via.placeholder.com/36x36/FFD700/000000?text=LG" 
-                          alt="Profile" 
-                          className="rounded"
-                          style={{ width: '36px', height: '36px' }}
+                        <i 
+                          className="fas fa-user" 
+                          style={{ 
+                            fontSize: '20px', 
+                            color: '#007bff' 
+                          }}
                         />
                       </div>
                       <div className="text-start me-2">
-                        <div className="fw-bold text-dark" style={{ fontSize: '14px' }}>Laura Grace</div>
+                        <div className="fw-bold text-dark" style={{ fontSize: '14px' }}>
+                          {currentUser.firstname && currentUser.lastname 
+                            ? `${currentUser.firstname} ${currentUser.lastname}` 
+                            : 'User'
+                          }
+                        </div>
                         <div className="text-dark" style={{ fontSize: '12px', opacity: 0.7 }}>Audit Manager</div>
                       </div>
                       <i className="fas fa-chevron-down text-dark" style={{ fontSize: '12px' }}></i>
