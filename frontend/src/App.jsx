@@ -10,6 +10,7 @@ import BulkUploadViewer from './pages/BulkUploadViewer';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
 import UserManagement from './pages/UserManagement';
+import CreateUser from './pages/CreateUser';
 import DataValidationPage from './pages/DataValidationPage';
 import './App.css';
 import Chatbot from './pages/Chatbot';
@@ -144,6 +145,13 @@ function AppContent() {
             </LayoutWithSidebar>
           </ProtectedRoute>
         } />
+        <Route path="/create-user" element={
+          <ProtectedRoute requiredRole="admin">
+            <LayoutWithSidebar>
+              <CreateUser />
+            </LayoutWithSidebar>
+          </ProtectedRoute>
+        } />
         <Route path="/data-validation" element={
           <ProtectedRoute requiredRole="dataValidation">
             <DataValidationPage />
@@ -157,6 +165,13 @@ function AppContent() {
           </ProtectedRoute>
         } />
         <Route path="/admin/menus" element={
+          <ProtectedRoute requiredRole="admin">
+            <LayoutWithSidebar>
+              <UserManagement />
+            </LayoutWithSidebar>
+          </ProtectedRoute>
+        } />
+        <Route path="/user-management" element={
           <ProtectedRoute requiredRole="admin">
             <LayoutWithSidebar>
               <UserManagement />

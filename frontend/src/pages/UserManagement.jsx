@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FaUserPlus, FaUserCog, FaUserSlash, FaUsers } from 'react-icons/fa';
 import { BiEdit } from 'react-icons/bi';
 import { MdDeleteOutline, MdLock } from 'react-icons/md';
 import config from '../config.js';
 
 const UserManagement = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -14,6 +18,18 @@ const UserManagement = () => {
   const [activeUsers, setActiveUsers] = useState(0);
   const [inactiveUsers, setInactiveUsers] = useState(0);
   const [newUsers, setNewUsers] = useState(0);
+  const [successMessage, setSuccessMessage] = useState('');
+
+  // Handle success message from navigation state
+  useEffect(() => {
+    if (location.state?.message) {
+      setSuccessMessage(location.state.message);
+      // Clear the message after 5 seconds
+      setTimeout(() => setSuccessMessage(''), 5000);
+      // Clear the navigation state
+      navigate('/user-management', { replace: true });
+    }
+  }, [location.state, navigate]);
 
   // Fetch users data
   useEffect(() => {
@@ -106,6 +122,11 @@ const UserManagement = () => {
   // Handle page change
   const handlePageChange = (page) => {
     setCurrentPage(page);
+  };
+
+  // Navigate to create user page
+  const handleCreateUser = () => {
+    navigate('/create-user');
   };
 
   // Handle user edit
@@ -241,6 +262,19 @@ const UserManagement = () => {
     <div className="container-fluid p-4">
       <h2 className="mb-4">User Management</h2>
 
+      {/* Success Message */}
+      {successMessage && (
+        <div className="alert alert-success alert-dismissible fade show" role="alert">
+          {successMessage}
+          <button 
+            type="button" 
+            className="btn-close" 
+            onClick={() => setSuccessMessage('')}
+            aria-label="Close"
+          ></button>
+        </div>
+      )}
+
       {/* Stats cards */}
       <div className="row mb-4">
         <div className="col-md-3">
@@ -302,7 +336,7 @@ const UserManagement = () => {
         <div className="col">
           <div className="d-flex justify-content-between align-items-center">
             <div>
-              <button className="btn btn-primary me-2">
+              <button className="btn btn-primary me-2" onClick={handleCreateUser}>
                 <FaUserPlus className="me-2" /> New User
               </button>
               <button className="btn btn-outline-primary me-2">
