@@ -57,15 +57,157 @@ footer {
     transform: translateY(0);
   }
 }
-.chatbot-input {
-  padding: 18px 25px;
-  border-radius: 30px !important;
-  border: 27px solid #B5BED8;
+.bot-head {
+  margin-bottom: 30px;
 }
+.chatbot-input {
+  padding: 18px 60px 18px 25px;
+  border-radius: 8px !important;
+  border: 2px solid #B5BED8;
+  font-size: 16px;
+}
+
+.chatbot-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
 .chatbot-input-group {
   position: relative;
+  display: flex;
+  align-items: center;
 }
-.chatbot-input-group button {
+.chatbot-input-group textarea, .chatbot-input:focus {
+  outline: 25px solid #B5BED8;
+  border-color: #B5BED8;
+}
+
+.chatbot-input-group-button {
   position: absolute;
-  right: 20px;
+  right: 24px;
+  z-index: 10;
+}
+
+.chatbot-input-group-button .btn {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent !important;
+}
+
+.close-btn, .close-btn:hover {
+  background-color: transparent;
+  border: none;
+  color: #7F7F7F;
+  font-size: 18px;
+  font-weight: 500;
+  font-style: medium;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.chatbot-input-group-button .btn:hover {
+  transform: scale(1.05);
+}
+
+.chatbot-input-group-button .btn:disabled {
+  background: transparent;
+  opacity: 0.6;
+}
+
+/* Chatbot Sidebar Fixed Width */
+.chatbot-sidebar {
+  width: 300px !important;
+  min-width: 300px !important;
+  max-width: 300px !important;
+  flex-shrink: 0 !important;
+  background-color: #fff;
+}
+.chatbot-search-new-chat input {
+  height: 38px !important;
+  background-color: #F2F3F7 !important;
+}
+.chatbot-search-new-chat button {
+  height: 38px !important;
+}
+.chatbot-search-new-chat button img {
+  width: 20px !important;
+  height: 20px !important;
+}
+.question-suggestions {
+  border: none;
+  height: 49px;
+  background-color: #fff;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  font-style: medium;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #7F7F7F;
+  padding: 13px 22px;
+  margin-bottom: 12px;
+}
+
+/* View Files Table Styling */
+.view-files-table {
+  margin: 8px !important;
+  width: calc(100% - 16px) !important;
+  table-layout: fixed;
+}
+
+.view-files-table th,
+.view-files-table td {
+  padding: 8px 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Fix horizontal scrollbar issue */
+.view-files-table-container {
+  overflow-x: auto;
+  margin: 8px;
+  width: calc(100% - 16px);
+}
+
+.view-files-table-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.view-files-table-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.view-files-table-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.view-files-table-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Selected Files List Styling */
+.selected-files-list {
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  padding: 8px;
+}
+
+.selected-files-list .d-flex {
+  transition: all 0.2s ease;
+}
+
+.selected-files-list .d-flex:hover {
+  background-color: #e9ecef !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }

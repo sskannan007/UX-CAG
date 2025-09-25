@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Container, Row, Col, Button, Form, InputGroup, Spinner } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import TopNavbar from '../components/TopNavbar';
 import BotImage from '../assets/assistant.png';
 import ChatbotImage from '../assets/chatbot.png';
 import SendIcon from '../assets/send-arrow.png';
@@ -283,39 +284,20 @@ const Chatbot = () => {
   const activeConversation = getActiveConversation();
 
   return (
-    <div style={{ height: '100vh', backgroundColor: '#f8f9fa' }}>
-      {/* Header */}
-      <div className="d-flex justify-content-between align-items-center p-3" style={{ backgroundColor: 'white', borderBottom: '1px solid #dee2e6' }}>
-        <div className="d-flex align-items-center">
-          <span 
-            className="text-primary fw-bold me-2" 
-            style={{ cursor: 'pointer' }}
-            onClick={() => navigate('/dashboard')}
-          >
-            Overview
-          </span>
-          <span className="text-muted me-2">{'>'}</span>
-          <span className="text-muted">New Chat</span>
-        </div>
-        <Button 
-          variant="outline-secondary" 
-          size="sm"
-          onClick={() => navigate('/dashboard')}
-        >
-          Close
-        </Button>
-      </div>
+    <div style={{ backgroundColor: '#F2F3F7' }}>
+      {/* Top Navigation Bar */}
+      <TopNavbar />
 
       {/* Main Content */}
-      <div className="d-flex" style={{ height: 'calc(100vh - 60px)' }}>
+      <div className="d-flex" style={{ height: 'calc(100vh - 81px)', marginTop: '80px' }}>
         {/* Left Sidebar - Chatbot Sidebar */}
-        <div className="bg-light border-end d-flex flex-column" style={{ width: '300px', minHeight: '100%' }}>
+        <div className="border-end d-flex flex-column chatbot-sidebar" style={{ minHeight: '100%' }}>
           {/* Header */}
           <div className="p-3 border-bottom">
-            <h5 className="mb-3 text-primary">PROOF BOX</h5>
+            <h5 className="mb-3 text-primary"></h5>
             
             {/* Search and New Chat */}
-            <div className="d-flex gap-2 mb-3">
+            <div className="d-flex gap-2 mb-3 chatbot-search-new-chat">
               <Form.Control
                 type="text"
                 size="sm"
@@ -324,11 +306,11 @@ const Chatbot = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
               <Button
-                style={{ backgroundColor: '#141824', border: 'none' }}
+                style={{ backgroundColor: '#141824', border: 'none', width: '74px' }}
                 size="sm"
                 onClick={handleNewChat}
               >
-                New Chat
+                New
               </Button>
             </div>
           </div>
@@ -376,9 +358,30 @@ const Chatbot = () => {
         </div>
 
         {/* Main Chat Area */}
-        <div className="flex-grow-1 d-flex flex-column">
+        <div className="flex-grow-1 d-flex flex-column" style={{ overflow: 'hidden', minWidth: 0, flex: '1 1 auto' }}>
           {/* Chat Header */}
-          <div className="p-3 border-bottom bg-white d-flex justify-content-between align-items-center">
+          <div className="d-flex justify-content-between align-items-center p-3">
+            <div className="d-flex align-items-center">
+              <span 
+                className="text-primary fw-bold me-2" 
+                style={{ cursor: 'pointer' }}
+                onClick={() => navigate('/dashboard')}
+              >
+                Overview
+              </span>
+              <span className="text-muted me-2">{'>'}</span>
+              <span className="text-muted">New Chat</span>
+            </div>
+            <Button 
+              className='close-btn'
+              variant="primary" 
+              size="sm"
+              onClick={() => navigate('/dashboard')}
+            >
+              Close
+            </Button>
+          </div>
+          {/* <div className="p-3 border-bottom bg-white d-flex justify-content-between align-items-center">
             <div>
               <h6 className="mb-0">Chat with Proofbot</h6>
             </div>
@@ -393,75 +396,66 @@ const Chatbot = () => {
                 ⋮
               </Button>
             </div>
-          </div>
+          </div> */}
+
+          {/* Chatbot Content Container */}
+          <div className="flex-grow-1 d-flex flex-column" style={{ padding: '30px', backgroundColor: '#F2F3F7', margin: '10px', borderRadius: '8px', width: 'calc(100% - 20px)', height: 'calc(100% - 82px)', boxSizing: 'border-box' }}>
 
           {/* Input Area - Positioned at top when no messages, bottom when messages exist */}
           {!hasMessages && (
-            <div className="p-3 bg-white">
+            <div className="p-3">
               {/* Chatbot Image */}
-              <div className="text-center mb-4">
+              <div className="text-left bot-head">
                 <img 
                   src={ChatbotImage} 
                   alt="Chatbot" 
-                  style={{ width: '120px', height: '120px', objectFit: 'contain' }}
+                  style={{ width: '57px', height: '51px', objectFit: 'contain' }}
                 />
               </div>
               
-              <InputGroup className="chatbot-input-group">
-                <InputGroup.Text style={{ backgroundColor: '#f8f9fa', border: '1px solid #dee2e6' }}>
-                  <img 
-                    src={BotImage} 
-                    alt="Bot" 
-                    style={{ width: '25px', height: '25px', borderRadius: '50%', objectFit: 'cover' }}
-                  />
-                </InputGroup.Text>
+              <div className="chatbot-input-group">
                 <Form.Control
                   as="textarea"
                   className="chatbot-input"
-                  placeholder="| Enter your prompt to get your insights"
+                  placeholder="Enter your prompt to get your insights"
                   value={newMessage}
                   onChange={handleInputChange}
                   onKeyPress={handleKeyPress}
                   rows={1}
                   style={{ resize: 'none' }}
                 />
-                <Button
-                  variant="primary"
-                  onClick={sendMessage}
-                  disabled={!newMessage.trim() || isLoading}
-                >
-                  {isLoading ? (
-                    <Spinner animation="border" size="sm" />
-                  ) : (
-                    <img 
-                      src={SendIcon} 
-                      alt="Send" 
-                      style={{ width: '16px', height: '16px' }}
-                    />
-                  )}
-                </Button>
-              </InputGroup>
+                <div className="chatbot-input-group-button">
+                  <Button
+                    variant="primary"
+                    onClick={sendMessage}
+                    disabled={!newMessage.trim() || isLoading}
+                  >
+                    {isLoading ? (
+                      <Spinner animation="border" size="sm" />
+                    ) : (
+                      <img 
+                        src={SendIcon} 
+                        alt="Send" 
+                        style={{ width: '42px', height: '42px' }}
+                      />
+                    )}
+                  </Button>
+                </div>
+              </div>
               
               {/* Related Questions - Below input box */}
               {showRelatedQuestions && (
-                <div className="mt-3">
-                  <div className="text-center mb-3">
-                    <h6 className="text-muted">Suggested Questions</h6>
+                <div className="mt-5">
+                  <div className="text-left mb-3">
+                    <h5 className="text-muted">Suggested Questions</h5>
                   </div>
                   <div className="row g-2">
                     {relatedQuestions.map((question, index) => (
-                      <div key={index} className="col-md-6">
+                      <div key={index} className="col-md-9">
                         <Button
-                          variant="outline-primary"
-                          className="w-100 text-start"
+                          className="w-100 text-start question-suggestions"
                           size="sm"
                           onClick={() => handleQuestionClick(question)}
-                          style={{ 
-                            whiteSpace: 'normal',
-                            height: 'auto',
-                            padding: '8px 12px',
-                            fontSize: '0.9rem'
-                          }}
                         >
                           {question}
                         </Button>
@@ -552,41 +546,38 @@ const Chatbot = () => {
           {/* Input Area - Positioned at bottom when messages exist */}
           {hasMessages && (
             <div className="p-3 border-top bg-white">
-              <InputGroup>
-                <InputGroup.Text style={{ backgroundColor: '#f8f9fa', border: '1px solid #dee2e6' }}>
-                  <img 
-                    src={BotImage} 
-                    alt="Bot" 
-                    style={{ width: '25px', height: '25px', borderRadius: '50%', objectFit: 'cover' }}
-                  />
-                </InputGroup.Text>
+              <div className="chatbot-input-group">
                 <Form.Control
                   as="textarea"
-                  placeholder="Type your message here..."
+                  className="chatbot-input"
+                  placeholder="Enter your prompt to get your insights"
                   value={newMessage}
                   onChange={handleInputChange}
                   onKeyPress={handleKeyPress}
                   rows={1}
                   style={{ resize: 'none' }}
                 />
-                <Button
-                  variant="primary"
-                  onClick={sendMessage}
-                  disabled={!newMessage.trim() || isLoading}
-                >
-                  {isLoading ? (
-                    <Spinner animation="border" size="sm" />
-                  ) : (
-                    <img 
-                      src={SendIcon} 
-                      alt="Send" 
-                      style={{ width: '16px', height: '16px' }}
-                    />
-                  )}
-                </Button>
-              </InputGroup>
+                <div className="chatbot-input-group-button">
+                  <Button
+                    variant="primary"
+                    onClick={sendMessage}
+                    disabled={!newMessage.trim() || isLoading}
+                  >
+                    {isLoading ? (
+                      <Spinner animation="border" size="sm" />
+                    ) : (
+                      <img 
+                        src={SendIcon} 
+                        alt="Send" 
+                        style={{ width: '42px', height: '42px' }}
+                      />
+                    )}
+                  </Button>
+                </div>
+              </div>
             </div>
           )}
+          </div>
         </div>
       </div>
     </div>

@@ -730,6 +730,7 @@ const BulkUpload = () => {
       setConvertingFiles(false);
       setConversionProgress(0);
       setCurrentProcessingFile('');
+      setSelectedFiles([]); // Clear selected files after upload
     }
   };
 
@@ -819,6 +820,30 @@ const BulkUpload = () => {
       setSelectedFiles(unassignedFiles);
     } else {
       setSelectedFiles([]);
+    }
+  };
+
+  // Handle file download
+  const handleDownload = async (fileId, fileName) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`${config.BASE_URL}/api/uploaded-files/${fileId}/download`, {
+        headers: { Authorization: `Bearer ${token}` },
+        responseType: 'blob'
+      });
+      
+      // Create blob link to download
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', fileName);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading file:', error);
+      setUploadStatus({ type: 'danger', msg: 'Failed to download file. Please try again.' });
     }
   };
 
@@ -1067,7 +1092,7 @@ const BulkUpload = () => {
 
       {/* Documents Table */}
       <Card className="shadow-sm table-card">
-        <Card.Header className="bg-white border-bottom">
+        <Card.Header className="bg-white">
           <Row className="align-items-center">
             <Col md={6}>
               <h5 className="mb-0 table-heading">All Documents</h5>
@@ -1207,62 +1232,69 @@ const BulkUpload = () => {
               </div>
             </div>
           )}
-          <Table responsive hover className="mb-0">
-            <thead className="table-light">
-              <tr>
-                <th>S.NO</th>
-                <th>Document Name</th>
-                <th>Department</th>
-                <th>Year</th>
-                <th>State</th>
-                <th>Assigned to</th>
-                <th>Assigned on</th>
-                <th>Modification</th>
-                <th>Status</th>
-                <th>Severity</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-               {documentsLoading ? (
-                 <tr>
-                   <td colSpan="11" className="text-center py-4">
-                     <Spinner animation="border" size="sm" className="me-2" />
-                     Loading documents...
-                   </td>
-                 </tr>
-               ) : filteredDocuments.length === 0 ? (
-                 <tr>
-                   <td colSpan="11" className="text-center py-4 text-muted">
-                     <i className="fas fa-file-alt fa-2x mb-2 d-block"></i>
-                     {documents.length === 0 ? 'No documents uploaded yet' : 'No documents match your filters'}
-                   </td>
-                 </tr>
-               ) : (
-                 filteredDocuments.map((doc, index) => (
-                <tr key={doc.id}>
-                     <td className="text-center fw-medium text-muted">
-                    {index + 1}
-                  </td>
-                  <td className="fw-medium">{doc.name}</td>
-                  <td>{doc.department}</td>
-                  <td>{doc.year}</td>
-                  <td>{doc.state}</td>
-                  <td>{doc.assignedTo}</td>
-                  <td>{doc.assignedOn}</td>
-                  <td>{doc.modification}</td>
-                  <td className="badge-style">{getStatusBadge(doc.status)}</td>
-                  <td>{getSeverityBadge(doc.severity)}</td>
-                  <td>
-                    <Button variant="outline-secondary" size="sm">
-                      <i className="fas fa-ellipsis-v"></i>
-                    </Button>
-                  </td>
+          <div className="view-files-table-container">
+            <Table responsive hover className="mb-0">
+              <thead className="table-light">
+                <tr>
+                  <th>S.NO</th>
+                  <th>Document Name</th>
+                  <th>Department</th>
+                  <th>Year</th>
+                  <th>State</th>
+                  <th>Assigned to</th>
+                  <th>Assigned on</th>
+                  <th>Modification</th>
+                  <th>Status</th>
+                  <th>Severity</th>
+                  <th>Action</th>
                 </tr>
-                 ))
-               )}
-            </tbody>
-          </Table>
+              </thead>
+              <tbody>
+                {documentsLoading ? (
+                  <tr>
+                    <td colSpan="11" className="text-center py-4">
+                      <Spinner animation="border" size="sm" className="me-2" />
+                      Loading documents...
+                    </td>
+                  </tr>
+                ) : filteredDocuments.length === 0 ? (
+                  <tr>
+                    <td colSpan="11" className="text-center py-4 text-muted">
+                      <i className="fas fa-file-alt fa-2x mb-2 d-block"></i>
+                      {documents.length === 0 ? 'No documents uploaded yet' : 'No documents match your filters'}
+                    </td>
+                  </tr>
+                ) : (
+                  filteredDocuments.map((doc, index) => (
+                  <tr key={doc.id}>
+                      <td className="text-center fw-medium text-muted">
+                      {index + 1}
+                    </td>
+                    <td className="fw-medium">{doc.name}</td>
+                    <td>{doc.department}</td>
+                    <td>{doc.year}</td>
+                    <td>{doc.state}</td>
+                    <td>{doc.assignedTo}</td>
+                    <td>{doc.assignedOn}</td>
+                    <td>{doc.modification}</td>
+                    <td className="badge-style">{getStatusBadge(doc.status)}</td>
+                    <td>{getSeverityBadge(doc.severity)}</td>
+                    <td>
+                      <Button 
+                        variant="outline-primary" 
+                        size="sm"
+                        onClick={() => handleDownload(doc.id, doc.name)}
+                        title="Download file"
+                      >
+                        <i className="fas fa-download"></i>
+                      </Button>
+                    </td>
+                  </tr>
+                  ))
+                )}
+              </tbody>
+            </Table>
+          </div>
         </Card.Body>
         <Card.Footer className="bg-light">
           <Row className="align-items-center">
@@ -1542,10 +1574,41 @@ const BulkUpload = () => {
               </div>
             </Col>
           </Row>
+
         )}
 
+        {/* Selected Files List - Show before upload */}
+        {selectedFiles.length > 0 && !isUploading && (
+          <div className="mt-4">
+            <h6 className="mb-3 text-muted">Selected Files ({selectedFiles.length})</h6>
+            <div className="selected-files-list" style={{ maxHeight: '200px', overflowY: 'auto' }}>
+              {selectedFiles.map((file, index) => (
+                <div key={`${file.name}-${index}`} className="d-flex justify-content-between align-items-center p-2 border rounded mb-2 bg-light">
+                  <div className="d-flex align-items-center">
+                    <i className={`${getFileIcon(file.name)} me-2 text-primary`}></i>
+                    <span className="fw-medium">{file.name}</span>
+                  </div>
+                  <div className="d-flex align-items-center gap-2">
+                    <Badge bg="info">{file.department || 'Unknown'}</Badge>
+                    <Button
+                      variant="outline-danger"
+                      size="sm"
+                      onClick={() => {
+                        const newSelectedFiles = selectedFiles.filter((_, i) => i !== index);
+                        setSelectedFiles(newSelectedFiles);
+                      }}
+                      title="Remove file"
+                    >
+                      <i className="fas fa-times"></i>
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
-          {/* Selected Folder List */}
+        {/* Selected Folder List */}
           {canUploadFolder && selectedFolder && selectedFolder.length > 0 && (
             <div className="mt-4">
               <Card className="shadow-sm">
@@ -1793,7 +1856,8 @@ const BulkUpload = () => {
             </Row>
           </Card.Header>
           <Card.Body className="p-0">
-            <Table responsive hover className="mb-0 view-files-table">
+            <div className="view-files-table-container">
+              <Table responsive hover className="mb-0 view-files-table">
               <thead className="table-light">
                 <tr>
                   <th style={{ width: '40px' }}>
@@ -1809,7 +1873,6 @@ const BulkUpload = () => {
                     <th>State</th>
                     <th>Status</th>
                     <th>Assigned To</th>
-                  <th>Actions</th>
                 </tr>
               </thead>
                <tbody>
@@ -1855,18 +1918,12 @@ const BulkUpload = () => {
                         </td>
                         <td>{getAssignmentStatusBadge(doc.assignedTo)}</td>
                         <td>{doc.assignedTo}</td>
-                        <td>
-                          <div className="d-flex gap-1">
-                            <Button variant="outline-success" size="sm" title="Download">
-                              <i className="fas fa-download"></i>
-                            </Button>
-                          </div>
-                        </td>
                      </tr>
                    ))
                  )}
                </tbody>
             </Table>
+            </div>
                 </Card.Body>
           <Card.Footer className="bg-light">
             <Row className="align-items-center">

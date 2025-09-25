@@ -95,6 +95,13 @@ function AppContent() {
         <Route path="/" element={<Login setUserConfig={setUserConfig} />} />
         <Route path="/login" element={<Login setUserConfig={setUserConfig} />} />
         <Route path="/registration" element={<Registration />} />
+        <Route path="/dashboard" element={
+          <ProtectedRoute requiredRole="home">
+            <LayoutWithSidebar>
+              <Home />
+            </LayoutWithSidebar>
+          </ProtectedRoute>
+        } />
         <Route path="/home" element={
           <ProtectedRoute requiredRole="home">
             <LayoutWithSidebar>
