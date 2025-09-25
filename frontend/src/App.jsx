@@ -81,7 +81,7 @@ function AppContent() {
       <>
         <TopNavbar />
         <SideNavbar isSidebarOpen={isSidebarOpen} />
-        <div style={{ marginLeft: '280px', marginTop: '92px' }}>
+        <div style={{ marginLeft: '280px', marginTop: '80px' }}>
           {children}
         </div>
       </>

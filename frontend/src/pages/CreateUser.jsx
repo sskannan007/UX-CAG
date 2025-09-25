@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BsArrowLeft, BsArrowRight, BsCheck } from 'react-icons/bs';
+import { Container, Card, Row, Col, Button, Form, InputGroup } from 'react-bootstrap';
 import config from '../config.js';
+import '../styles/dashboard.scss';
 
 const CreateUser = () => {
   const navigate = useNavigate();
   
-  // Prevent body scroll when component mounts
+  // Component mounted - no need to prevent body scroll
   useEffect(() => {
-    // Save the current body overflow style
-    const originalStyle = window.getComputedStyle(document.body).overflow;
-    // Prevent scrolling on the body
-    document.body.style.overflow = 'hidden';
-    
-    // Cleanup function to restore original overflow when component unmounts
-    return () => {
-      document.body.style.overflow = originalStyle;
-    };
+    // Allow normal scrolling behavior
   }, []);
   
   // State for multi-step form
@@ -156,30 +150,126 @@ const CreateUser = () => {
   // Render progress indicators
   const renderProgressSteps = () => {
     return (
-      <div className="row mb-3">
+      <div className="row mb-4">
         <div className="col-12">
-          <div className="d-flex justify-content-center align-items-center">
-            <div className={`text-center ${currentStep >= 1 ? 'text-primary' : 'text-muted'}`}>
-              <div className={`rounded-circle d-inline-flex align-items-center justify-content-center ${currentStep >= 1 ? 'bg-primary text-white' : 'bg-light'}`} style={{width: '35px', height: '35px'}}>
-                {currentStep > 1 ? <BsCheck size={16} /> : '1'}
+          <div className="d-flex justify-content-center">
+            <div 
+              className="d-flex align-items-center" 
+              style={{
+                backgroundColor: '#f8f9fa',
+                borderRadius: '25px',
+                padding: '8px',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+              }}
+            >
+              {/* Step 1: User Information */}
+              <div 
+                className={`d-flex align-items-center px-3 py-2 rounded-pill ${
+                  currentStep >= 1 
+                    ? 'text-dark' 
+                    : 'text-muted'
+                }`}
+                style={{
+                  backgroundColor: currentStep >= 1 ? '#EDEEF1' : 'transparent',
+                  minWidth: '180px',
+                  justifyContent: 'center'
+                }}
+              >
+                <div 
+                  className={`rounded-circle d-flex align-items-center justify-content-center me-3 ${
+                    currentStep > 1 
+                      ? 'bg-success text-white' 
+                      : currentStep >= 1 
+                        ? 'bg-dark text-white' 
+                        : 'bg-secondary text-white'
+                  }`}
+                  style={{
+                    width: '32px', 
+                    height: '32px', 
+                    fontSize: '14px', 
+                    fontWeight: '600'
+                  }}
+                >
+                  {currentStep > 1 ? <BsCheck size={16} /> : '1'}
+                </div>
+                <span style={{fontSize: '14px', fontWeight: '500'}}>User Information</span>
               </div>
-              <div className="mt-1 small">User Information</div>
-            </div>
-            <div className={`flex-grow-1 ${currentStep > 1 ? 'bg-primary' : 'bg-light'}`} style={{height: '2px', margin: '0 20px', maxWidth: '150px'}}></div>
-            
-            <div className={`text-center ${currentStep >= 2 ? 'text-primary' : 'text-muted'}`}>
-              <div className={`rounded-circle d-inline-flex align-items-center justify-content-center ${currentStep >= 2 ? 'bg-primary text-white' : 'bg-light'}`} style={{width: '35px', height: '35px'}}>
-                {currentStep > 2 ? <BsCheck size={16} /> : '2'}
+
+              {/* Chevron Separator 1 */}
+              <div className="mx-2" style={{ color: '#6c757d', fontSize: '16px' }}>
+                <i className="fas fa-chevron-right"></i>
               </div>
-              <div className="mt-1 small">Add Location</div>
-            </div>
-            <div className={`flex-grow-1 ${currentStep > 2 ? 'bg-primary' : 'bg-light'}`} style={{height: '2px', margin: '0 20px', maxWidth: '150px'}}></div>
-            
-            <div className={`text-center ${currentStep >= 3 ? 'text-primary' : 'text-muted'}`}>
-              <div className={`rounded-circle d-inline-flex align-items-center justify-content-center ${currentStep >= 3 ? 'bg-primary text-white' : 'bg-light'}`} style={{width: '35px', height: '35px'}}>
-                3
+
+              {/* Step 2: Add Location and Role */}
+              <div 
+                className={`d-flex align-items-center px-3 py-2 rounded-pill ${
+                  currentStep >= 2 
+                    ? 'text-dark' 
+                    : 'text-muted'
+                }`}
+                style={{
+                  backgroundColor: currentStep === 2 ? '#ffffff' : 'transparent',
+                  minWidth: '200px',
+                  justifyContent: 'center',
+                  boxShadow: currentStep === 2 ? '0 2px 8px rgba(0,0,0,0.15)' : 'none',
+                  border: currentStep === 2 ? '1px solid #e9ecef' : 'none'
+                }}
+              >
+                <div 
+                  className={`rounded-circle d-flex align-items-center justify-content-center me-3 ${
+                    currentStep > 2 
+                      ? 'bg-success text-white' 
+                      : currentStep >= 2 
+                        ? 'bg-dark text-white' 
+                        : 'bg-secondary text-white'
+                  }`}
+                  style={{
+                    width: '32px', 
+                    height: '32px', 
+                    fontSize: '14px', 
+                    fontWeight: '600'
+                  }}
+                >
+                  {currentStep > 2 ? <BsCheck size={16} /> : '2'}
+                </div>
+                <span style={{fontSize: '14px', fontWeight: '500'}}>Add Location and Role</span>
               </div>
-              <div className="mt-1 small">Confirmation</div>
+
+              {/* Chevron Separator 2 */}
+              <div className="mx-2" style={{ color: '#6c757d', fontSize: '16px' }}>
+                <i className="fas fa-chevron-right"></i>
+              </div>
+
+              {/* Step 3: Confirmation */}
+              <div 
+                className={`d-flex align-items-center px-3 py-2 rounded-pill ${
+                  currentStep >= 3 
+                    ? 'text-dark' 
+                    : 'text-muted'
+                }`}
+                style={{
+                  backgroundColor: currentStep >= 3 ? '#ffffff' : 'transparent',
+                  minWidth: '150px',
+                  justifyContent: 'center'
+                }}
+              >
+                <div 
+                  className={`rounded-circle d-flex align-items-center justify-content-center me-3 ${
+                    currentStep >= 3 
+                      ? 'bg-dark text-white' 
+                      : 'bg-secondary text-white'
+                  }`}
+                  style={{
+                    width: '32px', 
+                    height: '32px', 
+                    fontSize: '14px', 
+                    fontWeight: '600'
+                  }}
+                >
+                  3
+                </div>
+                <span style={{fontSize: '14px', fontWeight: '500'}}>Confirmation</span>
+              </div>
             </div>
           </div>
         </div>
@@ -188,44 +278,51 @@ const CreateUser = () => {
   };
 
   return (
-    <div className="container-fluid p-4" style={{ 
-      height: '100vh', 
-      overflow: 'hidden',
-      maxHeight: '100vh'
-    }}>
-      {/* Header */}
-      <div className="d-flex align-items-center mb-2">
-        <button 
-          className="btn btn-link text-decoration-none p-0 me-3" 
-          onClick={() => navigate('/user-management')}
-          style={{ border: 'none' }}
-        >
-          <BsArrowLeft className="me-2" /> back
-        </button>
-        <div>
-          <h4 className="mb-0">Create New User</h4>
-          <p className="text-muted mb-0 small">Add a new user to the system</p>
-        </div>
-      </div>
+    <div className="container-fluid py-4 scroll-style">
+      {/* Breadcrumbs */}
+      <nav aria-label="breadcrumb" className="mb-4">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <a 
+              href="#" 
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/user-management');
+              }}
+              className="text-decoration-none"
+            >
+              Home
+            </a>
+          </li>
+          <li className="breadcrumb-item">
+            <a 
+              href="#" 
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/user-management');
+              }}
+              className="text-decoration-none"
+            >
+              Settings & Configurations
+            </a>
+          </li>
+          <li className="breadcrumb-item active">Role management</li>
+        </ol>
+      </nav>
 
       {/* Progress Steps */}
       {renderProgressSteps()}
 
       {/* Main Content Card */}
-      <div className="card shadow-sm" style={{ height: 'calc(100vh - 300px)' }}>
-        <div className="card-body p-3" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      <Card className="shadow-sm main-user-card" style={{ border: 'none', backgroundColor: '#F2F3F7', padding: '0 16px' }}>
+        <Card.Body className="p-0" style={{ display: 'flex', flexDirection: 'column' }}>
           {/* Step Title */}
-          <div className="text-center mb-2">
-            <h6 className="mb-1">
-              {currentStep === 1 && 'User Information'}
-              {currentStep === 2 && 'Add Location'}
+          <div className="text-left">
+            <h4 className="mb-0" style={{fontWeight: '600', color: '#1E1E16'}}>
+              {currentStep === 1 && 'New User information'}
+              {currentStep === 2 && 'Add Location and Role'}
               {currentStep === 3 && 'Confirmation'}
-            </h6>
-            <p className="text-muted mb-0 small">
-              {currentStep === 1 && 'Enter the basic information for the new user'}
-              {currentStep === 2 && 'Add location details for the user'}
-              {currentStep === 3 && 'Review information and set password'}
-            </p>
+            </h4>
           </div>
 
           {/* Error Alert */}
@@ -237,281 +334,375 @@ const CreateUser = () => {
 
           {/* Step 1: User Information */}
           {currentStep === 1 && (
-            <div className="flex-grow-1">
-              <div className="row justify-content-center">
-                <div className="col-lg-10">
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="mb-2">
-                        <label className="form-label small">First Name <span className="text-danger">*</span></label>
-                        <input
+            <div style={{ backgroundColor: '#F2F3F7', padding: '20px' }}>
+              <Row>
+                {/* Left Column - Form Fields */}
+                <Col md={8} className='new-user-info-col' style={{ backgroundColor: '#FFFFFf', padding: '24px', borderRadius: '8px' }}>
+                  <Row className='new-user-info'>
+                    <Col md={6}>
+                      <div className="mb-3">
+                        <label className="form-label" style={{fontWeight: '500', color: '#374151'}}>
+                          First Name <span className="text-danger">*</span>
+                        </label>
+                        <Form.Control
                           type="text"
-                          className="form-control form-control-sm"
                           placeholder="Enter First name"
                           value={userData.firstName}
                           onChange={(e) => handleInputChange('firstName', e.target.value)}
+                          style={{borderRadius: '6px', border: '1px solid #d1d5db'}}
                         />
                       </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="mb-2">
-                        <label className="form-label small">Last Name <span className="text-danger">*</span></label>
-                        <input
+                    </Col>
+                    <Col md={6}>
+                      <div className="mb-3">
+                        <label className="form-label" style={{fontWeight: '500', color: '#374151'}}>
+                          Last Name <span className="text-danger">*</span>
+                        </label>
+                        <Form.Control
                           type="text"
-                          className="form-control form-control-sm"
                           placeholder="Enter Last name"
                           value={userData.lastName}
                           onChange={(e) => handleInputChange('lastName', e.target.value)}
+                          style={{borderRadius: '6px', border: '1px solid #d1d5db'}}
                         />
                       </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="mb-2">
-                        <label className="form-label small">Date of Birth</label>
-                        <input
+                    </Col>
+                    <Col md={6}>
+                      <div className="mb-3">
+                        <label className="form-label" style={{fontWeight: '500', color: '#374151'}}>
+                          Email (Login ID) <span className="text-danger">*</span>
+                        </label>
+                        <Form.Control
+                          type="email"
+                          placeholder="Enter Email ID"
+                          value={userData.email}
+                          onChange={(e) => handleInputChange('email', e.target.value)}
+                          style={{borderRadius: '6px', border: '1px solid #d1d5db'}}
+                        />
+                      </div>
+                    </Col>
+                    <Col md={6}>
+                      <div className="mb-3">
+                        <label className="form-label" style={{fontWeight: '500', color: '#374151'}}>
+                          Phone Number <span className="text-danger">*</span>
+                        </label>
+                        <InputGroup>
+                          <InputGroup.Text style={{borderRadius: '6px 0 0 6px', border: '1px solid #d1d5db', backgroundColor: '#f9fafb'}}>
+                            +1
+                          </InputGroup.Text>
+                          <Form.Control
+                            type="tel"
+                            placeholder="Enter Phone Number"
+                            value={userData.phoneNumber}
+                            onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
+                            style={{borderRadius: '0 6px 6px 0', border: '1px solid #d1d5db'}}
+                          />
+                        </InputGroup>
+                      </div>
+                    </Col>
+                    <Col md={6}>
+                      <div className="mb-3">
+                        <label className="form-label" style={{fontWeight: '500', color: '#374151'}}>
+                          Date of Birth
+                        </label>
+                        <Form.Control
                           type="date"
-                          className="form-control form-control-sm"
                           value={userData.dateOfBirth}
                           onChange={(e) => handleInputChange('dateOfBirth', e.target.value)}
+                          style={{borderRadius: '6px', border: '1px solid #d1d5db'}}
                         />
                       </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="mb-2">
-                        <label className="form-label small">Gender <span className="text-danger">*</span></label>
-                        <select
-                          className="form-select form-select-sm"
+                    </Col>
+                    <Col md={6}>
+                      <div className="mb-3">
+                        <label className="form-label" style={{fontWeight: '500', color: '#374151'}}>
+                          Gender <span className="text-danger">*</span>
+                        </label>
+                        <Form.Select
                           value={userData.gender}
                           onChange={(e) => handleInputChange('gender', e.target.value)}
+                          style={{borderRadius: '6px', border: '1px solid #d1d5db'}}
                         >
                           <option value="">Select Gender</option>
                           <option value="Male">Male</option>
                           <option value="Female">Female</option>
                           <option value="Other">Other</option>
-                        </select>
+                        </Form.Select>
                       </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="mb-2">
-                        <label className="form-label small">Email (Login ID) <span className="text-danger">*</span></label>
-                        <input
-                          type="email"
-                          className="form-control form-control-sm"
-                          placeholder="Enter Email ID"
-                          value={userData.email}
-                          onChange={(e) => handleInputChange('email', e.target.value)}
-                        />
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="mb-2">
-                        <label className="form-label small">Phone Number <span className="text-danger">*</span></label>
-                        <div className="input-group input-group-sm">
-                          <span className="input-group-text">+91</span>
-                          <input
-                            type="tel"
-                            className="form-control"
-                            placeholder="Enter Phone Number"
-                            value={userData.phoneNumber}
-                            onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
-                          />
-                        </div>
-                      </div>
+                    </Col>
+                  </Row>
+                </Col>
+                
+                {/* Right Column - Profile Picture */}
+                <Col className='new-user-profile-picture' md={2} style={{ backgroundColor: '#FFFFFf', marginLeft: '16px', padding: '24px', borderRadius: '8px' }}>
+                  <div className="d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '400px' }}>
+                    <div 
+                      className="d-flex flex-column align-items-center justify-content-center"
+                      style={{
+                        width: '200px',
+                        height: '200px',
+                        border: '2px dashed #d1d5db',
+                        borderRadius: '12px',
+                        backgroundColor: '#f9fafb',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease-in-out'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.borderColor = '#3b82f6';
+                        e.target.style.backgroundColor = '#eff6ff';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.borderColor = '#d1d5db';
+                        e.target.style.backgroundColor = '#f9fafb';
+                      }}
+                    >
+                      <i className="fas fa-user" style={{fontSize: '48px', color: '#9ca3af', marginBottom: '12px'}}></i>
+                      <span style={{color: '#6b7280', fontSize: '14px', fontWeight: '500'}}>
+                        Add Profile Picture
+                      </span>
                     </div>
                   </div>
-                </div>
-              </div>
+                </Col>
+              </Row>
             </div>
           )}
 
           {/* Step 2: Location Information */}
           {currentStep === 2 && (
-            <div className="flex-grow-1">
-              <div className="row justify-content-center">
-                <div className="col-lg-10">
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="mb-2">
-                        <label className="form-label small">Place <span className="text-danger">*</span></label>
-                        <input
+            <div style={{ backgroundColor: '#F2F3F7', padding: '20px' }}>
+              <Row>
+                <Col md={8} style={{ backgroundColor: '#FFFFFf', padding: '24px', borderRadius: '8px' }}>
+                  <Row>
+                    <Col md={6}>
+                      <div className="mb-3">
+                        <label className="form-label" style={{fontWeight: '500', color: '#374151'}}>
+                          Place <span className="text-danger">*</span>
+                        </label>
+                        <Form.Control
                           type="text"
-                          className="form-control form-control-sm"
                           placeholder="Enter Place"
                           value={userData.place}
                           onChange={(e) => handleInputChange('place', e.target.value)}
+                          style={{borderRadius: '6px', border: '1px solid #d1d5db'}}
                         />
                       </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="mb-2">
-                        <label className="form-label small">City <span className="text-danger">*</span></label>
-                        <input
+                    </Col>
+                    <Col md={6}>
+                      <div className="mb-3">
+                        <label className="form-label" style={{fontWeight: '500', color: '#374151'}}>
+                          City <span className="text-danger">*</span>
+                        </label>
+                        <Form.Control
                           type="text"
-                          className="form-control form-control-sm"
                           placeholder="Enter City"
                           value={userData.city}
                           onChange={(e) => handleInputChange('city', e.target.value)}
+                          style={{borderRadius: '6px', border: '1px solid #d1d5db'}}
                         />
                       </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="mb-2">
-                        <label className="form-label small">State <span className="text-danger">*</span></label>
-                        <input
+                    </Col>
+                    <Col md={6}>
+                      <div className="mb-3">
+                        <label className="form-label" style={{fontWeight: '500', color: '#374151'}}>
+                          State <span className="text-danger">*</span>
+                        </label>
+                        <Form.Control
                           type="text"
-                          className="form-control form-control-sm"
                           placeholder="Enter State"
                           value={userData.state}
                           onChange={(e) => handleInputChange('state', e.target.value)}
+                          style={{borderRadius: '6px', border: '1px solid #d1d5db'}}
                         />
                       </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="mb-2">
-                        <label className="form-label small">Pincode <span className="text-danger">*</span></label>
-                        <input
+                    </Col>
+                    <Col md={6}>
+                      <div className="mb-3">
+                        <label className="form-label" style={{fontWeight: '500', color: '#374151'}}>
+                          Pincode <span className="text-danger">*</span>
+                        </label>
+                        <Form.Control
                           type="text"
-                          className="form-control form-control-sm"
                           placeholder="Enter Pincode"
                           value={userData.pincode}
                           onChange={(e) => handleInputChange('pincode', e.target.value)}
+                          style={{borderRadius: '6px', border: '1px solid #d1d5db'}}
                         />
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
             </div>
           )}
 
           {/* Step 3: Confirmation and Password */}
           {currentStep === 3 && (
-            <div className="flex-grow-1">
-              <div className="row justify-content-center">
-                <div className="col-lg-10">
-                  <div className="row">
-                    <div className="col-md-12">
-                      <h6 className="mb-2 small">Review Information</h6>
-                      <div className="bg-light p-2 rounded mb-2">
-                        <div className="row">
-                          <div className="col-md-6">
-                            <div className="mb-1 small">
-                              <strong>Name:</strong> {userData.firstName} {userData.lastName}
-                            </div>
-                            <div className="mb-1 small">
-                              <strong>Email:</strong> {userData.email}
-                            </div>
-                            <div className="mb-1 small">
-                              <strong>Phone:</strong> +91 {userData.phoneNumber}
-                            </div>
-                            <div className="mb-1 small">
-                              <strong>Gender:</strong> {userData.gender}
-                            </div>
-                            {userData.dateOfBirth && (
-                              <div className="mb-1 small">
-                                <strong>DOB:</strong> {userData.dateOfBirth}
-                              </div>
-                            )}
-                          </div>
-                          <div className="col-md-6">
-                            <div className="mb-1 small">
-                              <strong>Place:</strong> {userData.place}
-                            </div>
-                            <div className="mb-1 small">
-                              <strong>City:</strong> {userData.city}
-                            </div>
-                            <div className="mb-1 small">
-                              <strong>State:</strong> {userData.state}
-                            </div>
-                            <div className="mb-1 small">
-                              <strong>Pincode:</strong> {userData.pincode}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <h6 className="mb-2 small">Set Password</h6>
-                      <div className="row">
-                        <div className="col-md-6">
+            <div style={{ backgroundColor: '#F2F3F7', padding: '20px' }}>
+              <Row>
+                <Col md={8} style={{ backgroundColor: '#FFFFFf', padding: '24px', borderRadius: '8px' }}>
+                  <div className="mb-4">
+                    <h6 className="mb-3" style={{fontWeight: '600', color: '#374151'}}>Review Information</h6>
+                    <div className="bg-light p-3 rounded" style={{border: '1px solid #e5e7eb'}}>
+                      <Row>
+                        <Col md={6}>
                           <div className="mb-2">
-                            <label className="form-label small">Password <span className="text-danger">*</span></label>
-                            <input
-                              type="password"
-                              className="form-control form-control-sm"
-                              placeholder="Enter Password"
-                              value={userData.password}
-                              onChange={(e) => handleInputChange('password', e.target.value)}
-                            />
+                            <strong style={{color: '#374151'}}>Name:</strong> 
+                            <span className="ms-2" style={{color: '#6b7280'}}>{userData.firstName} {userData.lastName}</span>
                           </div>
-                        </div>
-                        <div className="col-md-6">
                           <div className="mb-2">
-                            <label className="form-label small">Confirm Password <span className="text-danger">*</span></label>
-                            <input
-                              type="password"
-                              className="form-control form-control-sm"
-                              placeholder="Confirm Password"
-                              value={userData.confirmPassword}
-                              onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
-                            />
+                            <strong style={{color: '#374151'}}>Email:</strong> 
+                            <span className="ms-2" style={{color: '#6b7280'}}>{userData.email}</span>
                           </div>
-                        </div>
-                      </div>
+                          <div className="mb-2">
+                            <strong style={{color: '#374151'}}>Phone:</strong> 
+                            <span className="ms-2" style={{color: '#6b7280'}}>+1 {userData.phoneNumber}</span>
+                          </div>
+                          <div className="mb-2">
+                            <strong style={{color: '#374151'}}>Gender:</strong> 
+                            <span className="ms-2" style={{color: '#6b7280'}}>{userData.gender}</span>
+                          </div>
+                          {userData.dateOfBirth && (
+                            <div className="mb-2">
+                              <strong style={{color: '#374151'}}>DOB:</strong> 
+                              <span className="ms-2" style={{color: '#6b7280'}}>{userData.dateOfBirth}</span>
+                            </div>
+                          )}
+                        </Col>
+                        <Col md={6}>
+                          <div className="mb-2">
+                            <strong style={{color: '#374151'}}>Place:</strong> 
+                            <span className="ms-2" style={{color: '#6b7280'}}>{userData.place}</span>
+                          </div>
+                          <div className="mb-2">
+                            <strong style={{color: '#374151'}}>City:</strong> 
+                            <span className="ms-2" style={{color: '#6b7280'}}>{userData.city}</span>
+                          </div>
+                          <div className="mb-2">
+                            <strong style={{color: '#374151'}}>State:</strong> 
+                            <span className="ms-2" style={{color: '#6b7280'}}>{userData.state}</span>
+                          </div>
+                          <div className="mb-2">
+                            <strong style={{color: '#374151'}}>Pincode:</strong> 
+                            <span className="ms-2" style={{color: '#6b7280'}}>{userData.pincode}</span>
+                          </div>
+                        </Col>
+                      </Row>
                     </div>
                   </div>
-                </div>
-              </div>
+                  
+                  <div>
+                    <h6 className="mb-3" style={{fontWeight: '600', color: '#374151'}}>Set Password</h6>
+                    <Row>
+                      <Col md={6}>
+                        <div className="mb-3">
+                          <label className="form-label" style={{fontWeight: '500', color: '#374151'}}>
+                            Password <span className="text-danger">*</span>
+                          </label>
+                          <Form.Control
+                            type="password"
+                            placeholder="Enter Password"
+                            value={userData.password}
+                            onChange={(e) => handleInputChange('password', e.target.value)}
+                            style={{borderRadius: '6px', border: '1px solid #d1d5db'}}
+                          />
+                        </div>
+                      </Col>
+                      <Col md={6}>
+                        <div className="mb-3">
+                          <label className="form-label" style={{fontWeight: '500', color: '#374151'}}>
+                            Confirm Password <span className="text-danger">*</span>
+                          </label>
+                          <Form.Control
+                            type="password"
+                            placeholder="Confirm Password"
+                            value={userData.confirmPassword}
+                            onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
+                            style={{borderRadius: '6px', border: '1px solid #d1d5db'}}
+                          />
+                        </div>
+                      </Col>
+                    </Row>
+                  </div>
+                </Col>
+              </Row>
             </div>
           )}
 
-          {/* Navigation Buttons */}
-          <div className="row mt-2 flex-shrink-0">
-            <div className="col-12">
-              <div className="d-flex justify-content-between align-items-center">
-                <div>
-                  {currentStep > 1 && (
-                    <button 
-                      type="button" 
-                      className="btn btn-link text-decoration-none p-2"
-                      onClick={prevStep}
-                      style={{ border: 'none' }}
-                    >
-                      <BsArrowLeft className="me-2" /> Previous
-                    </button>
-                  )}
-                </div>
-                <div>
-                  {currentStep < 3 ? (
-                    <button 
-                      type="button" 
-                      className="btn btn-primary px-4"
-                      onClick={nextStep}
-                    >
-                      Save & Next <BsArrowRight className="ms-2" />
-                    </button>
-                  ) : (
-                    <button 
-                      type="button" 
-                      className="btn btn-primary px-4"
-                      onClick={createUser}
-                      disabled={loading}
-                    >
-                      {loading ? (
-                        <>
-                          <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                          Creating User...
-                        </>
-                      ) : (
-                        'Create User'
-                      )}
-                    </button>
-                  )}
-                </div>
+        </Card.Body>
+      </Card>
+      
+      {/* Navigation Buttons - Fixed at bottom */}
+      <div 
+        className="row mt-4" 
+        style={{
+          position: 'sticky',
+          bottom: '0',
+          backgroundColor: '#F2F3F7',
+          padding: '0 16px 0',
+          margin: '0 -15px',
+          paddingLeft: '15px',
+          paddingRight: '15px',
+          zIndex: 10
+        }}
+      >
+        <div className="col-12">
+          <div className="d-flex justify-content-start align-items-center gap-3">
+                {currentStep < 3 ? (
+                  <Button 
+                    variant="primary" 
+                    onClick={nextStep}
+                    style={{
+                      backgroundColor: '#0D61AE',
+                      borderColor: '#0D61AE',
+                      borderRadius: '6px',
+                      padding: '12px 24px',
+                      fontWeight: '500',
+                      fontSize: '14px'
+                    }}
+                  >
+                    Save & Next
+                  </Button>
+                ) : (
+                  <Button 
+                    variant="primary" 
+                    onClick={createUser}
+                    disabled={loading}
+                    style={{
+                      backgroundColor: '#0D61AE',
+                      borderColor: '#0D61AE',
+                      borderRadius: '6px',
+                      padding: '12px 24px',
+                      fontWeight: '500',
+                      fontSize: '14px'
+                    }}
+                  >
+                    {loading ? (
+                      <>
+                        <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                        Creating User...
+                      </>
+                    ) : (
+                      'Create User'
+                    )}
+                  </Button>
+                )}
+                <Button 
+                  variant="outline-secondary" 
+                  onClick={() => navigate('/user-management')}
+                  style={{
+                    borderColor: '#d1d5db',
+                    color: '#6b7280',
+                    borderRadius: '6px',
+                    padding: '12px 24px',
+                    fontWeight: '500',
+                    fontSize: '14px'
+                  }}
+                >
+                  Cancel
+                </Button>
               </div>
             </div>
           </div>
-        </div>
-      </div>
     </div>
   );
 };

@@ -170,6 +170,9 @@ footer {
 }
 
 /* Fix horizontal scrollbar issue */
+.view-files-table-container tr {
+  height: 64px;
+}
 .view-files-table-container {
   overflow-x: auto;
   margin: 8px;
@@ -210,4 +213,11 @@ footer {
   background-color: #e9ecef !important;
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.scroll-style {
+  min-height: calc(100vh - 5rem);
+  background-color: #F2F3F7;
+  overflow-y: auto;
+  overflow-x: hidden; 
 }

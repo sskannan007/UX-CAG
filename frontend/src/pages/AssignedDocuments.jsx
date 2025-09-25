@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Card, Button, Alert, Spinner, Row, Col, FormControl, InputGroup, Table, Badge, Pagination } from 'react-bootstrap';
+import { Container, Card, Button, Alert, Spinner, Row, Col, FormControl, InputGroup, Table, Badge, Pagination, Dropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import config from '../config.js';
+import '../styles/dashboard.scss';
 
 const AssignedDocuments = () => {
   const navigate = useNavigate();
@@ -402,6 +403,15 @@ const AssignedDocuments = () => {
     setCurrentPage(1);
   };
 
+  // Count active filters (excluding search since it's separate)
+  const getActiveFilterCount = () => {
+    let count = 0;
+    if (filterState) count++;
+    if (filterDepartment) count++;
+    if (filterStatus) count++;
+    return count;
+  };
+
   const handleViewDetails = async (fileId, filename) => {
     try {
       const token = localStorage.getItem('token');
@@ -584,13 +594,11 @@ const AssignedDocuments = () => {
   
   if (loading && !assignedFiles.length) {
     return (
-      <Container fluid className="py-4">
-        <Card className="shadow-sm">
-          <Card.Header className="bg-primary text-white text-center">
-            <h5 className="mb-0">
-              <i className="fas fa-file-alt me-2"></i>
-              My Assigned Documents
-            </h5>
+      <div className="container-fluid py-4">
+        <h2 className="dashboard-heading">My Assigned Documents</h2>
+        <Card className="shadow-sm table-card">
+          <Card.Header className="bg-white">
+            <h5 className="mb-0 table-heading">All Documents</h5>
           </Card.Header>
           <Card.Body className="text-center py-5">
             <Spinner animation="border" role="status">
@@ -604,241 +612,286 @@ const AssignedDocuments = () => {
             )}
           </Card.Body>
         </Card>
-      </Container>
+      </div>
     );
   }
 
   return (
-    <Container fluid className="py-4 assigned-head" style={{ marginTop: "6rem" }}>
-      <Card className="shadow-sm">
-        <Card.Header className="bg-primary text-white text-center">
-          <h5 className="mb-0">
-            <i className="fas fa-file-alt me-2"></i>
-            My Assigned Documents
-          </h5>
-        </Card.Header>
-        <Card.Body>
-          {error && (
-            <Alert variant="danger" onClose={() => setError(null)} dismissible>
-              {error}
-            </Alert>
-          )}
-          <Row className="mb-3 g-3 align-items-end">
-            <Col xs={12} md={4}>
-              <InputGroup>
-                <InputGroup.Text><i className="fas fa-search"></i></InputGroup.Text>
-                <FormControl
-                  placeholder="Search file name..."
-                  value={search}
-                  onChange={e => setSearch(e.target.value)}
-                  aria-label="Search file name"
-                />
-              </InputGroup>
+    <div className="container-fluid py-4">
+      {/* Greeting */}
+      <h2 className="dashboard-heading">My Assigned Documents</h2>
+
+      {/* Error Alert */}
+      {error && (
+        <Alert variant="danger" onClose={() => setError(null)} dismissible>
+          {error}
+        </Alert>
+      )}
+
+      {/* Documents Table */}
+      <Card className="shadow-sm table-card">
+        <Card.Header className="bg-white">
+          <Row className="align-items-center">
+            <Col md={6}>
+              <h5 className="mb-0 table-heading">All Documents</h5>
             </Col>
-            <Col xs={6} md={2}>
-              <FormControl
-                as="select"
-                value={filterState}
-                onChange={(e) => setFilterState(e.target.value)}
-                className="form-select"
-                aria-label="Filter by state"
-              >
-                <option value="">All States</option>
-                {getUniqueValues('state').map(state => (
-                  <option key={state} value={state}>{state}</option>
-                ))}
-              </FormControl>
-            </Col>
-            <Col xs={6} md={2}>
-              <FormControl
-                as="select"
-                value={filterDepartment}
-                onChange={(e) => setFilterDepartment(e.target.value)}
-                className="form-select"
-                aria-label="Filter by department"
-              >
-                <option value="">All Departments</option>
-                {getUniqueValues('departments').map(dept => (
-                  <option key={dept} value={dept}>{dept}</option>
-                ))}
-              </FormControl>
-            </Col>
-            <Col xs={6} md={2}>
-              <FormControl
-                as="select"
-                value={filterStatus}
-                onChange={(e) => setFilterStatus(e.target.value)}
-                className="form-select"
-                aria-label="Filter by status"
-              >
-                <option value="">All Status</option>
-                <option value="Validated">Validated</option>
-                <option value="Non-validated">Non-validated</option>
-              </FormControl>
-            </Col>
-            <Col xs={6} md={2}>
-              <Button
-                variant="outline-danger"
-                onClick={clearFilters}
-                className="w-50"
-                title="Clear filters"
-              >
-                <i className="fas fa-times me-1"></i>
-                Clear
-              </Button>
+            <Col md={6}>
+              <div className="d-flex gap-3 align-items-center justify-content-end">
+                <Dropdown>
+                  <Dropdown.Toggle variant="outline-secondary" className="filter-btn">
+                    <i className="fas fa-filter me-2"></i>
+                    Filters
+                    {getActiveFilterCount() > 0 && (
+                      <Badge bg="primary" className="ms-2" style={{ fontSize: '10px' }}>
+                        {getActiveFilterCount()}
+                      </Badge>
+                    )}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu className="p-3" style={{ minWidth: '280px' }}>
+                    <div className="mb-3">
+                      <label className="form-label fw-semibold">Filter by State</label>
+                      <FormControl
+                        as="select"
+                        value={filterState}
+                        onChange={(e) => setFilterState(e.target.value)}
+                        className="form-select"
+                      >
+                        <option value="">All States</option>
+                        {getUniqueValues('state').map(state => (
+                          <option key={state} value={state}>{state}</option>
+                        ))}
+                      </FormControl>
+                    </div>
+                    
+                    <div className="mb-3">
+                      <label className="form-label fw-semibold">Filter by Department</label>
+                      <FormControl
+                        as="select"
+                        value={filterDepartment}
+                        onChange={(e) => setFilterDepartment(e.target.value)}
+                        className="form-select"
+                      >
+                        <option value="">All Departments</option>
+                        {getUniqueValues('departments').map(dept => (
+                          <option key={dept} value={dept}>{dept}</option>
+                        ))}
+                      </FormControl>
+                    </div>
+                    
+                    <div className="mb-3">
+                      <label className="form-label fw-semibold">Filter by Status</label>
+                      <FormControl
+                        as="select"
+                        value={filterStatus}
+                        onChange={(e) => setFilterStatus(e.target.value)}
+                        className="form-select"
+                      >
+                        <option value="">All Status</option>
+                        <option value="Validated">Validated</option>
+                        <option value="Non-validated">Non-validated</option>
+                      </FormControl>
+                    </div>
+                    
+                    <div className="d-flex gap-2">
+                      <Button 
+                        variant="primary" 
+                        size="sm" 
+                        onClick={() => {}} // Filter is applied automatically
+                        className="flex-fill"
+                      >
+                        Apply Filters
+                      </Button>
+                      <Button 
+                        variant="outline-secondary" 
+                        size="sm" 
+                        onClick={clearFilters}
+                        className="flex-fill"
+                      >
+                        Clear All
+                      </Button>
+                    </div>
+                  </Dropdown.Menu>
+                </Dropdown>
+                <div className="search-input-group" style={{ width: '300px' }}>
+                  <InputGroup>
+                    <FormControl 
+                      placeholder="Search documents..." 
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                    />
+                    <InputGroup.Text>
+                      <i className="fas fa-search"></i>
+                    </InputGroup.Text>
+                  </InputGroup>
+                </div>
+              </div>
             </Col>
           </Row>
-          {filteredFiles.length === 0 ? (
-            <div className="text-center py-5">
-              <i className="fas fa-inbox fa-3x text-muted mb-3"></i>
-              <h5 className="text-muted">
-                {assignedFiles.length === 0 ? 'No documents assigned yet' : 'No files match your search'}
-              </h5>
-              <p className="text-muted">
-                Documents assigned to you by administrators will appear here.
-              </p>
-            </div>
-          ) : (
-            <>
-              <div className="d-flex justify-content-between align-items-center mb-3">
-                <div>
-                  <span className="badge bg-info fs-6">
-                    Total: {filteredFiles.length} document{filteredFiles.length !== 1 ? 's' : ''}
+        </Card.Header>
+        <Card.Body className="p-0">
+          {/* Filter Summary */}
+          {getActiveFilterCount() > 0 && (
+            <div className="p-3 bg-light border-bottom">
+              <div className="d-flex align-items-center justify-content-between">
+                <div className="d-flex align-items-center gap-2">
+                  <i className="fas fa-filter text-primary"></i>
+                  <span className="text-muted">
+                    Showing {filteredFiles.length} of {assignedFiles.length} documents
                   </span>
-                </div>
-                <Button variant="outline-primary" onClick={fetchAssignedFiles} style={{ width: '120px' }}>
-                  <i className="fas fa-sync-alt me-2"></i>
-                  Refresh
-                </Button>
-            <Button variant="outline-warning" onClick={testAssignedFiles} style={{ width: '120px', marginLeft: '10px' }}>
-              <i className="fas fa-bug me-2"></i>
-              Test
-            </Button>
-            <Button variant="outline-success" onClick={testAssignFiles} style={{ width: '140px', marginLeft: '10px' }}>
-              <i className="fas fa-plus me-2"></i>
-              Assign Test Files
-            </Button>
-            <Button variant="outline-info" onClick={debugAssignments} style={{ width: '120px', marginLeft: '10px' }}>
-              <i className="fas fa-search me-2"></i>
-              Debug
-            </Button>
-              </div>
-              {contentLoading && (
-                <div className="mb-3">
-                  <div className="d-flex align-items-center">
-                    <Spinner animation="border" size="sm" className="me-2" />
-                    <span className="text-muted">Loading file contents...</span>
-                  </div>
-                </div>
-              )}
-              <div className="table-responsive custom-height">
-                <Table striped bordered hover className="align-middle" style={{ background: '#fff', borderRadius: 8, overflow: 'hidden', minWidth: 760 }}>
-                  <thead className="table-light">
-                    <tr style={{ fontWeight: 600, fontSize: 16 }}>
-                      <th>Name</th>
-                      <th>Period</th>
-                      <th>Department</th>
-                      <th>State</th>
-                      <th>Status</th>
-                      <th>Assigned On</th>
-                      <th>Assigned By</th>
-                      <th className="text-center">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {paginatedFiles.map((file) => (
-                      <tr key={file.id} style={{ cursor: 'pointer', transition: 'background 0.2s' }}
-                          onMouseOver={e => e.currentTarget.style.background = '#e3f2fd'}
-                          onMouseOut={e => e.currentTarget.style.background = ''}
-                        >
-                        <td style={{ fontWeight: 500 }}>{reportData[file.id]?.name || file.filename}</td>
-                        <td>{reportData[file.id]?.period || 'N/A'}</td>
-                        <td>{reportData[file.id]?.departments || 'N/A'}</td>
-                        <td>{reportData[file.id]?.state || 'N/A'}</td>
-                        <td>
-                          {getValidationStatusForFile(file) === 'Validated' ? (
-                            <Badge bg="success">Validated</Badge>
-                          ) : (
-                            <Badge bg="warning" text="dark">Non-validated</Badge>
-                          )}
-                        </td>
-                        <td>
-                          <span className="text-muted">{formatDate(file.assigned_at)}</span>
-                        </td>
-                        <td>
-                          <Badge bg="secondary">{file.assigned_by_name}</Badge>
-                        </td>
-                        <td className="text-center">
-                          <div className="d-flex gap-2 justify-content-center">
-                            <Button
-                              variant="primary"
-                              size="sm"
-                              onClick={() => handleViewDetails(file.id, file.filename)}
-                            >
-                              View
-                            </Button>
-                            <Button
-                              variant="outline-success"
-                              size="sm"
-                              onClick={() => handleUpdateData(file.id, file.filename)}
-                              disabled={validatingFileId === file.id}
-                            >
-                              {validatingFileId === file.id ? (
-                                <Spinner animation="border" size="sm" />
-                              ) : (
-                                'Validate'
-                              )}
-                            </Button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </Table>
-              </div>
-              {totalPages > 0 && (
-                <div className="d-flex justify-content-center align-items-center mt-4">
-                  <div className='me-4'>
-                    <span className="text-muted">
-                      Showing {startIndex + 1} to {Math.min(endIndex, filteredFiles.length)} of {filteredFiles.length} files
-                    </span>
-                  </div>
-                  {totalPages > 1 && (
-                    <Pagination>
-                      <Pagination.First
-                        onClick={() => handlePageChange(1)}
-                        disabled={currentPage === 1}
-                      />
-                      <Pagination.Prev
-                        onClick={() => handlePageChange(currentPage - 1)}
-                        disabled={currentPage === 1}
-                      />
-                      {[...Array(totalPages).keys()].map(page => (
-                        <Pagination.Item
-                          key={page + 1}
-                          active={page + 1 === currentPage}
-                          onClick={() => handlePageChange(page + 1)}
-                        >
-                          {page + 1}
-                        </Pagination.Item>
-                      ))}
-                      <Pagination.Next
-                        onClick={() => handlePageChange(currentPage + 1)}
-                        disabled={currentPage === totalPages}
-                      />
-                      <Pagination.Last
-                        onClick={() => handlePageChange(totalPages)}
-                        disabled={currentPage === totalPages}
-                      />
-                    </Pagination>
+                  {search && search.trim() && (
+                    <Badge bg="info" className="ms-2">
+                      Search: "{search}"
+                    </Badge>
+                  )}
+                  {filterState && (
+                    <Badge bg="secondary" className="ms-1">
+                      State: {filterState}
+                    </Badge>
+                  )}
+                  {filterDepartment && (
+                    <Badge bg="secondary" className="ms-1">
+                      Dept: {filterDepartment}
+                    </Badge>
+                  )}
+                  {filterStatus && (
+                    <Badge bg="secondary" className="ms-1">
+                      Status: {filterStatus}
+                    </Badge>
                   )}
                 </div>
-              )}
-            </>
+                <Button 
+                  variant="outline-danger" 
+                  size="sm" 
+                  onClick={clearFilters}
+                >
+                  <i className="fas fa-times me-1"></i>
+                  Clear Filters
+                </Button>
+              </div>
+            </div>
           )}
+          <div className="view-files-table-container">
+            <Table responsive hover className="mb-0">
+              <thead className="table-light">
+                <tr>
+                  <th>S.NO</th>
+                  <th>Document Name</th>
+                  <th>Period</th>
+                  <th>Department</th>
+                  <th>State</th>
+                  <th>Status</th>
+                  <th>Assigned On</th>
+                  <th>Assigned By</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredFiles.length === 0 ? (
+                  <tr>
+                    <td colSpan="9" className="text-center py-4 text-muted">
+                      <i className="fas fa-inbox fa-2x mb-2 d-block"></i>
+                      {assignedFiles.length === 0 ? 'No documents assigned yet' : 'No files match your search'}
+                    </td>
+                  </tr>
+                ) : (
+                  paginatedFiles.map((file, index) => (
+                    <tr key={file.id}>
+                      <td className="text-center fw-medium text-muted">
+                        {startIndex + index + 1}
+                      </td>
+                      <td className="fw-medium">{reportData[file.id]?.name || file.filename}</td>
+                      <td>{reportData[file.id]?.period || 'N/A'}</td>
+                      <td>{reportData[file.id]?.departments || 'N/A'}</td>
+                      <td>{reportData[file.id]?.state || 'N/A'}</td>
+                      <td className="badge-style">
+                        {getValidationStatusForFile(file) === 'Validated' ? (
+                          <Badge bg="success">Validated</Badge>
+                        ) : (
+                          <Badge bg="warning" text="dark">Non-validated</Badge>
+                        )}
+                      </td>
+                      <td>
+                        <span className="text-muted">{formatDate(file.assigned_at)}</span>
+                      </td>
+                      <td className='badge-style'>
+                        <Badge bg="secondary">{file.assigned_by_name}</Badge>
+                      </td>
+                      <td>
+                        <div className="d-flex gap-2">
+                          <Button
+                            variant="outline-primary"
+                            size="sm"
+                            onClick={() => handleViewDetails(file.id, file.filename)}
+                          >
+                            <i className="fas fa-eye me-1"></i>
+                            View
+                          </Button>
+                          <Button
+                            variant="outline-success"
+                            size="sm"
+                            onClick={() => handleUpdateData(file.id, file.filename)}
+                            disabled={validatingFileId === file.id}
+                          >
+                            {validatingFileId === file.id ? (
+                              <Spinner animation="border" size="sm" />
+                            ) : (
+                              <>
+                                <i className="fas fa-check me-1"></i>
+                                Validate
+                              </>
+                            )}
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </Table>
+          </div>
         </Card.Body>
+        <Card.Footer className="bg-light">
+          {totalPages > 0 && (
+            <div className="d-flex justify-content-center align-items-center">
+              <div className='me-4'>
+                <span className="text-muted">
+                  Showing {startIndex + 1} to {Math.min(endIndex, filteredFiles.length)} of {filteredFiles.length} files
+                </span>
+              </div>
+              {totalPages > 1 && (
+                <Pagination>
+                  <Pagination.First
+                    onClick={() => handlePageChange(1)}
+                    disabled={currentPage === 1}
+                  />
+                  <Pagination.Prev
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                  />
+                  {[...Array(totalPages).keys()].map(page => (
+                    <Pagination.Item
+                      key={page + 1}
+                      active={page + 1 === currentPage}
+                      onClick={() => handlePageChange(page + 1)}
+                    >
+                      {page + 1}
+                    </Pagination.Item>
+                  ))}
+                  <Pagination.Next
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                  />
+                  <Pagination.Last
+                    onClick={() => handlePageChange(totalPages)}
+                    disabled={currentPage === totalPages}
+                  />
+                </Pagination>
+              )}
+            </div>
+          )}
+        </Card.Footer>
       </Card>
-    </Container>
+    </div>
   );
 };
 
