@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { FaChevronDown, FaChevronRight, FaHome, FaCheckCircle, FaFileAlt, FaCog, FaTachometerAlt, FaUsers } from 'react-icons/fa';
 import config from '../config.js';
+import { apiRequest, isAuthenticated, logout } from '../utils/apiUtils.js';
 
 const SideNavbar = ({ isSidebarOpen }) => {
   console.log('SideNavbar rendering, isSidebarOpen:', isSidebarOpen);
@@ -23,22 +24,17 @@ const SideNavbar = ({ isSidebarOpen }) => {
 
   // Fetch user permissions on component mount
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      fetch(`${config.BASE_URL}/users/me`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      })
-      .then(response => response.json())
-      .then(data => {
-        setUserPermissions(data.permissions || []);
-        setUserConfig(data.config || {});
-        setUserRole(data.role || null);
-      })
-      .catch(error => {
-        console.error('Error fetching user permissions:', error);
-      });
+    if (isAuthenticated()) {
+      apiRequest(`${config.BASE_URL}/users/me`)
+        .then(data => {
+          setUserPermissions(data.permissions || []);
+          setUserConfig(data.config || {});
+          setUserRole(data.role || null);
+        })
+        .catch(error => {
+          console.error('Error fetching user permissions:', error);
+          // If it's a 401 error, the apiRequest utility will handle logout
+        });
     }
   }, []);
 
@@ -87,11 +83,10 @@ const SideNavbar = ({ isSidebarOpen }) => {
   return (
     <>
       {/* Sidebar - always visible */}
-      {isSidebarOpen && (
-        <div
-          ref={sidebarRef}
-          className="pt-3 sideNavbar navbar-open"
-          style={{ width: '280px', position: 'fixed', top: 80, left: 0, backgroundColor: '#fff', minHeight: '100vh', zIndex: 1100, color: '#161616' }}
+      <div
+        ref={sidebarRef}
+        className="pt-3 sideNavbar navbar-open"
+        style={{ width: '280px', position: 'fixed', top: 80, left: 0, backgroundColor: '#fff', minHeight: '100vh', zIndex: 1100, color: '#161616' }}
         >
           {/* Sidebar Header */}
           {/* <div className="d-flex justify-content-between align-items-center mb-4 px-3">
@@ -150,7 +145,6 @@ const SideNavbar = ({ isSidebarOpen }) => {
             )}
           </nav>
         </div>
-      )}
     </>
   );
 };

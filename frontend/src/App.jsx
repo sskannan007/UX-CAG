@@ -16,6 +16,7 @@ import UserManagement from './pages/UserManagement';
 import CreateUser from './pages/CreateUser';
 import BulkUploadUsers from './pages/BulkUploadUsers';
 import DataValidationPage from './pages/DataValidationPage';
+import FileViewer from './pages/FileViewer';
 import './App.css';
 import Chatbot from './pages/Chatbot';
 import AssignedDocuments from './pages/AssignedDocuments';
@@ -168,6 +169,11 @@ function AppContent() {
         <Route path="/data-validation" element={
           <ProtectedRoute requiredRole="dataValidation">
             <DataValidationPage />
+          </ProtectedRoute>
+        } />
+        <Route path="/file-viewer" element={
+          <ProtectedRoute requiredRole="assignedDocuments">
+            <FileViewer />
           </ProtectedRoute>
         } />
         <Route path="/assigned-documents" element={

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import config from '../config.js';
 import '../styles/dashboard.scss';
+import { apiRequest, isAuthenticated, logout } from '../utils/apiUtils.js';
 
 const AssignedDocuments = () => {
   const navigate = useNavigate();
@@ -17,12 +18,22 @@ const AssignedDocuments = () => {
   const [filterDepartment, setFilterDepartment] = useState('');
   const [filterStatus, setFilterStatus] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [validatingFileId, setValidatingFileId] = useState(null); // Track which file is being validated
+  const [currentUser, setCurrentUser] = useState(null);
   const itemsPerPage = 10;
 
   useEffect(() => {
+    fetchCurrentUser();
     fetchAssignedFiles();
   }, []);
+
+  const fetchCurrentUser = async () => {
+    try {
+      const userData = await apiRequest(`${config.BASE_URL}/users/me`);
+      setCurrentUser(userData);
+    } catch (error) {
+      console.error('Error fetching current user:', error);
+    }
+  };
 
   const testAssignedFiles = async () => {
     try {
@@ -92,12 +103,15 @@ const AssignedDocuments = () => {
     try {
       setLoading(true);
       setError(null);
-      const token = localStorage.getItem('token');
-      const response = await axios.get(`${config.BASE_URL}/api/my-assigned-files`, {
-        headers: { Authorization: `Bearer ${token}` },
-        timeout: 15000 // 15 second timeout for initial request
-      });
-      const files = response.data.assigned_files || [];
+      
+      // Check if user is authenticated
+      if (!isAuthenticated()) {
+        logout();
+        return;
+      }
+      
+      const response = await apiRequest(`${config.BASE_URL}/api/my-assigned-files`);
+      const files = response.assigned_files || [];
       setAssignedFiles(files);
 
       // Show files immediately, then load content in background
@@ -112,6 +126,7 @@ const AssignedDocuments = () => {
         // Try to load content in background (only for files that might have JSON)
         setContentLoading(true);
         try {
+          const token = localStorage.getItem('token');
           // Process files in smaller batches to avoid timeout
           const batchSize = 5;
           
@@ -131,15 +146,7 @@ const AssignedDocuments = () => {
               if (batchResponse.data.status === 'success') {
                 // Process all files from batch response
                 batchResponse.data.files.forEach(fileData => {
-                  console.log('=== ASSIGNED DOCS DEBUG ===');
-                  console.log('File:', fileData.filename);
-                  console.log('Content keys:', Object.keys(fileData.content || {}));
-                  console.log('Inspection_Period:', fileData.content?.Inspection_Period);
-                  console.log('Reporting_Period:', fileData.content?.Reporting_Period);
-                  console.log('Parts:', fileData.content?.Parts);
                   const extracted = extractReportInfoFromContent(fileData.content, fileData.filename);
-                  console.log('Extracted period:', extracted.period);
-                  console.log('=== END DEBUG ===');
                   reportInfo[fileData.file_id] = extracted;
                 });
               }
@@ -171,16 +178,16 @@ const AssignedDocuments = () => {
 
   const extractReportInfoFromContent = (content, filename) => {
     try {
-
+      console.log('=== EXTRACTING REPORT INFO ===');
+      console.log('Content structure:', content);
+      console.log('Content metadata:', content.metadata);
       
-      let report = content;
-      if (content.Parts && content.Parts["PART I"] && content.Parts["PART I"].Inspection_Report) {
-        report = content.Parts["PART I"].Inspection_Report;
-      }
-      const reportingPeriod = report.Reporting_Period || {};
-      const inspectionPeriod = report.Inspection_Period || {};
+      // Extract from metadata first (new structure)
+      const metadata = content.metadata || {};
       const reportSummary = content.Report_Summary || {};
       const unmappedSections = content.Unmapped_Sections || {};
+      
+      // For observations, try to get from parts if available
       const partIIAObservations = content.Parts && content.Parts["PART II (A)"] && content.Parts["PART II (A)"].Observations || [];
       const partIIBObservations = content.Parts && content.Parts["PART II (B)"] && content.Parts["PART II (B)"].Observations || [];
       const totalObservations = partIIAObservations.length + partIIBObservations.length;
@@ -229,34 +236,35 @@ const AssignedDocuments = () => {
         return null;
       };
 
-      let periodFromFormatted = formatDate(reportingPeriod.Period_From);
-      let periodToFormatted = formatDate(reportingPeriod.Period_To);
-      
-      if (periodFromFormatted === 'N/A' || periodToFormatted === 'N/A') {
-        periodFromFormatted = formatDate(inspectionPeriod.Period_From);
-        periodToFormatted = formatDate(inspectionPeriod.Period_To);
+      // Extract period from metadata (matching BulkUploadViewer logic)
+      let periodDisplay = 'N/A';
+
+      // Try Period_of_audit first
+      if (metadata.Period_of_audit?.Period_From && metadata.Period_of_audit?.Period_To) {
+        periodDisplay = `${metadata.Period_of_audit.Period_From} - ${metadata.Period_of_audit.Period_To}`;
+      } else if (metadata.Period_of_audit?.Period_From) {
+        periodDisplay = metadata.Period_of_audit.Period_From;
+      } else if (metadata.Period_of_audit?.Period_To) {
+        periodDisplay = metadata.Period_of_audit.Period_To;
+      } else if (metadata.Date_of_audit?.Period_From) {
+        // Try to extract year from Date_of_audit
+        const dateStr = metadata.Date_of_audit.Period_From;
+        const yearMatch = dateStr.match(/(\d{4})/);
+        if (yearMatch) {
+          periodDisplay = yearMatch[1];
+        } else {
+          periodDisplay = dateStr;
+        }
+      } else {
+        // Look for year in document heading
+        const heading = metadata.document_heading || '';
+        const yearMatch = heading.match(/(\d{4})/);
+        if (yearMatch) {
+          periodDisplay = yearMatch[1];
+        } else {
+          periodDisplay = 'N/A';
+        }
       }
-      
-      // Try the direct path from the console output
-      if (periodFromFormatted === 'N/A' || periodToFormatted === 'N/A') {
-        periodFromFormatted = formatDate(content.Inspection_Period?.Period_From);
-        periodToFormatted = formatDate(content.Inspection_Period?.Period_To);
-      }
-      
-      // Try recursive search if still not found
-      if (periodFromFormatted === 'N/A') {
-        const foundFrom = findDateRecursively(content, 'Period_From');
-        if (foundFrom) periodFromFormatted = formatDate(foundFrom);
-      }
-      
-      if (periodToFormatted === 'N/A') {
-        const foundTo = findDateRecursively(content, 'Period_To');
-        if (foundTo) periodToFormatted = formatDate(foundTo);
-      }
-      
-      const periodDisplay = periodFromFormatted !== 'N/A' && periodToFormatted !== 'N/A'
-        ? `${periodFromFormatted} - ${periodToFormatted}`
-        : (periodFromFormatted !== 'N/A' ? periodFromFormatted : 'N/A');
 
 
 
@@ -264,7 +272,28 @@ const AssignedDocuments = () => {
         name: filename.replace('_new_schema.json', '').replace('.json', ''),
         period: periodDisplay,
         departments: (() => {
-          // Try multiple possible locations for department information
+          // Try metadata first
+          if (metadata.departments && metadata.departments !== null) {
+            return metadata.departments;
+          }
+          
+          // If departments is null, try to extract from document heading (like BulkUploadViewer)
+          if (metadata.document_heading) {
+            const heading = metadata.document_heading.toLowerCase();
+            if (heading.includes('registry')) {
+              return 'Sub Registry';
+            } else if (heading.includes('commercial')) {
+              return 'Commercial';
+            } else if (heading.includes('revenue')) {
+              return 'Revenue';
+            } else if (heading.includes('accountant general') || heading.includes('audit')) {
+              return 'Accountant General';
+            } else {
+              return 'Uploaded';
+            }
+          }
+          
+          // Fallback to old logic
           if (content.Inspection_Period?.departments) return content.Inspection_Period.departments;
           if (content.Inspection_Period?.Departments) return content.Inspection_Period.Departments;
           if (content.Parts?.["PART I"]?.Inspection_Report?.Inspection_Period?.departments) return content.Parts["PART I"].Inspection_Report.Inspection_Period.departments;
@@ -272,8 +301,6 @@ const AssignedDocuments = () => {
           if (content.Parts?.["PART I"]?.Inspection_Report?.Reporting_Period?.departments) return content.Parts["PART I"].Inspection_Report.Reporting_Period.departments;
           if (content.Parts?.["PART I"]?.Inspection_Report?.Reporting_Period?.Departments) return content.Parts["PART I"].Inspection_Report.Reporting_Period.Departments;
           if (content.Parts?.["PART I"]?.Inspection_Report?.Org_Hierarchy?.Hier_Code_Lvl1) return content.Parts["PART I"].Inspection_Report.Org_Hierarchy.Hier_Code_Lvl1;
-          if (reportingPeriod.departments) return reportingPeriod.departments;
-          if (inspectionPeriod.departments) return inspectionPeriod.departments;
           
           // Try to find department information anywhere in the content recursively
           const findDepartmentRecursively = (obj) => {
@@ -295,10 +322,15 @@ const AssignedDocuments = () => {
             return null;
           };
           
-          return findDepartmentRecursively(content) || 'N/A';
+          return findDepartmentRecursively(content) || 'Uploaded';
         })(),
         state: (() => {
-          // Try multiple possible locations for state information
+          // Try metadata first
+          if (metadata.state && metadata.state !== null) {
+            return metadata.state;
+          }
+          
+          // Fallback to old logic
           if (content.Inspection_Period?.state_name) return content.Inspection_Period.state_name;
           if (content.Inspection_Period?.State_Name) return content.Inspection_Period.State_Name;
           if (content.Parts?.["PART I"]?.Inspection_Report?.Inspection_Period?.state_name) return content.Parts["PART I"].Inspection_Report.Inspection_Period.state_name;
@@ -306,8 +338,6 @@ const AssignedDocuments = () => {
           if (content.Parts?.["PART I"]?.Inspection_Report?.Reporting_Period?.state_name) return content.Parts["PART I"].Inspection_Report.Reporting_Period.state_name;
           if (content.Parts?.["PART I"]?.Inspection_Report?.Reporting_Period?.State_Name) return content.Parts["PART I"].Inspection_Report.Reporting_Period.State_Name;
           if (content.Parts?.["PART I"]?.Inspection_Report?.Org_Hierarchy?.Hier_Code_Lvl2) return content.Parts["PART I"].Inspection_Report.Org_Hierarchy.Hier_Code_Lvl2;
-          if (reportingPeriod.state_name) return reportingPeriod.state_name;
-          if (inspectionPeriod.state_name) return inspectionPeriod.state_name;
           
           // Try to find state information anywhere in the content recursively
           const findStateRecursively = (obj) => {
@@ -329,13 +359,13 @@ const AssignedDocuments = () => {
             return null;
           };
           
-          return findStateRecursively(content) || 'N/A';
+          return findStateRecursively(content) || 'Tamilnadu';
         })(),
         summary: reportSummary.Key?.Report_Short_Summary || 'No summary available',
         unmappedCount: unmappedSections.Content ? unmappedSections.Content.length : 0,
         totalObservations: totalObservations,
-        expenditure: report.Budget_Detail?.Expenditure || 'N/A',
-        expenditureUnit: report.Budget_Detail?.Expenditure_Unit || ''
+        expenditure: content.Budget_Detail?.Expenditure || 'N/A',
+        expenditureUnit: content.Budget_Detail?.Expenditure_Unit || ''
       };
       
 
@@ -412,59 +442,20 @@ const AssignedDocuments = () => {
     return count;
   };
 
-  const handleViewDetails = async (fileId, filename) => {
-    try {
-      const token = localStorage.getItem('token');
-      console.log(`Loading content for file ID: ${fileId}, filename: ${filename}`);
-      
-      const response = await axios.get(`${config.BASE_URL}/api/uploaded-files/${fileId}/content`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      
-      console.log('API Response:', response.data);
-      
-      if (response.data.status === 'success') {
-        const jsonData = response.data.content;
-        const dataSource = response.data.source || 'original';
-        console.log('JSON Data structure:', {
-          hasContent: !!jsonData,
-          contentType: typeof jsonData,
-          keys: jsonData ? Object.keys(jsonData) : 'No keys',
-          hasInspectionReport: !!(jsonData && jsonData.Inspection_Report),
-          hasParts: !!(jsonData && jsonData.Parts),
-          dataSource: dataSource
-        });
-        
-        navigate(`/report-details/${encodeURIComponent(filename)}`, {
-          state: { jsonData: jsonData, source: dataSource }
-        });
-      } else {
-        console.error('API returned error status:', response.data);
-        alert('Failed to load file content: ' + (response.data.message || 'Unknown error'));
-      }
-    } catch (err) {
-      console.error('Error loading file content:', err);
-      alert('Error loading file content: ' + (err.response?.data?.detail || err.message));
-    }
+  const handleViewDetails = (fileId, filename) => {
+    // Navigate directly to FileViewer page
+    navigate('/file-viewer', {
+      state: { fileId, filename }
+    });
   };
 
   const handleUpdateData = async (fileId, filename) => {
     try {
-      setValidatingFileId(fileId); // Start loading for the specific file
       const token = localStorage.getItem('token');
       
       if (!token) {
         throw new Error('Authentication token not found. Please log in again.');
       }
-
-      // Navigate immediately with loading state
-      navigate('/data-validation', {
-        state: {
-          fileId,
-          fileName: filename,
-          isLoading: true // Flag to show loading state
-        }
-      });
 
       // Load data in background
       const [jsonRes, docxMetaRes] = await Promise.allSettled([
@@ -496,30 +487,48 @@ const AssignedDocuments = () => {
       if (docxMetaRes.status === 'fulfilled' && docxMetaRes.value.status === 200) {
         docxInfo = docxMetaRes.value.data;
         docxId = docxInfo.id;
+        console.log('Related DOCX API success:', docxInfo);
+      } else {
+        console.log('Related DOCX API failed:', docxMetaRes);
       }
 
       let docxArrayBuffer = null;
       if (docxId) {
         try {
+          console.log(`Downloading DOCX file with ID: ${docxId}`);
           const docxDownloadRes = await axios.get(`${config.BASE_URL}/api/download/${docxId}`, {
             headers: { Authorization: `Bearer ${token}` },
             responseType: 'arraybuffer',
             timeout: 30000 // 30 second timeout for file download
           });
+          console.log('DOCX download response status:', docxDownloadRes.status);
           if (docxDownloadRes.status === 200) {
             docxArrayBuffer = docxDownloadRes.data;
+            console.log('DOCX download successful, size:', docxArrayBuffer.byteLength);
           }
         } catch (downloadErr) {
           console.warn('Failed to download DOCX file, continuing without it:', downloadErr);
           // Continue without DOCX file - it's not critical for validation
         }
+      } else {
+        console.log('No docxId available, skipping DOCX download');
+      }
         
-        if (!docxInfo || !docxInfo.id) {
-          docxInfo = { ...(docxInfo || {}), id: docxId };
-        }
+      if (!docxInfo || !docxInfo.id) {
+        docxInfo = { ...(docxInfo || {}), id: docxId };
       }
 
-      // Navigate again with the loaded data
+      // Navigate directly to data validation with loaded data
+      console.log('=== AssignedDocuments - Navigating to DataValidation ===');
+      console.log('jsonData:', jsonData);
+      console.log('fileName:', filename);
+      console.log('docxInfo:', docxInfo);
+      console.log('docxArrayBuffer:', docxArrayBuffer);
+      console.log('docxArrayBuffer type:', typeof docxArrayBuffer);
+      console.log('docxArrayBuffer size:', docxArrayBuffer ? docxArrayBuffer.byteLength : 'N/A');
+      console.log('fileId:', fileId);
+      console.log('dataSource:', dataSource);
+      
       navigate('/data-validation', {
         state: {
           jsonData,
@@ -541,8 +550,6 @@ const AssignedDocuments = () => {
       
       // Navigate back to the assigned documents page
       navigate('/assigned-documents');
-    } finally {
-      setValidatingFileId(null); // End loading for the specific file
     }
   };
 
@@ -618,6 +625,50 @@ const AssignedDocuments = () => {
 
   return (
     <div className="container-fluid py-4">
+      {/* User Profile Section */}
+      {currentUser && (
+        <Card className="shadow-sm mb-4" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white' }}>
+          <Card.Body className="py-3">
+            <Row className="align-items-center">
+              <Col md={8}>
+                <div className="d-flex align-items-center">
+                  <div 
+                    className="rounded-circle me-3 d-flex align-items-center justify-content-center"
+                    style={{ 
+                      width: '60px', 
+                      height: '60px', 
+                      backgroundColor: 'rgba(255,255,255,0.2)',
+                      border: '2px solid rgba(255,255,255,0.3)'
+                    }}
+                  >
+                    <i className="fas fa-user" style={{ fontSize: '24px' }} />
+                  </div>
+                  <div>
+                    <h4 className="mb-1 fw-bold">
+                      Welcome, {currentUser.firstname} {currentUser.lastname}
+                    </h4>
+                    <p className="mb-1 opacity-75">
+                      <i className="fas fa-envelope me-2"></i>
+                      {currentUser.email}
+                    </p>
+                    <p className="mb-0 opacity-75">
+                      <i className="fas fa-id-badge me-2"></i>
+                      User ID: {currentUser.id} | Role: {currentUser.role?.charAt(0).toUpperCase() + currentUser.role?.slice(1) || 'User'}
+                    </p>
+                  </div>
+                </div>
+              </Col>
+              <Col md={4} className="text-end">
+                <div className="text-end">
+                  <div className="h5 mb-1">{assignedFiles.length}</div>
+                  <div className="opacity-75">Assigned Documents</div>
+                </div>
+              </Col>
+            </Row>
+          </Card.Body>
+        </Card>
+      )}
+
       {/* Greeting */}
       <h2 className="dashboard-heading">My Assigned Documents</h2>
 
@@ -794,15 +845,18 @@ const AssignedDocuments = () => {
                     </td>
                   </tr>
                 ) : (
-                  paginatedFiles.map((file, index) => (
+                  paginatedFiles.map((file, index) => {
+                    const reportInfo = reportData[file.id];
+                    
+                    return (
                     <tr key={file.id}>
                       <td className="text-center fw-medium text-muted">
                         {startIndex + index + 1}
                       </td>
-                      <td className="fw-medium">{reportData[file.id]?.name || file.filename}</td>
-                      <td>{reportData[file.id]?.period || 'N/A'}</td>
-                      <td>{reportData[file.id]?.departments || 'N/A'}</td>
-                      <td>{reportData[file.id]?.state || 'N/A'}</td>
+                      <td className="fw-medium">{reportInfo?.name || file.filename}</td>
+                      <td>{reportInfo?.period || 'N/A'}</td>
+                      <td>{reportInfo?.departments || 'N/A'}</td>
+                      <td>{reportInfo?.state || 'N/A'}</td>
                       <td className="badge-style">
                         {getValidationStatusForFile(file) === 'Validated' ? (
                           <Badge bg="success">Validated</Badge>
@@ -814,7 +868,7 @@ const AssignedDocuments = () => {
                         <span className="text-muted">{formatDate(file.assigned_at)}</span>
                       </td>
                       <td className='badge-style'>
-                        <Badge bg="secondary">{file.assigned_by_name}</Badge>
+                        <Badge bg="secondary">{file.assigned_by_name || 'Unknown Admin'}</Badge>
                       </td>
                       <td>
                         <div className="d-flex gap-2">
@@ -830,21 +884,15 @@ const AssignedDocuments = () => {
                             variant="outline-success"
                             size="sm"
                             onClick={() => handleUpdateData(file.id, file.filename)}
-                            disabled={validatingFileId === file.id}
                           >
-                            {validatingFileId === file.id ? (
-                              <Spinner animation="border" size="sm" />
-                            ) : (
-                              <>
-                                <i className="fas fa-check me-1"></i>
-                                Validate
-                              </>
-                            )}
+                            <i className="fas fa-check me-1"></i>
+                            Validate
                           </Button>
                         </div>
                       </td>
                     </tr>
-                  ))
+                    );
+                  })
                 )}
               </tbody>
             </Table>

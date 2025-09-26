@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Container, Button, Dropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import config from '../config.js';
+import { apiRequest, isAuthenticated } from '../utils/apiUtils.js';
 
 const TopNavbar = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
-  const [currentUser, setCurrentUser] = useState({ firstname: '', lastname: '' });
+  const [currentUser, setCurrentUser] = useState({ 
+    firstname: '', 
+    lastname: '', 
+    email: '', 
+    role: '', 
+    id: null 
+  });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     // Load user data from localStorage when component mounts
@@ -15,13 +24,42 @@ const TopNavbar = () => {
         const parsedUserData = JSON.parse(userData);
         setCurrentUser({
           firstname: parsedUserData.firstname || '',
-          lastname: parsedUserData.lastname || ''
+          lastname: parsedUserData.lastname || '',
+          email: parsedUserData.email || '',
+          role: parsedUserData.role || '',
+          id: parsedUserData.id || null
         });
       } catch (error) {
         console.error('Error parsing user data:', error);
       }
     }
+
+    // Fetch fresh user data from API if authenticated
+    if (isAuthenticated()) {
+      fetchUserProfile();
+    }
   }, []);
+
+  const fetchUserProfile = async () => {
+    try {
+      setLoading(true);
+      const userData = await apiRequest(`${config.BASE_URL}/users/me`);
+      setCurrentUser({
+        firstname: userData.firstname || '',
+        lastname: userData.lastname || '',
+        email: userData.email || '',
+        role: userData.role || '',
+        id: userData.id || null
+      });
+      
+      // Update localStorage with fresh data
+      localStorage.setItem('user_data', JSON.stringify(userData));
+    } catch (error) {
+      console.error('Error fetching user profile:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -112,17 +150,67 @@ const TopNavbar = () => {
                       </div>
                       <div className="text-start me-2">
                         <div className="fw-bold text-dark" style={{ fontSize: '14px' }}>
-                          {currentUser.firstname && currentUser.lastname 
-                            ? `${currentUser.firstname} ${currentUser.lastname}` 
-                            : 'User'
-                          }
+                          {loading ? (
+                            <div className="spinner-border spinner-border-sm" role="status">
+                              <span className="visually-hidden">Loading...</span>
+                            </div>
+                          ) : (
+                            currentUser.firstname && currentUser.lastname 
+                              ? `${currentUser.firstname} ${currentUser.lastname}` 
+                              : 'User'
+                          )}
                         </div>
-                        <div className="text-dark" style={{ fontSize: '12px', opacity: 0.7 }}>Audit Manager</div>
+                        <div className="text-dark" style={{ fontSize: '12px', opacity: 0.7 }}>
+                          {loading ? 'Loading...' : (
+                            currentUser.role 
+                              ? currentUser.role.charAt(0).toUpperCase() + currentUser.role.slice(1)
+                              : 'User'
+                          )}
+                        </div>
                       </div>
                       <i className="fas fa-chevron-down text-dark" style={{ fontSize: '12px' }}></i>
                     </div>
                   </Dropdown.Toggle>
-                  <Dropdown.Menu>
+                  <Dropdown.Menu style={{ minWidth: '250px' }}>
+                    <Dropdown.Header>
+                      <div className="d-flex align-items-center">
+                        <div 
+                          className="rounded me-2 d-flex align-items-center justify-content-center"
+                          style={{ 
+                            width: '32px', 
+                            height: '32px', 
+                            backgroundColor: '#007bff',
+                            color: 'white'
+                          }}
+                        >
+                          <i className="fas fa-user" style={{ fontSize: '14px' }} />
+                        </div>
+                        <div>
+                          <div className="fw-bold" style={{ fontSize: '14px' }}>
+                            {currentUser.firstname && currentUser.lastname 
+                              ? `${currentUser.firstname} ${currentUser.lastname}` 
+                              : 'User'
+                            }
+                          </div>
+                          <div className="text-muted" style={{ fontSize: '12px' }}>
+                            {currentUser.email || 'No email'}
+                          </div>
+                          <div className="text-muted" style={{ fontSize: '11px' }}>
+                            ID: {currentUser.id || 'N/A'} | Role: {currentUser.role || 'User'}
+                          </div>
+                        </div>
+                      </div>
+                    </Dropdown.Header>
+                    <Dropdown.Divider />
+                    <Dropdown.Item>
+                      <i className="fas fa-user me-2"></i>
+                      Profile
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <i className="fas fa-cog me-2"></i>
+                      Settings
+                    </Dropdown.Item>
+                    <Dropdown.Divider />
                     <Dropdown.Item onClick={handleLogout}>
                       <i className="fas fa-sign-out-alt me-2"></i>
                       Logout

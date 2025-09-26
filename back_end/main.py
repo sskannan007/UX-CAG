@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException, UploadFile, File, Form, Query, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
 from pydantic import BaseModel
 from typing import List, Optional
 import uvicorn
@@ -473,7 +473,7 @@ async def delete_uploaded_file(file_id: int, db: Session = Depends(get_db)):
 
 
 @app.post("/api/uploaded-files/batch-content")
-async def get_batch_file_content(file_ids: List[int]):
+async def get_batch_file_content(file_ids: List[int], db: Session = Depends(get_db)):
     """Get content of multiple files in batch"""
     try:
         if not file_ids:
@@ -481,11 +481,21 @@ async def get_batch_file_content(file_ids: List[int]):
         
         files_data = []
         for file_id in file_ids:
-            file = next((f for f in uploaded_files_db if f["id"] == file_id), None)
+            file = db.query(models.UploadedFile).filter(models.UploadedFile.id == file_id).first()
             if file:
+                # Try to get extracted JSON content
+                content = {}
+                if hasattr(file, 'extracted_json') and file.extracted_json:
+                    try:
+                        import json
+                        content = json.loads(file.extracted_json) if isinstance(file.extracted_json, str) else file.extracted_json
+                    except:
+                        content = {}
+                
                 files_data.append({
-                    "file_id": file["id"],
-                    "content": file["extracted_json"] or {}
+                    "file_id": file.id,
+                    "filename": file.filename,
+                    "content": content
                 })
         
         return {
@@ -514,61 +524,59 @@ async def get_users_list():
         print(f"Error fetching users: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Failed to fetch users: {str(e)}")
 
-@app.post("/admin/assign-files")
-async def assign_files(assignment: FileAssignmentRequest):
-    """Assign files to users"""
-    try:
-        user_ids = assignment.user_ids
-        file_ids = assignment.file_ids
-        
-        if not user_ids or not file_ids:
-            raise HTTPException(status_code=400, detail="User IDs and file IDs are required")
-        
-        created = 0
-        for user_id in user_ids:
-            for file_id in file_ids:
-                # Check if assignment already exists
-                existing = next((fa for fa in file_assignments_db 
-                               if fa["user_id"] == user_id and fa["file_id"] == file_id), None)
-                
-                if not existing:
-                    file_assignments_db.append({
-                        "user_id": user_id,
-                        "file_id": file_id,
-                        "assigned_at": datetime.now().isoformat()
-                    })
-                    created += 1
-        
-        return {
-            "status": "success",
-            "message": "Files assigned successfully",
-            "created": created
-        }
-        
-    except Exception as e:
-        print(f"Error assigning files: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Failed to assign files: {str(e)}")
 
 @app.get("/users/me")
-async def get_current_user():
+async def get_current_user(current_user: User = Depends(get_current_active_user), db: Session = Depends(get_db)):
     """Get current user information"""
     try:
-        # For demo purposes, return a mock user
-        # In production, you would validate the token and get real user data
-        return {
-            "id": 1,
-            "firstname": "Sarav",
-            "lastname": "User",
-            "email": "sarav@example.com",
-            "role": "admin",
-            "permissions": ["bulk_upload:create", "bulk_upload:view"],
-            "config": {
-                "home": True,
-                "dataValidation": True,
-                "assignedDocuments": True,
-                "bulkUpload": True,
-                "admin": True
+        # Get user's role and permissions
+        user_roles = db.query(models.UserRole).filter(models.UserRole.user_id == current_user.id).all()
+        user_config = db.query(models.UserConfig).filter(models.UserConfig.user_id == current_user.id).first()
+        
+        # Build permissions list
+        permissions = []
+        for user_role in user_roles:
+            role = db.query(models.Role).filter(models.Role.id == user_role.role_id).first()
+            if role:
+                permissions.append(f"{role.role_name}:{user_role.action or 'view'}")
+        
+        # Build config object
+        config = {}
+        if user_config and user_config.config:
+            # UserConfig has a JSON config field
+            config = {
+                "home": user_config.config.get("home", False),
+                "dataValidation": user_config.config.get("data_validation", False),
+                "assignedDocuments": user_config.config.get("assigned_documents", False),
+                "bulkUpload": user_config.config.get("bulkUpload", False),
+                "admin": user_config.config.get("admin", False)
             }
+        else:
+            # Default config based on role_status
+            config = {
+                "home": True,
+                "dataValidation": current_user.role_status in ['admin', 'superadmin', 'validator'],
+                "assignedDocuments": current_user.role_status in ['admin', 'superadmin', 'validator'],
+                "bulkUpload": current_user.role_status in ['admin', 'superadmin'],
+                "admin": current_user.role_status in ['admin', 'superadmin']
+            }
+        
+        return {
+            "id": current_user.id,
+            "firstname": current_user.firstname,
+            "lastname": current_user.lastname,
+            "email": current_user.email,
+            "dob": current_user.dob.isoformat() if current_user.dob else None,
+            "contactno": current_user.contactno,
+            "place": current_user.place,
+            "city": current_user.city,
+            "state": current_user.state,
+            "pincode": current_user.pincode,
+            "gender": current_user.gender,
+            "role": current_user.role_status,
+            "permissions": permissions,
+            "config": config,
+            "account_created_at": current_user.account_created_at.isoformat() if current_user.account_created_at else None
         }
         
     except Exception as e:
@@ -2391,7 +2399,40 @@ async def download_inspection_report_file(
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to download file: {str(e)}")
 
-
+@app.get("/api/download/{file_id}")
+async def download_file(file_id: int, db: Session = Depends(get_db)):
+    """Download uploaded file by ID"""
+    try:
+        uploaded_file = db.query(models.UploadedFile).filter(models.UploadedFile.id == file_id).first()
+        
+        if not uploaded_file:
+            raise HTTPException(status_code=404, detail="File not found")
+        
+        if not os.path.exists(uploaded_file.file_path):
+            raise HTTPException(status_code=404, detail="File not found on server")
+        
+        filename = uploaded_file.original_filename or uploaded_file.filename
+        # Choose appropriate media type based on extension
+        lower_name = (filename or "").lower()
+        if lower_name.endswith('.docx'):
+            media_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        elif lower_name.endswith('.doc'):
+            media_type = "application/msword"
+        elif lower_name.endswith('.json'):
+            media_type = "application/json"
+        else:
+            media_type = uploaded_file.file_type or "application/octet-stream"
+        
+        return FileResponse(
+            path=uploaded_file.file_path,
+            filename=filename,
+            media_type=media_type
+        )
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to download file: {str(e)}")
 
 @app.delete("/inspection-reports/{report_id}")
 async def delete_inspection_report(

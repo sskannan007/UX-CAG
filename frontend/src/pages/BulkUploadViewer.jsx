@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import TopNavbar from '../components/TopNavbar';
 import axios from 'axios';
 import config from '../config.js';
+import { apiRequest, isAuthenticated, logout } from '../utils/apiUtils.js';
 import '../styles/dashboard.scss';
 
 const BulkUpload = () => {
@@ -102,21 +103,18 @@ const BulkUpload = () => {
   }, [documents]);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
+    if (!isAuthenticated()) {
       setPermissionsLoaded(true);
       return;
     }
-    fetch(`${config.BASE_URL}/users/me`, {
-      headers: { 'Authorization': `Bearer ${token}` }
-    })
-      .then(res => res.json())
+    apiRequest(`${config.BASE_URL}/users/me`)
       .then(data => {
         const perms = Array.isArray(data?.permissions) ? data.permissions : [];
         const allowUpload = perms.includes('bulk_upload:create');
         setCanUploadFolder(!!allowUpload);
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error('Error fetching user permissions:', error);
         setCanUploadFolder(false);
       })
       .finally(() => setPermissionsLoaded(true));
