@@ -28,7 +28,7 @@ const AssignedDocuments = () => {
 
   const fetchCurrentUser = async () => {
     try {
-      const userData = await apiRequest(`${config.BASE_URL}/users/me`);
+      const userData = await apiRequest(`${config.BASE_URL}/api/users/me`);
       setCurrentUser(userData);
     } catch (error) {
       console.error('Error fetching current user:', error);

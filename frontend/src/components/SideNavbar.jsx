@@ -25,11 +25,11 @@ const SideNavbar = ({ isSidebarOpen }) => {
   // Fetch user permissions on component mount
   useEffect(() => {
     if (isAuthenticated()) {
-      apiRequest(`${config.BASE_URL}/users/me`)
+      apiRequest(`${config.BASE_URL}/api/users/me`)
         .then(data => {
           setUserPermissions(data.permissions || []);
           setUserConfig(data.config || {});
-          setUserRole(data.role || null);
+          setUserRole(data.role_status || null);
         })
         .catch(error => {
           console.error('Error fetching user permissions:', error);
@@ -73,7 +73,7 @@ const SideNavbar = ({ isSidebarOpen }) => {
 
   // Check current paths and expand menus accordingly
   useEffect(() => {
-    if (currentPath.includes('/admin') || currentPath.includes('/user-management') || currentPath.includes('/create-user') || currentPath.includes('/bulk-upload-users')) {
+    if (currentPath.includes('/admin') || currentPath.includes('/user-management') || currentPath.includes('/create-user') || currentPath.includes('/bulk-upload-users') || currentPath.includes('/admin/role-management')) {
       setExpandedMenus(prev => ({ ...prev, admin: true }));
     }
   }, [currentPath]);
@@ -103,14 +103,14 @@ const SideNavbar = ({ isSidebarOpen }) => {
             )}
             
             {/* Data Validation */}
-            {hasPermission('dataValidation') && (
+            {hasPermission('data_validation') && (
               <NavLink to="/data-validation" className={`nav-link ${isActive('/data-validation') ? 'active' : ''}`} style={{ color: isActive('/data-validation') ? '#161616' : '#828282' }}>
                 <FaCheckCircle className="me-3" /> Data Validation
               </NavLink>
             )}
             
             {/* Assigned Documents */}
-            {hasPermission('assignedDocuments') && (
+            {hasPermission('assigned_documents') && (
               <NavLink to="/assigned-documents" className={`nav-link ${isActive('/assigned-documents') ? 'active' : ''}`} style={{ color: isActive('/assigned-documents') ? '#161616' : '#828282' }}>
                 <FaFileAlt className="me-3" /> Assigned Documents
               </NavLink>
@@ -137,6 +137,9 @@ const SideNavbar = ({ isSidebarOpen }) => {
                   <div className="ms-4">
                     <NavLink to="/user-management" className={`nav-link ${currentPath.includes('/user-management') ? 'active' : ''}`} style={{ color: currentPath.includes('/user-management') ? '#161616' : '#828282' }}>
                       <FaUsers className="me-2" /> User Management
+                    </NavLink>
+                    <NavLink to="/admin/role-management" className={`nav-link ${currentPath.includes('/admin/role-management') ? 'active' : ''}`} style={{ color: currentPath.includes('/admin/role-management') ? '#161616' : '#828282' }}>
+                      <FaCog className="me-2" /> Role Management
                     </NavLink>
                     {/* Add other admin submenus as needed */}
                   </div>

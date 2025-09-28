@@ -20,6 +20,7 @@ import FileViewer from './pages/FileViewer';
 import './App.css';
 import Chatbot from './pages/Chatbot';
 import AssignedDocuments from './pages/AssignedDocuments';
+import AdminManagement from './pages/AdminManagement';
 
 function AppContent() {
   const [isSidebarOpen] = useState(true); // Always keep sidebar open
@@ -194,6 +195,13 @@ function AppContent() {
           <ProtectedRoute requiredRole="admin">
             <LayoutWithSidebar>
               <UserManagement />
+            </LayoutWithSidebar>
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/role-management" element={
+          <ProtectedRoute requiredRole="admin">
+            <LayoutWithSidebar>
+              <AdminManagement />
             </LayoutWithSidebar>
           </ProtectedRoute>
         } />

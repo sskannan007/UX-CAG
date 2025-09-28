@@ -21,6 +21,7 @@ const UserManagement = () => {
   const [inactiveUsers, setInactiveUsers] = useState(0);
   const [newUsers, setNewUsers] = useState(0);
   const [successMessage, setSuccessMessage] = useState('');
+  const [pageSize, setPageSize] = useState(10);
 
   // Handle success message from navigation state
   useEffect(() => {
@@ -32,6 +33,13 @@ const UserManagement = () => {
       navigate('/user-management', { replace: true });
     }
   }, [location.state, navigate]);
+
+  // Adjust page size if it's larger than total users
+  useEffect(() => {
+    if (totalUsers > 0 && pageSize > totalUsers) {
+      setPageSize(totalUsers);
+    }
+  }, [totalUsers, pageSize]);
 
   // Fetch users data
   useEffect(() => {
@@ -75,7 +83,6 @@ const UserManagement = () => {
         }).length;
         
         // Calculate pagination
-        const pageSize = 10;
         const startIndex = (currentPage - 1) * pageSize;
         const endIndex = startIndex + pageSize;
         const paginatedUsers = allUsers.slice(startIndex, endIndex);
@@ -113,12 +120,22 @@ const UserManagement = () => {
     };
 
     fetchUsers();
-  }, [currentPage, searchTerm]);
+  }, [currentPage, searchTerm, pageSize]);
 
   // Handle search input
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
     setCurrentPage(1); // Reset to first page on new search
+  };
+
+  // Handle page size change
+  const handlePageSizeChange = (e) => {
+    const newPageSize = parseInt(e.target.value) || 10;
+    // Don't allow page size larger than total users
+    const maxPageSize = Math.max(totalUsers, 1);
+    const validPageSize = Math.min(newPageSize, maxPageSize);
+    setPageSize(validPageSize);
+    setCurrentPage(1); // Reset to first page when changing page size
   };
 
   // Handle page change
@@ -263,7 +280,12 @@ const UserManagement = () => {
   const renderActionDropdown = (user) => {
     return (
       <Dropdown>
-        <Dropdown.Toggle variant="light" size="sm" id={`action-${user.id}`}>
+        <Dropdown.Toggle className="action-button"
+          variant="light" 
+          size="sm" 
+          id={`action-${user.id}`}
+          style={{ border: 'none', background: 'transparent' }}
+        >
           <i className="fas fa-ellipsis-v"></i>
         </Dropdown.Toggle>
         <Dropdown.Menu>
@@ -446,13 +468,16 @@ const UserManagement = () => {
           <Row className="align-items-center">
             <Col md={6}>
               <div className="d-flex align-items-center gap-3">
-                <span className="text-muted">Go to</span>
+                <span className="text-muted">Show</span>
                 <FormControl 
                   type="number" 
                   style={{ width: '60px' }} 
-                  defaultValue="10"
+                  value={pageSize}
+                  onChange={handlePageSizeChange}
+                  min="1"
+                  max={Math.max(totalUsers, 1)}
                 />
-                <span className="text-muted">page</span>
+                <span className="text-muted">entries</span>
               </div>
             </Col>
             <Col md={6}>
@@ -466,7 +491,7 @@ const UserManagement = () => {
                 >
                   <i className="fas fa-angle-left"></i>
                 </Button>
-                {Array.from({ length: Math.min(5, Math.ceil(totalUsers / 10)) }, (_, i) => (
+                {Array.from({ length: Math.min(5, Math.ceil(totalUsers / pageSize)) }, (_, i) => (
                   <Button 
                     key={i + 1}
                     className={`page-button ${currentPage === i + 1 ? 'btn-primary' : 'btn-outline-primary'}`}
@@ -481,7 +506,7 @@ const UserManagement = () => {
                   className="page-button" 
                   variant="outline-primary" 
                   size="sm"
-                  disabled={currentPage >= Math.ceil(totalUsers / 10)}
+                  disabled={currentPage >= Math.ceil(totalUsers / pageSize)}
                   onClick={() => handlePageChange(currentPage + 1)}
                 >
                   <i className="fas fa-angle-right"></i>

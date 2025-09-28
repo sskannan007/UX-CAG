@@ -603,6 +603,14 @@ body {
   overflow-y: scroll !important;
 }
 
+.sidebar-style .nav-link {
+  box-shadow: none !important;
+}
+
+.action-button.dropdown-toggle::after {
+  display: none;
+}
+
 // Responsive design
 @media (max-width: 1200px) {
   .dashboard-stats {

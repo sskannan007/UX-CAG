@@ -38,6 +38,7 @@ const BulkUpload = () => {
   const folderInputRef = useRef(null);
   const [canUploadFolder, setCanUploadFolder] = useState(true);
   const [permissionsLoaded, setPermissionsLoaded] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
   // Filter states
   const [search, setSearch] = useState('');
@@ -107,11 +108,18 @@ const BulkUpload = () => {
       setPermissionsLoaded(true);
       return;
     }
-    apiRequest(`${config.BASE_URL}/users/me`)
+    apiRequest(`${config.BASE_URL}/api/users/me`)
       .then(data => {
         const perms = Array.isArray(data?.permissions) ? data.permissions : [];
         const allowUpload = perms.includes('bulk_upload:create');
         setCanUploadFolder(!!allowUpload);
+        
+        // Store user data for greeting
+        setCurrentUser({
+          firstname: data?.firstname || '',
+          lastname: data?.lastname || '',
+          email: data?.email || ''
+        });
       })
       .catch((error) => {
         console.error('Error fetching user permissions:', error);
@@ -1014,7 +1022,9 @@ const BulkUpload = () => {
   const renderDashboard = () => (
     <div>
       {/* Greeting */}
-      <h2 className="dashboard-heading">Good Morning Sarav!</h2>
+      <h2 className="dashboard-heading">
+        Good Morning {currentUser ? `${currentUser.firstname} ${currentUser.lastname}`.trim() : 'User'}!
+      </h2>
 
       {/* Summary Cards */}
          <div className="dashboard-stats-contain">
@@ -1298,13 +1308,13 @@ const BulkUpload = () => {
           <Row className="align-items-center">
             <Col md={6}>
               <div className="d-flex align-items-center gap-3">
-                <span className="text-muted">Go to</span>
+                <span className="text-muted">Show</span>
                 <FormControl 
                   type="number" 
                   style={{ width: '60px' }} 
                   defaultValue="10"
                 />
-                <span className="text-muted">page</span>
+                <span className="text-muted">entries</span>
               </div>
             </Col>
             <Col md={6}>

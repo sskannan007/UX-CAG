@@ -43,12 +43,12 @@ const TopNavbar = () => {
   const fetchUserProfile = async () => {
     try {
       setLoading(true);
-      const userData = await apiRequest(`${config.BASE_URL}/users/me`);
+      const userData = await apiRequest(`${config.BASE_URL}/api/users/me`);
       setCurrentUser({
         firstname: userData.firstname || '',
         lastname: userData.lastname || '',
         email: userData.email || '',
-        role: userData.role || '',
+        role: userData.role_status || '',
         id: userData.id || null
       });
       

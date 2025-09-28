@@ -5,6 +5,8 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import extractedData from './extractedData';
 // Removed sampleExtractedData import - using real data from database
 import config from '../config.js';
+import thumbsUpIcon from '../assets/thumbs-up.png';
+import thumbsDownIcon from '../assets/thumbs-down.png';
 
 const BASE_URL = config.BASE_URL;
 
@@ -48,10 +50,19 @@ const ExtractedItemRow = memo(({
             onClick={() => handleFeedback(fieldKey, 'positive', index, node)}
             title="Thumbs up"
           >
-            <i className="fas fa-thumbs-up"></i>
+            <img 
+              src={thumbsUpIcon} 
+              alt="Thumbs up" 
+              style={{ width: '22px', height: '22px' }}
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'inline';
+              }}
+            />
+            <i className="fas fa-thumbs-up" style={{ display: 'none', fontSize: '16px' }}></i>
           </button>
           <button 
-            className={`btn btn-sm me-1 ${feedback?.type === 'negative' ? 'btn-danger' : 'btn-outline-danger'}`}
+            className={`thumbs-down btn btn-sm me-1 ${feedback?.type === 'negative' ? 'btn-danger' : 'btn-outline-danger'}`}
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -59,7 +70,16 @@ const ExtractedItemRow = memo(({
             }}
             title="Thumbs down"
           >
-            <i className="fas fa-thumbs-down"></i>
+            <img 
+              src={thumbsDownIcon} 
+              alt="Thumbs down" 
+              style={{ width: '22px', height: '22px' }}
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'inline';
+              }}
+            />
+            <i className="fas fa-thumbs-down" style={{ display: 'none', fontSize: '16px' }}></i>
           </button>
           <button 
             className="btn btn-sm btn-outline-secondary"
@@ -73,7 +93,7 @@ const ExtractedItemRow = memo(({
       <div className="extracted-item-content">
         {node.content.map((item, itemIndex) => (
           <div key={itemIndex} className="extracted-item-value">
-            <div className="value-label">{node.label}:</div>
+            {/* <div className="value-label">{node.label}:</div> */}
             <div className="value-content">
               {editingField === fieldKey ? (
                 <div className="edit-field-container">
@@ -1225,12 +1245,16 @@ const DataValidationPage = () => {
         .nav-button {
           padding: 8px 16px;
           border: 1px solid #0D61AE;
-          border-radius: 6px;
+          border-radius: 12px;
           background: white;
           color: #0D61AE;
           text-decoration: none;
           font-weight: 500;
           transition: all 0.2s;
+        }
+        .nav-button-primary {
+          border: 1px solid #000000;
+          color: #202937;
         }
         
         .nav-button:hover {
@@ -1260,7 +1284,8 @@ const DataValidationPage = () => {
           display: flex;
           gap: 20px;
           align-items: center;
-        }
+          margin-right: 20px;
+          }
 
         .feedback-count {
           display: flex;
@@ -1278,7 +1303,7 @@ const DataValidationPage = () => {
           color: white;
           border: none;
           padding: 10px 20px;
-          border-radius: 6px;
+          border-radius: 8px;
           font-weight: 600;
           cursor: pointer;
           transition: all 0.2s;
@@ -1347,31 +1372,36 @@ const DataValidationPage = () => {
           padding: 16px 24px;
           border-bottom: 1px solid #e0e0e0;
           background: #f8f9fa;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 16px;
         }
         
         .tab-container {
           display: flex;
-          background: #e9ecef;
-          border-radius: 6px;
-          padding: 4px;
-          margin-bottom: 16px;
+          background: #ffffff;
+          padding: 8px 16px;
+          border: 1px solid #D9D9D9;
+          border-radius: 12px;
         }
         
         .tab-button {
           flex: 1;
           padding: 8px 16px;
           border: none;
-          background: transparent;
+          background: #F8F8F8;
           color: #666;
           font-weight: 500;
-          border-radius: 4px;
+          border-radius: 12px;
           cursor: pointer;
           transition: all 0.2s;
+          color: #202937;
         }
         
         .tab-button.active {
-          background: white;
-          color: #0D61AE;
+          background: #E7EAFD;
+          color: #2E2929;
           box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         
@@ -1382,6 +1412,9 @@ const DataValidationPage = () => {
           background: white;
           border-radius: 6px;
           border: 1px solid #e0e0e0;
+          min-width: 200px;
+          flex: 1;
+          max-width: 300px;
         }
         
         .search-input {
@@ -1433,14 +1466,63 @@ const DataValidationPage = () => {
         
         .extracted-item-actions {
           display: flex;
-          gap: 4px;
+          gap: 8px;
+          align-items: center;
+        }
+        .extracted-item-actions .thumbs-down {
+          background: #F03939;
+          border: none;
+        }
+        
+        .extracted-item-actions button {
+          width: 44px;
+          height: 40px;
+          border-radius: 12px;
+          border: 1px solid #CBCBCB;
+          background: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s ease;
+        }
+        
+        .extracted-item-actions button:hover {
+          border-color: #007bff;
+          transform: scale(1.05);
+        }
+        
+        .extracted-item-actions button.btn-success {
+          border-color: #28a745;
+          background: #28a745;
+          color: white;
+        }
+        
+        .extracted-item-actions button.btn-danger {
+          border-color: #dc3545;
+          background: #dc3545;
+          color: white;
+        }
+        
+        .extracted-item-actions button.btn-outline-success:hover {
+          border-color: #28a745;
+          background: #28a745;
+          color: white;
+        }
+        
+        .extracted-item-actions button.btn-outline-danger:hover {
+          border-color: #dc3545;
+          background: #dc3545;
+          color: white;
         }
         
         .extracted-item-content {
-          padding: 16px;
           font-size: 14px;
           color: #666;
           line-height: 1.4;
+          background: #f8f9fa;
+          border: 1px solid #e0e0e0;
+          border-radius: 6px;
+          margin: 8px 0;
         }
         
         .extracted-item-value {
@@ -1466,10 +1548,10 @@ const DataValidationPage = () => {
           line-height: 1.5;
           word-wrap: break-word;
           font-size: 14px;
-          background: #f8f9fa;
+          background: white;
           padding: 12px;
-          border-radius: 4px;
-          border: 1px solid #e9ecef;
+          border-radius: 6px;
+          border: 1px solid #C5C5C5;
         }
         
         .json-content {
@@ -1504,7 +1586,6 @@ const DataValidationPage = () => {
         
         .inline-validation-box {
           background: #f8f9fa;
-          border: 2px solid #007bff;
           border-radius: 8px;
           padding: 16px;
           margin-top: 12px;
@@ -1519,22 +1600,23 @@ const DataValidationPage = () => {
         }
         
         .validation-btn {
-          padding: 6px 12px;
-          border: 1px solid #e0e0e0;
-          background: white;
-          color: #666;
-          border-radius: 4px;
+          padding: 6px 16px;
+          border: 1px solid #D9D9D9;
+          background: #F8F8F8;
+          border-radius: 12px;
           cursor: pointer;
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 500;
           transition: all 0.2s;
-          min-width: 70px;
+          min-width: 80px;
           text-align: center;
+          color: #202937;
         }
         
         .validation-btn:hover {
-          background: #f8f9fa;
+          background: #e9ecef;
           border-color: #007bff;
+          color: #007bff;
         }
         
         .validation-btn.selected {
@@ -1559,10 +1641,13 @@ const DataValidationPage = () => {
           width: 100%;
           min-height: 60px;
           padding: 8px;
-          border: 1px solid #e0e0e0;
-          border-radius: 4px;
-          font-size: 13px;
-          font-family: inherit;
+          border: 1px solid #C5C5C5;
+          border-radius: 9px;
+          font-size: 14px;
+          font-weight: 400;
+          font-style: normal;
+          font-family: inter;
+          color: #737476;
           resize: vertical;
           box-sizing: border-box;
         }
@@ -1877,7 +1962,7 @@ const DataValidationPage = () => {
                   Home
                 </button>
                 <button 
-                  className="nav-button primary"
+                  className="nav-button nav-button-primary"
                   onClick={() => navigate('/bulk-upload')}
                 >
                   Upload New
@@ -1986,6 +2071,7 @@ const DataValidationPage = () => {
                       <div className="tab-container">
                         <button 
                           className={`tab-button ${activeTab === 'extracted' ? 'active' : ''}`}
+                          style={{ marginRight: '10px' }}
                           onClick={() => setActiveTab('extracted')}
                         >
                           Extracted
