@@ -502,43 +502,43 @@ const DataValidationPage = () => {
             nodes.push(...parsedRows);
           } else {
             // Handle simple values and special cases
-            let displayValue = value;
-            
-            // Handle arrays with special formatting
-            if (Array.isArray(value)) {
-              if (value.length === 0) {
-                displayValue = 'No data available';
-              } else if (value.every(item => typeof item === 'string' || typeof item === 'number')) {
-                // Handle simple arrays
-                displayValue = value.join(', ');
-              } else {
+          let displayValue = value;
+          
+          // Handle arrays with special formatting
+          if (Array.isArray(value)) {
+            if (value.length === 0) {
+              displayValue = 'No data available';
+            } else if (value.every(item => typeof item === 'string' || typeof item === 'number')) {
+              // Handle simple arrays
+              displayValue = value.join(', ');
+            } else {
                 // Handle mixed arrays
-                displayValue = value.map((item, index) => {
-                  if (typeof item === 'object') {
-                    return `${index + 1}. ${JSON.stringify(item, null, 2)}`;
-                  }
-                  return `${index + 1}. ${item}`;
-                }).join('\n\n');
-              }
+              displayValue = value.map((item, index) => {
+                if (typeof item === 'object') {
+                  return `${index + 1}. ${JSON.stringify(item, null, 2)}`;
+                }
+                return `${index + 1}. ${item}`;
+              }).join('\n\n');
             }
-            // Handle objects
-            else if (typeof value === 'object' && !Array.isArray(value)) {
-              if (value.Period_From && value.Period_To) {
-                // Special handling for period objects
-                displayValue = `${value.Period_From} - ${value.Period_To}`;
-              } else {
-                displayValue = JSON.stringify(value, null, 2);
-              }
+          }
+          // Handle objects
+          else if (typeof value === 'object' && !Array.isArray(value)) {
+            if (value.Period_From && value.Period_To) {
+              // Special handling for period objects
+              displayValue = `${value.Period_From} - ${value.Period_To}`;
+            } else {
+              displayValue = JSON.stringify(value, null, 2);
             }
-            
-            nodes.push({
-              label: label,
-              content: [{
-                text: displayValue,
-                value: displayValue,
-                key: key
-              }]
-            });
+          }
+          
+          nodes.push({
+            label: label,
+            content: [{
+              text: displayValue,
+              value: displayValue,
+              key: key
+            }]
+          });
           }
         }
       });
@@ -1058,14 +1058,18 @@ const DataValidationPage = () => {
       }
 
       console.log('Saving updated JSON:', updatedJson);
+      console.log('File ID:', fileId);
 
-      const response = await fetch(`${config.BASE_URL}/api/save-validation-changes?file_id=${fileId}`, {
+      const response = await fetch(`${config.BASE_URL}/api/save-validation-changes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify(updatedJson)
+        body: JSON.stringify({
+          file_id: fileId,
+          updated_json: updatedJson
+        })
       });
 
       const result = await response.json();
@@ -1074,8 +1078,9 @@ const DataValidationPage = () => {
         alert('Changes saved successfully!');
         console.log('Save result:', result);
       } else {
-        alert(`Failed to save changes: ${result.detail || 'Unknown error'}`);
-        console.error('Save error:', result);
+        console.error('Save error response:', response);
+        console.error('Save error result:', result);
+        alert(`Failed to save changes: ${result.detail || result.message || 'Unknown error'}`);
       }
     } catch (error) {
       console.error('Error saving changes:', error);
@@ -1901,8 +1906,8 @@ const DataValidationPage = () => {
                 >
                   <i className={`fas ${isSaving ? 'fa-spinner fa-spin' : 'fa-save'} me-2`}></i>
                   {isSaving ? 'Saving...' : 'Save & Submit'}
-                </button>
-              </div>
+              </button>
+            </div>
           
             </div>
 
